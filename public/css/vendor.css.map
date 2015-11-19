@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.css","slide.css"],"names":[],"mappings":"AAAA;AACA;AACA;ACFA;AACA;AACA;AACA","file":"vendor.css","sourcesContent":[".purple-font {\r\n    color: purple;\r\n}",".red-font {\r\n    color: #ff0000;\r\n    margin-bottom: 100px;\r\n}"],"sourceRoot":"/source/"}
