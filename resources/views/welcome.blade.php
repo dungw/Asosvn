@@ -4,6 +4,9 @@
 		
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
+        <link rel="stylesheet" href="{{ elixir('public/css/app.css')  }}"/>
+        <link rel="stylesheet" href="{{ elixir('public/css/vendor.css')  }}"/>
+
 		<style>
 			body {
 				margin: 0;
@@ -40,7 +43,9 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 5</div>
+				<div class="title">
+                    <h2 class="red-font">Laravel 5</h2>
+                </div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
