@@ -1,9 +1,17 @@
 <?php
+//Frontend routes
 Route::get('/', 'WelcomeController@index');
-
 Route::get('home', 'HomeController@index');
 
+//Backend routes
+Route::get('admin', function() {
+	return view('admin/main');
+});
+Route::get('admin/product', 'Admin\ProductController@index');
+
+//Common routes
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+	'auth'          => 'Auth\AuthController',
+	'password'      => 'Auth\PasswordController',
+	'admin/product' => 'Admin\ProductController',
 ]);

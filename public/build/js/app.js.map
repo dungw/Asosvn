@@ -1,0 +1,1 @@
+{"version":3,"sources":["slide.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA","file":"app.js","sourcesContent":["/**\r\n * Created by dung.vuong on 11/20/2015.\r\n */\r\n$(document).ready(function() {\r\n\r\n});"],"sourceRoot":"/source/"}

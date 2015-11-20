@@ -4,8 +4,9 @@
 		
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
-        <link rel="stylesheet" href="{{ elixir('public/css/app.css')  }}"/>
-        <link rel="stylesheet" href="{{ elixir('public/css/vendor.css')  }}"/>
+        <link rel="stylesheet" href="{{ elixir('css/app.css')  }}"/>
+        <link rel="stylesheet" href="{{ elixir('css/vendor.css')  }}"/>
+        <script src="{{ elixir('js/app.js') }}"></script>
 
 		<style>
 			body {
