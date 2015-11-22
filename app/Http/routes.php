@@ -5,9 +5,9 @@ Route::get('home', 'HomeController@index');
 
 //Backend routes
 Route::get('admin', function() {
-	return view('admin/main');
+	return view('admin.layouts.default');
 });
-Route::get('admin/product', 'Admin\ProductController@index');
+Route::resource('admin/product', 'Admin\ProductController');
 
 //Common routes
 Route::controllers([

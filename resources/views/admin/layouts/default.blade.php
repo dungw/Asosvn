@@ -55,10 +55,10 @@ desired effect
 <div class="wrapper">
 
     <!-- Main Header -->
-    @include('partials.header')
+    @include('admin.includes.header')
 
     <!-- Left side column. contains the logo and sidebar -->
-    @include('partials.sidebar')
+    @include('admin.includes.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -78,6 +78,7 @@ desired effect
         <section class="content">
 
             <!-- Your Page Content Here -->
+            @yield('content')
 
         </section>
         <!-- /.content -->
@@ -85,7 +86,7 @@ desired effect
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    @include('partials.footer')
+    @include('admin.includes.footer')
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
