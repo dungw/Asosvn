@@ -12,7 +12,7 @@ class CreateProductsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('products', function(Blueprint $table)
+		Schema::create('products', function (Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('sku', 50)->unique()->comment = "Product code";
@@ -26,7 +26,8 @@ class CreateProductsTable extends Migration {
 			$table->integer('quantity');
 		});
 
-		Schema::table('products', function(Blueprint $table) {
+		Schema::table('products', function (Blueprint $table)
+		{
 			$table->foreign('brand_id')
 				->references('id')
 				->on('brands')
