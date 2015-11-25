@@ -15,4 +15,9 @@ class Distributor extends Model {
 		return $this->hasMany('App\Promotion');
 	}
 
+	public function products()
+	{
+		return $this->belongsToMany('App\Product')->withTimestamps();
+	}
+
 }
