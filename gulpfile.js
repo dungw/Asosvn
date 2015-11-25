@@ -13,25 +13,15 @@ var elixir = require('laravel-elixir');
 
 elixir(function (mix) {
 
-    //app.css
-    mix.less('app.less');
-    mix.stylesIn('vendor', 'public/css/app.css');
+    /*//app.css
+     mix.less('app.less');
+     mix.stylesIn('css', 'public/css/app.css');
+     mix.scriptsIn('vendor', 'public/js/app.js');
 
-    //app.js
-    mix.scriptsIn('vendor', 'public/js/app.js');
-
-    //admin.css
-    mix.styles([
-        'vendor/main.css',
-        'vendor/slide.css'
-    ], 'public/css/admin.css');
-
-    //manage version
-    mix.version([
-        'public/css/app.css',
-        'public/css/vendor.css',
-        'public/css/admin.css',
-        'public/js/app.js'
-    ]);
+     //manage version
+     mix.version([
+     'public/css/app.css',
+     'public/js/app.js'
+     ]);*/
 
 });

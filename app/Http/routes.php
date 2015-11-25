@@ -1,6 +1,8 @@
 <?php
 //Frontend routes
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function() {
+	return view('pages.home');
+});
 Route::get('home', 'HomeController@index');
 
 //Backend routes
