@@ -1,17 +1,20 @@
 <?php
+
 //Frontend routes
-Route::get('/', function() {
-	return view('pages.home');
-});
+Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
+Route::get('products', 'ProductController@index');
+Route::get('product/{id}/{alias}', 'ProductController@details');
+Route::get('products/{id}', 'ProductController@category');
+Route::controllers([
+	'checkout'  => 'CheckoutController',
+	'cart'      => 'CartController',
+	'blog'      => 'BlogController',
+]);
 
 //Backend routes
-Route::get('admin', function() {
-	return view('admin.layouts.default');
-});
+Route::get('admin', 'Admin\IndexController@index');
 Route::resource('admin/product', 'Admin\ProductController');
-
-//Common routes
 Route::controllers([
 	'auth'          => 'Auth\AuthController',
 	'password'      => 'Auth\PasswordController',
