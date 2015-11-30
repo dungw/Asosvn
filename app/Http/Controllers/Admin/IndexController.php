@@ -1,11 +1,10 @@
 <?php namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\BaseController;
 use App\Http\Requests;
-
+use Auth;
 use Illuminate\Http\Request;
 
-class IndexController extends BaseController {
+class IndexController extends AdminController {
 
 	public function index()
 	{
