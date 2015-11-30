@@ -20,4 +20,9 @@ class Promotion extends Model {
 		return $this->belongsTo('App\Distributor');
 	}
 
+	public function products()
+	{
+		return $this->belongsToMany('App\Product')->withTimestamps();
+	}
+
 }

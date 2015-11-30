@@ -30,4 +30,10 @@ class Product extends Model {
 	{
 		return $this->belongsToMany('App\Distributor')->withTimestamps();
 	}
+
+	public function promotions()
+	{
+		return $this->belongsToMany('App\Product')->withTimestamps();
+	}
+
 }
