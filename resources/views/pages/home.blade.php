@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('intermediate')
-    @include('includes.slider')
+    @include('includes.default.slider')
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
-                    @include('includes.left-sidebar')
+                    @include('includes.default.left-sidebar')
                 </div>
 
                 <div class="col-sm-9 padding-right">

@@ -27,7 +27,10 @@ class RedirectIfAuthenticated {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->check())
+		if (Auth::admin()->check())
+		{
+			return new RedirectResponse(url('/admin'));
+		} else if (Auth::client()->check(0))
 		{
 			return new RedirectResponse(url('/home'));
 		}
