@@ -4,22 +4,13 @@ use Auth;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 
-class Authenticate
+class ClientAuthenticate
 {
-	/**
-	 * The Guard implementation.
-	 *
-	 * @var Guard
-	 */
 	protected $auth;
 
-	/**
-	 * Create a new filter instance.
-	 *
-	 */
 	public function __construct()
 	{
-		$this->auth = Auth::admin();
+		$this->auth = Auth::client();
 	}
 
 	/**
@@ -44,4 +35,5 @@ class Authenticate
 
 		return $next($request);
 	}
+
 }
