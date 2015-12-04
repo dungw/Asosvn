@@ -6,21 +6,21 @@ return [
 	'model' => 'App\User',
 	'table' => 'users',*/
 
-	'multi' => [
-		'admin' => [
+	'multi'    => [
+		'admin'  => [
 			'driver' => 'eloquent',
-			'model' => 'App\Admin',
+			'model'  => 'App\Admin',
 		],
 		'client' => [
 			'driver' => 'database',
-			'table' => 'clients',
-			'email' => 'client.emails.password',
+			'table'  => 'clients',
+			'email'  => 'client.emails.password',
 		]
 	],
 
 	'password' => [
-		'email' => 'emails.password',
-		'table' => 'password_resets',
+		'email'  => 'emails.password',
+		'table'  => 'password_resets',
 		'expire' => 60,
 	],
 

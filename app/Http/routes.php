@@ -14,9 +14,12 @@ Route::controllers([
 
 //Backend routes
 Route::get('admin', 'Admin\IndexController@index');
-Route::resource('admin/product', 'Admin\ProductController');
 Route::controllers([
 	'auth'          => 'Auth\AuthController',
 	'password'      => 'Auth\PasswordController',
-	'admin/product' => 'Admin\ProductController',
+	'admin/auth'    => 'Admin\AuthController',
 ]);
+
+Route::resource('admin/product', 'Admin\ProductController');
+
+

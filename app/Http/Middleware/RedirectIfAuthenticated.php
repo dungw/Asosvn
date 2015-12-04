@@ -1,15 +1,20 @@
 <?php namespace App\Http\Middleware;
+
 use Auth;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
-class RedirectIfAuthenticated {
+
+class RedirectIfAuthenticated
+{
+
 	/**
 	 * The Guard implementation.
 	 *
 	 * @var Guard
 	 */
 	protected $auth;
+
 	/**
 	 * Create a new filter instance.
 	 *
@@ -18,11 +23,12 @@ class RedirectIfAuthenticated {
 	{
 		$this->auth = Auth::admin();
 	}
+
 	/**
 	 * Handle an incoming request.
 	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
+	 * @param  \Illuminate\Http\Request $request
+	 * @param  \Closure $next
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next)
@@ -34,6 +40,7 @@ class RedirectIfAuthenticated {
 		{
 			return new RedirectResponse(url('/home'));
 		}
+
 		return $next($request);
 	}
 }

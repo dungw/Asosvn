@@ -4,11 +4,12 @@ use App\Http\Requests;
 use Auth;
 use Illuminate\Http\Request;
 
-class IndexController extends AdminController {
+class IndexController extends AdminController
+{
 
 	public function index()
 	{
-		return view('admin.layouts.default');
+		return view('admin.pages.home');
 	}
 
 }

@@ -29,7 +29,7 @@ class AdminAuthenticate
 				return response('Unauthorized.', 401);
 			} else
 			{
-				return redirect()->guest('admin/login');
+				return redirect()->guest('admin/auth/login');
 			}
 		}
 

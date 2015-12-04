@@ -5,7 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class CheckoutController extends BaseController {
+class CheckoutController extends BaseController
+{
 
 	public function index()
 	{

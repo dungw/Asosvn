@@ -51,10 +51,10 @@ desired effect
 <div class="wrapper">
 
     <!-- Main Header -->
-    @include('admin.includes.header')
+    @include('admin.includes.default.header')
 
     <!-- Left side column. contains the logo and sidebar -->
-    @include('admin.includes.sidebar')
+    @include('admin.includes.default.sidebar')
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -73,10 +73,10 @@ desired effect
     <!-- /.content-wrapper -->
 
     <!-- Main Footer -->
-    @include('admin.includes.footer')
+    @include('admin.includes.default.footer')
 
     <!-- Control Sidebar -->
-    @include('admin.includes.control-sidebar')
+    @include('admin.includes.default.control-sidebar')
 </div>
 <!-- ./wrapper -->
 

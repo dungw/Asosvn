@@ -10,12 +10,7 @@ class AdminController extends Controller
 
 	public function __construct()
 	{
-		//$this->middleware('auth.admin');
-	}
-
-	public function index()
-	{
-		return view('admin.pages.home');
+		$this->middleware('auth.admin');
 	}
 
 }
