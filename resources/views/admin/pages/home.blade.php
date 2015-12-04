@@ -1,4 +1,4 @@
-@extends('admin.layouts.default');
+@extends('admin.layouts.boxed');
 
 @section('page-header')
     <!-- Content Header (Page header) -->
