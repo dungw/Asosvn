@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+	//redirect path after logout
 	protected $redirectAfterLogout = 'admin/auth/login';
+
+	//redirect path after login successfully
+	protected $redirectPath = 'admin/product';
+
+	//login path
+	protected $loginPath = 'admin/auth/login';
 
 	use AuthenticatesAndRegistersUsers;
 
@@ -63,6 +70,11 @@ class AuthController extends Controller
 			->withErrors([
 				'name' => $this->getFailedLoginMessage(),
 			]);
+	}
+
+	protected function getFailedLoginMessage()
+	{
+		return 'Username or password is wrong.';
 	}
 
 }

@@ -8,6 +8,7 @@ class AdminBreadcrumbComposer
 
 	public function compose(View $view)
 	{
+		dd(Route::current());die;
 		$action = Route::current()->getAction()['as'];
 		$actions = explode('.', $action);
 

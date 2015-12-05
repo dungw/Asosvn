@@ -14,9 +14,7 @@
 
     <div class="content-wrapper">
 
-        @section('breadcrumb')
-            @include('admin.includes.boxed.breadcrumb')
-        @endsection
+        @yield('breadcrumb')
 
         <section class="content">
             <div class="row">

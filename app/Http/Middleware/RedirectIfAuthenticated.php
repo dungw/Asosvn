@@ -21,7 +21,7 @@ class RedirectIfAuthenticated
 	 */
 	public function __construct()
 	{
-		$this->auth = Auth::admin();
+
 	}
 
 	/**
@@ -35,10 +35,10 @@ class RedirectIfAuthenticated
 	{
 		if (Auth::admin()->check())
 		{
-			return new RedirectResponse(url('/admin'));
+			return new RedirectResponse(url('admin/product'));
 		} else if (Auth::client()->check(0))
 		{
-			return new RedirectResponse(url('/home'));
+			return new RedirectResponse(url('home'));
 		}
 
 		return $next($request);
