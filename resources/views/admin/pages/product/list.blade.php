@@ -36,7 +36,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @forelse ($products as $product)
+                @foreach ($products as $product)
                     <tr>
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->name }}</td>
@@ -54,11 +54,7 @@
                             {!! Form::close() !!}
                         </td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="6">No product.</td>
-                    </tr>
-                @endforelse
+                @endforeach
                 </tbody>
             </table>
         </div>
