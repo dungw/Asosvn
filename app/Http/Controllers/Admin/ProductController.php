@@ -97,7 +97,10 @@ class ProductController extends AdminController
 		$product->update($input);
 
 		array_forget($input['distributors'], 0);
-		$product->distributors()->sync($input['distributors']);
+		if (!empty($input['distributors']))
+		{
+			$product->distributors()->sync($input['distributors']);
+		}
 
 		return redirect('admin/product');
 	}
