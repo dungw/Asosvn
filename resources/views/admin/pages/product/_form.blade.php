@@ -28,27 +28,27 @@
 
     <div class="form-group">
         {!! Form::label('price', 'Price:') !!}
-        {!! Form::input('number', 'price', old('price'), ['class' => 'form-control']) !!}
+        {!! Form::input('number', 'price', old('price') ? old('price') : $product->price, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('availability', 'Availability:') !!}
-        {!! Form::select('availability', $availabilities, old('availability'), ['class' => 'form-control']) !!}
+        {!! Form::select('availability', $availabilities, old('availability') ? old('availability') : $product->availability, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('condition', 'Condition:') !!}
-        {!! Form::select('condition', $conditions, old('condition'), ['class' => 'form-control']) !!}
+        {!! Form::select('condition', $conditions, old('condition') ? old('condition') : $product->condition, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('quantity', 'Quantity:') !!}
-        {!! Form::input('number', 'quantity', old('quantity'), ['class' => 'form-control']) !!}
+        {!! Form::input('number', 'quantity', old('quantity') ? old('quantity') : $product->quantity, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('description', 'Description:') !!}
-        {!! Form::textarea('description', old('description'), ['class' => 'form-control']) !!}
+        {!! Form::textarea('description', old('description') ? old('description') : $product->description, ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
