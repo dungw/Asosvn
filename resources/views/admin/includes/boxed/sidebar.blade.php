@@ -6,9 +6,9 @@
                      alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>{{ ucfirst(Auth::admin()->getUser()->name) }}</p>
                 <a href="{{ url('bower_components/AdminLTE/pages/examples') }}/#"><i
-                            class="fa fa-circle text-success"></i> Online</a>
+                            class="fa fa-circle text-success"></i> Super Administrator</a>
             </div>
         </div>
         <form action="#" method="get" class="sidebar-form">

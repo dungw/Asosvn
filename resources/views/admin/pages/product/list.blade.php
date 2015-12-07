@@ -30,22 +30,28 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Category</th>
-                    <th>Thumb.</th>
+                    <th>Condition</th>
                     <th>Price</th>
-                    <th>Actions</th>
+                    <th width="15%">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
                 @forelse ($products as $product)
                     <tr>
-                        <td>{{ $product['id'] }}</td>
-                        <td>{{ $product['name'] }}</td>
-                        <td>{{ $product['category'] }}</td>
-                        <td>{{ $product['thumbnail'] }}</td>
-                        <td>{{ $product['price'] }}</td>
+                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->category->name }}</td>
+                        <td>{{ $product->condition() }}</td>
+                        <td>{{ $product->price }}</td>
                         <td>
-                            <a href="" class="btn btn-default btn-sm">Edit</a>
-                            <a href="" class="btn btn-default btn-sm">Delete</a>
+                            <a href="{{ url('admin/product/' . $product->id . '/edit') }}" class="btn btn-sm">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                            {!! Form::open(['url' => 'admin/product/' . $product->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
+                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm pull-right">
+                                <i class="fa fa-remove"></i> Delete
+                            </button>
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                 @empty
