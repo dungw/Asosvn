@@ -11,7 +11,7 @@ class CategoryController extends AdminController {
 
 	public function index()
 	{
-		$data['categories'] = Category::all();
+		$data['parents'] = Category::parents()->orderBy('name')->get();
 
 		return view('admin.pages.category.list', $data);
 	}
@@ -43,9 +43,12 @@ class CategoryController extends AdminController {
 
 	public function edit($id)
 	{
+		$data = [
+			'categories' => [0 => 'Root'],
+		];
 		$data['category'] = Category::findOrFail($id);
 
-		$data['categories'] = Category::lists('name', 'id');
+		$data['categories'] = array_merge($data['categories'], Category::lists('name', 'id'));
 
 		return view('admin.pages.category.edit', $data);
 	}

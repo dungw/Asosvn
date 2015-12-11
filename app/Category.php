@@ -23,9 +23,14 @@ class Category extends Model {
 		return $query->whereActive(self::STATUS_ACTIVE);
 	}
 
+	public function scopeParents($query)
+	{
+		return $query->whereParentId(0);
+	}
+
 	public function parent()
 	{
-		return $this->belongsTo('App\Category');
+		return $this->belongsTo('App\Category', 'parent_id');
 	}
 
 	public function children()

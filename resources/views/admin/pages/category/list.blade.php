@@ -36,11 +36,11 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($categories as $category)
+                @foreach ($parents as $category)
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
-                        <td>{{ '' }}</td>
+                        <td></td>
                         <td>{{ $category->order }}</td>
                         <td>
                             <a href="{{ url('admin/category/' . $category->id . '/edit') }}" class="btn btn-sm">
@@ -53,6 +53,24 @@
                             {!! Form::close() !!}
                         </td>
                     </tr>
+                    @foreach ($category->children()->orderBy('name')->get() as $child)
+                        <tr>
+                            <td>{{ $child->id }}</td>
+                            <td>{{ '-- ' . $child->name }}</td>
+                            <td>{{ $category->name or null }}</td>
+                            <td>{{ $child->order }}</td>
+                            <td>
+                                <a href="{{ url('admin/category/' . $child->id . '/edit') }}" class="btn btn-sm">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                                {!! Form::open(['url' => 'admin/category/' . $category->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm pull-right">
+                                    <i class="fa fa-remove"></i> Delete
+                                </button>
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                    @endforeach
                 @endforeach
                 </tbody>
             </table>
@@ -72,7 +90,8 @@
                 "searching": false,
                 "ordering": true,
                 "info": true,
-                "autoWidth": false
+                "autoWidth": false,
+                "order": []
             });
         });
     </script>
