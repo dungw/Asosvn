@@ -21,5 +21,6 @@ Route::controllers([
 ]);
 
 Route::resource('admin/product', 'Admin\ProductController');
+Route::resource('admin/category', 'Admin\CategoryController');
 
 

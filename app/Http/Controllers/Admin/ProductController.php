@@ -4,10 +4,12 @@ use App\Brand;
 use App\Category;
 use App\Distributor;
 use App\Http\Requests;
+use App\Http\Requests\CreateProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Input;
 use Route;
+use Session;
 
 class ProductController extends AdminController
 {
@@ -42,11 +44,9 @@ class ProductController extends AdminController
 		return view('admin.pages.product.create', $data);
 	}
 
-	public function store(Request $request)
+	public function store(CreateProductRequest $request)
 	{
-		$input = $request->all();
-
-		$product = Product::create($input);
+		$product = Product::create($request->all());
 		if (!empty($input['distributors']))
 		{
 			foreach ($input['distributors'] as $dis)
@@ -54,6 +54,8 @@ class ProductController extends AdminController
 				$product->distributors()->attach($dis);
 			}
 		}
+
+		Session::flash('success', 'Created a product successful!');
 
 		return redirect('admin/product');
 	}
@@ -88,11 +90,11 @@ class ProductController extends AdminController
 		return view('admin.pages.product.edit', $data);
 	}
 
-	public function update($id)
+	public function update(CreateProductRequest $request)
 	{
-		$input = Input::all();
+		$input = $request->all();
 
-		$product = Product::findOrNew($id);
+		$product = Product::findOrFail(Route::input('product'));
 
 		$product->update($input);
 
@@ -101,6 +103,8 @@ class ProductController extends AdminController
 		{
 			$product->distributors()->sync($input['distributors']);
 		}
+
+		Session::flash('success', 'Updated a product successful!');
 
 		return redirect('admin/product');
 	}

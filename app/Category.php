@@ -10,7 +10,7 @@ class Category extends Model {
 	protected $fillable = [
 		'parent_id',
 		'name',
-		'order'
+		'order',
 	];
 
 	public function products()
@@ -21,6 +21,16 @@ class Category extends Model {
 	public function scopeActive($query)
 	{
 		return $query->whereActive(self::STATUS_ACTIVE);
+	}
+
+	public function parent()
+	{
+		return $this->belongsTo('App\Category');
+	}
+
+	public function children()
+	{
+		return $this->hasMany('App\Category', 'parent_id');
 	}
 	
 }

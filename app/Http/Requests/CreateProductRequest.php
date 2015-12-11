@@ -1,8 +1,7 @@
 <?php namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
-class CreateProductRequest extends Request {
+class CreateProductRequest extends Request
+{
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -11,7 +10,7 @@ class CreateProductRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return false;
+		return true;
 	}
 
 	/**
@@ -21,9 +20,37 @@ class CreateProductRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
-			//
-		];
+		switch($this->method())
+		{
+			case 'GET':
+			case 'DELETE':
+			{
+				return [];
+			}
+			case 'POST':
+			{
+				return [
+					'name'        => 'required',
+					'sku'         => 'required|unique:products|min:5',
+					'price'       => 'required',
+					'category_id' => 'required',
+					'brand_id'    => 'required',
+				];
+			}
+			case 'PUT':
+			case 'PATCH':
+			{
+				return [
+					'name'        => 'required',
+					'sku'         => 'required|min:5',
+					'price'       => 'required',
+					'category_id' => 'required',
+					'brand_id'    => 'required',
+				];
+			}
+			default:break;
+		}
+
 	}
 
 }

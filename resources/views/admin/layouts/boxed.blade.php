@@ -45,6 +45,8 @@
 <script src="{{ asset('bower_components/AdminLTE/dist/js/app.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('bower_components/AdminLTE/dist/js/demo.js') }}"></script>
+<!-- Growl notification -->
+<script src="{{ asset('js/jquery.growl.js') }}"></script>
 
 @yield('footer-content')
 

@@ -7,13 +7,13 @@
 @section('breadcrumb')
     <section class="content-header">
         <h1>
-            Product
+            Category
             <small></small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="{{ url('admin/product') }}">Products</a></li>
-            <li class="active"><a href="#">Product list</a></li>
+            <li><a href="{{ url('admin/category') }}">Categories</a></li>
+            <li class="active"><a href="#">Category list</a></li>
         </ol>
     </section>
 @endsection
@@ -21,7 +21,7 @@
 @section('content')
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Product list</h3>
+            <h3 class="box-title">Category list</h3>
         </div>
         <div class="box-body">
 
@@ -30,25 +30,23 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Category</th>
-                    <th>Condition</th>
-                    <th>Price</th>
+                    <th>Parent</th>
+                    <th>Order</th>
                     <th width="15%">Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($products as $product)
+                @foreach ($categories as $category)
                     <tr>
-                        <td>{{ $product->id }}</td>
-                        <td>{{ $product->name }}</td>
-                        <td>{{ $product->category->name }}</td>
-                        <td>{{ $product->condition() }}</td>
-                        <td>{{ $product->price }}</td>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ '' }}</td>
+                        <td>{{ $category->order }}</td>
                         <td>
-                            <a href="{{ url('admin/product/' . $product->id . '/edit') }}" class="btn btn-sm">
+                            <a href="{{ url('admin/category/' . $category->id . '/edit') }}" class="btn btn-sm">
                                 <i class="fa fa-edit"></i> Edit
                             </a>
-                            {!! Form::open(['url' => 'admin/product/' . $product->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
+                            {!! Form::open(['url' => 'admin/category/' . $category->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
                             <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm pull-right">
                                 <i class="fa fa-remove"></i> Delete
                             </button>
@@ -58,6 +56,7 @@
                 @endforeach
                 </tbody>
             </table>
+
         </div>
     </div>
 @endsection
