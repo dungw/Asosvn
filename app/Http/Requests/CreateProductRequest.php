@@ -35,6 +35,7 @@ class CreateProductRequest extends Request
 					'price'       => 'required',
 					'category_id' => 'required',
 					'brand_id'    => 'required',
+					'image'       => 'mimes:png',
 				];
 			}
 			case 'PUT':
@@ -46,6 +47,7 @@ class CreateProductRequest extends Request
 					'price'       => 'required',
 					'category_id' => 'required',
 					'brand_id'    => 'required',
+					'image'       => 'mimes:png',
 				];
 			}
 			default:break;
