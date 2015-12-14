@@ -37,6 +37,11 @@ class Product extends Model
 		return $this->belongsToMany('App\Product')->withTimestamps();
 	}
 
+	public function images()
+	{
+		return $this->hasMany('App\ProductImage');
+	}
+
 	public function condition()
 	{
 		$list = self::conditions();

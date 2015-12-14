@@ -21,7 +21,7 @@
             <h3 class="box-title">Create product</h3>
         </div>
 
-        @include('admin.pages.product._form', ['options' => ['url' => 'admin/product']])
+        @include('admin.pages.product._form', ['options' => ['url' => 'admin/product', 'files' => true]])
 
     </div>
 @stop

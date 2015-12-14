@@ -35,7 +35,7 @@ class CreateProductRequest extends Request
 					'price'       => 'required',
 					'category_id' => 'required',
 					'brand_id'    => 'required',
-					'image'       => 'mimes:png',
+					'image'       => 'mimes:jpeg,jpg,bmp,png',
 				];
 			}
 			case 'PUT':
@@ -47,12 +47,21 @@ class CreateProductRequest extends Request
 					'price'       => 'required',
 					'category_id' => 'required',
 					'brand_id'    => 'required',
-					'image'       => 'mimes:png',
+					'image'       => 'mimes:jpeg,jpg,bmp,png',
 				];
 			}
 			default:break;
 		}
 
+	}
+
+	protected function getValidatorInstance()
+	{
+		$validator = parent::getValidatorInstance();
+
+		$validator->each('images', ['image']);
+
+		return $validator;
 	}
 
 }

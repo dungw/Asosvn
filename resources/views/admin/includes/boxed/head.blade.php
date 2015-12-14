@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/dist/css/skins/_all-skins.min.css') }}">
     <!-- Growl notification css -->
     <link rel="stylesheet" href="{{ asset('css/jquery.growl.css') }}">
+
+    <link type="text/css" href="{{ asset('css/magnific-popup.min.css') }}"/>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

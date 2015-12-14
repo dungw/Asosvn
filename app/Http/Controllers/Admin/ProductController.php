@@ -6,8 +6,10 @@ use App\Distributor;
 use App\Http\Requests;
 use App\Http\Requests\CreateProductRequest;
 use App\Product;
-use Illuminate\Http\Request;
+use App\ProductImage;
+use File;
 use Input;
+use Intervention\Image\Facades\Image;
 use Route;
 use Session;
 
@@ -23,13 +25,7 @@ class ProductController extends AdminController
 
 	public function create()
 	{
-		$data = [
-			'categories'     => Category::active()->lists('name', 'id'),
-			'brands'         => Brand::lists('name', 'id'),
-			'availabilities' => [],
-			'distributors'   => Distributor::lists('name', 'id'),
-			'conditions'     => [null => 'Normal']
-		];
+		$data = ['categories' => Category::active()->lists('name', 'id'), 'brands' => Brand::lists('name', 'id'), 'availabilities' => [], 'distributors' => Distributor::lists('name', 'id'), 'conditions' => [null => 'Normal']];
 
 		foreach (Product::availabilities() as $key => $value)
 		{
@@ -55,6 +51,36 @@ class ProductController extends AdminController
 			}
 		}
 
+		//upload images
+		$uploads = Input::file('images');
+		if (!empty($uploads))
+		{
+			foreach ($uploads as $file)
+			{
+				//extension
+				$ext = $file->getClientOriginalExtension();
+
+				//random 16 characters
+				$filename = str_random();
+
+				//get and create container folder if needed
+				$folderPath = ProductImage::getContainerFolder($product->id);
+
+				//full path
+				$path = public_path($folderPath . '/' . $filename . '.' . $ext);
+
+				//save image to path
+				Image::make($file->getRealPath())->save($path);
+
+				//create and save thumbnails
+				$pathThumb = public_path($folderPath . '/' . $filename . '_' . ProductImage::THUMBNAIL_SIZE . '.' . $ext);
+				ProductImage::createThumb($pathThumb, $file);
+
+				//insert to database
+				ProductImage::create(['product_id' => $product->id, 'image' => ($filename . '.' . $ext)]);
+			}
+		}
+
 		Session::flash('success', 'Created a product successful!');
 
 		return redirect('admin/product');
@@ -62,19 +88,14 @@ class ProductController extends AdminController
 
 	public function show($id)
 	{
+		$data['product'] = Product::findOrFail($id);
 
+		return view('admin.pages.product.details', $data);
 	}
 
 	public function edit($id)
 	{
-		$data = [
-			'product'        => Product::find($id),
-			'categories'     => Category::active()->lists('name', 'id'),
-			'brands'         => Brand::lists('name', 'id'),
-			'availabilities' => [],
-			'distributors'   => Distributor::lists('name', 'id'),
-			'conditions'     => [null => 'Normal'],
-		];
+		$data = ['product' => Product::find($id), 'categories' => Category::active()->lists('name', 'id'), 'brands' => Brand::lists('name', 'id'), 'availabilities' => [], 'distributors' => Distributor::lists('name', 'id'), 'conditions' => [null => 'Normal'],];
 		array_unshift($data['distributors'], 'None');
 
 		foreach (Product::availabilities() as $key => $value)
@@ -114,6 +135,13 @@ class ProductController extends AdminController
 		$product = Product::findOrFail($id);
 
 		$product->delete();
+
+		if ( File::exists( public_path( ProductImage::getContainerFolder($id) ) ) )
+		{
+			File::deleteDirectory( public_path( ProductImage::getContainerFolder($id) ) );
+		}
+
+		Session::flash('success', 'Product is deleted successful!');
 
 		return redirect('admin/product');
 	}

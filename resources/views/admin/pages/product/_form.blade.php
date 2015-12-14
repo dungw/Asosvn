@@ -26,6 +26,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('images', 'Image:') !!}
+        {!! Form::file('images[]', ['class' => 'form-control', 'multiple' => true]) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::label('category_id', 'Category:') !!}
         {!! Form::select('category_id', $categories, old('category_id') ? old('category_id') : (isset($product) ?
         $product->category_id : null), ['class' => 'form-control']) !!}
