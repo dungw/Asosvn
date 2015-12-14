@@ -21,10 +21,13 @@
 @section('content')
 
     <div class="box">
+
         <div class="box-header">
             <h3 class="box-title">Product list</h3>
         </div>
+
         <div class="box-body">
+
             <div class="popup-gallery">
                 @if (count($product->images()->get()))
                     @foreach ($product->images()->get() as $image)
@@ -36,7 +39,9 @@
                     @endforeach
                 @endif
             </div>
+
         </div>
+
     </div>
 
 @endsection
