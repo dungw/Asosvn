@@ -1,5 +1,10 @@
 <?php
 
+//other method should be define before resource controller
+//variable in template compact by Laravel change symbol to get value
+Blade::setContentTags('<%', '%>');
+Blade::setEscapedContentTags('<%%', '%%>');
+
 //Frontend routes
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
