@@ -8,7 +8,7 @@
     <section class="content-header">
         <h1>
             Category
-            <small></small>
+            <small>listing</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
@@ -20,9 +20,6 @@
 
 @section('content')
     <div class="box">
-        <div class="box-header">
-            <h3 class="box-title">Category list</h3>
-        </div>
         <div class="box-body">
 
             <table id="data-table" class="table table-bordered table-striped">

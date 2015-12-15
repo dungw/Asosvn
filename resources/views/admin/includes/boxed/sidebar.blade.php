@@ -26,23 +26,23 @@
 
             <li class="treeview">
                 <a href="{{ url('admin/product') }}">
-                    <i class="fa fa-paw"></i> <span>Product</span> <i
-                            class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('admin/product') }}"><i class="fa fa-caret-right"></i> Listing</a></li>
-                    <li><a href="{{ url('admin/product/create') }}"><i class="fa fa-caret-right"></i> Add new</a></li>
-                </ul>
-            </li>
-
-            <li class="treeview">
-                <a href="{{ url('admin/product') }}">
                     <i class="fa fa-paperclip"></i> <span>Category</span> <i
                             class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('admin/category') }}"><i class="fa fa-caret-right"></i> Listing</a></li>
                     <li><a href="{{ url('admin/category/create') }}"><i class="fa fa-caret-right"></i> Add new</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="{{ url('admin/product') }}">
+                    <i class="fa fa-paw"></i> <span>Product</span> <i
+                            class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/product') }}"><i class="fa fa-caret-right"></i> Listing</a></li>
+                    <li><a href="{{ url('admin/product/create') }}"><i class="fa fa-caret-right"></i> Add new</a></li>
                 </ul>
             </li>
 

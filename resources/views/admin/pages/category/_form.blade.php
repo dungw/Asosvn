@@ -1,5 +1,5 @@
 <div class="box-body">
-    {!! Form::open($options) !!}
+    {!! Form::open(array_merge($options, ['class' => 'form-horizontal'])) !!}
 
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissable">
@@ -14,23 +14,23 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('name', 'Name:') !!}
-        {!! Form::text('name', old('name') ? old('name') : (isset($category) ? $category->name : null), ['class' =>
+        {!! App\Helpers\MyHtml::label('name', 'Name', true) !!}
+        {!! App\Helpers\MyHtml::text('name', old('name') ? old('name') : (isset($category) ? $category->name : null), ['class' =>
         'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('parent_id', 'Parent:') !!}
-        {!! Form::select('parent_id', $categories, old('parent_id') ? old('parent_id') : (isset($category) ? $category->parent_id : null), ['class' => 'form-control']) !!}
+        {!! App\Helpers\MyHtml::label('parent_id', 'Parent') !!}
+        {!! App\Helpers\MyHtml::select('parent_id', $categories, old('parent_id') ? old('parent_id') : (isset($category) ? $category->parent_id : null), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('order', 'Order:') !!}
-        {!! Form::input('number', 'order', old('order') ? old('order') : (isset($category) ? $category->order : null), ['class' => 'form-control']) !!}
+        {!! App\Helpers\MyHtml::label('order', 'Order') !!}
+        {!! App\Helpers\MyHtml::input('number', 'order', old('order') ? old('order') : (isset($category) ? $category->order : null), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+        {!! App\Helpers\MyHtml::submit('Submit', ['class' => 'btn btn-primary']) !!}
     </div>
 
     {!! Form::close() !!}

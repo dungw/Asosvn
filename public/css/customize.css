@@ -1,0 +1,37 @@
+.font14 {
+    font-size: 14px;
+}
+
+.asterisk {
+    color: #D9534F;
+    font-size: 18px;
+}
+
+.talign-r {
+    text-align: right;
+}
+
+.border-b {
+    border-bottom: 1px solid #F4F4F4;
+}
+
+.border-none {
+    border-bottom: none;
+}
+
+.small {
+    color: #999;
+}
+
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.row-img {
+    padding: 10px 0px;
+}
+
+.row-img img {
+    max-height: 100px;
+}

@@ -1,5 +1,8 @@
+
+
+
 <div class="box-body">
-    {!! Form::open($options) !!}
+    {!! Form::open(array_merge($options, ['class' => 'form-horizontal'])) !!}
 
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissable">
@@ -14,73 +17,87 @@
     @endif
 
     <div class="form-group">
-        {!! Form::label('name', 'Name:') !!}
-        {!! Form::text('name', old('name') ? old('name') : (isset($product) ? $product->name : null), ['class' =>
+        {!! App\Helpers\MyHtml::label('name', 'Name', true) !!}
+        {!! App\Helpers\MyHtml::text('name', old('name') ? old('name') : (isset($product) ? $product->name : null), ['class' =>
         'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('sku', 'Sku:') !!}
-        {!! Form::text('sku', old('sku') ? old('sku') : (isset($product) ? $product->sku : null), ['class' =>
+        {!! App\Helpers\MyHtml::label('sku', 'Sku', true) !!}
+        {!! App\Helpers\MyHtml::text('sku', old('sku') ? old('sku') : (isset($product) ? $product->sku : null), ['class' =>
         'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('images', 'Image:') !!}
-        {!! Form::file('images[]', ['class' => 'form-control', 'multiple' => true]) !!}
+        {!! App\Helpers\MyHtml::label('images', 'Image') !!}
+        {!! App\Helpers\MyHtml::file('images[]', ['class' => 'form-control', 'multiple' => true]) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('category_id', 'Category:') !!}
-        {!! Form::select('category_id', $categories, old('category_id') ? old('category_id') : (isset($product) ?
+        {!! App\Helpers\MyHtml::label('category_id', 'Category', true) !!}
+        {!! App\Helpers\MyHtml::select('category_id', $categories, old('category_id') ? old('category_id') : (isset($product) ?
         $product->category_id : null), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('brand_id', 'Brand:') !!}
-        {!! Form::select('brand_id', $brands, old('brand_id')? old('brand_id') : (isset($product) ? $product->brand_id :
+        {!! App\Helpers\MyHtml::label('brand_id', 'Brand') !!}
+        {!! App\Helpers\MyHtml::select('brand_id', $brands, old('brand_id')? old('brand_id') : (isset($product) ? $product->brand_id :
         null), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('distributors', 'Distributor:') !!}
-        {!! Form::select('distributors[]', $distributors, old('distributors') ? old('distributors') : (isset($product) ?
+        {!! App\Helpers\MyHtml::label('distributors', 'Distributor') !!}
+        {!! App\Helpers\MyHtml::select('distributors[]', $distributors, old('distributors') ? old('distributors') : (isset($product) ?
         $product->distributors()->lists('distributor_id') : null), ['class' => 'form-control', 'multiple' => true]) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('price', 'Price:') !!}
-        {!! Form::input('number', 'price', old('price') ? old('price') : (isset($product) ? $product->price : null),
+        {!! App\Helpers\MyHtml::label('price', 'Price') !!}
+        {!! App\Helpers\MyHtml::input('number', 'price', old('price') ? old('price') : (isset($product) ? $product->price : null),
         ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('availability', 'Availability:') !!}
-        {!! Form::select('availability', $availabilities, old('availability') ? old('availability') : (isset($product) ?
+        {!! App\Helpers\MyHtml::label('availability', 'Availability') !!}
+        {!! App\Helpers\MyHtml::select('availability', $availabilities, old('availability') ? old('availability') : (isset($product) ?
         $product->availability : null), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('condition', 'Condition:') !!}
-        {!! Form::select('condition', $conditions, old('condition') ? old('condition') : (isset($product) ?
+        {!! App\Helpers\MyHtml::label('condition', 'Condition') !!}
+        {!! App\Helpers\MyHtml::select('condition', $conditions, old('condition') ? old('condition') : (isset($product) ?
         $product->condition : null), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('quantity', 'Quantity:') !!}
-        {!! Form::input('number', 'quantity', old('quantity') ? old('quantity') : (isset($product) ? $product->quantity
+        {!! App\Helpers\MyHtml::label('quantity', 'Quantity') !!}
+        {!! App\Helpers\MyHtml::input('number', 'quantity', old('quantity') ? old('quantity') : (isset($product) ? $product->quantity
         : null), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('description', 'Description:') !!}
-        {!! Form::textarea('description', old('description') ? old('description') : (isset($product) ?
-        $product->description : null), ['class' => 'form-control']) !!}
+        {!! App\Helpers\MyHtml::label('description', 'Description') !!}
+        {!! App\Helpers\MyHtml::textarea('description', old('description') ? old('description') : (isset($product) ?
+        $product->description : null), ['class' => 'product-des form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
+        {!! App\Helpers\MyHtml::submit('Submit', ['class' => 'btn btn-primary']) !!}
     </div>
 
     {!! Form::close() !!}
 </div>
+
+@section('footer-content')
+
+    @parent
+
+    <!-- CK Editor -->
+    <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js" type="text/javascript"></script>
+    <!-- Bootstrap WYSIHTML5 -->
+    <script src="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('.product-des').wysihtml5();
+    </script>
+
+@endsection

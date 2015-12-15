@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Product
-            <small></small>
+            <small>create product</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
@@ -17,11 +17,11 @@
 @section('content')
     <div class="box">
 
-        <div class="box-header">
-            <h3 class="box-title">Create product</h3>
-        </div>
+        <div class="box-body">
 
-        @include('admin.pages.product._form', ['options' => ['url' => 'admin/product', 'files' => true]])
+            @include('admin.pages.product._form', ['options' => ['url' => 'admin/product', 'files' => true]])
+
+        </div>
 
     </div>
 @stop

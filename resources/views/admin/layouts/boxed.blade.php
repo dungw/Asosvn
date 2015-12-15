@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 
-@include('admin.includes.boxed.head')
+<head>
+    @include('admin.includes.boxed.head')
 
-@yield('head')
+    @yield('head')
+</head>
 
 <body class="hold-transition skin-blue layout-boxed sidebar-collapse sidebar-mini">
 <div class="wrapper">

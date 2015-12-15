@@ -32,9 +32,7 @@ class CreateProductRequest extends Request
 				return [
 					'name'        => 'required',
 					'sku'         => 'required|unique:products|min:5',
-					'price'       => 'required',
 					'category_id' => 'required',
-					'brand_id'    => 'required',
 					'image'       => 'mimes:jpeg,jpg,bmp,png',
 				];
 			}
@@ -44,9 +42,7 @@ class CreateProductRequest extends Request
 				return [
 					'name'        => 'required',
 					'sku'         => 'required|min:5',
-					'price'       => 'required',
 					'category_id' => 'required',
-					'brand_id'    => 'required',
 					'image'       => 'mimes:jpeg,jpg,bmp,png',
 				];
 			}
