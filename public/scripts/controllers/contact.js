@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('ThepDungApp')
-  .controller('AboutCtrl', function () {
+  .controller('ContactCtrl', function () {
 
   });

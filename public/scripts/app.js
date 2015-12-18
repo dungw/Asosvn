@@ -32,9 +32,19 @@ angular
             templateUrl: "views/home.html",
             controller: "HomeCtrl"
         })
+        .state('login', {
+            url: "/login",
+            templateUrl: "views/login.html",
+            controller: "LoginCtrl"
+        })
         .state('about', {
             url: "/about",
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'
+        })
+        .state('contact', {
+            url: "/contact",
+            templateUrl: 'views/contact-us.html',
+            controller: 'ContactCtrl'
         });
   });

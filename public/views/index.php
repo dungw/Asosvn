@@ -75,7 +75,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                            <a ui-sref="/"><img src="images/home/logo.png" alt="Home page" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -108,7 +108,7 @@
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a ui-sref="login"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                                     </ul>
                                 </li>
                                 <li><a href="404.html">404</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a ui-sref="contact">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -330,6 +330,9 @@
 <script src="js/main.js"></script>
 
 <script src="scripts/app.js"></script>
+<script src="scripts/login.js"></script>
 <script src="scripts/controllers/home.js"></script>
+<script src="scripts/contact.js"></script>
+<script src="scripts/about.js"></script>
 
 </html>
