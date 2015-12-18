@@ -7,11 +7,7 @@
  * # AboutCtrl
  * Controller of the tmpApp
  */
-angular.module('tmpApp')
+angular.module('ThepDungApp')
   .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });

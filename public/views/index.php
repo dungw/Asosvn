@@ -31,8 +31,7 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 </head>
 
-<body data-ng-app="AsosVnApp">
-
+<body data-ng-app="ThepDungApp">
 
     <!--Main content-->
         <div ui-view></div>

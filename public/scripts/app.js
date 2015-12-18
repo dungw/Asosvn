@@ -9,7 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('AsosVnApp', [
+  .module('ThepDungApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -21,7 +21,7 @@ angular
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $locationProvider.html5Mode({
-        enabled: true,
+        enabled: false,
         requireBase: true}).hashPrefix('!');
 
     $urlRouterProvider.otherwise("/");
@@ -32,7 +32,7 @@ angular
             templateUrl: "views/home.html",
             controller: "HomeCtrl"
         })
-        .state('around', {
+        .state('about', {
             url: "/about",
             templateUrl: 'views/about.html',
             controller: 'AboutCtrl'

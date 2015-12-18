@@ -4,7 +4,9 @@
 
 'use strict';
 
-angular.module('AsosVnApp')
+angular.module('ThepDungApp')
     .controller('HomeCtrl', function ($scope, $rootScope, $http) {
-
+        $http.get('products').then(function(data) {
+           $scope.products = data.data;
+        });
     });
