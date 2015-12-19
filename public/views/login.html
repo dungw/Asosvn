@@ -2,28 +2,36 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-sm-offset-1">
-                @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
                 <div class="login-form">
                     <!--login form-->
                     <h2>Login to your account</h2>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    <form class="form-horizontal" role="form" name="loginForm" novalidate>
+                        <div class="error-message" data-ng-if="messageLogin">
+                            <p>{{ messageLogin }}</p>
+                        </div>
+                        <input type="email" name="loginEmail" data-ng-model="loginEmail" class="form-control" placeholder="Email Address"
+                               ng-minlength="5" ng-maxlength="30" required>
+                        <div class="error-message" ng-messages="loginForm.loginEmail.$error" ng-if="loginForm.loginEmail.$touched">
+                            <p ng-message="required">Your email is required.</p>
+                            <p ng-message="minlength">Your email is too short.</p>
+                            <p ng-message="maxlength">Your email is too long.</p>
+                            <p ng-message="email">Your email needs to be a valid email.</p>
+                        </div>
+                        <input type="password" data-ng-model="loginPassword" name="loginPassword" class="form-control" placeholder="Password"
+                               ng-minlength="6" ng-maxlength="30" required>
+                        <div class="error-message" ng-messages="loginForm.loginPassword.$error" ng-if="loginForm.loginPassword.$touched">
+                            <p ng-message="required">Your password is required.</p>
+                            <p ng-message="minlength">Your password have to at least 6 characters.</p>
+                            <p ng-message="maxlength">Your password is too long.</p>
+                        </div>
 							<span>
                                 <input type="checkbox" name="remember" class="checkbox">
 								Keep me signed in
 							</span>
-                        <button type="submit" class="btn btn-default">Login</button>
+                        <button type="button" class="btn btn-default" data-ng-click="login()"
+                                data-ng-disabled="loginForm.$invalid && (loginForm.loginEmail.$touched || loginForm.loginPassword.$touched)">
+                            Login
+                        </button>
                         <a class="btn btn-link no-padding" href="{{ url('/password/email') }}">Forgot Your Password?</a>
                     </form>
                     <!--/login form-->
@@ -33,26 +41,47 @@
                 <h2 class="or">OR</h2>
             </div>
             <div class="col-sm-4">
-                @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
                 <div class="signup-form">
                     <!--sign up form-->
                     <h2>New User Signup!</h2>
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name">
-                        <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email Address">
-                        <input type="password" class="form-control" name="password" placeholder="Password">
-                        <input type="password" class="form-control" name="password_confirmation" placeholder="Password Confirmation">
-                        <button type="submit" class="btn btn-default">Signup</button>
+                    <form class="form-horizontal" role="form" novalidate name="signUpForm">
+                        <input type="text" data-ng-model="name" name="name" class="form-control" placeholder="Name"
+                               ng-minlength="2" ng-maxlength="30" required>
+                        <div class="error-message" ng-messages="signUpForm.name.$error" ng-if="signUpForm.name.$touched">
+                            <p ng-message="minlength">Your name have to at least 2 characters.</p>
+                            <p ng-message="maxlength">Your name is too long.</p>
+                            <p ng-message="required">Your name is required.</p>
+                        </div>
+                        <input type="email" name="email" data-ng-model="email" class="form-control" placeholder="Email Address"
+                               ng-minlength="5" ng-maxlength="30" required>
+                        <div class="error-message" data-ng-if="messageEmail">
+                            <p>{{ messageEmail }}</p>
+                        </div>
+                        <div class="error-message" ng-messages="signUpForm.email.$error" ng-if="signUpForm.email.$touched">
+                            <p ng-message="required">Your email is required.</p>
+                            <p ng-message="minlength">Your email is too short.</p>
+                            <p ng-message="maxlength">Your email is too long.</p>
+                            <p ng-message="email">Your email needs to be a valid email.</p>
+                        </div>
+                        <input type="password" data-ng-model="password" name="password" class="form-control" placeholder="Password"
+                               ng-minlength="6" ng-maxlength="30" required>
+                        <div class="error-message" ng-messages="signUpForm.password.$error" ng-if="signUpForm.password.$touched">
+                            <p ng-message="required">Your password is required.</p>
+                            <p ng-message="minlength">Your password have to at least 6 characters.</p>
+                            <p ng-message="maxlength">Your password is too long.</p>
+                        </div>
+                        <input type="password" data-ng-model="password_confirmation" name="password_confirmation" class="form-control" placeholder="Password Confirmation"
+                               ng-minlength="6" ng-maxlength="30" required confirm-pwd="password">
+                        <div class="error-message" ng-messages="signUpForm.password_confirmation.$error" ng-if="signUpForm.password_confirmation.$touched">
+                            <p ng-message="required">Your password confirmation is required.</p>
+                            <p ng-message="minlength">Your password confirmation have to at least 6 characters.</p>
+                            <p ng-message="maxlength">Your password confirmation too long.</p>
+                            <p ng-message="password">Your password confirmation does not match.</p>
+                        </div>
+                        <button type="button" class="btn btn-default" data-ng-click="signUp()"
+                                data-ng-disabled="signUpForm.$invalid && (signUpForm.name.$touched || signUpForm.email.$touched || signUpForm.password.$touched ||signUpForm.password_confirmation.$touched)">
+                            Signup
+                        </button>
                     </form>
                     <!--/sign up form-->
                 </div>

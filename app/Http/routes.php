@@ -5,6 +5,12 @@
 Blade::setContentTags('<%', '%>');
 Blade::setEscapedContentTags('<%%', '%%>');
 
+//User routes
+Route::resource('user', 'UserController');
+Route::post('user/login', 'UserController@login');
+Route::get('user/logged-in', 'UserController@loggedIn');
+Route::get('user/logout', 'UserController@logout');
+
 //Frontend routes
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');

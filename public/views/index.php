@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/animate.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -39,6 +40,7 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js"></script>
 </head>
 
 <body data-ng-app="ThepDungApp">
@@ -104,11 +106,11 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a ui-sref="login"><i class="fa fa-lock"></i> Login</a></li>
+                                <li data-ng-if="!userLoggedIn.id"><a ui-sref="login"><i class="fa fa-lock"></i> Login</a></li>
+                                <li data-ng-if="userLoggedIn.id"><a href="#" data-ng-click="logout()"><i class="fa fa-user"></i> Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -130,7 +132,7 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a ui-sref="/" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
@@ -146,7 +148,6 @@
                                         <li><a href="blog-single.html">Blog Single</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="404.html">404</a></li>
                                 <li><a ui-sref="contact">Contact</a></li>
                             </ul>
                         </div>
@@ -330,9 +331,9 @@
 <script src="js/main.js"></script>
 
 <script src="scripts/app.js"></script>
-<script src="scripts/login.js"></script>
+<script src="scripts/controllers/login.js"></script>
 <script src="scripts/controllers/home.js"></script>
-<script src="scripts/contact.js"></script>
-<script src="scripts/about.js"></script>
+<script src="scripts/controllers/contact.js"></script>
+<script src="scripts/controllers/about.js"></script>
 
 </html>
