@@ -47,5 +47,10 @@ angular
             url: "/contact",
             templateUrl: 'views/contact-us.html',
             controller: 'ContactCtrl'
+        })
+        .state('product', {
+            url: "/product/:product_slug",
+            templateUrl: "views/product-details.html",
+            controller: "productDetailsCtrl"
         });
   });

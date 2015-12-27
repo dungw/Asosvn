@@ -335,5 +335,6 @@
 <script src="scripts/controllers/home.js"></script>
 <script src="scripts/controllers/contact.js"></script>
 <script src="scripts/controllers/about.js"></script>
+<script src="scripts/controllers/product_details.js"></script>
 
 </html>
