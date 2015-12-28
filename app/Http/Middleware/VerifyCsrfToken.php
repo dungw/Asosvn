@@ -24,11 +24,14 @@ class VerifyCsrfToken extends BaseVerifier
 	 */
 	protected function excludedRoutes($request)
 	{
-		$listAPI = ['api/product/store'];
+		$disabledList = [
+			'api/product/store',
+			'admin/product/generate-slug',
+		];
 
-		foreach ($listAPI as $api)
+		foreach ($disabledList as $uri)
 		{
-			if ($request->is($api))
+			if ($request->is($uri))
 			{
 				return true;
 			}

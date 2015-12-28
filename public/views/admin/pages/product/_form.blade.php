@@ -1,5 +1,6 @@
-
-
+@section('head')
+    <link rel="stylesheet" href="<% asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') %>">
+@endsection
 
 <div class="box-body">
     {!! Form::open(array_merge($options, ['class' => 'form-horizontal'])) !!}
@@ -26,6 +27,12 @@
         {!! App\Helpers\MyHtml::label('sku', 'Sku', true) !!}
         {!! App\Helpers\MyHtml::text('sku', old('sku') ? old('sku') : (isset($product) ? $product->sku : null), ['class' =>
         'form-control']) !!}
+    </div>
+
+    <div class="form-group">
+        {!! App\Helpers\MyHtml::label('slug', 'Slug', false) !!}
+        {!! App\Helpers\MyHtml::text('slug', old('slug') ? old('slug') : (isset($product) ? $product->slug : null), ['class' =>
+        'form-control', 'readonly' => true]) !!}
     </div>
 
     <div class="form-group">
@@ -98,6 +105,21 @@
     <script src="<% asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') %>" type="text/javascript"></script>
     <script type="text/javascript">
         $('.product-des').wysihtml5();
+
+        $('input[name="name"]').blur(function() {
+
+            $.ajax({
+                url: '/admin/product/generate-slug',
+                method: 'POST',
+                data: {
+                    name: $(this).val()
+                },
+                success: function(data) {
+                    $('input[name="slug"]').val(data);
+                }
+            });
+
+        });
     </script>
 
 @endsection

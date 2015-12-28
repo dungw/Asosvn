@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -15,6 +16,7 @@ class Product extends Model
 		'availability',
 		'condition',
 		'quantity',
+		'slug',
 	];
 
 	public function category()
@@ -70,15 +72,11 @@ class Product extends Model
 		];
 	}
 
-	public static function create(array $attributes)
+	public static function findBySlug($slug)
 	{
-		//add slug automatically
-		if (isset($attributes['name']))
-		{
-			$attributes['slug'] = str_slug($attributes['slug']);
-		}
-
-		return parent::create($attributes);
+		return DB::table('products')
+			->where('slug', $slug)
+			->get();
 	}
 
 }

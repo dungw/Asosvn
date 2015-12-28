@@ -40,6 +40,7 @@
                         <div class="form-horizontal">
                             {!! App\Helpers\MyHtml::show('Name', $product->name) !!}
                             {!! App\Helpers\MyHtml::show('Sku', $product->sku) !!}
+                            {!! App\Helpers\MyHtml::show('Slug', $product->slug) !!}
                             {!! App\Helpers\MyHtml::show('Category', $product->category->name) !!}
                             {!! App\Helpers\MyHtml::show('Brand', $product->brand->name) !!}
                             {!! App\Helpers\MyHtml::showMultiple('Distributor', $product->distributors()->get()) !!}

@@ -25,7 +25,13 @@ class ProductController extends AdminController
 
 	public function create()
 	{
-		$data = ['categories' => Category::active()->lists('name', 'id'), 'brands' => Brand::lists('name', 'id'), 'availabilities' => [], 'distributors' => Distributor::lists('name', 'id'), 'conditions' => [null => 'Normal']];
+		$data = [
+			'categories'     => Category::active()->lists('name', 'id'),
+			'brands'         => Brand::lists('name', 'id'),
+			'availabilities' => [],
+			'distributors'   => Distributor::lists('name', 'id'),
+			'conditions'     => [null => 'Normal']
+		];
 
 		foreach (Product::availabilities() as $key => $value)
 		{
@@ -129,10 +135,13 @@ class ProductController extends AdminController
 
 		//upload images
 		$uploads = Input::file('images');
+
 		if (!empty($uploads))
 		{
 			foreach ($uploads as $file)
 			{
+				if (!$file) continue;
+
 				//extension
 				$ext = $file->getClientOriginalExtension();
 
@@ -178,7 +187,7 @@ class ProductController extends AdminController
 		return redirect('admin/product');
 	}
 
-	public function delimage($productId, $imageId)
+	public function deleteImage($productId, $imageId)
 	{
 		$image = ProductImage::findOrFail(intval($imageId));
 
@@ -199,6 +208,26 @@ class ProductController extends AdminController
 		}
 
 		print json_encode($data);
+	}
+
+	public function generateSlug()
+	{
+		$slug = '';
+		$name = trim(Input::get('name'));
+		if ($name !== '')
+		{
+			$slug = str_slug($name);
+
+			//check unique
+			$count = 1;
+			while (Product::findBySlug($slug))
+			{
+				$slug .= '-' . $count;
+				$count++;
+			}
+		}
+
+		print $slug;
 	}
 
 }
