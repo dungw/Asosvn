@@ -60,32 +60,35 @@ class ProductController extends AdminController
 		//upload images
 		if (Input::exists('images'))
 		{
-			foreach (Input::get('images') as $file)
+			$uploadedImages = Input::file('images');
+			if (!empty($uploadedImages))
 			{
-				if (!$file) continue;
+				foreach ($uploadedImages as $file)
+				{
+					//extension
+					$ext = $file->getClientOriginalExtension();
 
-				//extension
-				$ext = $file->getClientOriginalExtension();
+					//random 16 characters
+					$filename = str_random();
 
-				//random 16 characters
-				$filename = str_random();
+					//get and create container folder if needed
+					$folderPath = ProductImage::getContainerFolder($product->id);
 
-				//get and create container folder if needed
-				$folderPath = ProductImage::getContainerFolder($product->id);
+					//full path
+					$path = public_path($folderPath . '/' . $filename . '.' . $ext);
 
-				//full path
-				$path = public_path($folderPath . '/' . $filename . '.' . $ext);
+					//save image to path
+					Image::make($file->getRealPath())->save($path);
 
-				//save image to path
-				Image::make($file->getRealPath())->save($path);
+					//create and save thumbnails
+					$pathThumb = public_path($folderPath . '/' . $filename . '_' . ProductImage::THUMBNAIL_SIZE . '.' . $ext);
+					ProductImage::createThumb($pathThumb, $file);
 
-				//create and save thumbnails
-				$pathThumb = public_path($folderPath . '/' . $filename . '_' . ProductImage::THUMBNAIL_SIZE . '.' . $ext);
-				ProductImage::createThumb($pathThumb, $file);
-
-				//insert to database
-				ProductImage::create(['product_id' => $product->id, 'image' => ($filename . '.' . $ext)]);
+					//insert to database
+					ProductImage::create(['product_id' => $product->id, 'image' => ($filename . '.' . $ext)]);
+				}
 			}
+
 		}
 
 		Session::flash('success', 'Created a product successful!');
@@ -137,31 +140,34 @@ class ProductController extends AdminController
 		//upload images
 		if (Input::exists('images'))
 		{
-			foreach (Input::get('images') as $file)
+			$uploadedImages = Input::file('images');
+
+			if (!empty($uploadedImages))
 			{
-				if (!$file) continue;
+				foreach ($uploadedImages as $file)
+				{
+					//extension
+					$ext = $file->getClientOriginalExtension();
 
-				//extension
-				$ext = $file->getClientOriginalExtension();
+					//random 16 characters
+					$filename = str_random();
 
-				//random 16 characters
-				$filename = str_random();
+					//get and create container folder if needed
+					$folderPath = ProductImage::getContainerFolder($product->id);
 
-				//get and create container folder if needed
-				$folderPath = ProductImage::getContainerFolder($product->id);
+					//full path
+					$path = public_path($folderPath . '/' . $filename . '.' . $ext);
 
-				//full path
-				$path = public_path($folderPath . '/' . $filename . '.' . $ext);
+					//save image to path
+					Image::make($file->getRealPath())->save($path);
 
-				//save image to path
-				Image::make($file->getRealPath())->save($path);
+					//create and save thumbnails
+					$pathThumb = public_path($folderPath . '/' . $filename . '_' . ProductImage::THUMBNAIL_SIZE . '.' . $ext);
+					ProductImage::createThumb($pathThumb, $file);
 
-				//create and save thumbnails
-				$pathThumb = public_path($folderPath . '/' . $filename . '_' . ProductImage::THUMBNAIL_SIZE . '.' . $ext);
-				ProductImage::createThumb($pathThumb, $file);
-
-				//insert to database
-				ProductImage::create(['product_id' => $product->id, 'image' => ($filename . '.' . $ext)]);
+					//insert to database
+					ProductImage::create(['product_id' => $product->id, 'image' => ($filename . '.' . $ext)]);
+				}
 			}
 		}
 
