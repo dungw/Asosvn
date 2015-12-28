@@ -14,6 +14,9 @@ Route::post('user/login', 'UserController@login');
 Route::get('user/logged-in', 'UserController@loggedIn');
 Route::get('user/logout', 'UserController@logout');
 
+//Product
+Route::get('product/{slug}', 'ProductController@details');
+
 //Frontend routes
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');

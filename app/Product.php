@@ -76,7 +76,7 @@ class Product extends Model
 	{
 		return DB::table('products')
 			->where('slug', $slug)
-			->get();
+			->first();
 	}
 
 }

@@ -49,7 +49,7 @@ angular
             controller: 'ContactCtrl'
         })
         .state('product', {
-            url: "/product/:product_slug",
+            url: "/:product_slug",
             templateUrl: "views/product-details.html",
             controller: "productDetailsCtrl"
         });
