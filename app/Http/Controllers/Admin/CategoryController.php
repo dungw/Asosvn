@@ -7,8 +7,8 @@ use Input;
 use Route;
 use Session;
 
-class CategoryController extends AdminController {
-
+class CategoryController extends AdminController
+{
 
 	public function index()
 	{

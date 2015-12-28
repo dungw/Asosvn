@@ -55,7 +55,10 @@ class CreateProductRequest extends Request
 	{
 		$validator = parent::getValidatorInstance();
 
-		$validator->each('images', ['image']);
+		if ($this->exists('images'))
+		{
+			$validator->each('images', ['image']);
+		}
 
 		return $validator;
 	}

@@ -58,11 +58,12 @@ class ProductController extends AdminController
 		}
 
 		//upload images
-		$uploads = Input::file('images');
-		if (!empty($uploads))
+		if (Input::exists('images'))
 		{
-			foreach ($uploads as $file)
+			foreach (Input::get('images') as $file)
 			{
+				if (!$file) continue;
+
 				//extension
 				$ext = $file->getClientOriginalExtension();
 
@@ -134,11 +135,9 @@ class ProductController extends AdminController
 		}
 
 		//upload images
-		$uploads = Input::file('images');
-
-		if (!empty($uploads))
+		if (Input::exists('images'))
 		{
-			foreach ($uploads as $file)
+			foreach (Input::get('images') as $file)
 			{
 				if (!$file) continue;
 
