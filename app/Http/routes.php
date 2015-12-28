@@ -1,5 +1,8 @@
 <?php
 
+//APIs
+Route::post('api/product/store', 'Admin\ProductController@store');
+
 //other method should be define before resource controller
 //variable in template compact by Laravel change symbol to get value
 Blade::setContentTags('<%', '%>');
@@ -34,5 +37,7 @@ Route::controllers([
 Route::resource('admin/product', 'Admin\ProductController');
 Route::resource('admin/category', 'Admin\CategoryController');
 Route::put('admin/product/{product}/delimage/{image}', 'Admin\ProductController@delimage');
+
+
 
 

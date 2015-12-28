@@ -51,6 +51,23 @@ class CreateProductRequest extends Request
 
 	}
 
+	public function isApi()
+	{
+		$listApis = [
+			'api/product/create',
+		];
+
+		foreach ($listApis as $api)
+		{
+			if ($this->is($api))
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	protected function getValidatorInstance()
 	{
 		$validator = parent::getValidatorInstance();

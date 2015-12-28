@@ -14,7 +14,7 @@ class Product extends Model
 		'price',
 		'availability',
 		'condition',
-		'quantity'
+		'quantity',
 	];
 
 	public function category()
@@ -68,6 +68,17 @@ class Product extends Model
 			'available'    => 'Available',
 			'out_of_stock' => 'Out of stock',
 		];
+	}
+
+	public static function create(array $attributes)
+	{
+		//add slug automatically
+		if (isset($attributes['name']))
+		{
+			$attributes['slug'] = str_slug($attributes['slug']);
+		}
+
+		return parent::create($attributes);
 	}
 
 }

@@ -22,18 +22,44 @@ class AdminAuthenticate
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->guest())
+		if ($this->excludedRoutes($request))
 		{
-			if ($request->ajax())
+			return $next($request);
+		} else
+		{
+			if ($this->auth->guest())
 			{
-				return response('Unauthorized.', 401);
-			} else
+				if ($request->ajax())
+				{
+					return response('Unauthorized.', 401);
+				} else
+				{
+					return redirect()->guest('admin/auth/login');
+				}
+			}
+		}
+		return $next($request);
+	}
+
+	/**
+	 * Function check if request is an API, then pass the CSRF verification
+	 *
+	 * @param $request
+	 * @return bool
+	 */
+	protected function excludedRoutes($request)
+	{
+		$listAPI = ['api/product/store'];
+
+		foreach ($listAPI as $api)
+		{
+			if ($request->is($api))
 			{
-				return redirect()->guest('admin/auth/login');
+				return true;
 			}
 		}
 
-		return $next($request);
+		return false;
 	}
 
 }
