@@ -101,9 +101,10 @@ class MyHtml extends Html
 
 		foreach ($images as $image)
 		{
-			$html .= '<li><img src="' . asset('uploads/products/' . $productId . '/' . $image->image) . '" /></li>';
+			$folderPath = 'uploads/products/' . $image->image[0] . '/' . $image->image[1] . '/' . $image->image[2] . '/';
+			$html .= '<li><img src="' . asset($folderPath . $image->image) . '" /></li>';
 			$thumbnails[] = [
-				'image' => asset('uploads/products/' . $productId . '/' . ProductImage::getThumb($image->image)),
+				'image' => asset($folderPath . ProductImage::getThumb($image->image)),
 				'title' => 'Product-' . $productId . '-' . $count,
 			];
 			$count++;

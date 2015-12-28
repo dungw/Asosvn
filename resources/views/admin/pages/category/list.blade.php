@@ -40,14 +40,8 @@
                         <td></td>
                         <td>{{ $category->order }}</td>
                         <td>
-                            <a href="{{ url('admin/category/' . $category->id . '/edit') }}" class="btn btn-sm">
-                                <i class="fa fa-edit"></i> Edit
-                            </a>
-                            {!! Form::open(['url' => 'admin/category/' . $category->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
-                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm pull-right">
-                                <i class="fa fa-remove"></i> Delete
-                            </button>
-                            {!! Form::close() !!}
+                            {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $category->id . '/edit') !!}
+                            {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $category->id) !!}
                         </td>
                     </tr>
                     @foreach ($category->children()->orderBy('name')->get() as $child)
@@ -57,14 +51,8 @@
                             <td>{{ $category->name or null }}</td>
                             <td>{{ $child->order }}</td>
                             <td>
-                                <a href="{{ url('admin/category/' . $child->id . '/edit') }}" class="btn btn-sm">
-                                    <i class="fa fa-edit"></i> Edit
-                                </a>
-                                {!! Form::open(['url' => 'admin/category/' . $category->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
-                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm pull-right">
-                                    <i class="fa fa-remove"></i> Delete
-                                </button>
-                                {!! Form::close() !!}
+                                {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $child->id . '/edit') !!}
+                                {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $child->id) !!}
                             </td>
                         </tr>
                     @endforeach

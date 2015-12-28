@@ -3,7 +3,7 @@
 
     <div id="row-image-<% $image->id %>" class="row row-img border-b">
         <div class="col-sm-10">
-            <img src="<% asset('uploads/products/' . $product->id . '/' . \App\ProductImage::getThumb($image->image)) %>">
+            <img src="<% asset('uploads/products/' . $image->image[0] . '/' . $image->image[1] . '/' . $image->image[2] . '/' . \App\ProductImage::getThumb($image->image)) %>">
         </div>
 
         <div class="col-sm-2">

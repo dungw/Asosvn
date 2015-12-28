@@ -35,3 +35,11 @@
 .row-img img {
     max-height: 100px;
 }
+
+.content-header h1 {
+    font-size: 16px !important;
+}
+
+.content-header small {
+    font-size: 13px !important;
+}

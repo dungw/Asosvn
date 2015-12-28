@@ -69,10 +69,10 @@ class ProductController extends AdminController
 					$ext = $file->getClientOriginalExtension();
 
 					//random 16 characters
-					$filename = str_random();
+					$filename = md5(str_random());
 
 					//get and create container folder if needed
-					$folderPath = ProductImage::getContainerFolder($product->id);
+					$folderPath = ProductImage::getContainerFolder($filename);
 
 					//full path
 					$path = public_path($folderPath . '/' . $filename . '.' . $ext);
@@ -150,10 +150,10 @@ class ProductController extends AdminController
 					$ext = $file->getClientOriginalExtension();
 
 					//random 16 characters
-					$filename = str_random();
+					$filename = md5(str_random());
 
 					//get and create container folder if needed
-					$folderPath = ProductImage::getContainerFolder($product->id);
+					$folderPath = ProductImage::getContainerFolder($filename);
 
 					//full path
 					$path = public_path($folderPath . '/' . $filename . '.' . $ext);

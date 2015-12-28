@@ -71,9 +71,9 @@ class ProductImage extends Model
 		return $resized->crop($newW, $newH);
 	}
 
-	public static function getContainerFolder($productId)
+	public static function getContainerFolder($filename)
 	{
-		$folderPath = 'uploads/products/' . $productId;
+		$folderPath = 'uploads/products/' . $filename[0] . '/' . $filename[1] . '/' . $filename[2];
 
 		if (!is_dir(public_path($folderPath)))
 		{
