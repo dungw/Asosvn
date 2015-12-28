@@ -3,6 +3,7 @@
 use App\Category;
 use App\Http\Requests;
 use App\Http\Requests\CreateCategoryRequest;
+use Input;
 use Route;
 use Session;
 
@@ -22,7 +23,7 @@ class CategoryController extends AdminController {
 			'categories' => [0 => 'Root'],
 		];
 
-		$data['categories'] = array_merge($data['categories'], Category::lists('name', 'id'));
+		$data['categories'] = array_add(Category::lists('name', 'id'), 0, 'Root');
 
 		return view('admin.pages.category.create', $data);
 	}
@@ -43,12 +44,15 @@ class CategoryController extends AdminController {
 
 	public function edit($id)
 	{
-		$data = [
-			'categories' => [0 => 'Root'],
-		];
 		$data['category'] = Category::findOrFail($id);
 
-		$data['categories'] = array_merge($data['categories'], Category::lists('name', 'id'));
+		$data['categories'] = array_add(Category::lists('name', 'id'), 0, 'Root');
+
+		//remove itself
+		$data['categories'] = array_except($data['categories'], $id);
+
+		//remove its children
+		$data['categories'] = array_except($data['categories'], $data['category']->children()->lists('id'));
 
 		return view('admin.pages.category.edit', $data);
 	}
@@ -71,6 +75,26 @@ class CategoryController extends AdminController {
 		$product->delete();
 
 		return redirect('admin/category');
+	}
+
+	public function generateSlug()
+	{
+		$slug = '';
+		$name = trim(Input::get('name'));
+		if ($name !== '')
+		{
+			$slug = str_slug($name);
+
+			//check unique
+			$count = 1;
+			while (Category::findBySlug($slug))
+			{
+				$slug .= '-' . $count;
+				$count++;
+			}
+		}
+
+		print $slug;
 	}
 
 }

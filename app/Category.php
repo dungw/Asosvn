@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model {
@@ -11,6 +12,7 @@ class Category extends Model {
 		'parent_id',
 		'name',
 		'order',
+		'slug',
 	];
 
 	public function products()
@@ -37,5 +39,12 @@ class Category extends Model {
 	{
 		return $this->hasMany('App\Category', 'parent_id');
 	}
-	
+
+	public static function findBySlug($slug)
+	{
+		return DB::table('categories')
+			->where('slug', $slug)
+			->get();
+	}
+
 }

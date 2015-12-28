@@ -27,6 +27,7 @@ class VerifyCsrfToken extends BaseVerifier
 		$disabledList = [
 			'api/product/store',
 			'admin/product/generate-slug',
+			'admin/category/generate-slug',
 		];
 
 		foreach ($disabledList as $uri)

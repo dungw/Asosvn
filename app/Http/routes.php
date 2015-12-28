@@ -38,6 +38,7 @@ Route::resource('admin/product', 'Admin\ProductController');
 Route::resource('admin/category', 'Admin\CategoryController');
 Route::put('admin/product/{product}/delimage/{image}', 'Admin\ProductController@deleteImage');
 Route::post('admin/product/generate-slug', 'Admin\ProductController@generateSlug');
+Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSlug');
 
 
 

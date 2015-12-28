@@ -27,6 +27,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Slug</th>
                     <th>Parent</th>
                     <th>Order</th>
                     <th width="15%">Actions</th>
@@ -37,37 +38,44 @@
                     <tr>
                         <td><% $category->id %></td>
                         <td><% $category->name %></td>
+                        <td><% $category->slug %></td>
                         <td></td>
                         <td><% $category->order %></td>
                         <td>
-                            <a href="<% url('admin/category/' . $category->id . '/edit') %>" class="btn btn-sm">
-                                <i class="fa fa-edit"></i> Edit
-                            </a>
-                            {!! Form::open(['url' => 'admin/category/' . $category->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
-                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm pull-right">
-                                <i class="fa fa-remove"></i> Delete
-                            </button>
-                            {!! Form::close() !!}
+                            {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $category->id . '/edit/') !!}
+                            {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $category->id) !!}
                         </td>
                     </tr>
+
                     @foreach ($category->children()->orderBy('name')->get() as $child)
                         <tr>
                             <td><% $child->id %></td>
                             <td><% '-- ' . $child->name %></td>
+                            <td><% $child->slug %></td>
                             <td><% $category->name or null %></td>
                             <td><% $child->order %></td>
                             <td>
-                                <a href="<% url('admin/category/' . $child->id . '/edit') %>" class="btn btn-sm">
-                                    <i class="fa fa-edit"></i> Edit
-                                </a>
-                                {!! Form::open(['url' => 'admin/category/' . $category->id, 'method' => 'DELETE', 'class' => 'inline']) !!}
-                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-sm pull-right">
-                                    <i class="fa fa-remove"></i> Delete
-                                </button>
-                                {!! Form::close() !!}
+                                {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $child->id . '/edit/') !!}
+                                {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $child->id) !!}
                             </td>
                         </tr>
+
+                        @foreach ($child->children()->orderBy('name')->get() as $grandson)
+                            <tr>
+                                <td><% $grandson->id %></td>
+                                <td><% '---- ' . $grandson->name %></td>
+                                <td><% $grandson->slug %></td>
+                                <td><% $child->name or null %></td>
+                                <td><% $grandson->order %></td>
+                                <td>
+                                    {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $grandson->id . '/edit/') !!}
+                                    {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $grandson->id) !!}
+                                </td>
+                            </tr>
+                        @endforeach
+
                     @endforeach
+
                 @endforeach
                 </tbody>
             </table>
