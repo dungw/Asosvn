@@ -7,46 +7,39 @@
                 <div class="col-sm-3">
                     @include('includes.default.left-sidebar')
                 </div>
-{{$product}}
+
                 <div class="col-sm-9 padding-right">
-                    <div class="product-details"><!--product-details-->
+                    <div class="product-details">
                         <div class="col-sm-5">
                             <div class="view-product">
-                                <img src="{{ asset('images/product-details/1.jpg') }}" alt="" />
+                                <img src="{{ asset('uploads/products/' . $product->images[0]['image'][0] . '/' . $product->images[0]['image'][1] . '/' . $product->images[0]['image'][2] . '/' . $product->images[0]['image']) }}" alt="{{ $product->images[0]['image'] }}" />
                                 <h3>ZOOM</h3>
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
-
-                                <!-- Wrapper for slides -->
                                 <div class="carousel-inner">
-                                    <div class="item active">
-                                        <a href=""><img src="{{ asset('images/product-details/similar1.jpg') }}" alt=""></a>
-                                        <a href=""><img src="{{ asset('images/product-details/similar2.jpg') }}" alt=""></a>
-                                        <a href=""><img src="{{ asset('images/product-details/similar3.jpg') }}" alt=""></a>
-                                    </div>
                                     <div class="item">
-                                        <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+                                        @foreach ( $product->images as $index => $image)
+                                            <a href="">
+                                                <img src="{{ asset('uploads/products/' . $image['image'][0] . '/' . $image['image'][1] . '/' . $image['image'][2] . '/' . $image['image']) }}" alt="{{ $image['image'] }}" />
+                                            </a>
+                                            @if (($index == 2 || ($index > 2 && $index%3 == 1)) && ($index < count($product->images) -1))
+                                                </div>
+                                                <div class="item">
+                                            @endif
+                                        @endforeach
                                     </div>
-                                    <div class="item">
-                                        <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-                                        <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-                                    </div>
-
                                 </div>
-
-                                <!-- Controls -->
-                                <a class="left item-control" href="#similar-product" data-slide="prev">
-                                    <i class="fa fa-angle-left"></i>
-                                </a>
-                                <a class="right item-control" href="#similar-product" data-slide="next">
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
+                                @if (count($product->images) > 3)
+                                    <a class="left item-control" href="#similar-product" data-slide="prev">
+                                        <i class="fa fa-angle-left"></i>
+                                    </a>
+                                    <a class="right item-control" href="#similar-product" data-slide="next">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                @endif
                             </div>
-
                         </div>
+
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
                                 <img src="{{ asset('images/product-details/new.jpg') }}" class="newarrival" alt="" />
@@ -56,7 +49,7 @@
 								<span>
 									<span>US ${{ $product->price }}</span>
 									<label>Quantity:</label>
-									<input type="text" value="3" />
+									<input type="number" value="1" min="0" />
 									<button type="button" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
                                         Add to cart
