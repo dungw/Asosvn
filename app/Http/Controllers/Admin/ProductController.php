@@ -102,7 +102,6 @@ class ProductController extends AdminController
 	{
 		$data['product'] = Product::findOrFail($id);
 
-
 		return view('admin.pages.product.details', $data);
 	}
 

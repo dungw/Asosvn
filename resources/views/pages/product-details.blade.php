@@ -17,17 +17,19 @@
                             </div>
                             <div id="similar-product" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                    <div class="item">
-                                        @foreach ( $product->images as $index => $image)
+
+                                    <div class="item active">
+                                        @foreach( $product->images as $index => $image)
                                             <a href="">
-                                                <img src="{{ asset('uploads/products/' . $image['image'][0] . '/' . $image['image'][1] . '/' . $image['image'][2] . '/' . $image['image']) }}" alt="{{ $image['image'] }}" />
+                                                <img src="{{ asset('uploads/products/' . $image['image'][0] . '/' . $image['image'][1] . '/' . $image['image'][2] . '/' . \App\ProductImage::getThumb($image['image'])) }}" alt="{{ $image['image'] }}" />
                                             </a>
-                                            @if (($index == 2 || ($index > 2 && $index%3 == 1)) && ($index < count($product->images) -1))
+                                            @if (($index + 1) % 3 == 0 && ($index + 1) < count($product->images))
                                                 </div>
                                                 <div class="item">
                                             @endif
                                         @endforeach
                                     </div>
+
                                 </div>
                                 @if (count($product->images) > 3)
                                     <a class="left item-control" href="#similar-product" data-slide="prev">

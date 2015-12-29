@@ -16,7 +16,8 @@
 <!-- Growl notification css -->
 <link rel="stylesheet" href="{{ asset('css/jquery.growl.css') }}">
 <!-- Customization -->
-<link rel="stylesheet" href="{{ asset('css/customize.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin-customize.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin-customize-responsive.css') }}">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
