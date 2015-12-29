@@ -42,18 +42,19 @@ class ProductController extends BaseController
 	public function details($slug)
 	{
 		$product = Product::findBySlug($slug);
+
+		if (!$product) {
+			abort(404);
+		}
+
 		$product = Product::find($product->id);
 		$brandName = $product->brand->name;
 		$images = $product->images->toArray();
 
-		if ($product) {
-			$product->brand_name = $brandName;
-			$product->images = $images;
+		$product->brand_name = $brandName;
+		$product->images = $images;
 
-			return json_encode($product);
-		}
-
-		return [];
+		return view('pages.product-details', compact('product', $product));
 	}
 
 }
