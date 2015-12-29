@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="logo pull-left">
-                    <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                    <a href="/"><img src="{{ asset('images/home/logo.png') }}" alt="Home page" /></a>
                 </div>
                 <div class="btn-group pull-right">
                     <div class="btn-group">

@@ -71,7 +71,7 @@
                             </ul>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-pane fade" id="details">
+                            <div class="tab-pane active" id="details">
                                 {!! $product->description !!}
                             </div>
 
