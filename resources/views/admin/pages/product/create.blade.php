@@ -7,8 +7,8 @@
             <small>create product</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<% url('admin') %>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="<% url('admin/product') %>">Products</a></li>
+            <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li><a href="{{ url('admin/product') }}">Products</a></li>
             <li class="active"><a href="#">Create product</a></li>
         </ol>
     </section>

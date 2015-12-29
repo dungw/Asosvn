@@ -1,7 +1,7 @@
 @extends('admin.layouts.boxed')
 
 @section('head')
-    <link rel="stylesheet" href="<% asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css') %>">
+    <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css') }}">
 @endsection
 
 @section('breadcrumb')
@@ -11,8 +11,8 @@
             <small>listing</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<% url('admin') %>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="<% url('admin/category') %>">Categories</a></li>
+            <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li><a href="{{ url('admin/category') }}">Categories</a></li>
             <li class="active"><a href="#">Category list</a></li>
         </ol>
     </section>
@@ -36,11 +36,11 @@
                 <tbody>
                 @foreach ($parents as $category)
                     <tr>
-                        <td><% $category->id %></td>
-                        <td><% $category->name %></td>
-                        <td><% $category->slug %></td>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->slug }}</td>
                         <td></td>
-                        <td><% $category->order %></td>
+                        <td>{{ $category->order }}</td>
                         <td>
                             {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $category->id . '/edit/') !!}
                             {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $category->id) !!}
@@ -49,11 +49,11 @@
 
                     @foreach ($category->children()->orderBy('name')->get() as $child)
                         <tr>
-                            <td><% $child->id %></td>
-                            <td><% '-- ' . $child->name %></td>
-                            <td><% $child->slug %></td>
-                            <td><% $category->name or null %></td>
-                            <td><% $child->order %></td>
+                            <td>{{ $child->id }}</td>
+                            <td>{{ '-- ' . $child->name }}</td>
+                            <td>{{ $child->slug }}</td>
+                            <td>{{ $category->name or null }}</td>
+                            <td>{{ $child->order }}</td>
                             <td>
                                 {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $child->id . '/edit/') !!}
                                 {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $child->id) !!}
@@ -62,11 +62,11 @@
 
                         @foreach ($child->children()->orderBy('name')->get() as $grandson)
                             <tr>
-                                <td><% $grandson->id %></td>
-                                <td><% '---- ' . $grandson->name %></td>
-                                <td><% $grandson->slug %></td>
-                                <td><% $child->name or null %></td>
-                                <td><% $grandson->order %></td>
+                                <td>{{ $grandson->id }}</td>
+                                <td>{{ '---- ' . $grandson->name }}</td>
+                                <td>{{ $grandson->slug }}</td>
+                                <td>{{ $child->name or null }}</td>
+                                <td>{{ $grandson->order }}</td>
                                 <td>
                                     {!! App\Helpers\MyHtml::btnEdit('admin/category/' . $grandson->id . '/edit/') !!}
                                     {!! App\Helpers\MyHtml::btnRemove('admin/category/' . $grandson->id) !!}
@@ -85,8 +85,8 @@
 @endsection
 
 @section('footer-content')
-    <script src="<% asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js') %>"></script>
-    <script src="<% asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') %>"></script>
+    <script src="{{ asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script>
         $(function () {
             $('#data-table').DataTable({
@@ -102,7 +102,7 @@
     </script>
 
     @if (Session::has('success'))
-        <script type="text/javascript"> $.growl.notice({ message: "<% Session::get('success') %>" }); </script>
+        <script type="text/javascript"> $.growl.notice({ message: "{{ Session::get('success') }}" }); </script>
     @endif
 
 @endsection

@@ -1,14 +1,14 @@
-<input type="hidden" name="_token" value="<% csrf_token() %>">
+<input type="hidden" name="_token" value="{{ csrf_token() }}">
 @foreach ($product->images()->get() as $image)
 
-    <div id="row-image-<% $image->id %>" class="row row-img border-b">
+    <div id="row-image-{{ $image->id }}" class="row row-img border-b">
         <div class="col-sm-10">
-            <img src="<% asset('uploads/products/' . $image->image[0] . '/' . $image->image[1] . '/' . $image->image[2] . '/' . \App\ProductImage::getThumb($image->image)) %>">
+            <img src="{{ asset('uploads/products/' . $image->image[0] . '/' . $image->image[1] . '/' . $image->image[2] . '/' . \App\ProductImage::getThumb($image->image)) }}">
         </div>
 
         <div class="col-sm-2">
 
-            <a href="javascript:void(0);" class="btn btn-xs btn-default font14 remove-image" image="<% $image->id %>">
+            <a href="javascript:void(0);" class="btn btn-xs btn-default font14 remove-image" image="{{ $image->id }}">
                 <i class="fa fa-times-circle"></i> Remove
             </a>
         </div>
@@ -27,7 +27,7 @@
             var image = $(this).attr('image');
 
             $.ajax({
-                url: '/admin/product/<% $product->id %>/delimage/' + image,
+                url: '/admin/product/{{ $product->id }}/delimage/' + image,
                 type: 'PUT',
                 data: '',
                 headers: {

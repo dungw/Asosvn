@@ -1,5 +1,5 @@
 @section('head')
-    <link rel="stylesheet" href="<% asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') %>">
+    <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 @endsection
 
 <div class="box-body">
@@ -11,7 +11,7 @@
             <h4><i class="icon fa fa-ban"></i> Whoops!</h4>
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li><% $error %></li>
+                    <li>{{ $error }}</li>
                 @endforeach
             </ul>
         </div>
@@ -102,7 +102,7 @@
     <!-- CK Editor -->
     <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js" type="text/javascript"></script>
     <!-- Bootstrap WYSIHTML5 -->
-    <script src="<% asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') %>" type="text/javascript"></script>
+    <script src="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
         $('.product-des').wysihtml5();
 

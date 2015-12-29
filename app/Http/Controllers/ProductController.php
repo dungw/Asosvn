@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests;
 
 use App\Product;
@@ -13,10 +14,21 @@ class ProductController extends BaseController
      */
     public function index()
     {
-        $list = Product::all();
+        $data['products'] = Product::all();
 
-        return json_encode($list);
+        return view('pages.products', $data);
     }
+
+	public function category($slug)
+	{
+		$category = Category::findBySlug($slug);
+		if (!$category)
+		{
+			return redirect('404');
+		}
+
+		return view('pages.products');
+	}
 
     /**
      * get product details

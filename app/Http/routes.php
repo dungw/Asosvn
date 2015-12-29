@@ -13,11 +13,13 @@ Route::get('user/logout', 'UserController@logout');
 Route::get('product/{slug}', 'ProductController@details');
 
 //Frontend routes
+Route::get('404', function() {
+	return view('layouts.404');
+});
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('products', 'ProductController@index');
+Route::get('category/{slug}', 'ProductController@category');
 Route::get('product/{id}/{alias}', 'ProductController@details');
-Route::get('products/{id}', 'ProductController@category');
 Route::controllers([
 	'checkout'  => 'CheckoutController',
 	'cart'      => 'CartController',

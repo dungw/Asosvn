@@ -1,20 +1,20 @@
 @extends('admin.layouts.boxed')
 
 @section('head')
-    <link rel="stylesheet" href="<% asset('css/amazingslider-1.css') %>">
-    <link rel="stylesheet" href="<% asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') %>" />
+    <link rel="stylesheet" href="{{ asset('css/amazingslider-1.css') }}">
+    <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" />
 @endsection
 
 @section('breadcrumb')
     <section class="content-header">
         <h1>
-            <% $product->name %>
+            {{ $product->name }}
             <small>update product</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<% url('admin') %>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="<% url('admin/product') %>">Products</a></li>
-            <li class="active"><a href="#"><% $product->name %></a></li>
+            <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li><a href="{{ url('admin/product') }}">Products</a></li>
+            <li class="active"><a href="#">{{ $product->name }}</a></li>
         </ol>
     </section>
 @endsection
@@ -30,7 +30,7 @@
                     <li class="active"><a href="#tab_1" data-toggle="tab">General Infos</a></li>
                     <li><a href="#tab_2" data-toggle="tab">Images</a></li>
                     <li class="pull-right">
-                        <a href="<% url('admin/product/' . $product->id . '/edit/') %>" class="font14">
+                        <a href="{{ url('admin/product/' . $product->id . '/edit/') }}" class="font14">
                             <i class="fa fa-edit"></i> Edit
                         </a>
                     </li>
@@ -60,6 +60,6 @@
 @stop
 
 @section('footer-content')
-    <script type="text/javascript" src="<% asset('js/amazingslider.js') %>"></script>
-    <script type="text/javascript" src="<% asset('js/initslider-1.js') %>"></script>
+    <script type="text/javascript" src="{{ asset('js/amazingslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/initslider-1.js') }}"></script>
 @endsection

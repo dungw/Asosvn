@@ -44,7 +44,7 @@ class Category extends Model {
 	{
 		return DB::table('categories')
 			->where('slug', $slug)
-			->get();
+			->first();
 	}
 
 }

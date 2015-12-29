@@ -11,21 +11,21 @@
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
                 <ul>
                     @foreach ($errors->all() as $error)
-                        <li><% $error %></li>
+                        <li>{{ $error }}</li>
                     @endforeach
                 </ul>
             </div>
         @endif
-        <form role="form" method="POST" action="<% url('/admin/auth/register') %>">
-            <input type="hidden" name="_token" value="<% csrf_token() %>">
+        <form role="form" method="POST" action="{{ url('/admin/auth/register') }}">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <div class="form-group has-feedback">
-                <input type="text" class="form-control" name="name" value="<% old('name') %>" placeholder="Name">
+                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Name">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
 
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" name="email" value="<% old('email') %>" placeholder="Email">
+                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
 
