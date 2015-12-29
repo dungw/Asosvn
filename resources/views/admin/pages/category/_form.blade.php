@@ -7,7 +7,7 @@
             <h4><i class="icon fa fa-ban"></i> Whoops!</h4>
             <ul>
                 @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
+                    <li><% $error %></li>
                 @endforeach
             </ul>
         </div>
@@ -20,8 +20,14 @@
     </div>
 
     <div class="form-group">
+        {!! App\Helpers\MyHtml::label('slug', 'Slug', false) !!}
+        {!! App\Helpers\MyHtml::text('slug', old('slug') ? old('slug') : (isset($category) ? $category->slug : null), ['class' =>
+        'form-control', 'readonly' => true]) !!}
+    </div>
+
+    <div class="form-group">
         {!! App\Helpers\MyHtml::label('parent_id', 'Parent') !!}
-        {!! App\Helpers\MyHtml::select('parent_id', $categories, old('parent_id') ? old('parent_id') : (isset($category) ? $category->parent_id : null), ['class' => 'form-control']) !!}
+        {!! App\Helpers\MyHtml::select('parent_id', $categories, old('parent_id') ? old('parent_id') : (isset($category) ? $category->parent_id : 0), ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
@@ -35,3 +41,26 @@
 
     {!! Form::close() !!}
 </div>
+
+@section('footer-content')
+
+    @parent
+
+    <script type="text/javascript">
+        $('input[name="name"]').blur(function() {
+
+            $.ajax({
+                url: '/admin/category/generate-slug',
+                method: 'POST',
+                data: {
+                    name: $(this).val()
+                },
+                success: function(data) {
+                    $('input[name="slug"]').val(data);
+                }
+            });
+
+        });
+    </script>
+
+@endsection

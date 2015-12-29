@@ -1,7 +1,7 @@
 @extends('admin.layouts.boxed')
 
 @section('head')
-    <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="<% asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css') %>">
 @endsection
 
 @section('breadcrumb')
@@ -11,8 +11,8 @@
             <small>listing</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="{{ url('admin/product') }}">Products</a></li>
+            <li><a href="<% url('admin') %>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li><a href="<% url('admin/product') %>">Products</a></li>
             <li class="active"><a href="#">Product list</a></li>
         </ol>
     </section>
@@ -36,13 +36,13 @@
                 <tbody>
                 @foreach ($products as $product)
                     <tr>
-                        <td>{{ $product->id }}</td>
+                        <td><% $product->id %></td>
                         <td>
-                            <a href="{{ url('admin/product/' . $product->id) }}">{{ $product->name }}</a>
+                            <a href="<% url('admin/product/' . $product->id) %>"><% $product->name %></a>
                         </td>
-                        <td>{{ $product->category->name }}</td>
-                        <td>{{ $product->condition() }}</td>
-                        <td>{{ $product->price }}</td>
+                        <td><% $product->category->name %></td>
+                        <td><% $product->condition() %></td>
+                        <td><% $product->price %></td>
                         <td>
                             {!! App\Helpers\MyHtml::btnEdit('admin/product/' . $product->id . '/edit/') !!}
                             {!! App\Helpers\MyHtml::btnRemove('admin/product/' . $product->id) !!}
@@ -56,8 +56,8 @@
 @endsection
 
 @section('footer-content')
-    <script src="{{ asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="<% asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js') %>"></script>
+    <script src="<% asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.min.js') %>"></script>
     <script>
         $(function () {
             $('#data-table').DataTable({
@@ -73,7 +73,7 @@
     </script>
 
     @if (Session::has('success'))
-        <script type="text/javascript"> $.growl.notice({ message: "{{ Session::get('success') }}" }); </script>
+        <script type="text/javascript"> $.growl.notice({ message: "<% Session::get('success') %>" }); </script>
     @endif
 
 @endsection

@@ -1,19 +1,19 @@
 @extends('admin.layouts.boxed')
 
 @section('head')
-    <link type="text/css" href="{{ asset('css/amazingslider-1.css') }}">
+    <link type="text/css" href="<% asset('css/amazingslider-1.css') %>">
 @endsection
 
 @section('breadcrumb')
     <section class="content-header">
         <h1>
-            {{ $product->name }}
+            <% $product->name %>
             <small>details product</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="{{ url('admin/product') }}">Products</a></li>
-            <li class="active"><a href="#">{{ $product->name }}</a></li>
+            <li><a href="<% url('admin') %>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li><a href="<% url('admin/product') %>">Products</a></li>
+            <li class="active"><a href="#"><% $product->name %></a></li>
         </ol>
     </section>
 @endsection
@@ -29,7 +29,7 @@
 
                     <li class="active"><a href="#tab_1" data-toggle="tab">General Infos</a></li>
                     <li><a href="#tab_2" data-toggle="tab">Images</a></li>
-                    <li class="pull-right"><a href="{{ url('admin/product/' . $product->id . '/edit/') }}" class="font14"><i class="fa fa-edit"></i> Edit</a></li>
+                    <li class="pull-right"><a href="<% url('admin/product/' . $product->id . '/edit/') %>" class="font14"><i class="fa fa-edit"></i> Edit</a></li>
 
                 </ul>
 
@@ -40,6 +40,7 @@
                         <div class="form-horizontal">
                             {!! App\Helpers\MyHtml::show('Name', $product->name) !!}
                             {!! App\Helpers\MyHtml::show('Sku', $product->sku) !!}
+                            {!! App\Helpers\MyHtml::show('Slug', $product->slug) !!}
                             {!! App\Helpers\MyHtml::show('Category', $product->category->name) !!}
                             {!! App\Helpers\MyHtml::show('Brand', $product->brand->name) !!}
                             {!! App\Helpers\MyHtml::showMultiple('Distributor', $product->distributors()->get()) !!}
@@ -66,6 +67,6 @@
 @endsection
 
 @section('footer-content')
-    <script type="text/javascript" src="{{ asset('js/amazingslider.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/initslider-1.js') }}"></script>
+    <script type="text/javascript" src="<% asset('js/amazingslider.js') %>"></script>
+    <script type="text/javascript" src="<% asset('js/initslider-1.js') %>"></script>
 @endsection

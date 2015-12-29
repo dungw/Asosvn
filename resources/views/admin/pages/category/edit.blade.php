@@ -3,13 +3,13 @@
 @section('breadcrumb')
     <section class="content-header">
         <h1>
-            {{ $category->name }}
+            <% $category->name %>
             <small>update category</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
-            <li><a href="{{ url('admin/product') }}">Categories</a></li>
-            <li class="active"><a href="#">{{ $category->name }}</a></li>
+            <li><a href="<% url('admin') %>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li><a href="<% url('admin/product') %>">Categories</a></li>
+            <li class="active"><a href="#"><% $category->name %></a></li>
         </ol>
     </section>
 @endsection
