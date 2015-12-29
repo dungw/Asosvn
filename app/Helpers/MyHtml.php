@@ -155,5 +155,10 @@ class MyHtml extends Html
 		return $html;
 	}
 
+	public static function productImagePath($imageName)
+	{
+		return 'uploads/products/' . $imageName[0] . '/' . $imageName[1] . '/' . $imageName[2] . '/';
+	}
+
 }
 

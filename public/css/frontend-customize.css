@@ -3,3 +3,7 @@
     max-height: 84px;
 }
 
+.productinfo img:first-child {
+    max-width: 255px;
+    max-height: 237px;
+}

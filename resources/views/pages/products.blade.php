@@ -24,9 +24,9 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="{{ asset('images/shop/product12.jpg') }}" alt="" />
+                                            <img src="{{ asset( \App\Helpers\MyHtml::productImagePath($product->images()->first()->image) . $product->images()->first()->image ) }}" alt="" />
                                             <h2>$56</h2>
-                                            <p>{{ $product['name'] }}</p>
+                                            <p>{{ $product->name }}</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                         <div class="product-overlay">

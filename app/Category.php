@@ -42,9 +42,7 @@ class Category extends Model {
 
 	public static function findBySlug($slug)
 	{
-		return DB::table('categories')
-			->where('slug', $slug)
-			->first();
+		return self::query()->where('slug', $slug)->first();
 	}
 
 }
