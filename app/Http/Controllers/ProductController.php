@@ -27,7 +27,9 @@ class ProductController extends BaseController
 			return redirect('404');
 		}
 
-		return view('pages.products');
+		$data['products'] = $category->products->get();
+
+		return view('pages.products', $data);
 	}
 
     /**

@@ -65,6 +65,8 @@ class ProductController extends AdminController
 			{
 				foreach ($uploadedImages as $file)
 				{
+					if ($file == null) continue;
+
 					//extension
 					$ext = $file->getClientOriginalExtension();
 
@@ -146,6 +148,8 @@ class ProductController extends AdminController
 			{
 				foreach ($uploadedImages as $file)
 				{
+					if ($file == null) continue;
+
 					//extension
 					$ext = $file->getClientOriginalExtension();
 
