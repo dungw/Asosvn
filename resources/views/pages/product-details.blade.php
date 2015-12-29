@@ -46,20 +46,20 @@
                             <div class="product-information"><!--/product-information-->
                                 <img src="{{ asset('images/product-details/new.jpg') }}" class="newarrival" alt="" />
                                 <h2>{{ $product->name }}</h2>
-                                <p>SKU: {{ $product->sku }}</p>
+                                <p>{{ trans('vi.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
 									<span>US ${{ $product->price }}</span>
-									<label>Quantity:</label>
+									<label>{{ trans('vi.Quantity') }}:</label>
 									<input type="number" value="1" min="0" />
 									<button type="button" class="btn btn-fefault cart">
                                         <i class="fa fa-shopping-cart"></i>
-                                        Add to cart
+                                        {{ trans('vi.Add to cart') }}
                                     </button>
 								</span>
-                                <p><b>Availability:</b> {{ $product->availability }}</p>
+                                <p><b>{{ trans('vi.Availability') }}:</b> {{ $product->availability }}</p>
                                 <p><b>Condition:</b> {{ $product->condition }}</p>
-                                <p><b>Brand:</b> {{ $product->brand_name }}</p>
+                                <p><b>{{ trans('vi.Brand') }}:</b> {{ $product->brand_name }}</p>
                                 <a href=""><img src="{{ asset('images/product-details/share.png') }}" class="share img-responsive"  alt="" /></a>
                             </div><!--/product-information-->
                         </div>
@@ -68,12 +68,12 @@
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+                                <li class="active"><a href="#description" data-toggle="tab">{{ trans('vi.Description') }}</a></li>
                                 <li><a href="#abc" data-toggle="tab">Something</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
-                            <div class="tab-pane active" id="details">
+                            <div class="tab-pane active" id="description">
                                 {!! $product->description !!}
                             </div>
 
