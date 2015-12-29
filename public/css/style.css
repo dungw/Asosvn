@@ -4,3 +4,4 @@
 .btn-default[disabled] {
     background-color: #FE980F !important;
 }
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

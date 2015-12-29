@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.router',
-    'ngMessages'
+    'ngMessages',
+    'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 

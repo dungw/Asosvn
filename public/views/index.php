@@ -8,7 +8,7 @@
     <base href="/">
     <title>AsosVn</title>
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/prettyPhoto.css">
     <link rel="stylesheet" type="text/css" href="css/price-range.css">
@@ -41,6 +41,7 @@
     <script src="bower_components/angular-touch/angular-touch.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.js"></script>
+	<script src="bower_components/ui-bootstrap/ui-bootstrap-tpls-0.14.3.min.js"></script>
 </head>
 
 <body data-ng-app="ThepDungApp">
@@ -336,5 +337,6 @@
 <script src="scripts/controllers/contact.js"></script>
 <script src="scripts/controllers/about.js"></script>
 <script src="scripts/controllers/product_details.js"></script>
+
 
 </html>
