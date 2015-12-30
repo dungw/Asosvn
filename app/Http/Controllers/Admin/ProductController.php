@@ -3,6 +3,7 @@
 use App\Brand;
 use App\Category;
 use App\Distributor;
+use App\Helpers\MyHtml;
 use App\Http\Requests;
 use App\Http\Requests\ProductRequest;
 use App\Product;
@@ -109,12 +110,12 @@ class ProductController extends AdminController
 	{
 		$product = Product::findOrFail($id);
 
-		$product->delete();
-
-		if (File::exists(public_path(ProductImage::getContainerFolder($id))))
+		foreach ($product->images()->get() as $image)
 		{
-			File::deleteDirectory(public_path(ProductImage::getContainerFolder($id)));
+			$this->deleteRealImage($image);
 		}
+
+		$product->delete();
 
 		Session::flash('success', 'Product is deleted successful!');
 
@@ -125,11 +126,7 @@ class ProductController extends AdminController
 	{
 		$image = ProductImage::findOrFail(intval($imageId));
 
-		//delete thumbnail first
-		File::delete(public_path('uploads/products/' . $productId . '/' . ProductImage::getThumb($image->image)));
-
-		//delete image
-		File::delete(public_path('uploads/products/' . $productId . '/' . $image->image));
+		$this->deleteRealImage($image);
 
 		//delete in database
 		$result = $image->delete();
@@ -164,9 +161,19 @@ class ProductController extends AdminController
 		print $slug;
 	}
 
+	private function deleteRealImage(ProductImage $image)
+	{
+		File::delete( public_path( MyHtml::productImagePath( ProductImage::getThumb($image->image) ) . ProductImage::getThumb($image->image) ) );
+
+		File::delete(public_path( MyHtml::productImagePath($image->image) . $image->image ) );
+	}
+
 	private function syncDistributor(Product $product, $distributors)
 	{
-		$product->distributors()->sync($distributors);
+		if (!empty($distributors))
+		{
+			$product->distributors()->sync($distributors);
+		}
 
 		return $product;
 	}

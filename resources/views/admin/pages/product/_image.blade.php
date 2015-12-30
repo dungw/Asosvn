@@ -27,9 +27,8 @@
             var image = $(this).attr('image');
 
             $.ajax({
-                url: '/admin/product/{{ $product->id }}/delimage/' + image,
+                url: '/admin/product/{{ $product->id }}/delete-image/' + image,
                 type: 'PUT',
-                data: '',
                 headers: {
                     'X-CSRF-TOKEN': $('input[name="_token"]').val()
                 }

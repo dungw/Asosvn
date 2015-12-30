@@ -104,7 +104,9 @@
     <script type="text/javascript">
 
         $('.product-des').wysihtml5();
-        $('#distributor-selection').select2();
+        $('#distributor-selection').select2({
+            placeholder: 'Select a distributor'
+        });
 
         $('input[name="name"]').blur(function() {
 
