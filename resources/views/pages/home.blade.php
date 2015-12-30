@@ -2,7 +2,7 @@
 
 @section('intermediate')
     @include('includes.default.slider')
-@endsection
+@stop
 
 @section('content')
     <section>
@@ -559,4 +559,4 @@
             </div>
         </div>
     </section>
-@endsection
+@stop

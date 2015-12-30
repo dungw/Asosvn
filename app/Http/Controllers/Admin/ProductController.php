@@ -4,7 +4,7 @@ use App\Brand;
 use App\Category;
 use App\Distributor;
 use App\Http\Requests;
-use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\ProductRequest;
 use App\Product;
 use App\ProductImage;
 use File;
@@ -46,7 +46,7 @@ class ProductController extends AdminController
 		return view('admin.pages.product.create', $data);
 	}
 
-	public function store(CreateProductRequest $request)
+	public function store(ProductRequest $request)
 	{
 		$product = Product::create($request->all());
 		if (!empty($input['distributors']))
@@ -124,11 +124,11 @@ class ProductController extends AdminController
 		return view('admin.pages.product.edit', $data);
 	}
 
-	public function update(CreateProductRequest $request)
+	public function update($id, ProductRequest $request)
 	{
 		$input = $request->all();
 
-		$product = Product::findOrFail(Route::input('product'));
+		$product = Product::findOrFail($id);
 
 		$product->update($input);
 

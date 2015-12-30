@@ -55,4 +55,4 @@
         </form>
 
     </div>
-@endsection
+@stop

@@ -14,7 +14,7 @@
             <li class="active">Boxed</li>
         </ol>
     </section>
-@endsection
+@stop
 
 @section('content')
     <section class="content">
@@ -46,7 +46,7 @@
             </div>
         </div>
     </section>
-@endsection
+@stop
 
 
 

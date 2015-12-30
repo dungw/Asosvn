@@ -1,4 +1,4 @@
-<?php namespace App\Http\ViewComposers;
+<?php namespace App\Http\Composers;
 
 use Illuminate\Contracts\View\View;
 use Route;
@@ -8,7 +8,6 @@ class AdminBreadcrumbComposer
 
 	public function compose(View $view)
 	{
-		dd(Route::current());die;
 		$action = Route::current()->getAction()['as'];
 		$actions = explode('.', $action);
 

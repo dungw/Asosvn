@@ -12,7 +12,7 @@
             <li class="active"><a href="#">Create product</a></li>
         </ol>
     </section>
-@endsection
+@stop
 
 @section('content')
     <div class="box">

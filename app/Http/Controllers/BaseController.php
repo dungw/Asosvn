@@ -3,8 +3,7 @@
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class BaseController extends Controller {
-
-	//
+class BaseController extends Controller
+{
 
 }

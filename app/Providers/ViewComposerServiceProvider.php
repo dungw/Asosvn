@@ -3,7 +3,8 @@
 use View;
 use Illuminate\Support\ServiceProvider;
 
-class ComposerServiceProvider extends ServiceProvider {
+class ViewComposerServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Bootstrap the application services.
@@ -13,7 +14,8 @@ class ComposerServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		View::composers([
-			'App\Http\ViewComposers\AdminBreadcrumbComposer'    => 'admin.includes.boxed.breadcrumb'
+			'App\Http\Composers\AdminBreadcrumbComposer' => 'admin.includes.boxed.breadcrumb',
+			'App\Http\Composers\SidebarComposer'         => 'includes.default.left-sidebar',
 		]);
 	}
 

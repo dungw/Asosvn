@@ -2,7 +2,7 @@
 
 @section('head')
     <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/datatables/dataTables.bootstrap.css') }}">
-@endsection
+@stop
 
 @section('breadcrumb')
     <section class="content-header">
@@ -16,7 +16,7 @@
             <li class="active"><a href="#">Category list</a></li>
         </ol>
     </section>
-@endsection
+@stop
 
 @section('content')
     <div class="box">
@@ -82,7 +82,7 @@
 
         </div>
     </div>
-@endsection
+@stop
 
 @section('footer-content')
     <script src="{{ asset('bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
@@ -105,5 +105,5 @@
         <script type="text/javascript"> $.growl.notice({ message: "{{ Session::get('success') }}" }); </script>
     @endif
 
-@endsection
+@stop
 

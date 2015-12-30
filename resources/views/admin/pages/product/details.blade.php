@@ -2,7 +2,7 @@
 
 @section('head')
     <link type="text/css" href="{{ asset('css/amazingslider-1.css') }}">
-@endsection
+@stop
 
 @section('breadcrumb')
     <section class="content-header">
@@ -16,7 +16,7 @@
             <li class="active"><a href="#">{{ $product->name }}</a></li>
         </ol>
     </section>
-@endsection
+@stop
 
 @section('content')
 
@@ -64,9 +64,9 @@
 
     </div>
 
-@endsection
+@stop
 
 @section('footer-content')
     <script type="text/javascript" src="{{ asset('js/amazingslider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/initslider-1.js') }}"></script>
-@endsection
+@stop

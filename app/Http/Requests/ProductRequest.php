@@ -1,6 +1,6 @@
 <?php namespace App\Http\Requests;
 
-class CreateProductRequest extends Request
+class ProductRequest extends Request
 {
 
 	/**

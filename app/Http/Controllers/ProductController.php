@@ -2,16 +2,15 @@
 
 use App\Category;
 use App\Http\Requests;
-
 use App\Product;
-use Illuminate\Http\Request;
+use App\ProductImage;
 
 class ProductController extends BaseController
 {
-    /**
-     * list all product
-     * @return string
-     */
+
+	//number item per page(product list)
+	const PAGINATION_ITEM_PER_PAGE = 1;
+
     public function index()
     {
         $data['products'] = Product::all();
@@ -21,22 +20,39 @@ class ProductController extends BaseController
 
 	public function category($slug)
 	{
-		$category = Category::findBySlug($slug);
-		if (!$category)
+
+		//get category
+		$data['category'] = Category::findBySlug($slug);
+		if (!$data['category'])
 		{
 			return redirect('404');
 		}
 
-		$data['products'] = $category->products()->get();
+		//get products
+		$data['products'] = Product::where('category_id', '=', $data['category']->id)->paginate(self::PAGINATION_ITEM_PER_PAGE);
+
+		//product images
+		$data['images'] = [];
+		if (!empty($data['products']))
+		{
+			foreach ($data['products'] as $product)
+			{
+				$mainImage = $product->images()->first()->image;
+				$imagePath = 'uploads/products/' . $mainImage[0] . '/' . $mainImage[1] . '/' . $mainImage[2] . '/' . $mainImage;
+
+				if (file_exists(public_path($imagePath)))
+				{
+					$data['images'][$product->id] = $imagePath;
+				} else
+				{
+					$data['images'][$product->id] = ProductImage::NO_IMAGE;
+				}
+			}
+		}
 
 		return view('pages.products', $data);
 	}
 
-    /**
-     * get product details
-     * @param $id
-     * @return array|string
-     */
     public function show($id)
     {
         $product = Product::find($id);
@@ -48,11 +64,6 @@ class ProductController extends BaseController
         return [];
     }
 
-	/**
-	 * get details product by slug
-	 * @param $slug
-	 * @return array|string
-	 */
 	public function details($slug)
 	{
 		$product = Product::findBySlug($slug);

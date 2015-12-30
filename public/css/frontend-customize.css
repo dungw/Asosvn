@@ -7,3 +7,7 @@
     max-width: 255px;
     max-height: 237px;
 }
+
+.active-category {
+    color: #FE980F !important;
+}

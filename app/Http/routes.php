@@ -18,7 +18,7 @@ Route::get('404', function() {
 });
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('category/{slug}', 'ProductController@category');
+Route::get('category/{category_slug}', 'ProductController@category');
 Route::get('product/{id}/{alias}', 'ProductController@details');
 Route::controllers([
 	'checkout'  => 'CheckoutController',

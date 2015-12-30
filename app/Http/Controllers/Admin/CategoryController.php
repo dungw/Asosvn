@@ -2,7 +2,7 @@
 
 use App\Category;
 use App\Http\Requests;
-use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\CategoryRequest;
 use Input;
 use Route;
 use Session;
@@ -28,7 +28,7 @@ class CategoryController extends AdminController
 		return view('admin.pages.category.create', $data);
 	}
 
-	public function store(CreateCategoryRequest $request)
+	public function store(CategoryRequest $request)
 	{
 		Category::create($request->all());
 
@@ -57,9 +57,9 @@ class CategoryController extends AdminController
 		return view('admin.pages.category.edit', $data);
 	}
 
-	public function update(CreateCategoryRequest $request)
+	public function update($id, CategoryRequest $request)
 	{
-		$category = Category::findOrFail(Route::input('category'));
+		$category = Category::findOrFail($id);
 
 		$category->update($request->all());
 

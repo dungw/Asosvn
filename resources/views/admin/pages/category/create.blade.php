@@ -12,7 +12,7 @@
             <li class="active"><a href="#">Create category</a></li>
         </ol>
     </section>
-@endsection
+@stop
 
 @section('content')
     <div class="box">

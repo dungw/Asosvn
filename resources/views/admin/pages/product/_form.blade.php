@@ -1,6 +1,6 @@
 @section('head')
     <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
-@endsection
+@stop
 
 <div class="box-body">
     {!! Form::open(array_merge($options, ['class' => 'form-horizontal'])) !!}
@@ -122,4 +122,4 @@
         });
     </script>
 
-@endsection
+@stop

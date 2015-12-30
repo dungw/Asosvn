@@ -13,6 +13,8 @@ class ProductImage extends Model
 
 	const THUMBNAIL_SIZE = '200x200';
 
+	const NO_IMAGE = 'images/no-image.jpg';
+
 	public function product()
 	{
 		return $this->belongsTo('App\Product');

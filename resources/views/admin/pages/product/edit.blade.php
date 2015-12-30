@@ -3,7 +3,7 @@
 @section('head')
     <link rel="stylesheet" href="{{ asset('css/amazingslider-1.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}" />
-@endsection
+@stop
 
 @section('breadcrumb')
     <section class="content-header">
@@ -17,7 +17,7 @@
             <li class="active"><a href="#">{{ $product->name }}</a></li>
         </ol>
     </section>
-@endsection
+@stop
 
 @section('content')
     <div class="box">
@@ -62,4 +62,4 @@
 @section('footer-content')
     <script type="text/javascript" src="{{ asset('js/amazingslider.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/initslider-1.js') }}"></script>
-@endsection
+@stop

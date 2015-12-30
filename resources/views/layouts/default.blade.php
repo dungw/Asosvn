@@ -3,6 +3,8 @@
 
 <head>
     @include('includes.default.head')
+
+    @yield('head')
 </head>
 
 <body>
@@ -15,5 +17,7 @@
     @yield('content')
 
     @include('includes.default.footer')
+
+    @yield('footer-content')
 </body>
 </html>

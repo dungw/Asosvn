@@ -53,4 +53,4 @@
 
     </script>
 
-@endsection
+@stop

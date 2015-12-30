@@ -2,7 +2,7 @@
 
 use Auth;
 
-class CreateCategoryRequest extends Request
+class CategoryRequest extends Request
 {
 
 	public function authorize()

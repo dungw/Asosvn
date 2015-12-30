@@ -46,4 +46,4 @@
 
     </div>
     <!-- /.login-box-body -->
-@endsection
+@stop
