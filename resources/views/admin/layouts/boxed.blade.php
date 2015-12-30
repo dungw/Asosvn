@@ -35,20 +35,14 @@
     <div class="control-sidebar-bg"></div>
 </div>
 
-<!-- jQuery 2.1.4 -->
 <script src="{{ asset('bower_components/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-<!-- Bootstrap 3.3.5 -->
 <script src="{{ asset('bower_components/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
-<!-- SlimScroll -->
 <script src="{{ asset('bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
-<!-- FastClick -->
 <script src="{{ asset('bower_components/AdminLTE/plugins/fastclick/fastclick.js') }}"></script>
-<!-- AdminLTE App -->
 <script src="{{ asset('bower_components/AdminLTE/dist/js/app.min.js') }}"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="{{ asset('bower_components/AdminLTE/dist/js/demo.js') }}"></script>
-<!-- Growl notification -->
 <script src="{{ asset('js/jquery.growl.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
 
 @yield('footer-content')
 

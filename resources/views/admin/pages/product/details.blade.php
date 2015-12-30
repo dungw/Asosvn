@@ -43,7 +43,7 @@
                             {!! App\Helpers\MyHtml::show('Slug', $product->slug) !!}
                             {!! App\Helpers\MyHtml::show('Category', $product->category->name) !!}
                             {!! App\Helpers\MyHtml::show('Brand', $product->brand->name) !!}
-                            {!! App\Helpers\MyHtml::showMultiple('Distributor', $product->distributors()->get()) !!}
+                            {!! App\Helpers\MyHtml::showMultiple('Distributor', $product->distributors()->lists('name')) !!}
                             {!! App\Helpers\MyHtml::show('Price', number_format($product->price, 0)) !!}
                             {!! App\Helpers\MyHtml::show('Condition', $product->condition) !!}
                             {!! App\Helpers\MyHtml::show('Quantity', $product->quantity) !!}

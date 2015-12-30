@@ -55,7 +55,7 @@
     <div class="form-group">
         {!! App\Helpers\MyHtml::label('distributors', 'Distributor') !!}
         {!! App\Helpers\MyHtml::select('distributors[]', $distributors, old('distributors') ? old('distributors') : (isset($product) ?
-        $product->distributors()->lists('distributor_id') : null), ['class' => 'form-control', 'multiple' => true]) !!}
+        $product->distributors()->lists('distributor_id') : null), ['id' => 'distributor-selection', 'class' => 'form-control', 'multiple' => true]) !!}
     </div>
 
     <div class="form-group">
@@ -99,12 +99,12 @@
 
     @parent
 
-    <!-- CK Editor -->
-    <script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js" type="text/javascript"></script>
-    <!-- Bootstrap WYSIHTML5 -->
+    <script src="{{ asset('js/ckeditor.js') }}" type="text/javascript"></script>
     <script src="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}" type="text/javascript"></script>
     <script type="text/javascript">
+
         $('.product-des').wysihtml5();
+        $('#distributor-selection').select2();
 
         $('input[name="name"]').blur(function() {
 
@@ -120,6 +120,7 @@
             });
 
         });
+
     </script>
 
 @stop
