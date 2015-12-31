@@ -2,14 +2,23 @@
 
 use Auth;
 
-class CategoryRequest extends Request
-{
+class BrandRequest extends Request {
 
+	/**
+	 * Determine if the user is authorized to make this request.
+	 *
+	 * @return bool
+	 */
 	public function authorize()
 	{
 		return Auth::admin()->check() ? true : false;
 	}
 
+	/**
+	 * Get the validation rules that apply to the request.
+	 *
+	 * @return array
+	 */
 	public function rules()
 	{
 		switch ($this->method())
@@ -21,7 +30,7 @@ class CategoryRequest extends Request
 			}
 			case 'POST':
 			{
-				return ['name' => 'required', 'slug' => 'required|unique:categories'];
+				return ['name' => 'required', 'slug' => 'required|unique:brands'];
 			}
 			case 'PUT':
 			case 'PATCH':

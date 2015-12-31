@@ -3,6 +3,7 @@
 use App\Brand;
 use App\Category;
 use App\Distributor;
+use App\Helpers\ImageManager;
 use App\Helpers\MyHtml;
 use App\Http\Requests;
 use App\Http\Requests\ProductRequest;
@@ -11,7 +12,6 @@ use App\ProductImage;
 use File;
 use Input;
 use Intervention\Image\Facades\Image;
-use Route;
 use Session;
 
 class ProductController extends AdminController
@@ -186,27 +186,10 @@ class ProductController extends AdminController
 			{
 				if ($file == null) continue;
 
-				//extension
-				$ext = $file->getClientOriginalExtension();
-
-				//random 16 characters
-				$filename = md5(str_random());
-
-				//get and create container folder if needed
-				$folderPath = ProductImage::getContainerFolder($filename);
-
-				//full path
-				$path = public_path($folderPath . '/' . $filename . '.' . $ext);
-
-				//save image to path
-				Image::make($file->getRealPath())->save($path);
-
-				//create and save thumbnails
-				$pathThumb = public_path($folderPath . '/' . $filename . '_' . ProductImage::THUMBNAIL_SIZE . '.' . $ext);
-				ProductImage::createThumb($pathThumb, $file);
+				$filename = ImageManager::upload($file, 'product');
 
 				//insert to database
-				ProductImage::create(['product_id' => $product->id, 'image' => ($filename . '.' . $ext)]);
+				ProductImage::create(['product_id' => $product->id, 'image' => ($filename)]);
 			}
 		}
 

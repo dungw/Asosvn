@@ -18,7 +18,8 @@ Route::get('404', function() {
 });
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('category/{category_slug}', 'ProductController@category');
+Route::get('c/{category_slug}', 'ProductController@category');
+Route::get('b/{brand_slug}', 'ProductController@brand');
 Route::get('product/{id}/{alias}', 'ProductController@details');
 Route::controllers([
 	'checkout'  => 'CheckoutController',
@@ -36,9 +37,12 @@ Route::controllers([
 
 Route::resource('admin/product', 'Admin\ProductController');
 Route::resource('admin/category', 'Admin\CategoryController');
+Route::resource('admin/brand', 'Admin\BrandController');
+
 Route::put('admin/product/{product}/delete-image/{image}', 'Admin\ProductController@deleteImage');
 Route::post('admin/product/generate-slug', 'Admin\ProductController@generateSlug');
 Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSlug');
+Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
 
 
 

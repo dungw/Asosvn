@@ -14,12 +14,11 @@
                                    data-parent="#accordian"
                                    href="#c{{ $category->id }}">
                                     <span class="badge pull-right"><i
-                                                class="fa {{ (isset($curCategory) && in_array($curCategory, $category->children->lists('id'))) ? 'fa-minus' : 'fa-plus' }}"></i></span>
+                                                class="fa {{ (isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'fa-minus' : 'fa-plus' }}"></i></span>
                                     {{ $category->name }}
                                 </a>
                             @else
-                                <a class="{{ (isset($curCategory) && ($curCategory == $category->id) ? 'active-category' : '') }}"
-                                   href="{{ url('category/' . $category->slug) }}">{{ $category->name }}</a>
+                                {!! link_to_action('ProductController@category', $category->name, [$category->slug], ['class' => (isset($curCategory) && ($curCategory->id == $category->id) ? 'active-category' : '')]) !!}
                             @endif
                         </h4>
                     </div>
@@ -27,13 +26,12 @@
                     @if ($category->children()->count() > 0)
 
                         <div id="c{{ $category->id }}"
-                             class="panel-collapse {{ (isset($curCategory) && in_array($curCategory, $category->children->lists('id'))) ? 'in' : 'collapse' }}">
+                             class="panel-collapse {{ (isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'in' : 'collapse' }}">
                             <div class="panel-body">
                                 <ul>
                                     @foreach ($category->children()->orderBy('name')->get() as $child)
                                         <li>
-                                            <a class="{{ (isset($curCategory) && ($curCategory == $child->id) ? 'active-category' : '') }}"
-                                               href="{{ url('category/' . $child->slug) }}">{{ $child->name }} </a>
+                                            {!! link_to_action('ProductController@category', $child->name, [$child->slug]) !!}
                                         </li>
                                     @endforeach
                                 </ul>
@@ -56,7 +54,10 @@
                 <ul class="nav nav-pills nav-stacked">
 
                     @foreach ($brands as $brand)
-                        <li><a href="{{ url('') }}"><span class="pull-right">(50)</span>{{ $brand->name }}</a></li>
+                        <li>
+                            {!! App\Helpers\MyHtml::link_to_brand($brand) !!}
+                            <span class="pull-right">(50)</span>
+                        </li>
                     @endforeach
 
                 </ul>

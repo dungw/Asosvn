@@ -1,10 +1,14 @@
 <?php
 namespace App\Helpers;
 
+use App\Brand;
+use App\Category;
 use App\ProductImage;
 use Illuminate\Html\HtmlFacade as Html;
 use Illuminate\Html\FormFacade as Form;
-
+use Input;
+use Route;
+use App\Helpers\ImageManager;
 
 class MyHtml extends Html
 {
@@ -101,10 +105,10 @@ class MyHtml extends Html
 
 		foreach ($images as $image)
 		{
-			$folderPath = 'uploads/products/' . $image->image[0] . '/' . $image->image[1] . '/' . $image->image[2] . '/';
+			$folderPath = ImageManager::getContainerFolder('product', $image->image);
 			$html .= '<li><img src="' . asset($folderPath . $image->image) . '" /></li>';
 			$thumbnails[] = [
-				'image' => asset($folderPath . ProductImage::getThumb($image->image)),
+				'image' => asset(ImageManager::getThumb($image->image, 'product')),
 				'title' => 'Product-' . $productId . '-' . $count,
 			];
 			$count++;
@@ -158,6 +162,41 @@ class MyHtml extends Html
 	public static function productImagePath($imageName)
 	{
 		return 'uploads/products/' . $imageName[0] . '/' . $imageName[1] . '/' . $imageName[2] . '/';
+	}
+
+	public static function link_to_brand(Brand $brand)
+	{
+		$route = Route::getCurrentRoute();
+
+		//category page
+		if ($route->hasParameter('category_slug'))
+		{
+			$category = Category::findBySlug($route->parameter('category_slug'));
+
+			$attributes = [$category->slug];
+			$attributes = array_merge($attributes, Input::all());
+			$attributes['b'] = $brand->slug;
+
+			return link_to_action('ProductController@category', $brand->name, $attributes);
+		}
+		//brand page
+		elseif ($route->hasParameter('brand_slug'))
+		{
+			$attributes = [$brand->slug];
+			$attributes = array_merge($attributes, Input::all());
+
+			return link_to_action('ProductController@brand', $brand->name, $attributes);
+		}
+		//other page
+		else {
+
+		}
+
+	}
+
+	public static function showThumb($filename, $type)
+	{
+		return asset(ImageManager::getThumb($filename, $type));
 	}
 
 }

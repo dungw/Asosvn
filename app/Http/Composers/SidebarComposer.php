@@ -14,7 +14,7 @@ class SidebarComposer
 
 		if (Route::getCurrentRoute()->hasParameter('category_slug'))
 		{
-			$data['curCategory'] = Category::findBySlug(Route::getCurrentRoute()->getParameter('category_slug'))->id;
+			$data['curCategory'] = Category::findBySlug(Route::getCurrentRoute()->getParameter('category_slug'));
 		}
 
 		$data['brands'] = Brand::all();

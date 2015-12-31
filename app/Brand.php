@@ -9,12 +9,18 @@ class Brand extends Model {
 		'logo',
 		'website',
 		'order',
-		'total_products'
+		'total_products',
+		'slug',
 	];
 
 	public function products()
 	{
 		return $this->hasMany('App\Product');
+	}
+
+	public static function findBySlug($slug)
+	{
+		return self::query()->where('slug', $slug)->first();
 	}
 
 }

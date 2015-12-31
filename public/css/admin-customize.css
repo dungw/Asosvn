@@ -44,5 +44,8 @@
     font-size: 13px !important;
 }
 
+.select2-container:focus {
+    border-color: #3c8dbc !important;
+}
 
 
