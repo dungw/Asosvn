@@ -18,5 +18,6 @@ return [
 	'Login'				=> 'Đăng nhập',
 	'Logout'			=> 'Đăng xuất',
 	'SKU'				=> 'Mã sản phẩm',
+	'Contact'			=> 'Liên hệ',
 
 ];

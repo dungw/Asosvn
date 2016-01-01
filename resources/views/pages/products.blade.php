@@ -27,14 +27,16 @@
                                         <div class="productinfo text-center">
 
                                             <a href="{{ url('product/' . $product->slug) }}">
-                                                <img src="{{ asset( $images[$product->id] ) }}" alt="" />
+                                                <img src="{{ asset( $images[$product->id] ) }}" alt="{{ $product->name }}" />
                                             </a>
 
-                                            <h2>$56</h2>
+                                            <h2>${{ $product->price }}</h2>
 
                                             <p><a href="{{ url('product/' . $product->slug) }}">{{ $product->name }}</a></p>
 
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="#" class="btn btn-default add-to-cart">
+                                                <i class="fa fa-shopping-cart"></i>{{ trans('vi.Add to cart') }}
+                                            </a>
 
                                         </div>
                                         <!--<div class="product-overlay">
