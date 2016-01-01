@@ -11,31 +11,34 @@
                 <div class="col-sm-9 padding-right">
                     <div class="product-details">
                         <div class="col-sm-5">
-                            <div class="view-product">
-                                <img src="{{ asset('uploads/products/' . $product->images[0]['image'][0] . '/' . $product->images[0]['image'][1] . '/' . $product->images[0]['image'][2] . '/' . $product->images[0]['image']) }}" alt="{{ $product->images[0]['image'] }}" />
-                                <h3>ZOOM</h3>
-                            </div>
-                            <div id="similar-product" class="carousel slide" data-ride="carousel">
+                            <div id="carousel" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-
+                                    @foreach( $product->images as $index => $image)
+                                        <div class="item @if ($index == 0)active @endif">
+                                            <img src="{{ asset('uploads/products/' . $image['image'][0] . '/' . $image['image'][1] . '/' . $image['image'][2] . '/' . $image['image']) }}" alt="{{ $image['image'] }}" />
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div id="thumbcarousel" class="carousel slide" data-interval="false">
+                                <div class="carousel-inner">
                                     <div class="item active">
                                         @foreach( $product->images as $index => $image)
-                                            <a href="">
-                                                <img src="{{ asset('uploads/products/' . $image['image'][0] . '/' . $image['image'][1] . '/' . $image['image'][2] . '/' . \App\ProductImage::getThumb($image['image'])) }}" alt="{{ $image['image'] }}" />
-                                            </a>
+                                            <div data-target="#carousel" data-slide-to="{{ $index }}" class="thumb">
+                                                <img src="{{ asset('uploads/products/' . $image['image'][0] . '/' . $image['image'][1] . '/' . $image['image'][2] . '/' . $image['image']) }}" alt="{{ $image['image'] }}" />
+                                            </div>
                                             @if (($index + 1) % 3 == 0 && ($index + 1) < count($product->images))
                                                 </div>
                                                 <div class="item">
                                             @endif
                                         @endforeach
                                     </div>
-
                                 </div>
                                 @if (count($product->images) > 3)
-                                    <a class="left item-control" href="#similar-product" data-slide="prev">
+                                    <a class="left carousel-control" href="#thumbcarousel" role="button" data-slide="prev">
                                         <i class="fa fa-angle-left"></i>
                                     </a>
-                                    <a class="right item-control" href="#similar-product" data-slide="next">
+                                    <a class="right carousel-control" href="#thumbcarousel" role="button" data-slide="next">
                                         <i class="fa fa-angle-right"></i>
                                     </a>
                                 @endif

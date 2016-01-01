@@ -4,4 +4,22 @@
 .btn-default[disabled] {
     background-color: #FE980F !important;
 }
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.carousel {
+    margin-top: 20px;
+}
+.item .thumb {
+    width: 25%;
+    cursor: pointer;
+    float: left;
+}
+.item .thumb img {
+    width: 100%;
+    margin: 2px;
+}
+.item img {
+    width: 100%;
+}
+.carousel-inner .item img {
+    max-width: none !important;
+    max-height: none !important;
+}
