@@ -13,6 +13,7 @@
 <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
 <link href="{{ asset('css/frontend-customize.css') }}" rel="stylesheet">
 <link href="{{ asset('css/frontend-customize-responsive.css') }}" rel="stylesheet">
+<link href="{{ asset('css/jquery.growl.css') }}" rel="stylesheet">
 <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
 <!--[if lt IE 9]>

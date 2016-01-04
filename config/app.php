@@ -150,6 +150,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\ViewComposerServiceProvider',
 		'App\Providers\HelperServiceProvider',
+		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
 	],
 
 	/*
@@ -200,6 +201,7 @@ return [
 		'Form'      => 'Illuminate\Html\FormFacade',
 		'Html'      => 'Illuminate\Html\HtmlFacade',
 		'Image'     => 'Intervention\Image\Facades\Image',
+		'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
 	],
 
 ];
