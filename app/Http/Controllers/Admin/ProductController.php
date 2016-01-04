@@ -53,7 +53,7 @@ class ProductController extends AdminController
 
 		$this->syncDistributor($product, $request->get('distributors'));
 
-		$this->uploadImages($product, $request->file('images'));
+		if ($request->hasFile('images')) $this->uploadImages($product, $request->file('images'));
 
 		Session::flash('success', 'Created a product successful!');
 
@@ -99,7 +99,7 @@ class ProductController extends AdminController
 
 		$this->syncDistributor($product, $request->get('distributors'));
 
-		$this->uploadImages($product, $request->file('images'));
+		if ($request->hasFile('images')) $this->uploadImages($product, $request->file('images'));
 
 		Session::flash('success', 'Updated a product successful!');
 
@@ -184,8 +184,6 @@ class ProductController extends AdminController
 		{
 			foreach ($images as $file)
 			{
-				if ($file == null) continue;
-
 				$filename = ImageManager::upload($file, 'product');
 
 				//insert to database

@@ -28,7 +28,7 @@ class BrandController extends AdminController
 	{
 		$brand = Brand::create($request->all());
 
-		$this->uploadImage($brand, $request->file('logo'));
+		if ($request->hasFile('logo')) $this->uploadImage($brand, $request->file('logo'));
 
 		Session::flash('success', 'Created a brand successful!');
 
@@ -53,7 +53,7 @@ class BrandController extends AdminController
 
 		$brand->update($request->all());
 
-		$this->uploadImage($brand, $request->file('logo'));
+		if ($request->hasFile('logo')) $this->uploadImage($brand, $request->file('logo'));
 
 		Session::flash('success', 'Updated brand successful!');
 
@@ -91,8 +91,6 @@ class BrandController extends AdminController
 
 	private function uploadImage(Brand $brand, $file)
 	{
-		if (!$file) return false;
-
 		$filename = ImageManager::upload($file, 'brand');
 
 		//insert to database
