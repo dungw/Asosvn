@@ -164,7 +164,7 @@ class MyHtml extends Html
 		return 'uploads/products/' . $imageName[0] . '/' . $imageName[1] . '/' . $imageName[2] . '/';
 	}
 
-	public static function link_to_brand(Brand $brand)
+	public static function action_to_brand(Brand $brand)
 	{
 		$route = Route::getCurrentRoute();
 
@@ -177,7 +177,7 @@ class MyHtml extends Html
 			$attributes = array_merge($attributes, Input::all());
 			$attributes['b'] = $brand->slug;
 
-			return link_to_action('ProductController@category', $brand->name, $attributes);
+			return action('ProductController@category', $attributes);
 		}
 		//brand page
 		elseif ($route->hasParameter('brand_slug'))
@@ -185,13 +185,130 @@ class MyHtml extends Html
 			$attributes = [$brand->slug];
 			$attributes = array_merge($attributes, Input::all());
 
-			return link_to_action('ProductController@brand', $brand->name, $attributes);
+			return action('ProductController@brand', $attributes);
 		}
 		//other page
-		else {
+		else
+		{
+			$attributes = [$brand->slug];
 
+			return action('ProductController@brand', $attributes);
 		}
 
+	}
+
+	public static function action_to_category(Category $category)
+	{
+		$route = Route::getCurrentRoute();
+
+		//category page
+		if ($route->hasParameter('brand_slug'))
+		{
+			$brand = Brand::findBySlug($route->parameter('brand_slug'));
+
+			$attributes = [$brand->slug];
+			$attributes = array_merge($attributes, Input::all());
+			$attributes['c'] = $category->slug;
+
+			return action('ProductController@brand', $attributes);
+		}
+		//brand page
+		elseif ($route->hasParameter('category_slug'))
+		{
+			$attributes = [$category->slug];
+			$attributes = array_merge($attributes, Input::all());
+
+			return action('ProductController@category', $attributes);
+		}
+		//other page
+		else
+		{
+			$attributes = [$category->slug];
+
+			return action('ProductController@category', $attributes);
+		}
+	}
+
+	public static function remove_category()
+	{
+		$route = Route::getCurrentRoute();
+		$input = Input::all();
+
+		$brandSlug = $route->parameter('brand_slug') ? $route->parameter('brand_slug') : (Input::get('b') ? Input::get('b') : '');
+		if ($brandSlug) $brand = Brand::findBySlug($brandSlug);
+
+		//if this is brand page
+		if ($route->hasParameter('brand_slug'))
+		{
+			$attributes = [$brand->slug];
+
+			$otherParams = in_array('c', array_keys($input)) ? array_except($input, 'c') : $input;
+
+			$attributes = array_merge($attributes, $otherParams);
+
+			return action('ProductController@brand', $attributes);
+		}
+		//if this is category page
+		elseif ($route->hasParameter('category_slug'))
+		{
+			if (isset($brand))
+			{
+				$attributes = [$brand->slug];
+
+				$otherParams = in_array('b', array_keys($input)) ? array_except($input, 'b') : $input;
+
+				$attributes = array_merge($attributes, $otherParams);
+
+				return action('ProductController@brand', $attributes);
+			} else
+			{
+				return action('HomeController@index');
+			}
+
+		} else {
+			return action('HomeController@index');
+		}
+	}
+
+	public static function remove_brand()
+	{
+		$route = Route::getCurrentRoute();
+		$input = Input::all();
+
+		$categorySlug = $route->parameter('category_slug') ? $route->parameter('category_slug') : (Input::get('c') ? Input::get('c') : '');
+		if ($categorySlug) $category = Category::findBySlug($categorySlug);
+
+		//if this is category page
+		if ($route->hasParameter('category_slug'))
+		{
+			$attributes = [$category->slug];
+
+			$otherParams = in_array('b', array_keys($input)) ? array_except($input, 'b') : $input;
+
+			$attributes = array_merge($attributes, $otherParams);
+
+			return action('ProductController@category', $attributes);
+		}
+		//if this is brand page
+		elseif ($route->hasParameter('brand_slug'))
+		{
+			if (isset($category))
+			{
+				$attributes = [$category->slug];
+
+				$otherParams = in_array('c', array_keys($input)) ? array_except($input, 'c') : $input;
+
+				$attributes = array_merge($attributes, $otherParams);
+
+				return action('ProductController@category', $attributes);
+			} else
+			{
+				return action('HomeController@index');
+			}
+
+		} else {
+			return action('HomeController@index');
+		}
 	}
 
 	public static function showThumb($filename, $type)

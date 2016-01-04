@@ -1,3 +1,7 @@
+.font12 {
+    font-size: 12px !important;
+}
+
 .carousel-inner .item img {
     max-width: 84px;
     max-height: 84px;
@@ -8,6 +12,24 @@
     max-height: 237px;
 }
 
-.active-category {
+.active-category, .active-brand, .remove-selection, .child-remove-selection {
     color: #FE980F !important;
 }
+
+.remove-selection, .child-remove-selection {
+    padding: 0px 7px;
+    font-size: 12px !important;
+}
+
+.child-remove-selection {
+    padding: 0px 11px;
+}
+
+.active-brand {
+    display: inline !important;
+}
+
+.brand-selection {
+    padding: 0px 27px !important;
+}
+

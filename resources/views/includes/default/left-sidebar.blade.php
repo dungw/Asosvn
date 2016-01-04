@@ -1,67 +1,83 @@
+
 <div class="left-sidebar">
     <h2>Category</h2>
 
-    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+    <div class="panel-group category-products" id="accordian">
 
         @forelse($categories as $category)
             @if ($category->parent_id == 0)
 
                 <div class="panel panel-default">
+
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             @if ($category->children()->count() > 0)
-                                <a class="parents" data-children="c{{ $category->id }}" data-toggle="collapse"
-                                   data-parent="#accordian"
-                                   href="#c{{ $category->id }}">
+                                <a class="parents" data-children="c{{ $category->id }}" data-toggle="collapse" data-parent="#accordian" href="#c{{ $category->id }}">
                                     <span class="badge pull-right"><i
                                                 class="fa {{ (isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'fa-minus' : 'fa-plus' }}"></i></span>
                                     {{ $category->name }}
                                 </a>
                             @else
-                                {!! link_to_action('ProductController@category', $category->name, [$category->slug], ['class' => (isset($curCategory) && ($curCategory->id == $category->id) ? 'active-category' : '')]) !!}
+                                <a href="{{ App\Helpers\MyHtml::action_to_category($category) }}" class="{{ (isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : '' }}">{{ $category->name }}</a>
+                                @if (isset($curCategory) && ($curCategory->id == $category->id))
+                                    <a href="{{ App\Helpers\MyHtml::remove_category($category) }}" class="pull-right remove-selection"><i class="fa fa-times"></i></a>
+                                @endif
                             @endif
                         </h4>
                     </div>
 
                     @if ($category->children()->count() > 0)
-
                         <div id="c{{ $category->id }}"
                              class="panel-collapse {{ (isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'in' : 'collapse' }}">
                             <div class="panel-body">
                                 <ul>
                                     @foreach ($category->children()->orderBy('name')->get() as $child)
                                         <li>
-                                            {!! link_to_action('ProductController@category', $child->name, [$child->slug]) !!}
+                                            <a href="{{ App\Helpers\MyHtml::action_to_category($child) }}" class="{{ (isset($curCategory) && ($curCategory->id == $child->id)) ? 'active-category' : '' }}">{{ $child->name }}</a>
+                                            @if (isset($curCategory) && ($curCategory->id == $child->id))
+                                                <a href="{{ App\Helpers\MyHtml::remove_category($child) }}" class="pull-right child-remove-selection"><i class="fa fa-times"></i></a>
+                                            @endif
                                         </li>
                                     @endforeach
                                 </ul>
                             </div>
                         </div>
-
                     @endif
+
                 </div>
 
             @endif
         @empty
+
         @endforelse
     </div>
 
     @if ($brands->count() > 0)
         <div class="brands_products">
+
             <h2>Brands</h2>
 
             <div class="brands-name">
                 <ul class="nav nav-pills nav-stacked">
 
                     @foreach ($brands as $brand)
-                        <li>
-                            {!! App\Helpers\MyHtml::link_to_brand($brand) !!}
-                            <span class="pull-right">(50)</span>
-                        </li>
+                        @if ($brand->products()->count() > 0)
+                            <li>
+                                @if (isset($curBrand) && ($brand->id == $curBrand->id))
+                                    <a class="{{ (isset($curBrand) && ($brand->id == $curBrand->id)) ? 'active-brand' : '' }}"
+                                       href="{{ App\Helpers\MyHtml::action_to_brand($brand) }}">{{ $brand->name }}</a>
+                                    <a href="{{ App\Helpers\MyHtml::remove_brand($brand) }}" class="pull-right child-remove-selection brand-selection"><i class="fa fa-times"></i></a>
+                                @else
+                                    <a class="{{ (isset($curBrand) && ($brand->id == $curBrand->id)) ? 'active-brand' : '' }}"
+                                       href="{{ App\Helpers\MyHtml::action_to_brand($brand) }}">{{ $brand->name }}&nbsp;<span class="pull-right font12">({{ $brand->products()->count() }})</span></a>
+                                @endif
+                            </li>
+                        @endif
                     @endforeach
 
                 </ul>
             </div>
+
         </div>
     @endif
 

@@ -2,6 +2,7 @@
 
 use DB;
 use Illuminate\Database\Eloquent\Model;
+use Input;
 
 class Product extends Model
 {
@@ -77,6 +78,47 @@ class Product extends Model
 		return DB::table('products')
 			->where('slug', $slug)
 			->first();
+	}
+
+	public function scopeFilterWithCategory($query, $categoryId)
+	{
+		$query->where('category_id', '=', $categoryId);
+
+		$this->scopeOtherParams($query);
+
+		return $query;
+	}
+
+	public function scopeFilterWithBrand($query, $brandId)
+	{
+		$query->where('brand_id', '=', $brandId);
+
+		$this->scopeOtherParams($query);
+
+		return $query;
+	}
+
+	private function scopeOtherParams(&$query)
+	{
+		$input = Input::all();
+
+		// brand
+		if (isset($input['b']))
+		{
+			$brand = Brand::findBySlug($input['b']);
+
+			$query->where('brand_id', '=', $brand->id);
+		}
+		elseif (isset($input['c']))
+		{
+			$category = Category::findBySlug($input['c']);
+
+			$query->where('category_id', '=', $category->id);
+		}
+		//other params
+		else {
+
+		}
 	}
 
 }

@@ -4,6 +4,7 @@ use App\Category;
 use App\Http\Requests;
 use App\Product;
 use App\ProductImage;
+use Input;
 
 class ProductController extends BaseController
 {
@@ -20,7 +21,6 @@ class ProductController extends BaseController
 
 	public function category($slug)
 	{
-
 		//get category
 		$data['category'] = Category::findBySlug($slug);
 		if (!$data['category'])
@@ -29,7 +29,7 @@ class ProductController extends BaseController
 		}
 
 		//get products
-		$data['products'] = Product::where('category_id', '=', $data['category']->id)->paginate(self::PAGINATION_ITEM_PER_PAGE);
+		$data['products'] = Product::filterWithCategory($data['category']->id)->paginate(self::PAGINATION_ITEM_PER_PAGE);
 
 		//product images
 		$data['images'] = [];
