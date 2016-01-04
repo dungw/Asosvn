@@ -11,6 +11,7 @@ Route::get('user/logout', 'UserController@logout');
 
 //Product
 Route::get('product/{slug}', 'ProductController@details');
+Route::post('cart/add', 'CartController@add');
 
 //Frontend routes
 Route::get('404', function() {

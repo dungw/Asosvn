@@ -19,5 +19,7 @@ return [
 	'Logout'			=> 'Đăng xuất',
 	'SKU'				=> 'Mã sản phẩm',
 	'Contact'			=> 'Liên hệ',
+	'saleoff'			=> 'Giảm giá',
+	'new'				=> 'Mới'
 
 ];
