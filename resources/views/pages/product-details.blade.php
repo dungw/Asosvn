@@ -48,20 +48,21 @@
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
                                 <img src="{{ asset('images/product-details/new.jpg') }}" class="newarrival" alt="" />
-                                <h2>{{ $product->name }}</h2>
+                                <input type="hidden" value="{{ $product->id }}" id="detail-id"/>
+                                <h2 id="detail-name">{{ $product->name }}</h2>
                                 <p>{{ trans('vi.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
-									<span>US ${{ $product->price }}</span>
+									<span id="detail-price">US ${{ $product->price }}</span>
 									<label>{{ trans('vi.Quantity') }}:</label>
-									<input type="number" value="1" min="0" />
-									<button type="button" class="btn btn-fefault cart">
+									<input type="number" value="1" min="0" id="detail-quantity"/>
+									<button type="button" class="btn btn-fefault cart" @if ($product->availability != 'available') disabled @else id="btn-detail-add-cart" @endif>
                                         <i class="fa fa-shopping-cart"></i>
                                         {{ trans('vi.Add to cart') }}
                                     </button>
 								</span>
-                                <p><b>{{ trans('vi.Availability') }}:</b> {{ $product->availability }}</p>
-                                <p><b>Condition:</b> {{ $product->condition }}</p>
+                                <p><b>{{ trans('vi.Availability') }}:</b> {{ trans('vi.' . $product->availability) }}</p>
+                                <p><b>Condition:</b> {{ trans('vi.' . $product->condition) }}</p>
                                 <p><b>{{ trans('vi.Brand') }}:</b> {{ $product->brand_name }}</p>
                                 <a href=""><img src="{{ asset('images/product-details/share.png') }}" class="share img-responsive"  alt="" /></a>
                             </div><!--/product-information-->
@@ -181,4 +182,22 @@
             </div>
         </div>
     </section>
+
+    @if ($product->availability == 'available')
+        <script type="text/javascript">
+//            $(document).ready(function () {
+                var id = $("#detail-id").val();
+                var name = $("#detail-name").val();
+                var qty = $("#detail-quantity").val();
+                var price = $("#detail-price").val();
+
+                $("#btn-detail-add-cart").on("click", $.addToCart(id, name, qty, price));
+//            });
+        </script>
+    @endif
+
+    @if (Session::has('success'))
+        <script type="text/javascript"> $.growl.notice({ message: "{{ Session::get('success') }}" }); </script>
+    @endif
 @stop
+
