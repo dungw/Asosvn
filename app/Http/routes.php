@@ -24,7 +24,6 @@ Route::get('b/{brand_slug}', 'ProductController@brand');
 Route::get('product/{id}/{alias}', 'ProductController@details');
 Route::controllers([
 	'checkout'  => 'CheckoutController',
-	'cart'      => 'CartController',
 	'blog'      => 'BlogController',
 ]);
 

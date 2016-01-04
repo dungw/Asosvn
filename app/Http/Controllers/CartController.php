@@ -4,7 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Gloudemans\Shoppingcart\Cart;
+use Session;
+use Cart;
 
 class CartController extends Controller
 {
@@ -20,7 +21,7 @@ class CartController extends Controller
 		$name = $request->get('id');
 		$qty = $request->get('qty');
 		$price = $request->get('price');
-		$options = $request->get('options');
+		$options = $request->get('options') ? $request->get('options') : array();
 
 		if ($id) {
 			$result = Cart::add($id, $name, $qty, $price, $options);

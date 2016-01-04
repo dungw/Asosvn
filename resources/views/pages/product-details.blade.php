@@ -53,7 +53,8 @@
                                 <p>{{ trans('vi.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
-									<span id="detail-price">US ${{ $product->price }}</span>
+									<span>US ${{ $product->price }}</span>
+                                    <input type="hidden" id="detail-price" value="{{ $product->price }}"/>
 									<label>{{ trans('vi.Quantity') }}:</label>
 									<input type="number" value="1" min="0" id="detail-quantity"/>
 									<button type="button" class="btn btn-fefault cart" @if ($product->availability != 'available') disabled @else id="btn-detail-add-cart" @endif>
@@ -185,14 +186,14 @@
 
     @if ($product->availability == 'available')
         <script type="text/javascript">
-//            $(document).ready(function () {
-                var id = $("#detail-id").val();
-                var name = $("#detail-name").val();
-                var qty = $("#detail-quantity").val();
-                var price = $("#detail-price").val();
+            var id = $("#detail-id").val();
+            var name = $("#detail-name").val();
+            var qty = $("#detail-quantity").val();
+            var price = $("#detail-price").val();
 
-                $("#btn-detail-add-cart").on("click", $.addToCart(id, name, qty, price));
-//            });
+            $("#btn-detail-add-cart").on("click", function() {
+                $.addToCart(id, name, qty, price, []);
+            });
         </script>
     @endif
 
