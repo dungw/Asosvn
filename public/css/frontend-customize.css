@@ -25,8 +25,8 @@
     padding: 0px 11px;
 }
 
-.active-brand {
-    display: inline !important;
+.active-brand i {
+    padding-right: 3px;
 }
 
 .brand-selection {

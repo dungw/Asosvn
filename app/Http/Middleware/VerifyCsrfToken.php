@@ -29,6 +29,7 @@ class VerifyCsrfToken extends BaseVerifier
 			'admin/product/generate-slug',
 			'admin/category/generate-slug',
 			'admin/brand/generate-slug',
+			'cart/add',
 		];
 
 		foreach ($disabledList as $uri)

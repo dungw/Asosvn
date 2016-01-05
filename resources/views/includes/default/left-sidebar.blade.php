@@ -18,10 +18,13 @@
                                     {{ $category->name }}
                                 </a>
                             @else
-                                <a href="{{ App\Helpers\MyHtml::action_to_category($category) }}" class="{{ (isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : '' }}">{{ $category->name }}</a>
+
                                 @if (isset($curCategory) && ($curCategory->id == $category->id))
                                     <a href="{{ App\Helpers\MyHtml::remove_category($category) }}" class="pull-right remove-selection"><i class="fa fa-times"></i></a>
+                                @else
+                                    <a href="{{ App\Helpers\MyHtml::action_to_category($category) }}" class="{{ (isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : '' }}">{{ $category->name }}</a>
                                 @endif
+
                             @endif
                         </h4>
                     </div>
@@ -64,11 +67,10 @@
                         @if ($brand->products()->count() > 0)
                             <li>
                                 @if (isset($curBrand) && ($brand->id == $curBrand->id))
-                                    <a class="{{ (isset($curBrand) && ($brand->id == $curBrand->id)) ? 'active-brand' : '' }}"
-                                       href="{{ App\Helpers\MyHtml::action_to_brand($brand) }}">{{ $brand->name }}</a>
-                                    <a href="{{ App\Helpers\MyHtml::remove_brand($brand) }}" class="pull-right child-remove-selection brand-selection"><i class="fa fa-times"></i></a>
+                                    <a class="active-brand"
+                                       href="{{ App\Helpers\MyHtml::remove_brand($brand) }}">{{ $brand->name }}&nbsp;<i class="fa fa-times pull-right font12"></i></a>
                                 @else
-                                    <a class="{{ (isset($curBrand) && ($brand->id == $curBrand->id)) ? 'active-brand' : '' }}"
+                                    <a class=""
                                        href="{{ App\Helpers\MyHtml::action_to_brand($brand) }}">{{ $brand->name }}&nbsp;<span class="pull-right font12">({{ $brand->products()->count() }})</span></a>
                                 @endif
                             </li>

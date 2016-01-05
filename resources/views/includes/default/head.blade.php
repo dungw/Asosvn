@@ -20,26 +20,10 @@
 <script src="{{ asset('js/html5shiv.js') }}"></script>
 <script src="{{ asset('js/respond.min.js') }}"></script>
 <![endif]-->
-<script src="{{ asset('js/jquery.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/jquery.scrollUp.min.js') }}"></script>
-<script src="{{ asset('js/price-range.js') }}"></script>
-<script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
-<script src="{{ asset('js/jquery.growl.js') }}"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/cart/my-cart.js') }}"></script>
+
 
 <link rel="shortcut icon" href="{{ asset('images/ico/favicon.ico') }}">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/ico/apple-touch-icon-144-precomposed.png') }}">
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/ico/apple-touch-icon-114-precomposed.png') }}">
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/ico/apple-touch-icon-72-precomposed.png') }}">
 <link rel="apple-touch-icon-precomposed" href="{{ asset('images/ico/apple-touch-icon-57-precomposed.png') }}">
-
-<meta name="csrf-token" content="{{ csrf_token() }}" />
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-</script>

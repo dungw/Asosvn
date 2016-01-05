@@ -49,16 +49,11 @@
                             <div class="product-information"><!--/product-information-->
                                 <img src="{{ asset('images/product-details/new.jpg') }}" class="newarrival" alt="" />
                                 <input type="hidden" value="{{ $product->id }}" id="detail-id"/>
-                                <input type="hidden" value="{{ $product->name }}" id="detail-name"/>
-                                <input type="hidden" value="{{ $product->price }}" id="detail-price"/>
-                                <input type="hidden" value="{{$product->images[0]['image']}}" id="detail-image"/>
-                                <input type="hidden" value="{{ $product->sku }}" id="detail-sku"/>
-                                <input type="hidden" value="{{ $product->slug }}" id="detail-slug"/>
-                                <h2>{{ $product->name }}</h2>
+                                <h2 id="detail-name">{{ $product->name }}</h2>
                                 <p>{{ trans('vi.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
-									<span>US ${{ $product->price }}</span>
+									<span id="detail-price">US ${{ $product->price }}</span>
 									<label>{{ trans('vi.Quantity') }}:</label>
 									<input type="number" value="1" min="0" id="detail-quantity"/>
 									<button type="button" class="btn btn-fefault cart" @if ($product->availability != 'available') disabled @else id="btn-detail-add-cart" @endif>
@@ -181,28 +176,28 @@
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </div>
-                    </div><!--/recommended_items-->
+                    </div>
 
                 </div>
             </div>
         </div>
     </section>
 
-    @if ($product->availability == 'available')
-        <script type="text/javascript">
+    @if (Session::has('success'))
+        <script type="text/javascript"> $.growl.notice({ message: "{{ Session::get('success') }}" }); </script>
+    @endif
+@stop
+
+@section ('footer-content')
+    <script type="text/javascript">
+        $(document).ready(function ($) {
             var id = $("#detail-id").val();
             var name = $("#detail-name").val();
             var qty = $("#detail-quantity").val();
             var price = $("#detail-price").val();
-            var slug = $("#detail-slug").val();
-            var image = $("#detail-image").val();
-            var sku = $("#detail-sku").val();
 
-            $("#btn-detail-add-cart").on("click", function() {
-                $.addToCart(id, name, qty, price, slug, image, sku);
-            });
-        </script>
-    @endif
-
+            $("#btn-detail-add-cart").on("click", $.addToCart(id, name, qty, price));
+        });
+    </script>
 @stop
 
