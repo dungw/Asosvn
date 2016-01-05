@@ -242,3 +242,7 @@ a#scrollUp {
     width: 110px;
     height: 110px;
 }
+.empty-cart {
+    padding-top: 20px;
+    padding-left: 20px;
+}

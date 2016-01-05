@@ -29,8 +29,12 @@ $.removeFromCart = function(rowId) {
         url: 'cart/remove/' + rowId,
         type: 'DELETE',
         success: function(data) {
-            $("#cart-item-" + data).fadeOut(300, function(){
-                $("#cart-item-" + data).remove();
+            $("#cart-item-" + data['rowId']).fadeOut(300, function(){
+                $.when($("#cart-item-" + data['rowId']).remove()).then(function() {
+                    if (data['qty'] == 0) {
+                        $("#cart-empty-message").show();
+                    };
+                });
             });
         }
     });

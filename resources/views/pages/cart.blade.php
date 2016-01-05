@@ -12,14 +12,14 @@
             <div class="table-responsive cart_info">
                 <table class="table table-condensed">
                     <thead>
-                    <tr class="cart_menu">
-                        <td class="image">Item</td>
-                        <td class="description"></td>
-                        <td class="price">Price</td>
-                        <td class="quantity">Quantity</td>
-                        <td class="total">Total</td>
-                        <td></td>
-                    </tr>
+                        <tr class="cart_menu">
+                            <td class="image">Item</td>
+                            <td class="description"></td>
+                            <td class="price">Price</td>
+                            <td class="quantity">Quantity</td>
+                            <td class="total">Total</td>
+                            <td></td>
+                        </tr>
                     </thead>
                     <tbody>
 
@@ -50,10 +50,18 @@
                                 <p class="cart_total_price">${{ $item->qty*$item->price }}</p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')"><i class="fa fa-times"></i></a>
+                                <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')" title="Remove Item"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
                     @endforeach
+                    @if (count($cart) == 0)
+                        <tr>
+                            <td><p class="empty-cart">Your cart is empty! Click <a href="{{ url('/') }}">here</a> to continue shopping.</p></td>
+                        </tr>
+                    @endif
+                    <tr id="cart-empty-message" style="display: none !important;">
+                        <td><p class="empty-cart">Your cart is empty! Click <a href="{{ url('/') }}">here</a> to continue shopping.</p></td>
+                    </tr>
 
                     </tbody>
                 </table>

@@ -43,7 +43,10 @@ class CartController extends Controller
 	{
 		Cart::remove($rowId);
 
-		return $rowId;
+		return array(
+			'qty' 	=> count(Cart::content()),
+			'rowId' => $rowId
+		);
 	}
 
 }
