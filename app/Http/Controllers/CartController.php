@@ -10,9 +10,9 @@ use Cart;
 class CartController extends Controller
 {
 
-	public function getIndex()
+	public function index()
 	{
-		return view('pages.cart');
+		return view('pages.cart')->with('cart', Cart::content());
 	}
 
 	public function add(Request $request)
@@ -22,24 +22,28 @@ class CartController extends Controller
 			$name = $request->get('name');
 			$qty = $request->get('qty');
 			$price = $request->get('price');
-			$options = $request->get('options') ? $request->get('options') : array();
-			$data = array(
-				'id' 		=> (string)$id,
-				'name'		=> (string)$name,
-				'qty'		=> (int)$qty,
-				'price' 	=> (float)$price,
-				'options' 	=> $options,
+			$options = array(
+				'slug'  => $request->get('slug'),
+				'image' => $request->get('image'),
+				'sku'   => $request->get('sku'),
 			);
 
-			$result = Cart::add($data);
-			if ($result) {
-				return 'success';
-			} else {
-				return 'error';
-			}
+			Cart::add(array('id' => $id, 'name' => $name, 'qty' => $qty, 'price' => $price, 'options' => $options));
+//			if ($result) {
+//				return 'success';
+//			} else {
+//				return 'error';
+//			}
 		} else {
 			return 'error';
 		}
+	}
+
+	public function remove($rowId)
+	{
+		Cart::remove($rowId);
+
+		return $rowId;
 	}
 
 }

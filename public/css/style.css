@@ -237,3 +237,8 @@ a#scrollUp {
 .slider-selection {
     background: none repeat scroll 0 0 #28ABE3 !important;
 }
+/*end new color*/
+.img-cart-item {
+    width: 110px;
+    height: 110px;
+}

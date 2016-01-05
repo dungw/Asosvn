@@ -51,6 +51,9 @@
                                 <input type="hidden" value="{{ $product->id }}" id="detail-id"/>
                                 <input type="hidden" value="{{ $product->name }}" id="detail-name"/>
                                 <input type="hidden" value="{{ $product->price }}" id="detail-price"/>
+                                <input type="hidden" value="{{$product->images[0]['image']}}" id="detail-image"/>
+                                <input type="hidden" value="{{ $product->sku }}" id="detail-sku"/>
+                                <input type="hidden" value="{{ $product->slug }}" id="detail-slug"/>
                                 <h2>{{ $product->name }}</h2>
                                 <p>{{ trans('vi.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
@@ -191,9 +194,12 @@
             var name = $("#detail-name").val();
             var qty = $("#detail-quantity").val();
             var price = $("#detail-price").val();
+            var slug = $("#detail-slug").val();
+            var image = $("#detail-image").val();
+            var sku = $("#detail-sku").val();
 
             $("#btn-detail-add-cart").on("click", function() {
-                $.addToCart(id, name, qty, price, []);
+                $.addToCart(id, name, qty, price, slug, image, sku);
             });
         </script>
     @endif

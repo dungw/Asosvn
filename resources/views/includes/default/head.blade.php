@@ -27,7 +27,7 @@
 <script src="{{ asset('js/jquery.prettyPhoto.js') }}"></script>
 <script src="{{ asset('js/jquery.growl.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/cart/add-to-cart.js') }}"></script>
+<script src="{{ asset('js/cart/my-cart.js') }}"></script>
 
 <link rel="shortcut icon" href="{{ asset('images/ico/favicon.ico') }}">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/ico/apple-touch-icon-144-precomposed.png') }}">

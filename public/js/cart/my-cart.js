@@ -2,13 +2,15 @@
  * Created by nhuthep on 1/4/16.
  */
 
-$.addToCart = function(id, name, qty, price, options) {
+$.addToCart = function(id, name, qty, price, slug, image, sku) {
     var data = {
         id: id,
         name: name,
         qty: qty,
         price: price,
-        options: options
+        slug: slug,
+        image: image,
+        sku: sku
     };
 
     $.post('/cart/add', data, function(data) {
@@ -18,6 +20,18 @@ $.addToCart = function(id, name, qty, price, options) {
 
         if (data == 'error') {
             $.growl.error({ message: "Cannot add product to cart!" });
+        }
+    });
+};
+
+$.removeFromCart = function(rowId) {
+    $.ajax({
+        url: 'cart/remove/' + rowId,
+        type: 'DELETE',
+        success: function(data) {
+            $("#cart-item-" + data).fadeOut(300, function(){
+                $("#cart-item-" + data).remove();
+            });
         }
     });
 };

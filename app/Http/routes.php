@@ -11,7 +11,9 @@ Route::get('user/logout', 'UserController@logout');
 
 //Product
 Route::get('product/{slug}', 'ProductController@details');
+Route::get('cart', 'CartController@index');
 Route::post('cart/add', 'CartController@add');
+Route::delete('cart/remove/{rowId}', 'CartController@remove');
 
 //Frontend routes
 Route::get('404', function() {
