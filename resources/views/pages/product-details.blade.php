@@ -49,12 +49,13 @@
                             <div class="product-information"><!--/product-information-->
                                 <img src="{{ asset('images/product-details/new.jpg') }}" class="newarrival" alt="" />
                                 <input type="hidden" value="{{ $product->id }}" id="detail-id"/>
-                                <h2 id="detail-name">{{ $product->name }}</h2>
+                                <input type="hidden" value="{{ $product->name }}" id="detail-name"/>
+                                <input type="hidden" value="{{ $product->price }}" id="detail-price"/>
+                                <h2>{{ $product->name }}</h2>
                                 <p>{{ trans('vi.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
 									<span>US ${{ $product->price }}</span>
-                                    <input type="hidden" id="detail-price" value="{{ $product->price }}"/>
 									<label>{{ trans('vi.Quantity') }}:</label>
 									<input type="number" value="1" min="0" id="detail-quantity"/>
 									<button type="button" class="btn btn-fefault cart" @if ($product->availability != 'available') disabled @else id="btn-detail-add-cart" @endif>
