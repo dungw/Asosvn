@@ -198,8 +198,5 @@
         </script>
     @endif
 
-    @if (Session::has('success'))
-        <script type="text/javascript"> $.growl.notice({ message: "{{ Session::get('success') }}" }); </script>
-    @endif
 @stop
 

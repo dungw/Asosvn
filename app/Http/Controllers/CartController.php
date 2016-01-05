@@ -17,21 +17,28 @@ class CartController extends Controller
 
 	public function add(Request $request)
 	{
-		$id = "'" . $request->get('id') . "'";
-		$name = "'" . $request->get('name') . "'";
-		$qty = $request->get('qty');
-		$price = $request->get('price');
-		$options = $request->get('options') ? $request->get('options') : array();
-
+		$id = $request->get('id');
 		if ($id) {
-			$result = Cart::add($id, $name, $qty, $price, $options); dd($result);
+			$name = $request->get('name');
+			$qty = $request->get('qty');
+			$price = $request->get('price');
+			$options = $request->get('options') ? $request->get('options') : array();
+			$data = array(
+				'id' 		=> (string)$id,
+				'name'		=> (string)$name,
+				'qty'		=> (int)$qty,
+				'price' 	=> (float)$price,
+				'options' 	=> $options,
+			);
+
+			$result = Cart::add($data);
 			if ($result) {
-				Session::flash('success', 'Product was add to cart successfully!');
+				return 'success';
 			} else {
-				Session::flash('error', 'Cannot add product to cart!');
+				return 'error';
 			}
 		} else {
-			Session::flash('error', 'Cannot add product to cart!');
+			return 'error';
 		}
 	}
 

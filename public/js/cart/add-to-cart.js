@@ -11,9 +11,13 @@ $.addToCart = function(id, name, qty, price, options) {
         options: options
     };
 
-    $.post('/cart/add', data, $.callback());
-};
+    $.post('/cart/add', data, function(data) {
+        if (data == 'success') {
+            $.growl.notice({ message: "Product was add to cart successfully!" });
+        }
 
-$.callback = function() {
-    //todo: in case have something to do in callback
+        if (data == 'error') {
+            $.growl.error({ message: "Cannot add product to cart!" });
+        }
+    });
 };
