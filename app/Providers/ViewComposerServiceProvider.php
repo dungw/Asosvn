@@ -16,6 +16,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 		View::composers([
 			'App\Http\Composers\AdminBreadcrumbComposer' => 'admin.includes.boxed.breadcrumb',
 			'App\Http\Composers\SidebarComposer'         => 'includes.default.left-sidebar',
+			'App\Http\Composers\CartComposer'			 => 'includes.default.shop-menu',
 		]);
 	}
 
