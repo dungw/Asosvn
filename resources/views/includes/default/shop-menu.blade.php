@@ -8,6 +8,8 @@
             <a href="{{ url('cart') }}"><i class="fa fa-shopping-cart"></i>{{ trans('vi.Cart') }}
                 @if ($cartQty > 0)
                     <div class="circle">{{ $cartQty }}</div>
+                @else
+                    <div class="cart-empty"></div>
                 @endif
             </a>
         </li>

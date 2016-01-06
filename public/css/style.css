@@ -258,3 +258,7 @@ a#scrollUp {
     -webkit-border-radius: 70px;
     border-radius: 70px;
 }
+.cart-empty {
+    width: 20px;
+    display: inline-block;
+}
