@@ -132,6 +132,7 @@
 }
 .breadcrumbs .breadcrumb li a:after {
     border-color: transparent transparent transparent #28ABE3 !important;
+    margin-left: 35px !important;
 }
 #cart_items .cart_info .cart_menu {
     background: #28ABE3 !important;

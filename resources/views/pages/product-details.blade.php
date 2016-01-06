@@ -200,11 +200,15 @@
         $(document).ready(function ($) {
             var id = $("#detail-id").val();
             var name = $("#detail-name").val();
-            var qty = $("#detail-quantity").val();
             var price = $("#detail-price").val();
             var slug = $("#detail-slug").val();
             var image = $("#detail-image").val();
             var sku = $("#detail-sku").val();
+            var qty = 1;
+
+            $("#detail-quantity").change(function() {
+                qty = $("#detail-quantity").val();
+            });
 
             $("#btn-detail-add-cart").on("click", function() {
                 $.addToCart(id, name, qty, price, slug, image, sku);

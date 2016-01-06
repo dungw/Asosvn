@@ -5,19 +5,19 @@
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Shopping Cart</li>
+                    <li><a href="{{ url('/') }}">{{ trans('vi.Home') }}</a></li>
+                    <li class="active">{{ trans('vi.Shopping Cart') }}</li>
                 </ol>
             </div>
             <div class="table-responsive cart_info">
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">
-                            <td class="image">Item</td>
+                            <td class="image">{{ trans('vi.Item') }}</td>
                             <td class="description"></td>
-                            <td class="price">Price</td>
-                            <td class="quantity">Quantity</td>
-                            <td class="total">Total</td>
+                            <td class="price">{{ trans('vi.Price') }}</td>
+                            <td class="quantity">{{ trans('vi.Quantity') }}</td>
+                            <td class="total">{{ trans('vi.Total') }}</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -131,16 +131,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="total_area">
-                        <ul>
-                            <li>Cart Sub Total <span>$59</span></li>
-                            <li>Eco Tax <span>$2</span></li>
-                            <li>Shipping Cost <span>Free</span></li>
-                            <li>Total <span>$61</span></li>
-                        </ul>
-                        <a class="btn btn-default update" href="">Update</a>
-                        <a class="btn btn-default check_out" href="">Check Out</a>
-                    </div>
+                    @include('pages.cart-total-area')
                 </div>
             </div>
         </div>

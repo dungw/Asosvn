@@ -15,6 +15,7 @@ Route::get('cart', 'CartController@index');
 Route::post('cart/add', 'CartController@add');
 Route::delete('cart/remove/{rowId}', 'CartController@remove');
 Route::get('cart/update-menu', 'CartController@updateMenu');
+Route::get('cart/update-total', 'CartController@updateTotal');
 
 
 //Frontend routes

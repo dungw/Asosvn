@@ -12,7 +12,10 @@ class CartController extends Controller
 
 	public function index()
 	{
-		return view('pages.cart')->with('cart', Cart::content());
+		$cart = Cart::content();
+		$total = Cart::total();
+
+		return view('pages.cart', compact('cart', 'total'));
 	}
 
 	public function add(Request $request)
@@ -52,6 +55,11 @@ class CartController extends Controller
 	public function updateMenu()
 	{
 		return view('includes.default.shop-menu');
+	}
+
+	public function updateTotal()
+	{
+		return view('pages.cart-total-area')->with('total', Cart::total());
 	}
 
 }

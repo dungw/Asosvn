@@ -34,6 +34,7 @@ $(document).ready(function($)
             success: function(data) {
                 $.growl.notice({ message: "Product was remove successfully!" });
                 $.updateMenu();
+                $.updateCartTotal();
                 $("#cart-item-" + data['rowId']).fadeOut(300, function(){
                     $.when($("#cart-item-" + data['rowId']).remove()).then(function() {
                         if (data['qty'] == 0) {
@@ -50,4 +51,11 @@ $(document).ready(function($)
             $("#shop-menu").html(data);
         });
     };
+
+    $.updateCartTotal = function() {
+        $.get('/cart/update-total', function(data) {
+            $("#cart-total-area").html(data);
+        });
+    }
+
 });

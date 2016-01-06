@@ -24,5 +24,16 @@ return [
 	'unclear'			=> 'Chưa rõ',
 	'Product was add to cart successfully!'	=> 'Thêm thành công sản phẩm vào giỏ hàng!',
 	'Cannot add product to cart!'			=> 'Không thêm được sản phẩm vào giỏ hàng!',
+	'Home'				=> 'Trang Chủ',
+	'Shopping Cart'		=> 'Giỏ Hàng',
+	'Item'				=> 'Sản phẩm',
+	'Price'				=> 'Đơn giá',
+	'Quantity'			=> 'Số lượng',
+	'Total'				=> 'Tổng',
+	'Cart Sub Total'	=> 'Tổng giá sản phẩm',
+	'Shipping Cost'		=> 'Phí vận chuyển',
+	'Free'				=> 'Miễn phí',
+	'Update'			=> 'Cập nhật',
+	'Check Out'			=> 'Thanh toán',
 
 ];
