@@ -18,9 +18,7 @@ $(document).ready(function($)
         $.post('/cart/add', data, function(data) {
             if (data == 'success') {
                 $.growl.notice({ message: "Product was add to cart successfully!" });
-                $.get('/cart/update-menu', function(data) {
-                    $("#shop-menu").html(data);
-                })
+                $.updateMenu();
             }
 
             if (data == 'error') {
@@ -34,6 +32,8 @@ $(document).ready(function($)
             url: 'cart/remove/' + rowId,
             type: 'DELETE',
             success: function(data) {
+                $.growl.notice({ message: "Product was remove successfully!" });
+                $.updateMenu();
                 $("#cart-item-" + data['rowId']).fadeOut(300, function(){
                     $.when($("#cart-item-" + data['rowId']).remove()).then(function() {
                         if (data['qty'] == 0) {
@@ -42,6 +42,12 @@ $(document).ready(function($)
                     });
                 });
             }
+        });
+    };
+
+    $.updateMenu = function() {
+        $.get('/cart/update-menu', function(data) {
+            $("#shop-menu").html(data);
         });
     };
 });
