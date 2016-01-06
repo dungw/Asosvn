@@ -41,16 +41,17 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <a class="cart_quantity_up" href=""> + </a>
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="{{ $item->qty }}" autocomplete="off" size="2">
-                                    <a class="cart_quantity_down" href=""> - </a>
+                                    <a class="cart_quantity_up" href="javascript:void(0)" onclick="$.cartQuantityUp('{{ $item->rowid }}')"> + </a>
+                                    <input class="cart_quantity_input" type="text" name="quantity" value="{{ $item->qty }}" autocomplete="off" size="2" data-rowid="{{ $item->rowid }}">
+                                    <a class="cart_quantity_down" href="javascript:void(0)" onclick="$.cartQuantityDown('{{ $item->rowid }}')"> - </a>
                                 </div>
+
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price">${{ $item->qty*$item->price }}</p>
+                                <p class="cart_total_price">$<span class="item_total_price">{{ $item->qty*$item->price }}</span></p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')" title="Remove Item"><i class="fa fa-times"></i></a>
+                                <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')" title="{{ trans('vi.Remove Item') }}"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
                     @endforeach
@@ -136,4 +137,19 @@
             </div>
         </div>
     </section>
+@stop
+
+@section('front-footer-content')
+    <script type="text/javascript">
+        $( document).ready(function() {
+            $(".cart_quantity_input").on("keydown", function(e) {
+                if ((e.keyCode >= 49 && e.keyCode <= 57) || (e.keyCode >= 97 && e.keyCode <= 105) || e.keyCode == 13) {
+                    var rowId = $(this).data('rowid');
+                    $.cartUpdateQuantity(rowId, $(this).val());
+                } else {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 @stop

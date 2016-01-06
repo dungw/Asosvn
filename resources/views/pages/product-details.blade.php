@@ -60,7 +60,7 @@
 								<span>
 									<span>US ${{ $product->price }}</span>
 									<label>{{ trans('vi.Quantity') }}:</label>
-									<input type="number" value="1" min="0" id="detail-quantity"/>
+									<input type="number" value="1" min="1" id="detail-quantity"/>
 									<button type="button" class="btn btn-fefault cart" @if ($product->availability != 'available') disabled @else id="btn-detail-add-cart" @endif>
                                         <i class="fa fa-shopping-cart"></i>
                                         {{ trans('vi.Add to cart') }}

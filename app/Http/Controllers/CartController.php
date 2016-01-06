@@ -10,6 +10,10 @@ use Session;
 class CartController extends Controller
 {
 
+	/**
+	 * get view cart page
+	 * @return \Illuminate\View\View
+	 */
 	public function index()
 	{
 		$cart = Cart::content();
@@ -18,6 +22,11 @@ class CartController extends Controller
 		return view('pages.cart', compact('cart', 'total'));
 	}
 
+	/**
+	 * add product to cart
+	 * @param Request $request
+	 * @return string
+	 */
 	public function add(Request $request)
 	{
 		$id = $request->get('id');
@@ -42,6 +51,11 @@ class CartController extends Controller
 		}
 	}
 
+	/**
+	 * remove a product from cart
+	 * @param $rowId
+	 * @return array
+	 */
 	public function remove($rowId)
 	{
 		Cart::remove($rowId);
@@ -52,14 +66,85 @@ class CartController extends Controller
 		);
 	}
 
+	/**
+	 * Update shop menu when cart update
+	 * @return \Illuminate\View\View
+	 */
 	public function updateMenu()
 	{
 		return view('includes.default.shop-menu');
 	}
 
+	/**
+	 * update cart total area after cart update
+	 * @return $this
+	 */
 	public function updateTotal()
 	{
 		return view('pages.cart-total-area')->with('total', Cart::total());
 	}
 
+	/**
+	 * update quantity of item in cart
+	 * @param Request $request
+	 * @return array
+	 */
+	public function updateQty(Request $request)
+	{
+		$rowId = $request->get('rowId');
+		$qty = $request->get('qty');
+
+		if ($qty) {
+			Cart::update($rowId, $qty);
+		} else {
+			return array('error' => 'Cannot update item quantity!');
+		}
+
+		$item = Cart::get($rowId);
+
+		return array(
+			'qty' 			=> $item->qty,
+			'totalPrice'	=> ($item->qty)*($item->price)
+		);
+
+	}
+
+	/**
+	 * Increase cart item by 1
+	 * @param $rowId
+	 * @return array
+	 */
+	public function qtyUp($rowId)
+	{
+		$item = Cart::get($rowId);
+
+		Cart::update($rowId, $item->qty + 1);
+
+		return array(
+			'qty' 			=> $item->qty,
+			'totalPrice'	=> ($item->qty)*($item->price)
+		);
+	}
+
+	/**
+	 * Decrease cart item by 1
+	 * @param $rowId
+	 * @return array
+	 */
+	public function qtyDown($rowId)
+	{
+		$item = Cart::get($rowId);
+
+		if ($item->qty == 1) {
+			Cart::remove($rowId);
+			return array('empty' => true);
+		}
+
+		Cart::update($rowId, $item->qty - 1);
+
+		return array(
+			'qty' 			=> $item->qty,
+			'totalPrice'	=> ($item->qty)*($item->price)
+		);
+	}
 }

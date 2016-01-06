@@ -262,3 +262,6 @@ a#scrollUp {
     width: 20px;
     display: inline-block;
 }
+.cart_quantity_button a {
+    text-decoration: none;
+}

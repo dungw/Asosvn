@@ -35,5 +35,6 @@ return [
 	'Free'				=> 'Miễn phí',
 	'Update'			=> 'Cập nhật',
 	'Check Out'			=> 'Thanh toán',
+	'Remove Item'		=> 'Xóa sản phẩm',
 
 ];

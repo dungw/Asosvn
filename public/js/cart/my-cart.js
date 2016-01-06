@@ -56,6 +56,48 @@ $(document).ready(function($)
         $.get('/cart/update-total', function(data) {
             $("#cart-total-area").html(data);
         });
-    }
+    };
+
+    $.cartQuantityUp = function(rowId) {
+        $.post('/cart/qty-up/' + rowId, function(data) {
+            $("#cart-item-" + rowId).find(".cart_quantity_input").val(data.qty);
+            $("#cart-item-" + rowId).find(".item_total_price").html(data.totalPrice);
+            $.updateMenu();
+            $.updateCartTotal();
+        });
+    };
+
+    $.cartQuantityDown = function(rowId) {
+        $.post('/cart/qty-down/' + rowId, function(data) {
+            if (data.empty) {
+                $("#cart-item-" + rowId).remove();
+                $.growl.notice({ message: "Product was remove successfully!" });
+                $.updateMenu();
+                $.updateCartTotal();
+            } else {
+                $("#cart-item-" + rowId).find(".cart_quantity_input").val(data.qty);
+                $("#cart-item-" + rowId).find(".item_total_price").html(data.totalPrice);
+                $.updateMenu();
+                $.updateCartTotal();
+            }
+        });
+    };
+
+    $.cartUpdateQuantity = function(rowId, qty) {
+        var data = {
+            rowId: rowId,
+            qty: qty
+        };
+        $.post('/cart/update-qty', data, function(data) {
+            if (data.error) {
+                $.growl.error({ message: data.error });
+            } else {
+                $("#cart-item-" + rowId).find(".cart_quantity_input").val(data.qty);
+                $("#cart-item-" + rowId).find(".item_total_price").html(data.totalPrice);
+                $.updateMenu();
+                $.updateCartTotal();
+            }
+        });
+    };
 
 });
