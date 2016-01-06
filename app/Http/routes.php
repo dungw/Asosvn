@@ -14,6 +14,8 @@ Route::get('product/{slug}', 'ProductController@details');
 Route::get('cart', 'CartController@index');
 Route::post('cart/add', 'CartController@add');
 Route::delete('cart/remove/{rowId}', 'CartController@remove');
+Route::get('cart/update-menu', 'CartController@updateMenu');
+
 
 //Frontend routes
 Route::get('404', function() {

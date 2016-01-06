@@ -2,6 +2,8 @@
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Event;
+use Illuminate\Support\Facades\Session;
 
 class EventServiceProvider extends ServiceProvider {
 
@@ -26,7 +28,11 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
-		//
+		Event::listen('cart.add', function($event) {
+			if ($event) {
+				Session::flash('cart-add', 'success');
+			}
+		});
 	}
 
 }

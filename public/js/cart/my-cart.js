@@ -18,6 +18,9 @@ $(document).ready(function($)
         $.post('/cart/add', data, function(data) {
             if (data == 'success') {
                 $.growl.notice({ message: "Product was add to cart successfully!" });
+                $.get('/cart/update-menu', function(data) {
+                    $("#shop-menu").html(data);
+                })
             }
 
             if (data == 'error') {

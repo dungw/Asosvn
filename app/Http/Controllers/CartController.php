@@ -4,8 +4,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Session;
 use Cart;
+use Session;
 
 class CartController extends Controller
 {
@@ -29,11 +29,11 @@ class CartController extends Controller
 			);
 
 			Cart::add(array('id' => $id, 'name' => $name, 'qty' => $qty, 'price' => $price, 'options' => $options));
-//			if ($result) {
-//				return 'success';
-//			} else {
-//				return 'error';
-//			}
+			if (Session::has('cart-add') && Session::get('cart-add') == 'success') {
+				return 'success';
+			} else {
+				return 'error';
+			}
 		} else {
 			return 'error';
 		}
@@ -47,6 +47,11 @@ class CartController extends Controller
 			'qty' 	=> count(Cart::content()),
 			'rowId' => $rowId
 		);
+	}
+
+	public function updateMenu()
+	{
+		return view('includes.default.shop-menu');
 	}
 
 }

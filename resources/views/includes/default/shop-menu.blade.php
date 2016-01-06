@@ -1,5 +1,5 @@
 
-<div class="shop-menu pull-right">
+<div class="shop-menu pull-right" id="shop-menu">
     <ul class="nav navbar-nav">
         <li><a href="#"><i class="fa fa-user"></i> {{ trans('vi.Account') }}</a></li>
         <li><a href="#"><i class="fa fa-star"></i> {{ trans('vi.Wishlist') }}</a></li>

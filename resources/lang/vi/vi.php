@@ -21,6 +21,8 @@ return [
 	'Contact'			=> 'Liên hệ',
 	'saleoff'			=> 'Giảm giá',
 	'new'				=> 'Mới',
-	'unclear'			=> 'Chưa rõ'
+	'unclear'			=> 'Chưa rõ',
+	'Product was add to cart successfully!'	=> 'Thêm thành công sản phẩm vào giỏ hàng!',
+	'Cannot add product to cart!'			=> 'Không thêm được sản phẩm vào giỏ hàng!',
 
 ];
