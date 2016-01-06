@@ -229,7 +229,7 @@ class MyHtml extends Html
 		}
 	}
 
-	public static function remove_category()
+	public static function action_without_category()
 	{
 		$route = Route::getCurrentRoute();
 		$input = Input::all();
@@ -270,7 +270,7 @@ class MyHtml extends Html
 		}
 	}
 
-	public static function remove_brand()
+	public static function action_without_brand()
 	{
 		$route = Route::getCurrentRoute();
 		$input = Input::all();

@@ -17,7 +17,7 @@
 
                     <div class="features_items">
 
-                        <h2 class="title text-center">{{ $category->name }}</h2>
+                        <h2 class="title text-center">{{ $category->name or $brand->name }}</h2>
 
                         @forelse($products as $product)
                             <div class="col-sm-4">

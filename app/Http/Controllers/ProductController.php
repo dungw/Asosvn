@@ -1,10 +1,10 @@
 <?php namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Category;
 use App\Http\Requests;
 use App\Product;
 use App\ProductImage;
-use Input;
 
 class ProductController extends BaseController
 {
@@ -23,32 +23,28 @@ class ProductController extends BaseController
 	{
 		//get category
 		$data['category'] = Category::findBySlug($slug);
-		if (!$data['category'])
-		{
-			return redirect('404');
-		}
+		if (!$data['category']) return redirect('404');
 
 		//get products
 		$data['products'] = Product::filterWithCategory($data['category']->id)->paginate(self::PAGINATION_ITEM_PER_PAGE);
 
 		//product images
-		$data['images'] = [];
-		if (!empty($data['products']))
-		{
-			foreach ($data['products'] as $product)
-			{
-				$mainImage = $product->images()->first()->image;
-				$imagePath = 'uploads/products/' . $mainImage[0] . '/' . $mainImage[1] . '/' . $mainImage[2] . '/' . $mainImage;
+		$data['images'] = $this->listsImage($data['products']);
 
-				if (file_exists(public_path($imagePath)))
-				{
-					$data['images'][$product->id] = $imagePath;
-				} else
-				{
-					$data['images'][$product->id] = ProductImage::NO_IMAGE;
-				}
-			}
-		}
+		return view('pages.products', $data);
+	}
+
+	public function brand($slug)
+	{
+		//get brand
+		$data['brand'] = Brand::findBySlug($slug);
+		if (!$data['brand']) redirect('404');
+
+		//get products
+		$data['products'] = Product::filterWithBrand($data['brand']->id)->paginate(self::PAGINATION_ITEM_PER_PAGE);
+
+		//product images
+		$data['images'] = $this->listsImage($data['products']);
 
 		return view('pages.products', $data);
 	}
@@ -80,6 +76,35 @@ class ProductController extends BaseController
 		$product->images = $images;
 
 		return view('pages.product-details', compact('product', $product));
+	}
+
+	/**
+	 * Function lists image from product list
+	 *
+	 * @param $products
+	 * @return array $images
+	 */
+	private function listsImage($products)
+	{
+		$images = [];
+		if (!empty($products))
+		{
+			foreach ($products as $product)
+			{
+				$mainImage = $product->images()->first()->image;
+				$imagePath = 'uploads/products/' . $mainImage[0] . '/' . $mainImage[1] . '/' . $mainImage[2] . '/' . $mainImage;
+
+				if (file_exists(public_path($imagePath)))
+				{
+					$images[$product->id] = $imagePath;
+				} else
+				{
+					$images[$product->id] = ProductImage::NO_IMAGE;
+				}
+			}
+		}
+
+		return $images;
 	}
 
 }
