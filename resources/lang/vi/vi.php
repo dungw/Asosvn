@@ -20,6 +20,7 @@ return [
 	'SKU'				=> 'Mã sản phẩm',
 	'Contact'			=> 'Liên hệ',
 	'saleoff'			=> 'Giảm giá',
-	'new'				=> 'Mới'
+	'new'				=> 'Mới',
+	'unclear'			=> 'Chưa rõ'
 
 ];

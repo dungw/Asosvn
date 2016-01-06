@@ -70,7 +70,7 @@
                                 @if ($product->condition)
                                     <p><b>Condition:</b> {{ trans('vi.' . $product->condition) }}</p>
                                 @endif
-                                <p><b>{{ trans('vi.Brand') }}:</b> {{ $product->brand_name }}</p>
+                                <p><b>{{ trans('vi.Brand') }}:</b> {{ $product->brand_name or trans('vi.unclear')}}</p>
                                 <a href=""><img src="{{ asset('images/product-details/share.png') }}" class="share img-responsive"  alt="" /></a>
                             </div><!--/product-information-->
                         </div>
@@ -195,7 +195,7 @@
     @endif
 @stop
 
-@section('footer-content')
+@section('front-footer-content')
     <script type="text/javascript">
         $(document).ready(function ($) {
             var id = $("#detail-id").val();
