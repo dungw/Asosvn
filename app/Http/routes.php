@@ -11,8 +11,11 @@ Route::get('user/logout', 'UserController@logout');
 
 //Product
 Route::get('product/{slug}', 'ProductController@details');
+
+//Cart
 Route::get('cart', 'CartController@index');
 Route::post('cart/add', 'CartController@add');
+Route::get('cart/qty/{rowId}', 'CartController@qty');
 Route::delete('cart/remove/{rowId}', 'CartController@remove');
 Route::get('cart/update-menu', 'CartController@updateMenu');
 Route::get('cart/update-total', 'CartController@updateTotal');

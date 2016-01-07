@@ -42,7 +42,7 @@
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
                                     <a class="cart_quantity_up" href="javascript:void(0)" onclick="$.cartQuantityUp('{{ $item->rowid }}')"> + </a>
-                                    <input class="cart_quantity_input" type="text" name="quantity" value="{{ $item->qty }}" autocomplete="off" size="2" data-rowid="{{ $item->rowid }}">
+                                    <input class="cart_quantity_input" type="text" name="quantity" value="{{ $item->qty }}" autocomplete="off" size="3" data-rowid="{{ $item->rowid }}">
                                     <a class="cart_quantity_down" href="javascript:void(0)" onclick="$.cartQuantityDown('{{ $item->rowid }}')"> - </a>
                                 </div>
 
@@ -143,9 +143,19 @@
     <script type="text/javascript">
         $( document).ready(function() {
             $(".cart_quantity_input").on("keydown", function(e) {
-                if ((e.keyCode >= 49 && e.keyCode <= 57) || (e.keyCode >= 97 && e.keyCode <= 105) || e.keyCode == 13) {
-                    var rowId = $(this).data('rowid');
-                    $.cartUpdateQuantity(rowId, $(this).val());
+                if ((e.keyCode >= 48 && e.keyCode <= 57) || (e.keyCode >= 96 && e.keyCode <= 105) || e.keyCode == 13 || e.keyCode == 8 || e.keyCode == 37 || e.keyCode == 39) {
+                    var current = $(this);
+                    $(this).on("change", function() {
+                        var rowId = $(this).data('rowid');
+                        if ($(this).val() == 0 || !$(this).val()) {
+                            e.preventDefault();
+                            $.get('/cart/qty/' + rowId, function(data) {
+                                current.val(data);
+                            });
+                        } else {
+                            $.cartUpdateQuantity(rowId, $(this).val());
+                        }
+                    });
                 } else {
                     e.preventDefault();
                 }

@@ -23,6 +23,17 @@ class CartController extends Controller
 	}
 
 	/**
+	 * get item quantity
+	 * @return mixed
+	 */
+	public function qty($rowId)
+	{
+		$item = Cart::get($rowId);
+
+		return $item->qty;
+	}
+
+	/**
 	 * add product to cart
 	 * @param Request $request
 	 * @return string
