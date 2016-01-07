@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('title')
+    {{ trans('vi.Cart') }}
+@stop
+
 @section('content')
     <section id="cart_items">
         <div class="container">

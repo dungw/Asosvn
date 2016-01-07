@@ -3,7 +3,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
-<title>Home | E-Shopper</title>
+<title>@yield('title') | Sale-Zone</title>
 <link rel="icon" href="{{ url('images/icon/sale-icon.png') }}" type="image/gif" sizes="32x32">
 
 <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
