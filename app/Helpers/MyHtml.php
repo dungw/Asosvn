@@ -7,6 +7,7 @@ use App\ProductImage;
 use Illuminate\Html\HtmlFacade as Html;
 use Illuminate\Html\FormFacade as Form;
 use Input;
+use Request;
 use Route;
 use App\Helpers\ImageManager;
 
@@ -309,6 +310,19 @@ class MyHtml extends Html
 		} else {
 			return action('HomeController@index');
 		}
+	}
+
+	public static function action_without_pricerange()
+	{
+		$url = Request::url();
+		$input = Input::all();
+
+		if (!empty($input))
+		{
+			$url .= '?' . implode('&', array_except($input, 'pr'));
+		}
+
+		return $url;
 	}
 
 	public static function showThumb($filename, $type)

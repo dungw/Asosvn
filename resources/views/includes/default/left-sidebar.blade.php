@@ -88,15 +88,18 @@
         </div>
     @endif
 
+    @if (Route::getCurrentRoute()->getUri() === 'b/{brand_slug}' or Route::getCurrentRoute()->getUri() === 'c/{category_slug}')
     <div class="price-range">
-        <h2>Price Range</h2>
 
+        <h2>Price Range</h2>
         <div class="well text-center">
-            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5"
-                   data-slider-value="[250,450]" id="sl2"><br/>
-            <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="{{ max($products->lists('price')) < 1000 ? 1000 : max($products->lists('price')) }}" data-slider-step="5"
+                   data-slider-value="[{{ min($products->lists('price')) }},{{ max($products->lists('price')) }}]" id="price-range"><br/>
+            <b class="pull-left">$ 0</b> <b class="pull-right">$ {{ max($products->lists('price')) < 1000 ? 1000 : max($products->lists('price')) }}</b>
         </div>
+
     </div>
+    @endif
 
     <div class="shipping text-center">
         <img src="{{ asset('images/home/shipping.jpg') }}" alt=""/>
@@ -108,15 +111,20 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.parents').click(function () {
 
+            $('.parents').click(function () {
                 if ($('#' + $(this).attr('data-children')).hasClass('collapse')) {
                     $(this).find('i').attr('class', 'fa fa-minus');
                 } else {
                     $(this).find('i').attr('class', 'fa fa-plus');
                 }
-
             });
+
+            $('#price-range').change(function() {
+                var action_without_pricerange = '{{ App\Helpers\MyHtml::action_without_pricerange() }}';
+                console.log(action_without_pricerange);
+            });
+
         });
     </script>
 
