@@ -5,7 +5,9 @@
             <a href="{{ url('cart') }}"><i class="fa fa-shopping-cart"></i>{{ trans('vi.Cart') }}
                 @if ($cartQty > 0)
                     <div class="cart-qty">
-                        <div class="@if ($cartQty > 99) circle-plus @else circle @endif">{{ $cartQty }}</div>
+                        <div class="@if ($cartQty > 99) circle-plus @else circle @endif">
+                            <span>{{ $cartQty }}</span>
+                        </div>
                     </div>
                 @else
                     <div class="cart-empty"></div>
