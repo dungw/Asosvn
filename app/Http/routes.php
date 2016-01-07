@@ -16,13 +16,13 @@ Route::get('product/{slug}', 'ProductController@details');
 Route::get('cart', 'CartController@index');
 Route::post('cart/add', 'CartController@add');
 Route::get('cart/qty/{rowId}', 'CartController@qty');
-Route::delete('cart/remove/{rowId}', 'CartController@remove');
+Route::get('cart/totalQty', 'CartController@totalQty');
 Route::get('cart/update-menu', 'CartController@updateMenu');
 Route::get('cart/update-total', 'CartController@updateTotal');
 Route::post('cart/update-qty', 'CartController@updateQty');
 Route::post('cart/qty-up/{rowId}', 'CartController@qtyUp');
 Route::post('cart/qty-down/{rowId}', 'CartController@qtyDown');
-
+Route::delete('cart/remove/{rowId}', 'CartController@remove');
 
 //Frontend routes
 Route::get('404', function() {

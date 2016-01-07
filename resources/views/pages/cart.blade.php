@@ -57,11 +57,11 @@
                     @endforeach
                     @if (count($cart) == 0)
                         <tr>
-                            <td><p class="empty-cart">Your cart is empty! Click <a href="{{ url('/') }}">here</a> to continue shopping.</p></td>
+                            <td><p class="empty-cart">{{ trans('vi.Your cart is empty!') }} {{ trans('vi.Click') }} <a href="{{ url('/') }}">{{ trans('vi.here') }}</a> {{ trans('vi.to continue shopping') }}.</p></td>
                         </tr>
                     @endif
                     <tr id="cart-empty-message" style="display: none !important;">
-                        <td><p class="empty-cart">Your cart is empty! Click <a href="{{ url('/') }}">here</a> to continue shopping.</p></td>
+                        <td><p class="empty-cart">{{ trans('vi.Your cart is empty!') }} {{ trans('vi.Click') }} <a href="{{ url('/') }}">{{ trans('vi.here') }}</a> {{ trans('vi.to continue shopping') }}.</p></td>
                     </tr>
 
                     </tbody>

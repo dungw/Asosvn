@@ -34,6 +34,15 @@ class CartController extends Controller
 	}
 
 	/**
+	 * get total cart quantity
+	 * @return mixed
+	 */
+	public function totalQty()
+	{
+		return Cart::count();
+	}
+
+	/**
 	 * add product to cart
 	 * @param Request $request
 	 * @return string

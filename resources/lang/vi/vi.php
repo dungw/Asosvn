@@ -36,5 +36,9 @@ return [
 	'Update'			=> 'Cập nhật',
 	'Check Out'			=> 'Thanh toán',
 	'Remove Item'		=> 'Xóa sản phẩm',
+	'Click'				=> 'Nhấn chuột',
+	'here'				=> 'vào đây',
+	'Your cart is empty!'	=> 'Không có hàng trong giỏ!',
+	'to continue shopping'	=> 'để tiếp tục mua hàng',
 
 ];
