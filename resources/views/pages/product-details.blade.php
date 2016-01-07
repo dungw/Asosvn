@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('title')
+    {{ $product->name }}
+@stop
+
 @section('content')
     <section>
         <div class="container">

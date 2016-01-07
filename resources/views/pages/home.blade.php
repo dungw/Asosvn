@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('title')
+    {{ trans('vi.Home') }}
+@stop
+
 @section('intermediate')
     @include('includes.default.slider')
 @stop
