@@ -289,3 +289,6 @@ a#scrollUp {
 .cart_total {
     width: 200px !important;
 }
+.check_out {
+    margin-left: 40px;
+}
