@@ -40,5 +40,6 @@ return [
 	'here'				=> 'vào đây',
 	'Your cart is empty!'	=> 'Không có hàng trong giỏ!',
 	'to continue shopping'	=> 'để tiếp tục mua hàng',
+	'Go back home'		=> 'Quay Lại Trang Chủ',
 
 ];
