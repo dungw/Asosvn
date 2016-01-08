@@ -296,3 +296,6 @@ a#scrollUp {
     display: inline-block;
     margin-top: 1px;
 }
+.select-currency {
+    padding-left: 25px;
+}

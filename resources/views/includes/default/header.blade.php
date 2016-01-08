@@ -27,7 +27,19 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="logo pull-left">
-                    <a href="/"><img src="{{ asset('images/home/logo.png') }}" alt="Home page" /></a>
+                    <a href="{{ url('/') }}"><img src="{{ asset('images/home/logo.png') }}" alt="Home page" /></a>
+                </div>
+                <div class="btn-group select-currency">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                            current currency
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">VNĐ</a></li>
+                            <li><a href="#">USA</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-sm-8">
