@@ -117,7 +117,14 @@ return [
 	|
 	*/
 
-	'currency_default' => 'USA',
+	'currency'			=> array('USD', 'VND'),
+	'currency_default' 	=> 'USD',
+
+	'currency_rate_USD_to_USD'	=> 1,
+	//Currency rate USD -> VND
+	'currency_rate_USD_to_VND'	=> 22000,
+	// currency rate default to other, example:
+	//'currency_rate_USD_to_XXX'	=> some value
 
 	/*
 	|--------------------------------------------------------------------------

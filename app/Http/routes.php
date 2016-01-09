@@ -24,10 +24,9 @@ Route::post('cart/qty-up/{rowId}', 'CartController@qtyUp');
 Route::post('cart/qty-down/{rowId}', 'CartController@qtyDown');
 Route::delete('cart/remove/{rowId}', 'CartController@remove');
 
-//Frontend routes
-Route::get('404', function() {
-	return view('layouts.404');
-});
+//Currency
+Route::get('currency/{currency}', 'CurrencyController@changeTo');
+
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('c/{category_slug}', 'ProductController@category');

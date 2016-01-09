@@ -62,7 +62,7 @@
                                 <p>{{ trans('vi.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
-									<span>US ${{ $product->price }}</span>
+									<span>{!! App\Helpers\Currency::currency($product->price) !!}</span>
 									<label>{{ trans('vi.Quantity') }}:</label>
 									<input type="number" value="1" min="1" id="detail-quantity"/>
 									<button type="button" class="btn btn-fefault cart" @if ($product->availability != 'available') disabled @else id="btn-detail-add-cart" @endif>

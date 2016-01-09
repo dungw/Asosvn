@@ -32,12 +32,20 @@
                 <div class="btn-group select-currency">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                            current currency
+                            @if (Session::has('currency'))
+                                @if (Session::get('currency') == 'VND')
+                                    VNĐ
+                                @else
+                                    {{ Session::get('currency') }}
+                                @endif
+                            @else
+                                {{ Config::get('app.currency_default')}}
+                            @endif
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">VNĐ</a></li>
-                            <li><a href="#">USA</a></li>
+                            <li><a href="{{ url('currency/VND') }}">VNĐ</a></li>
+                            <li><a href="{{ url('currency/USD') }}">USD</a></li>
                         </ul>
                     </div>
                 </div>
