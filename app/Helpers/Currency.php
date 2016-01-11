@@ -19,6 +19,9 @@ class Currency
 			case 'USD':
 				$fmt = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
 				break;
+			default:
+				$fmt = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
+				break;
 		}
 
 		return  $fmt->formatCurrency($finalPrice, $currentCurrency);
