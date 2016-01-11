@@ -69,7 +69,6 @@
                     @foreach ($brands as $brand)
                         @if ($brand->products()->count() > 0)
                             <li>
-
                                 @if (isset($curBrand) && ($brand->id == $curBrand->id))
                                     <a class="active-brand"
                                        href="{{ App\Helpers\MyHtml::action_without_brand($brand) }}">{{ $brand->name }}&nbsp;<i class="fa fa-times pull-right font12"></i></a>
@@ -77,7 +76,6 @@
                                     <a class=""
                                        href="{{ App\Helpers\MyHtml::action_to_brand($brand) }}">{{ $brand->name }}&nbsp;<span class="pull-right font12">({{ $brand->products()->count() }})</span></a>
                                 @endif
-
                             </li>
                         @endif
                     @endforeach
@@ -88,18 +86,18 @@
         </div>
     @endif
 
+    <!--
     @if (Route::getCurrentRoute()->getUri() === 'b/{brand_slug}' or Route::getCurrentRoute()->getUri() === 'c/{category_slug}')
     <div class="price-range">
-
         <h2>Price Range</h2>
         <div class="well text-center">
-            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="{{ max($products->lists('price')) < 1000 ? 1000 : max($products->lists('price')) }}" data-slider-step="5"
-                   data-slider-value="[{{ min($products->lists('price')) }},{{ max($products->lists('price')) }}]" id="price-range"><br/>
-            <b class="pull-left">$ 0</b> <b class="pull-right">$ {{ max($products->lists('price')) < 1000 ? 1000 : max($products->lists('price')) }}</b>
+            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="0" data-slider-step="5"
+                   data-slider-value="[0,0]" id="price-range"><br/>
+            <b class="pull-left">$ 0</b> <b class="pull-right">$ 0</b>
         </div>
-
     </div>
     @endif
+    -->
 
     <div class="shipping text-center">
         <img src="{{ asset('images/home/shipping.jpg') }}" alt=""/>
