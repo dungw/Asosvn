@@ -1,5 +1,6 @@
 <?php namespace App\Helpers;
 
+use NumberFormatter;
 use Session;
 use Config;
 
@@ -10,7 +11,7 @@ class Currency
 		$currentCurrency = Session::get('currency') ? Session::get('currency') : Config::get('app.currency_default');
 		$rate = Config::get('app.currency_rate_' . Config::get('app.currency_default'). '_to_' . $currentCurrency);
 
-		$finalPrice = $price*$rate;
+		$finalPrice = $price * $rate;
 		switch ($currentCurrency) {
 			case 'VND':
 				$fmt = new NumberFormatter('vi_VN', NumberFormatter::CURRENCY);
