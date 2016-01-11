@@ -75,7 +75,7 @@
                                     <p><b>Condition:</b> {{ trans('vi.' . $product->condition) }}</p>
                                 @endif
                                 <p><b>{{ trans('vi.Brand') }}:</b> {{ $product->brand_name or trans('vi.unclear')}}</p>
-                                <a href=""><img src="{{ asset('images/product-details/share.png') }}" class="share img-responsive"  alt="" /></a>
+                                <div class="fb-like" data-href="http://salezone.vn" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
                             </div><!--/product-information-->
                         </div>
                     </div><!--/product-details-->
