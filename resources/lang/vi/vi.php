@@ -42,5 +42,6 @@ return [
 	'to continue shopping'                  => 'để tiếp tục mua hàng',
 	'Go back home'                          => 'Quay Lại Trang Chủ',
 	'No product.'                           => 'Hiện chưa có sản phẩm phù hợp.',
+	'Facebook Comment'						=> 'Bình luận Facebook',
 
 ];

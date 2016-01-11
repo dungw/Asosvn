@@ -84,7 +84,7 @@
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#description" data-toggle="tab">{{ trans('vi.Description') }}</a></li>
-                                <li><a href="#abc" data-toggle="tab">Something</a></li>
+                                <li><a href="#facebook-comment" data-toggle="tab">{{ trans('vi.Facebook Comment') }}</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -92,8 +92,8 @@
                                 {!! $product->description !!}
                             </div>
 
-                            <div class="tab-pane fade" id="abc">
-                                Something else here
+                            <div class="tab-pane fade" id="facebook-comment">
+                                <div class="fb-comments" data-href="http://salezone.vn/" data-numposts="5" data-width="100%" data-order-by="reverse_time"></div>
                             </div>
                         </div>
                     </div><!--/category-tab-->
