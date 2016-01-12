@@ -13,7 +13,6 @@
                 <div class="social-icons pull-right">
                     <ul class="nav navbar-nav">
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     </ul>
                 </div>
@@ -27,7 +26,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="logo pull-left">
-                    <a href="{{ url('/') }}"><img src="{{ asset('images/home/logo.png') }}" alt="Home page" /></a>
+                    <a href="{{ url('/') }}"><img src="{{ asset('images/home/logo.png') }}" alt="{{ trans('vi.Home') }}"/></a>
                 </div>
                 <div class="btn-group select-currency">
                     <div class="btn-group">

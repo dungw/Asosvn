@@ -25,6 +25,7 @@ return [
 	'Product was add to cart successfully!' => 'Thêm thành công sản phẩm vào giỏ hàng!',
 	'Cannot add product to cart!'           => 'Không thêm được sản phẩm vào giỏ hàng!',
 	'Home'                                  => 'Trang Chủ',
+	'Home page'								=> 'Trang Chủ',
 	'Shopping Cart'                         => 'Giỏ Hàng',
 	'Item'                                  => 'Sản phẩm',
 	'Price'                                 => 'Đơn giá',
@@ -43,5 +44,10 @@ return [
 	'Go back home'                          => 'Quay Lại Trang Chủ',
 	'No product.'                           => 'Hiện chưa có sản phẩm phù hợp.',
 	'Facebook Comment'						=> 'Bình luận Facebook',
+	'Leather'								=> 'Hàng da',
+	'Leather bag'							=> 'Túi da',
+	'Leather wallet'						=> 'Ví da',
+	'Leather belt'							=> 'Thắt lưng da',
+	'Handmade'								=> 'Hàng thủ công',
 
 ];

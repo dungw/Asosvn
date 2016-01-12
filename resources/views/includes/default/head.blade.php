@@ -1,8 +1,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
+<meta name="keywords" content="salezone.vn, salezone, {{ trans('vi.Leather') }}, {{ trans('vi.Leather bag') }}, {{ trans('vi.Leather wallet') }}, {{ trans('vi.Leather belt') }}, {{ trans('vi.Handmade') }}">
+<meta name="description" content="salezone.vn, salezone, {{ trans('vi.Leather') }}, {{ trans('vi.Leather bag') }}, {{ trans('vi.Leather wallet') }}, {{ trans('vi.Leather belt') }}, {{ trans('vi.Handmade') }}">
 <meta name="author" content="">
+<meta property="og:title" content=""/>
+<meta property="og:description" content=""/>
+<meta property="og:type" content="website" />
+<meta name="copyright" content="salezone.vn" />
+<meta name="author" content="salezone.vn" />
+<meta name="abstract" content="" />
+<meta name="GENERATOR" content="SaleZone"/>
+
 <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 <title>@yield('title') | Sale-Zone</title>
 <link rel="icon" href="{{ url('images/icon/sale-icon.png') }}" type="image/gif" sizes="32x32">
 
@@ -22,7 +32,6 @@
 <script src="{{ asset('js/html5shiv.js') }}"></script>
 <script src="{{ asset('js/respond.min.js') }}"></script>
 <![endif]-->
-
 
 <link rel="shortcut icon" href="{{ asset('images/ico/favicon.ico') }}">
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/ico/apple-touch-icon-144-precomposed.png') }}">
