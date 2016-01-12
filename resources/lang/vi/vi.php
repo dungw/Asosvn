@@ -41,6 +41,7 @@ return [
 	'here'                                  => 'vào đây',
 	'Your cart is empty!'                   => 'Không có hàng trong giỏ!',
 	'to continue shopping'                  => 'để tiếp tục mua hàng',
+	'Continue shopping'                  	=> 'Tiếp tục mua hàng',
 	'Go back home'                          => 'Quay Lại Trang Chủ',
 	'No product.'                           => 'Hiện chưa có sản phẩm phù hợp.',
 	'Facebook Comment'						=> 'Bình luận Facebook',

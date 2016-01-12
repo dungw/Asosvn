@@ -41,7 +41,7 @@
                                 <p>{{ trans('vi.SKU') }}: {{ $item->options->sku }}</p>
                             </td>
                             <td class="cart_price">
-                                <p>${{ $item->price }}</p>
+                                <p>{!! App\Helpers\Currency::currency($item->price) !!}</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -52,7 +52,9 @@
 
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price">$<span class="item_total_price">{{ $item->qty*$item->price }}</span></p>
+                                <p class="cart_total_price">
+                                    <span class="item_total_price">{!! App\Helpers\Currency::currency($item->qty*$item->price) !!}</span>
+                                </p>
                             </td>
                             <td class="cart_delete">
                                 <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')" title="{{ trans('vi.Remove Item') }}"><i class="fa fa-times"></i></a>
