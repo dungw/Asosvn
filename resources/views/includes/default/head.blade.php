@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="salezone.vn, salezone, {{ trans('vi.Leather') }}, {{ trans('vi.Leather bag') }}, {{ trans('vi.Leather wallet') }}, {{ trans('vi.Leather belt') }}, {{ trans('vi.Handmade') }}">
+<meta name="keywords" content="salezone.vn, salezone, {{ trans('vi.Leather') }}, {{ trans('vi.Leather bag') }}, {{ trans('vi.Leather wallet') }}, {{ trans('vi.Leather belt') }}, {{ trans('vi.Handmade') }}, {{ trans('vi.Real leather') }}">
 <meta name="description" content="salezone.vn, salezone, {{ trans('vi.Leather') }}, {{ trans('vi.Leather bag') }}, {{ trans('vi.Leather wallet') }}, {{ trans('vi.Leather belt') }}, {{ trans('vi.Handmade') }}">
 <meta name="author" content="">
 <meta property="og:title" content=""/>
