@@ -296,6 +296,7 @@ a#scrollUp {
 .select-currency {
     padding-left: 25px;
 }
-a:hover {
+.single-widget ul li a:hover {
+    background: none;
     color: #28ABE3 !important;
 }
