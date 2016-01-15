@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Cart;
 use Session;
+use App\Helpers\Currency;
 
 class CartController extends Controller
 {
@@ -124,7 +125,7 @@ class CartController extends Controller
 
 		return array(
 			'qty' 			=> $item->qty,
-			'totalPrice'	=> ($item->qty)*($item->price)
+			'totalPrice'	=> Currency::currency($item->qty*$item->price),
 		);
 
 	}
@@ -142,7 +143,7 @@ class CartController extends Controller
 
 		return array(
 			'qty' 			=> $item->qty,
-			'totalPrice'	=> ($item->qty)*($item->price)
+			'totalPrice'	=> Currency::currency($item->qty*$item->price),
 		);
 	}
 
@@ -164,7 +165,7 @@ class CartController extends Controller
 
 		return array(
 			'qty' 			=> $item->qty,
-			'totalPrice'	=> ($item->qty)*($item->price)
+			'totalPrice'	=> Currency::currency($item->qty*$item->price),
 		);
 	}
 }
