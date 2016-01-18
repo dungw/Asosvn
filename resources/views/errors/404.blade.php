@@ -8,7 +8,7 @@
 <div class="container text-center">
     <div class="logo-404">
         <a href="/"><img src="/images/home/logo.png" alt="Home page" /></a>
-        <h4><a href="/">{{ trans('vi.Go back home') }}</a></h4>
+        <h4><a href="/">{{ trans(\App\Helpers\Locale::lang() . '.Go back home') }}</a></h4>
     </div>
 
     <div class="content-404">

@@ -24,12 +24,10 @@ return [
 	'unclear'                               => 'Chưa rõ',
 	'Product was add to cart successfully!' => 'Thêm thành công sản phẩm vào giỏ hàng!',
 	'Cannot add product to cart!'           => 'Không thêm được sản phẩm vào giỏ hàng!',
-	'Home'                                  => 'Trang Chủ',
 	'Home page'								=> 'Trang Chủ',
 	'Shopping Cart'                         => 'Giỏ Hàng',
 	'Item'                                  => 'Sản phẩm',
 	'Price'                                 => 'Đơn giá',
-	'Quantity'                              => 'Số lượng',
 	'Total'                                 => 'Tổng',
 	'Cart Sub Total'                        => 'Tổng giá sản phẩm',
 	'Shipping Cost'                         => 'Phí vận chuyển',
@@ -64,6 +62,8 @@ return [
 	'Get the most recent updates'			=> 'Nhận cập nhật mới nhất từ Salezone.vn',
 	'All rights reserved'					=> 'Đã đăng ký bản quyền',
 	'Copyright'								=> 'Bản quyền',
+	'vi'									=> 'Tiếng Việt',
+	'en'									=> 'English'
 
 
 ];

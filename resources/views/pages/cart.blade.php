@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-    {{ trans('vi.Cart') }}
+    {{ trans(\App\Helpers\Locale::lang() . '.Cart') }}
 @stop
 
 @section('content')
@@ -9,19 +9,19 @@
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
-                    <li><a href="{{ url('/') }}">{{ trans('vi.Home') }}</a></li>
-                    <li class="active">{{ trans('vi.Shopping Cart') }}</li>
+                    <li><a href="{{ url('/') }}">{{ trans(\App\Helpers\Locale::lang() . '.Home') }}</a></li>
+                    <li class="active">{{ trans(\App\Helpers\Locale::lang() . '.Shopping Cart') }}</li>
                 </ol>
             </div>
             <div class="table-responsive cart_info">
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">
-                            <td class="image">{{ trans('vi.Item') }}</td>
+                            <td class="image">{{ trans(\App\Helpers\Locale::lang() . '.Item') }}</td>
                             <td class="description"></td>
-                            <td class="price">{{ trans('vi.Price') }}</td>
-                            <td class="quantity">{{ trans('vi.Quantity') }}</td>
-                            <td class="total">{{ trans('vi.Total') }}</td>
+                            <td class="price">{{ trans(\App\Helpers\Locale::lang() . '.Price') }}</td>
+                            <td class="quantity">{{ trans(\App\Helpers\Locale::lang() . '.Quantity') }}</td>
+                            <td class="total">{{ trans(\App\Helpers\Locale::lang() . '.Total') }}</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -38,7 +38,7 @@
                             </td>
                             <td class="cart_description">
                                 <h4><a href="{{ url('product/' . $item->options->slug) }}">{{ $item->name }}</a></h4>
-                                <p>{{ trans('vi.SKU') }}: {{ $item->options->sku }}</p>
+                                <p>{{ trans(\App\Helpers\Locale::lang() . '.SKU') }}: {{ $item->options->sku }}</p>
                             </td>
                             <td class="cart_price">
                                 <p>{!! App\Helpers\Currency::currency($item->price) !!}</p>
@@ -57,17 +57,17 @@
                                 </p>
                             </td>
                             <td class="cart_delete">
-                                <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')" title="{{ trans('vi.Remove Item') }}"><i class="fa fa-times"></i></a>
+                                <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')" title="{{ trans(\App\Helpers\Locale::lang() . '.Remove Item') }}"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
                     @endforeach
                     @if (count($cart) == 0)
                         <tr>
-                            <td><p class="empty-cart">{{ trans('vi.Your cart is empty!') }} {{ trans('vi.Click') }} <a href="{{ url('/') }}">{{ trans('vi.here') }}</a> {{ trans('vi.to continue shopping') }}.</p></td>
+                            <td><p class="empty-cart">{{ trans(\App\Helpers\Locale::lang() . '.Your cart is empty!') }} {{ trans(\App\Helpers\Locale::lang() . '.Click') }} <a href="{{ url('/') }}">{{ trans(\App\Helpers\Locale::lang() . '.here') }}</a> {{ trans(\App\Helpers\Locale::lang() . '.to continue shopping') }}.</p></td>
                         </tr>
                     @endif
                     <tr id="cart-empty-message" style="display: none !important;">
-                        <td><p class="empty-cart">{{ trans('vi.Your cart is empty!') }} {{ trans('vi.Click') }} <a href="{{ url('/') }}">{{ trans('vi.here') }}</a> {{ trans('vi.to continue shopping') }}.</p></td>
+                        <td><p class="empty-cart">{{ trans(\App\Helpers\Locale::lang() . '.Your cart is empty!') }} {{ trans(\App\Helpers\Locale::lang() . '.Click') }} <a href="{{ url('/') }}">{{ trans(\App\Helpers\Locale::lang() . '.here') }}</a> {{ trans(\App\Helpers\Locale::lang() . '.to continue shopping') }}.</p></td>
                     </tr>
 
                     </tbody>

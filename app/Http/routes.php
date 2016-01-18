@@ -27,6 +27,9 @@ Route::delete('cart/remove/{rowId}', 'CartController@remove');
 //Currency
 Route::get('currency/{currency}', 'CurrencyController@changeTo');
 
+//Language
+Route::get('language/{lang}', 'LanguageController@changeTo');
+
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 Route::get('c/{category_slug}', 'ProductController@category');

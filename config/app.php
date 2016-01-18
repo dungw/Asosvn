@@ -117,6 +117,7 @@ return [
 	|
 	*/
 
+	'language'			=> array('vi', 'en'),
 	'currency'			=> array('USD', 'VND'),
 	'currency_default' 	=> 'USD',
 

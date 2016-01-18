@@ -35,7 +35,7 @@
                                             <p><a href="{{ url('product/' . $product->slug) }}">{{ $product->name }}</a></p>
 
                                             <a href="#" class="btn btn-default add-to-cart">
-                                                <i class="fa fa-shopping-cart"></i>{{ trans('vi.Add to cart') }}
+                                                <i class="fa fa-shopping-cart"></i>{{ trans(\App\Helpers\Locale::lang() . '.Add to cart') }}
                                             </a>
 
                                         </div>
@@ -61,7 +61,7 @@
                             </div>
                         @empty
                             <div class="col-sm-12">
-                                <span>{{ trans('vi.No product.') }}</span>
+                                <span>{{ trans(\App\Helpers\Locale::lang() . '.No product.') }}</span>
                             </div>
                         @endforelse
 

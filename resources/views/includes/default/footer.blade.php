@@ -84,17 +84,17 @@
             <div class="row">
                 <div class="col-sm-3">
                     <div class="single-widget">
-                        <h2>{{ trans('vi.Service') }}</h2>
+                        <h2>{{ trans(\App\Helpers\Locale::lang() . '.Service') }}</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">{{ trans('vi.Contact') }}</a></li>
-                            <li><a href="#">{{ trans('vi.Order Status') }}</a></li>
-                            <li><a href="#">{{ trans('vi.FAQ’s') }}</a></li>
+                            <li><a href="#">{{ trans(\App\Helpers\Locale::lang() . '.Contact') }}</a></li>
+                            <li><a href="#">{{ trans(\App\Helpers\Locale::lang() . '.Order Status') }}</a></li>
+                            <li><a href="#">{{ trans(\App\Helpers\Locale::lang() . '.FAQ’s') }}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="single-widget">
-                        <h2>{{ trans('vi.Categories') }}</h2>
+                        <h2>{{ trans(\App\Helpers\Locale::lang() . '.Categories') }}</h2>
                         <ul class="nav nav-pills nav-stacked">
                             @foreach($categories as $category)
                                 <li>
@@ -108,21 +108,21 @@
                 </div>
                 <div class="col-sm-2">
                     <div class="single-widget">
-                        <h2>{{ trans('vi.Policies') }}</h2>
+                        <h2>{{ trans(\App\Helpers\Locale::lang() . '.Policies') }}</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">{{ trans('vi.Terms of Use') }}</a></li>
-                            <li><a href="#">{{ trans('vi.Privacy Policy') }}</a></li>
-                            <li><a href="#">{{ trans('vi.Refund Policy') }}</a></li>
+                            <li><a href="#">{{ trans(\App\Helpers\Locale::lang() . '.Terms of Use') }}</a></li>
+                            <li><a href="#">{{ trans(\App\Helpers\Locale::lang() . '.Privacy Policy') }}</a></li>
+                            <li><a href="#">{{ trans(\App\Helpers\Locale::lang() . '.Refund Policy') }}</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-3 col-sm-offset-1">
                     <div class="single-widget">
-                        <h2>{{ trans('vi.Newsletter') }}</h2>
+                        <h2>{{ trans(\App\Helpers\Locale::lang() . '.Newsletter') }}</h2>
                         <form action="#" class="searchform">
-                            <input type="text" placeholder="{{ trans('vi.Your email address') }}" />
+                            <input type="text" placeholder="{{ trans(\App\Helpers\Locale::lang() . '.Your email address') }}" />
                             <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-                            <p>{{ trans('vi.Get the most recent updates') }}</p>
+                            <p>{{ trans(\App\Helpers\Locale::lang() . '.Get the most recent updates') }}</p>
                         </form>
                     </div>
                     <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
@@ -135,7 +135,7 @@
     <div class="footer-bottom">
         <div class="container">
             <div class="row">
-                <p class="pull-left">{{ trans('vi.Copyright') }} © 2016 Sale-Zone.vn. {{ trans('vi.All rights reserved') }}.</p>
+                <p class="pull-left">{{ trans(\App\Helpers\Locale::lang() . '.Copyright') }} © 2016 Sale-Zone.vn. {{ trans(\App\Helpers\Locale::lang() . '.All rights reserved') }}.</p>
             </div>
         </div>
     </div>
