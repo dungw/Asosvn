@@ -4,9 +4,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Session;
 use Config;
 use URL;
+use Session;
 
 class LanguageController extends Controller {
 
@@ -19,8 +19,6 @@ class LanguageController extends Controller {
 	{
 		if ($lang && in_array($lang, Config::get('app.language'))) {
 			Session::set('lang', $lang);
-		} else {
-			Session::set('lang', Config::get('app.locale'));
 		}
 
 		return redirect(URL::previous());

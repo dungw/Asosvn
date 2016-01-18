@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-    {{ trans(\App\Helpers\Locale::lang() . '.Home') }}
+    {{ trans('lang.Home') }}
 @stop
 
 @section('intermediate')

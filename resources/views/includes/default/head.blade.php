@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="salezone.vn, salezone, {{ trans(\App\Helpers\Locale::lang() . '.Leather') }}, {{ trans(\App\Helpers\Locale::lang() . '.Leather bag') }}, {{ trans(\App\Helpers\Locale::lang() . '.Leather wallet') }}, {{ trans(\App\Helpers\Locale::lang() . '.Leather belt') }}, {{ trans(\App\Helpers\Locale::lang() . '.Handmade') }}, {{ trans(\App\Helpers\Locale::lang() . '.Real leather') }}">
-<meta name="description" content="salezone.vn, salezone, {{ trans(\App\Helpers\Locale::lang() . '.Leather') }}, {{ trans(\App\Helpers\Locale::lang() . '.Leather bag') }}, {{ trans(\App\Helpers\Locale::lang() . '.Leather wallet') }}, {{ trans(\App\Helpers\Locale::lang() . '.Leather belt') }}, {{ trans(\App\Helpers\Locale::lang() . '.Handmade') }}">
+<meta name="keywords" content="salezone.vn, salezone, {{ trans('lang.Leather') }}, {{ trans('lang.Leather bag') }}, {{ trans('lang.Leather wallet') }}, {{ trans('lang.Leather belt') }}, {{ trans('lang.Handmade') }}, {{ trans('lang.Real leather') }}">
+<meta name="description" content="salezone.vn, salezone, {{ trans('lang.Leather') }}, {{ trans('lang.Leather bag') }}, {{ trans('lang.Leather wallet') }}, {{ trans('lang.Leather belt') }}, {{ trans('lang.Handmade') }}">
 <meta name="author" content="">
 <meta property="og:title" content=""/>
 <meta property="og:description" content=""/>

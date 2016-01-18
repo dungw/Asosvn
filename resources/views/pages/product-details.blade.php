@@ -59,22 +59,22 @@
                                 <input type="hidden" value="{{ $product->sku }}" id="detail-sku"/>
                                 <input type="hidden" value="{{ $product->slug }}" id="detail-slug"/>
                                 <h2>{{ $product->name }}</h2>
-                                <p>{{ trans(\App\Helpers\Locale::lang() . '.SKU') }}: {{ $product->sku }}</p>
+                                <p>{{ trans('lang.SKU') }}: {{ $product->sku }}</p>
                                 <img src="{{ asset('images/product-details/rating.png') }}" alt="" />
 								<span>
 									<span>{!! App\Helpers\Currency::currency($product->price) !!}</span>
-									<label>{{ trans(\App\Helpers\Locale::lang() . '.Quantity') }}:</label>
+									<label>{{ trans('lang.Quantity') }}:</label>
 									<input type="number" value="1" min="1" id="detail-quantity"/>
 									<button type="button" class="btn btn-fefault cart" @if ($product->availability != 'available') disabled @else id="btn-detail-add-cart" @endif>
                                         <i class="fa fa-shopping-cart"></i>
-                                        {{ trans(\App\Helpers\Locale::lang() . '.Add to cart') }}
+                                        {{ trans('lang.Add to cart') }}
                                     </button>
 								</span>
-                                <p><b>{{ trans(\App\Helpers\Locale::lang() . '.Availability') }}:</b> {{ trans(\App\Helpers\Locale::lang() . '.' . $product->availability) }}</p>
+                                <p><b>{{ trans('lang.Availability') }}:</b> {{ trans('lang.' . $product->availability) }}</p>
                                 @if ($product->condition)
-                                    <p><b>Condition:</b> {{ trans(\App\Helpers\Locale::lang() . '.' . $product->condition) }}</p>
+                                    <p><b>Condition:</b> {{ trans('lang.' . $product->condition) }}</p>
                                 @endif
-                                <p><b>{{ trans(\App\Helpers\Locale::lang() . '.Brand') }}:</b> {{ $product->brand_name or trans(\App\Helpers\Locale::lang() . '.unclear')}}</p>
+                                <p><b>{{ trans('lang.Brand') }}:</b> {{ $product->brand_name or trans('lang.unclear')}}</p>
                                 <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
                             </div><!--/product-information-->
                         </div>
@@ -83,8 +83,8 @@
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#description" data-toggle="tab">{{ trans(\App\Helpers\Locale::lang() . '.Description') }}</a></li>
-                                <li><a href="#facebook-comment" data-toggle="tab">{{ trans(\App\Helpers\Locale::lang() . '.Facebook Comment') }}</a></li>
+                                <li class="active"><a href="#description" data-toggle="tab">{{ trans('lang.Description') }}</a></li>
+                                <li><a href="#facebook-comment" data-toggle="tab">{{ trans('lang.Facebook Comment') }}</a></li>
                             </ul>
                         </div>
                         <div class="tab-content">

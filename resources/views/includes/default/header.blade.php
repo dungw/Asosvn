@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="logo pull-left">
-                    <a href="{{ url('/') }}"><img src="{{ asset('images/home/logo.png') }}" alt="{{ trans(\App\Helpers\Locale::lang() . '.Home') }}"/></a>
+                    <a href="{{ url('/') }}"><img src="{{ asset('images/home/logo.png') }}" alt="{{ trans('lang.Home') }}"/></a>
                 </div>
                 <div class="btn-group select-currency">
                     <div class="btn-group">
@@ -51,16 +51,12 @@
                 <div class="btn-group select-language">
                     <div class="btn-group">
                         <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                            @if (Session::has('lang'))
-                                {{ trans('en.' . Session::get('lang')) }}
-                            @else
-                                {{ trans('en.' . Config::get('app.locale')) }}
-                            @endif
+                            {{ trans('lang.' . App::getLocale()) }}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url('language/vi') }}">{{ trans(\App\Helpers\Locale::lang() . '.vi') }}</a></li>
-                            <li><a href="{{ url('language/en') }}">{{ trans(\App\Helpers\Locale::lang() . '.en') }}</a></li>
+                            <li><a href="{{ url('language/vi') }}">{{ trans('lang.vi') }}</a></li>
+                            <li><a href="{{ url('language/en') }}">{{ trans('lang.en') }}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -86,7 +82,7 @@
                 </div>
                 <div class="mainmenu pull-left">
                     <ul class="nav navbar-nav collapse navbar-collapse">
-                        <li><a href="/" class="active">{{ trans(\App\Helpers\Locale::lang() . '.Home') }}</a></li>
+                        <li><a href="/" class="active">{{ trans('lang.Home') }}</a></li>
                         <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                             <ul role="menu" class="sub-menu">
                                 <li><a href="shop.html">Products</a></li>
@@ -102,7 +98,7 @@
                                 <li><a href="blog-single.html">Blog Single</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact-us.html">{{ trans(\App\Helpers\Locale::lang() . '.Contact') }}</a></li>
+                        <li><a href="contact-us.html">{{ trans('lang.Contact') }}</a></li>
                     </ul>
                 </div>
             </div>
