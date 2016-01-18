@@ -117,6 +117,10 @@ return [
 	|
 	*/
 
+	'lang'				=> array(
+		'vi' 	=> 'vi_VN',
+		'en'	=> 'en_US',
+	),
 	'language'			=> array('vi', 'en'),
 	'currency'			=> array('USD', 'VND'),
 	'currency_default' 	=> 'USD',
