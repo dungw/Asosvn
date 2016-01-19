@@ -12,6 +12,9 @@
             <div class="col-sm-6">
                 <div class="social-icons pull-right">
                     <ul class="nav navbar-nav">
+                        @if (Auth::user())
+                            <li>{{ trans('lang.Hello') }}, {{ Auth::user()->name }}</li>
+                        @endif
                         <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     </ul>

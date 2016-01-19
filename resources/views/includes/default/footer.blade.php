@@ -125,9 +125,7 @@
                             <p>{{ trans('lang.Get the most recent updates') }}</p>
                         </form>
                     </div>
-                    <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
                 </div>
-
             </div>
         </div>
     </div>

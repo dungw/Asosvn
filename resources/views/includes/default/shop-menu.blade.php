@@ -16,6 +16,10 @@
         </li>
         <li class="link-checkout"><a href="checkout.html"><i class="fa fa-crosshairs"></i> {{ trans('lang.Checkout') }}</a></li>
         <li><a href="#"><i class="fa fa-star"></i> {{ trans('lang.Wishlist') }}</a></li>
-        <li><a href="#"><i class="fa fa-user"></i> {{ trans('lang.Account') }}</a></li>
+        @if (Auth::guest())
+            <li><a href="{{ url('account') }}"><i class="fa fa-user"></i> {{ trans('lang.Account') }}</a></li>
+        @else
+            <li><a href="{{ url('account/logout') }}"><i class="fa fa-user"></i> {{ trans('lang.Logout') }}</a></li>
+        @endif
     </ul>
 </div>

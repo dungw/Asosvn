@@ -60,9 +60,16 @@ class AuthController extends Controller
 
 		$credentials = $request->only('name', 'password');
 
-		if ($this->auth->attempt($credentials, $request->has('remember')))
-		{
-			return redirect()->intended($this->redirectPath());
+		$users = DB::table('users')->where('name', $request->get('name'))->get();
+		if (is_array($users)) {
+			foreach ($users as $user) {
+				if ($user->is_admin && password_verify($request->get('password'), $user->password)) {
+					if ($this->auth->attempt($credentials, $request->has('remember')))
+					{
+						return redirect()->intended($this->redirectPath());
+					}
+				}
+			}
 		}
 
 		return redirect($this->loginPath())
