@@ -20,6 +20,13 @@
                         <h2 class="title text-center">{{ $category->name or $brand->name }}</h2>
 
                         @forelse($products as $product)
+
+                            <input type="hidden" value="{{ $product->id }}" id="detail-id-{{ $product->id }}"/>
+                            <input type="hidden" value="{{ $product->name }}" id="detail-name-{{ $product->id }}"/>
+                            <input type="hidden" value="{{ $product->price }}" id="detail-price-{{ $product->id }}"/>
+                            <input type="hidden" value="{{$product->images[0]['image']}}" id="detail-image-{{ $product->id }}"/>
+                            <input type="hidden" value="{{ $product->sku }}" id="detail-sku-{{ $product->id }}"/>
+                            <input type="hidden" value="{{ $product->slug }}" id="detail-slug-{{ $product->id }}"/>
                             <div class="col-sm-4">
                                 <div class="product-image-wrapper">
 
@@ -34,9 +41,10 @@
 
                                             <p><a href="{{ url('product/' . $product->slug) }}">{{ $product->name }}</a></p>
 
-                                            <a href="#" class="btn btn-default add-to-cart">
-                                                <i class="fa fa-shopping-cart"></i>{{ trans('lang.Add to cart') }}
-                                            </a>
+                                            <button type="button" data-product="{{ $product->id }}" class="btn btn-fefault add-to-cart @if ($product->availability != 'available') disabled @else btn-list-add-cart @endif">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                {{ trans('lang.Add to cart') }}
+                                            </button>
 
                                         </div>
                                         <!--
@@ -77,4 +85,24 @@
     </section>
 @stop
 
+@section('front-footer-content')
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+
+            $(".btn-list-add-cart").on("click", function() {
+
+                var id = $(this).attr('data-product');
+                var name = $("#detail-name-" + id).val();
+                var price = $("#detail-price-" + id).val();
+                var slug = $("#detail-slug-" + id).val();
+                var image = $("#detail-image-" + id).val();
+                var sku = $("#detail-sku-" + id).val();
+                var qty = 1;
+
+                $.addToCart(id, name, qty, price, slug, image, sku);
+
+            });
+        })
+    </script>
+@stop
 
