@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Services\AdminRegistrar as Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use DB;
 
 class AuthController extends Controller
 {
