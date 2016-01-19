@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ImageManager
 {
 	const PRODUCT_IMAGE_PATH = 'uploads/products/';
-	const PRODUCT_THUMB_SIZE = '200x200';
+	const PRODUCT_THUMB_SIZE = '85x85';
 
 	const BRAND_IMAGE_PATH = 'uploads/brands/';
 	const BRAND_THUMB_SIZE = '80x50';
@@ -119,7 +119,7 @@ class ImageManager
 		$widthRatio = $width / $newW;
 		$heightRatio = $height / $newH;
 
-		if ($widthRatio < $heightRatio)
+		if ($widthRatio > $heightRatio)
 		{
 			$resized = Image::make($file->getRealPath())->resize($newW, null, function($constraint)
 			{
@@ -134,7 +134,9 @@ class ImageManager
 		}
 
 		//crop after resizing
-		return $resized->crop($newW, $newH);
+		//return $resized->crop($newW, $newH);
+
+		return $resized;
 	}
 
 }

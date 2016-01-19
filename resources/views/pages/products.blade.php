@@ -24,7 +24,7 @@
                             <input type="hidden" value="{{ $product->id }}" id="detail-id-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->name }}" id="detail-name-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->price }}" id="detail-price-{{ $product->id }}"/>
-                            <input type="hidden" value="{{$product->images[0]['image']}}" id="detail-image-{{ $product->id }}"/>
+                            <input type="hidden" value="{{ $product->images[0]['image']}}" id="detail-image-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->sku }}" id="detail-sku-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->slug }}" id="detail-slug-{{ $product->id }}"/>
                             <div class="col-sm-4">

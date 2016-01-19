@@ -75,9 +75,7 @@ class Product extends Model
 
 	public static function findBySlug($slug)
 	{
-		return DB::table('products')
-			->where('slug', $slug)
-			->first();
+		return self::query()->where('slug', $slug)->first();
 	}
 
 	public function scopeFilterWithCategory($query, $categoryId)

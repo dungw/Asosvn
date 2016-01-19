@@ -2,6 +2,7 @@
 
 use App\Brand;
 use App\Category;
+use App\Helpers\ImageManager;
 use App\Http\Requests;
 use App\Product;
 use App\ProductImage;
@@ -10,7 +11,7 @@ class ProductController extends BaseController
 {
 
 	//number item per page(product list)
-	const PAGINATION_ITEM_PER_PAGE = 1;
+	const PAGINATION_ITEM_PER_PAGE = 15;
 
     public function index()
     {
@@ -68,14 +69,11 @@ class ProductController extends BaseController
 			abort(404);
 		}
 
-		$product = Product::find($product->id);
-		$brandName = $product->brand->name;
-		$images = $product->images->toArray();
+		$data['product'] = $product;
 
-		$product->brand_name = $brandName;
-		$product->images = $images;
+		$data['mainImage'] = $product->images()->first()->image;
 
-		return view('pages.product-details', compact('product', $product));
+		return view('pages.product-details', $data);
 	}
 
 	/**
@@ -92,7 +90,7 @@ class ProductController extends BaseController
 			foreach ($products as $product)
 			{
 				$mainImage = $product->images()->first()->image;
-				$imagePath = 'uploads/products/' . $mainImage[0] . '/' . $mainImage[1] . '/' . $mainImage[2] . '/' . $mainImage;
+				$imagePath = ImageManager::getContainerFolder('product', $mainImage) . $mainImage;
 
 				if (file_exists(public_path($imagePath)))
 				{

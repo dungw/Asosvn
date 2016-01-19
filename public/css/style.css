@@ -306,3 +306,18 @@ a#scrollUp {
 .signup-form form button, .login-form form button {
     margin-top: 20px !important;
 }
+
+/** Product image slider **/
+#gallery_01 img{
+    border:1px solid white;
+}
+.active img{
+    border:1px solid #333 !important;
+}
+.main-image {
+    max-width: 266px;
+    height: 381px;
+}
+.zoomWrapper {
+
+}
