@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\Services\AdminRegistrar as Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
-use DB;
 
 class AuthController extends Controller
 {
@@ -61,16 +60,9 @@ class AuthController extends Controller
 
 		$credentials = $request->only('name', 'password');
 
-		$users = DB::table('users')->where('name', $request->get('name'))->get();
-		if (is_array($users)) {
-			foreach ($users as $user) {
-				if ($user->is_admin && password_verify($request->get('password'), $user->password)) {
-					if ($this->auth->attempt($credentials, $request->has('remember')))
-					{
-						return redirect()->intended($this->redirectPath());
-					}
-				}
-			}
+		if ($this->auth->attempt($credentials, $request->has('remember')))
+		{
+			return redirect()->intended($this->redirectPath());
 		}
 
 		return redirect($this->loginPath())
