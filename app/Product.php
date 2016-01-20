@@ -45,6 +45,11 @@ class Product extends Model
 		return $this->hasMany('App\ProductImage');
 	}
 
+	public function mainImage()
+	{
+		return $this->images()->first();
+	}
+
 	public function condition()
 	{
 		$list = self::conditions();

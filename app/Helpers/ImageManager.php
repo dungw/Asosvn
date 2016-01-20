@@ -8,7 +8,7 @@ class ImageManager
 {
 	const PRODUCT_IMAGE_PATH = 'uploads/products/';
 	const PRODUCT_SMALL_SIZE = '85x85';
-	const PRODUCT_MEDIUM_SIZE = '340x435';
+	const PRODUCT_MEDIUM_SIZE = '340x450';
 	const BRAND_IMAGE_PATH = 'uploads/brands/';
 	const BRAND_THUMB_SIZE = '80x50';
 

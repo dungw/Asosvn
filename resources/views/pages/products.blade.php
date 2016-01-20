@@ -24,7 +24,7 @@
                             <input type="hidden" value="{{ $product->id }}" id="detail-id-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->name }}" id="detail-name-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->price }}" id="detail-price-{{ $product->id }}"/>
-                            <input type="hidden" value="{{ $product->images[0]['image']}}" id="detail-image-{{ $product->id }}"/>
+                            <input type="hidden" value="{{ $product->mainImage()->image }}" id="detail-image-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->sku }}" id="detail-sku-{{ $product->id }}"/>
                             <input type="hidden" value="{{ $product->slug }}" id="detail-slug-{{ $product->id }}"/>
                             <div class="col-sm-4">
@@ -33,11 +33,21 @@
                                     <div class="single-products">
                                         <div class="productinfo text-center">
 
-                                            <a href="{{ url('product/' . $product->slug) }}">
-                                                <img src="{{ asset( $images[$product->id] ) }}" alt="{{ $product->name }}" />
-                                            </a>
+                                            <div class="image-wrapper row vertical-align">
 
-                                            <h2>${{ $product->price }}</h2>
+                                                <div class="col-sm-12 ">
+                                                    <a href="{{ url('product/' . $product->slug) }}">
+                                                        @if (file_exists(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'medium')))
+                                                            <img src="{{ asset(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'medium')) }}" alt=""/>
+                                                        @else
+                                                            <img src="{{ asset(\App\ProductImage::NO_IMAGE) }}" alt=""/>
+                                                        @endif
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+                                            <h2>{{ App\Helpers\Currency::currency($product->price) }}</h2>
 
                                             <p><a href="{{ url('product/' . $product->slug) }}">{{ $product->name }}</a></p>
 

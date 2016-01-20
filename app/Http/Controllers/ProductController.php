@@ -29,9 +29,6 @@ class ProductController extends BaseController
 		//get products
 		$data['products'] = Product::filterWithCategory($data['category']->id)->paginate(self::PAGINATION_ITEM_PER_PAGE);
 
-		//product images
-		$data['images'] = $this->listsImage($data['products']);
-
 		return view('pages.products', $data);
 	}
 
@@ -43,9 +40,6 @@ class ProductController extends BaseController
 
 		//get products
 		$data['products'] = Product::filterWithBrand($data['brand']->id)->paginate(self::PAGINATION_ITEM_PER_PAGE);
-
-		//product images
-		$data['images'] = $this->listsImage($data['products']);
 
 		return view('pages.products', $data);
 	}
@@ -71,38 +65,12 @@ class ProductController extends BaseController
 
 		$data['product'] = $product;
 
-		$data['mainImage'] = $product->images()->first()->image;
+		$data['mainImage'] = $product->mainImage()->image;
+
+		//get recommended products
+		$data['recommendedProducts'] = Product::filterWithCategory($product->category_id)->where('id', '!=', $product->id)->limit(6)->get();
 
 		return view('pages.product-details', $data);
-	}
-
-	/**
-	 * Function lists image from product list
-	 *
-	 * @param $products
-	 * @return array $images
-	 */
-	private function listsImage($products)
-	{
-		$images = [];
-		if (!empty($products))
-		{
-			foreach ($products as $product)
-			{
-				$mainImage = $product->images()->first()->image;
-				$imagePath = ImageManager::getContainerFolder('product', $mainImage) . $mainImage;
-
-				if (file_exists(public_path($imagePath)))
-				{
-					$images[$product->id] = $imagePath;
-				} else
-				{
-					$images[$product->id] = ProductImage::NO_IMAGE;
-				}
-			}
-		}
-
-		return $images;
 	}
 
 }

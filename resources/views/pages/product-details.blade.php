@@ -39,9 +39,15 @@
                     <div class="product-details">
 
                         <div class="col-sm-5">
-                            <img id="zoom_03" class="main-image"
-                                 src="{{ asset(\App\Helpers\ImageManager::getThumb($mainImage, 'product', 'medium') ) }}"
-                                 data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $mainImage) . $mainImage ) }}"/>
+
+                            <div class="image-wrapper row vertical-align">
+                                <div class="col-sm-12 no-padding">
+                                    <img id="zoom_03" class="main-image"
+                                         src="{{ asset(\App\Helpers\ImageManager::getThumb($mainImage, 'product', 'medium') ) }}"
+                                         data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $mainImage) . $mainImage ) }}"/>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="col-sm-7">
@@ -57,10 +63,13 @@
                                 <h2>{{ $product->name }}</h2>
 
                                 <p>{{ trans('lang.SKU') }}: {{ $product->sku }}</p>
-                                <img src="{{ asset('images/product-details/rating.png') }}" alt=""/>
+
 								<span>
 									<span>{!! App\Helpers\Currency::currency($product->price) !!}</span>
-									<label>{{ trans('lang.Quantity') }}:</label>
+                                </span>
+                                <br>
+                                <span>
+                                    <label>{{ trans('lang.Quantity') }}:</label>
 									<input type="number" value="1" min="1" id="detail-quantity"/>
 									<button type="button"
                                             class="btn btn-fefault cart" @if ($product->availability != 'available')
@@ -68,18 +77,14 @@
                                         <i class="fa fa-shopping-cart"></i>
                                         {{ trans('lang.Add to cart') }}
                                     </button>
-								</span>
+                                </span>
 
                                 <p><b>{{ trans('lang.Availability') }}
                                         :</b> {{ trans('lang.' . $product->availability) }}</p>
-                                @if ($product->condition)
-                                    <p><b>Condition:</b> {{ trans('lang.' . $product->condition) }}</p>
-                                @endif
                                 <p><b>{{ trans('lang.Brand') }}:</b> {{ $product->brand->name or trans('lang.unclear')}}
                                 </p>
 
-                                <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard"
-                                     data-action="like" data-show-faces="true" data-share="false"></div>
+                                <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
                             </div>
                         </div>
 
@@ -89,7 +94,8 @@
                                     <a href="#" class="thumb"
                                        data-image="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product', 'medium')) }}"
                                        data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $image) . $image) }}">
-                                        <img style="max-width: 85px; max-height: 85px;" src="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product')) }}">
+                                        <img style="max-width: 85px; max-height: 85px;"
+                                             src="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product')) }}">
                                     </a>
                                 @endforeach
                             </div>
@@ -97,7 +103,7 @@
 
                     </div>
 
-                    <div class="category-tab shop-details-tab"><!--category-tab-->
+                    <div class="category-tab shop-details-tab">
                         <div class="col-sm-12">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#description"
@@ -117,113 +123,62 @@
                             </div>
                         </div>
                     </div>
-                    <!--/category-tab-->
 
-                    <div class="recommended_items"><!--recommended_items-->
-                        <h2 class="title text-center">recommended items</h2>
+                    <div class="recommended_items">
+                        <h2 class="title text-center">{{ trans('lang.Recommended items') }}</h2>
 
                         <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{ asset('images/home/recommend1.jpg') }}" alt=""/>
 
-                                                    <h2>$56</h2>
+                                    @foreach ($recommendedProducts as $index => $recommended)
 
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart
-                                                    </button>
+                                        <input type="hidden" value="{{ $recommended->id }}" id="detail-id-{{ $recommended->id }}"/>
+                                        <input type="hidden" value="{{ $recommended->name }}" id="detail-name-{{ $recommended->id }}"/>
+                                        <input type="hidden" value="{{ $recommended->price }}" id="detail-price-{{ $recommended->id }}"/>
+                                        <input type="hidden" value="{{ $recommended->mainImage()->image }}" id="detail-image-{{ $recommended->id }}"/>
+                                        <input type="hidden" value="{{ $recommended->sku }}" id="detail-sku-{{ $recommended->id }}"/>
+                                        <input type="hidden" value="{{ $recommended->slug }}" id="detail-slug-{{ $recommended->id }}"/>
+
+                                        @if ($index % 3 == 0 && $index > 0)
+                                            </div><div class="item">
+                                        @endif
+
+                                        <div class="col-sm-4">
+                                            <div class="product-image-wrapper">
+                                                <div class="single-products">
+                                                    <div class="productinfo text-center">
+
+                                                        <div class="image-wrapper row vertical-align">
+
+                                                            <div class="col-sm-12 ">
+                                                                <a href="{{ url('product/' . $recommended->slug) }}">
+                                                                    @if (file_exists(\App\Helpers\ImageManager::getThumb($recommended->mainImage()->image, 'product', 'medium')))
+                                                                        <img src="{{ asset(\App\Helpers\ImageManager::getThumb($recommended->mainImage()->image, 'product', 'medium')) }}" alt=""/>
+                                                                    @else
+                                                                        <img src="{{ asset(\App\ProductImage::NO_IMAGE) }}" alt=""/>
+                                                                    @endif
+                                                                </a>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <h2>{{ App\Helpers\Currency::currency($product->price) }}</h2>
+
+                                                        <p><a href="{{ url('product/' . $product->slug) }}">{{ $recommended->name }}</a></p>
+
+                                                        <button type="button" data-product="{{ $recommended->id }}" class="btn btn-fefault add-to-cart @if ($recommended->availability != 'available') disabled @else btn-list-add-cart @endif">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                            {{ trans('lang.Add to cart') }}
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{ asset('images/home/recommend2.jpg') }}" alt=""/>
 
-                                                    <h2>$56</h2>
-
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{ asset('images/home/recommend3.jpg') }}" alt=""/>
-
-                                                    <h2>$56</h2>
-
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                <div class="item">
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{ asset('images/home/recommend1.jpg') }}" alt=""/>
 
-                                                    <h2>$56</h2>
-
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{ asset('images/home/recommend2.jpg') }}" alt=""/>
-
-                                                    <h2>$56</h2>
-
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <div class="product-image-wrapper">
-                                            <div class="single-products">
-                                                <div class="productinfo text-center">
-                                                    <img src="{{ asset('images/home/recommend3.jpg') }}" alt=""/>
-
-                                                    <h2>$56</h2>
-
-                                                    <p>Easy Polo Black Edition</p>
-                                                    <button type="button" class="btn btn-default add-to-cart"><i
-                                                                class="fa fa-shopping-cart"></i>Add to cart
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <a class="left recommended-item-control" href="#recommended-item-carousel"
                                data-slide="prev">
@@ -257,7 +212,7 @@
             $("#zoom_03").elevateZoom({
                 gallery: 'gallery_01',
                 cursor: 'pointer',
-                galleryActiveClass: 'active',
+                galleryActiveClass: 'active-slide',
                 imageCrossfade: true,
                 loadingIcon: '{{ asset('images/spinner.gif') }}'
             });
@@ -283,6 +238,21 @@
 
             $("#btn-detail-add-cart").on("click", function () {
                 $.addToCart(id, name, qty, price, slug, image, sku);
+            });
+
+            //add to cart on recommended list
+            $(".btn-list-add-cart").on("click", function() {
+
+                var id = $(this).attr('data-product');
+                var name = $("#detail-name-" + id).val();
+                var price = $("#detail-price-" + id).val();
+                var slug = $("#detail-slug-" + id).val();
+                var image = $("#detail-image-" + id).val();
+                var sku = $("#detail-sku-" + id).val();
+                var qty = 1;
+
+                $.addToCart(id, name, qty, price, slug, image, sku);
+
             });
         })
     </script>

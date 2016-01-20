@@ -24,7 +24,7 @@ class Currency
 				break;
 		}
 
-		return  $fmt->formatCurrency($finalPrice, $currentCurrency);
+		return  $finalPrice > 0 ? $fmt->formatCurrency($finalPrice, $currentCurrency) : trans('lang.Contact');
 	}
 
 }

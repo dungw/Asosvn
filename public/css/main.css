@@ -837,7 +837,7 @@ h2.title {
 .productinfo h2 {
     color: #FE980F;
     font-family: 'Roboto', sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 700;
 }
 
@@ -966,8 +966,8 @@ h2.title {
 }
 
 .category-tab ul {
-    background: #40403E;
-    border-bottom: 1px solid #FE980F;
+    /*background: #40403E;*/
+    /*border-bottom: 1px solid #FE980F;*/
     list-style: none outside none;
     margin: 0 0 30px;
     padding: 0;
@@ -1034,6 +1034,7 @@ h2.title {
 }
 
 .recommended_items h2 {
+    padding: 3px 0px;
 }
 
 .our_partners {
@@ -1206,15 +1207,15 @@ h2.title {
 
 .product-information span {
     display: inline-block;
-    margin-bottom: 8px;
-    margin-top: 18px;
+    margin-bottom: 3px;
+    margin-top: 10px;
 }
 
 .product-information span span {
     color: #FE980F;
     float: left;
     font-family: 'Roboto', sans-serif;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 700;
     margin-right: 20px;
     margin-top: 0px;
@@ -1556,28 +1557,29 @@ h2.title {
 #cart_items .cart_info .cart_description h4 a {
     color: #363432;
     font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: normal;
 
 }
 
 #cart_items .cart_info .cart_description p {
-    color: #696763
+    color: #696763;
+    font-size: 13px;
 }
 
 #cart_items .cart_info .cart_price p {
     color: #696763;
-    font-size: 18px
+    font-size: 15px
 }
 
 #cart_items .cart_info .cart_total_price {
     color: #FE980F;
-    font-size: 24px;
+    font-size: 16px;
 }
 
 .cart_product {
     display: block;
-    margin: 15px -70px 10px 25px;
+    margin: 15px 0px 10px 0px;
 }
 
 .cart_quantity_button a {
@@ -1590,6 +1592,7 @@ h2.title {
     text-align: center;
     width: 35px;
     float: left;
+    line-height: 27px;
 }
 
 .cart_quantity_input {

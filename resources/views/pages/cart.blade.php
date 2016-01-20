@@ -17,11 +17,11 @@
                 <table class="table table-condensed">
                     <thead>
                         <tr class="cart_menu">
-                            <td class="image">{{ trans('lang.Item') }}</td>
-                            <td class="description"></td>
-                            <td class="price">{{ trans('lang.Price') }}</td>
-                            <td class="quantity">{{ trans('lang.Quantity') }}</td>
-                            <td class="total">{{ trans('lang.Total') }}</td>
+                            <td class="image" width="10%">{{ trans('lang.Item') }}</td>
+                            <td class="description" width="35%"></td>
+                            <td class="price" width="15%">{{ trans('lang.Price') }}</td>
+                            <td class="quantity" width="15%">{{ trans('lang.Quantity') }}</td>
+                            <td class="total" width="15%">{{ trans('lang.Total') }}</td>
                             <td></td>
                         </tr>
                     </thead>
@@ -29,10 +29,10 @@
 
                     @foreach ($cart as $item)
                         <tr id="cart-item-{{ $item->rowid }}">
-                            <td class="cart_product">
+                            <td class="cart_product" align="center">
                                 <a href="{{ url('product/' . $item->options->slug) }}">
                                     @if ($item->options->image)
-                                        <img class="img-cart-item" src="{{ asset('uploads/products/' . $item->options->image[0] . '/' . $item->options->image[1] . '/' . $item->options->image[2] . '/' . $item->options->image) }}" alt="{{ $item->name }}" />
+                                        <img class="img-cart-item" src="{{ asset(\App\Helpers\ImageManager::getThumb($item->options->image, 'product', 'small')) }}" alt="{{ $item->name }}" />
                                     @endif
                                 </a>
                             </td>
@@ -44,6 +44,7 @@
                                 <p>{!! App\Helpers\Currency::currency($item->price) !!}</p>
                             </td>
                             <td class="cart_quantity">
+
                                 <div class="cart_quantity_button">
                                     <a class="cart_quantity_up" href="javascript:void(0)" onclick="$.cartQuantityUp('{{ $item->rowid }}')"> + </a>
                                     <input class="cart_quantity_input" type="text" name="quantity" value="{{ $item->qty }}" autocomplete="off" size="3" data-rowid="{{ $item->rowid }}">
@@ -56,7 +57,7 @@
                                     <span class="item_total_price">{!! App\Helpers\Currency::currency($item->qty*$item->price) !!}</span>
                                 </p>
                             </td>
-                            <td class="cart_delete">
+                            <td class="cart_delete" align="center">
                                 <a class="cart_quantity_delete" href="javascript:void(0)" onclick="$.removeFromCart('{{ $item->rowid }}')" title="{{ trans('lang.Remove Item') }}"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>
@@ -74,7 +75,7 @@
                 </table>
             </div>
         </div>
-    </section> <!--/#cart_items-->
+    </section>
 
     <section id="do_action">
         <div class="container">
