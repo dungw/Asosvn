@@ -10,8 +10,8 @@ Route::get('user/logged-in', 'UserController@loggedIn');
 Route::get('user/logout', 'UserController@logout');
 
 //Customer Account
-Route::resource('account', 'Customer\AccountController');
-Route::get('account/logout', 'Customer\AccountController@logout');
+Route::get('account', 'AccountController@index');
+Route::get('account/logout', 'AccountController@logout');
 
 //Product
 Route::get('product/{slug}', 'ProductController@details');
