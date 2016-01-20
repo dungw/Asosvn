@@ -37,26 +37,15 @@
 
                 <div class="col-sm-9 padding-right">
                     <div class="product-details">
+
                         <div class="col-sm-5">
-
                             <img id="zoom_03" class="main-image"
-                                 src="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $mainImage) . $mainImage ) }}"
+                                 src="{{ asset(\App\Helpers\ImageManager::getThumb($mainImage, 'product', 'medium') ) }}"
                                  data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $mainImage) . $mainImage ) }}"/>
-
-                            <div id="gallery_01" class="carousel slide">
-                                @foreach( $product->images()->lists('image') as $image)
-                                    <a href="#" class="thumb"
-                                       data-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $image) . $image) }}"
-                                       data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $image) . $image) }}">
-                                            <img style="width: 85px; height: 84px;" src="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product')) }}">
-                                    </a>
-                                @endforeach
-                            </div>
-
                         </div>
 
                         <div class="col-sm-7">
-                            <div class="product-information"><!--/product-information-->
+                            <div class="product-information">
                                 <img src="{{ asset('images/product-details/new.jpg') }}" class="newarrival" alt=""/>
                                 <input type="hidden" value="{{ $product->id }}" id="detail-id"/>
                                 <input type="hidden" value="{{ $product->name }}" id="detail-name"/>
@@ -92,10 +81,21 @@
                                 <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard"
                                      data-action="like" data-show-faces="true" data-share="false"></div>
                             </div>
-                            <!--/product-information-->
                         </div>
+
+                        <div class="col-sm-12">
+                            <div id="gallery_01" class="carousel slide">
+                                @foreach( $product->images()->lists('image') as $image)
+                                    <a href="#" class="thumb"
+                                       data-image="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product', 'medium')) }}"
+                                       data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $image) . $image) }}">
+                                        <img style="max-width: 85px; max-height: 85px;" src="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product')) }}">
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+
                     </div>
-                    <!--/product-details-->
 
                     <div class="category-tab shop-details-tab"><!--category-tab-->
                         <div class="col-sm-12">

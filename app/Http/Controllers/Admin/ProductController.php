@@ -163,7 +163,7 @@ class ProductController extends AdminController
 
 	private function deleteRealImage(ProductImage $image)
 	{
-		File::delete( public_path( MyHtml::productImagePath( ProductImage::getThumb($image->image) ) . ProductImage::getThumb($image->image) ) );
+		File::delete( public_path( MyHtml::productImagePath( ImageManager::getThumb($image->image, 'product') ) . ImageManager::getThumb($image->image, 'product') ) );
 
 		File::delete(public_path( MyHtml::productImagePath($image->image) . $image->image ) );
 	}

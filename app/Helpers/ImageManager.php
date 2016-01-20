@@ -7,8 +7,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ImageManager
 {
 	const PRODUCT_IMAGE_PATH = 'uploads/products/';
-	const PRODUCT_THUMB_SIZE = '85x85';
-
+	const PRODUCT_SMALL_SIZE = '85x85';
+	const PRODUCT_MEDIUM_SIZE = '340x435';
 	const BRAND_IMAGE_PATH = 'uploads/brands/';
 	const BRAND_THUMB_SIZE = '80x50';
 
@@ -23,15 +23,6 @@ class ImageManager
 		$folderPath = self::getContainerFolder($type, $filename);
 
 		//get and create container folder if needed
-		if ($type === 'product')
-		{
-			$thumbSize = self::PRODUCT_THUMB_SIZE;
-
-		} elseif ($type === 'brand')
-		{
-			$thumbSize = self::BRAND_THUMB_SIZE;
-		}
-
 		if (!is_dir(public_path($folderPath)))
 		{
 			File::makeDirectory(public_path($folderPath), 0775, true);
@@ -46,14 +37,31 @@ class ImageManager
 		//create and save thumbnails
 		if ($thumbnail)
 		{
-			$pathThumb = public_path($folderPath . '/' . $filename . '_' . $thumbSize . '.' . $ext);
-			self::createThumb($pathThumb, $file, $thumbSize);
+			$thumbSize = [];
+			if ($type === 'product')
+			{
+				$thumbSize[] = self::PRODUCT_SMALL_SIZE;
+				$thumbSize[] = self::PRODUCT_MEDIUM_SIZE;
+
+			} elseif ($type === 'brand')
+			{
+				$thumbSize[] = self::BRAND_THUMB_SIZE;
+			}
+
+			if (!empty($thumbSize))
+			{
+				foreach ($thumbSize as $thumb)
+				{
+					$pathThumb = public_path($folderPath . '/' . $filename . '_' . $thumb . '.' . $ext);
+					self::createThumb($pathThumb, $file, $thumb);
+				}
+			}
 		}
 
 		return $filename . '.' . $ext;
 	}
 
-	public static function getThumb($filename, $type)
+	public static function getThumb($filename, $type, $size = 'small')
 	{
 		$thumb = '';
 
@@ -61,7 +69,8 @@ class ImageManager
 
 		if ($type === 'product')
 		{
-			$thumbSize = self::PRODUCT_THUMB_SIZE;
+			if ($size === 'small') $thumbSize = self::PRODUCT_SMALL_SIZE;
+			if ($size === 'medium') $thumbSize = self::PRODUCT_MEDIUM_SIZE;
 
 		} elseif ($type === 'brand')
 		{
@@ -96,7 +105,7 @@ class ImageManager
 		return null;
 	}
 
-	private static function createThumb($path, UploadedFile $file, $thumbSize = self::PRODUCT_THUMB_SIZE)
+	private static function createThumb($path, UploadedFile $file, $thumbSize = self::PRODUCT_SMALL_SIZE)
 	{
 		$sizeThumb = explode('x', $thumbSize);
 

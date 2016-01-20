@@ -311,13 +311,14 @@ a#scrollUp {
 #gallery_01 img{
     border:1px solid white;
 }
-.active img{
+.active-slide img{
     border:1px solid #333 !important;
 }
 .main-image {
-    max-width: 266px;
-    height: 381px;
+    max-width: 100%;
+    max-height: 435px;
 }
-.zoomWrapper {
 
+.fb-like {
+    height: 85px !important;
 }
