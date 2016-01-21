@@ -1482,7 +1482,7 @@ h2.title {
 #do_action {
     margin-bottom: 50px;
 }
-
+/*
 .breadcrumbs {
     position: relative;
 }
@@ -1514,7 +1514,7 @@ h2.title {
 
 .breadcrumbs .breadcrumb > li + li:before {
     content: " ";
-}
+}*/
 
 #cart_items .cart_info {
     border: 1px solid #E6E4DF;

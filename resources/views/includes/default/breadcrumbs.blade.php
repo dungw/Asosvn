@@ -1,13 +1,17 @@
 <div class="breadcrumbs">
     <ol class="breadcrumb">
         @forelse ($items as $item)
-            <li>
-                @if ($item['active'] == 0)
+
+            @if ($item['active'] == 0)
+                <li class="active">
                     <a href="{{ $item['url'] }}">{{ $item['title'] }}</a>
-                @else
+                </li>
+            @else
+                <li>
                     {{ $item['title'] }}
-                @endif
-            </li>
+                </li>
+            @endif
+
         @empty
 
         @endforelse
