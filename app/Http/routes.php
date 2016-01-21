@@ -15,6 +15,8 @@ Route::get('account/logout', 'AccountController@logout');
 
 //Product
 Route::get('product/{slug}', 'ProductController@details');
+Route::get('c/{category_slug}', 'ProductController@category');
+Route::get('b/{brand_slug}', 'ProductController@brand');
 
 //Cart
 Route::get('cart', 'CartController@index');
@@ -36,9 +38,7 @@ Route::get('language/{lang}', 'LanguageController@changeTo');
 
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
-Route::get('c/{category_slug}', 'ProductController@category');
-Route::get('b/{brand_slug}', 'ProductController@brand');
-Route::get('product/{id}/{alias}', 'ProductController@details');
+
 Route::controllers([
 	'checkout'  => 'CheckoutController',
 	'blog'      => 'BlogController',

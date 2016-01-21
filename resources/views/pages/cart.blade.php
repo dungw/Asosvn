@@ -7,12 +7,12 @@
 @section('content')
     <section id="cart_items">
         <div class="container">
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="{{ url('/') }}">{{ trans('lang.Home') }}</a></li>
-                    <li class="active">{{ trans('lang.Shopping Cart') }}</li>
-                </ol>
-            </div>
+
+            @include('includes.default.breadcrumbs', ['items' => [
+                ['title' => trans('lang.Home'), 'url' => url('/'), 'active' => 0],
+                ['title' => trans('lang.Shopping Cart'), 'active' => 1],
+            ]])
+
             <div class="table-responsive cart_info">
                 <table class="table table-condensed">
                     <thead>
@@ -64,11 +64,11 @@
                     @endforeach
                     @if (count($cart) == 0)
                         <tr>
-                            <td><p class="empty-cart">{{ trans('lang.Your cart is empty!') }} {{ trans('lang.Click') }} <a href="{{ url('/') }}">{{ trans('lang.here') }}</a> {{ trans('lang.to continue shopping') }}.</p></td>
+                            <td colspan="6"><p class="empty-cart">{{ trans('lang.Your cart is empty!') }} {{ trans('lang.Click') }} <a href="{{ url('/') }}">{{ trans('lang.here') }}</a> {{ trans('lang.to continue shopping') }}.</p></td>
                         </tr>
                     @endif
                     <tr id="cart-empty-message" style="display: none !important;">
-                        <td><p class="empty-cart">{{ trans('lang.Your cart is empty!') }} {{ trans('lang.Click') }} <a href="{{ url('/') }}">{{ trans('lang.here') }}</a> {{ trans('lang.to continue shopping') }}.</p></td>
+                        <td colspan="6"><p class="empty-cart">{{ trans('lang.Your cart is empty!') }} {{ trans('lang.Click') }} <a href="{{ url('/') }}">{{ trans('lang.here') }}</a> {{ trans('lang.to continue shopping') }}.</p></td>
                     </tr>
 
                     </tbody>

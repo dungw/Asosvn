@@ -30,6 +30,13 @@
 @section('content')
     <section>
         <div class="container">
+
+            @include('includes.default.breadcrumbs', ['items' => [
+                ['title' => trans('lang.Home'), 'url' => url('/'), 'active' => 0],
+                ['title' => $product->category->name, 'url' => url('c/' . $product->category->slug), 'active' => 0],
+                ['title' => $product->name, 'active' => 1],
+            ]])
+
             <div class="row">
                 <div class="col-sm-3">
                     @include('includes.default.left-sidebar')
@@ -67,6 +74,7 @@
 								<span>
 									<span>{!! App\Helpers\Currency::currency($product->price) !!}</span>
                                 </span>
+
                                 <br>
                                 <span>
                                     <label>{{ trans('lang.Quantity') }}:</label>
@@ -133,48 +141,11 @@
 
                                     @foreach ($recommendedProducts as $index => $recommended)
 
-                                        <input type="hidden" value="{{ $recommended->id }}" id="detail-id-{{ $recommended->id }}"/>
-                                        <input type="hidden" value="{{ $recommended->name }}" id="detail-name-{{ $recommended->id }}"/>
-                                        <input type="hidden" value="{{ $recommended->price }}" id="detail-price-{{ $recommended->id }}"/>
-                                        <input type="hidden" value="{{ $recommended->mainImage()->image }}" id="detail-image-{{ $recommended->id }}"/>
-                                        <input type="hidden" value="{{ $recommended->sku }}" id="detail-sku-{{ $recommended->id }}"/>
-                                        <input type="hidden" value="{{ $recommended->slug }}" id="detail-slug-{{ $recommended->id }}"/>
-
                                         @if ($index % 3 == 0 && $index > 0)
                                             </div><div class="item">
                                         @endif
 
-                                        <div class="col-sm-4">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-
-                                                        <div class="image-wrapper row vertical-align">
-
-                                                            <div class="col-sm-12 ">
-                                                                <a href="{{ url('product/' . $recommended->slug) }}">
-                                                                    @if (file_exists(\App\Helpers\ImageManager::getThumb($recommended->mainImage()->image, 'product', 'medium')))
-                                                                        <img src="{{ asset(\App\Helpers\ImageManager::getThumb($recommended->mainImage()->image, 'product', 'medium')) }}" alt=""/>
-                                                                    @else
-                                                                        <img src="{{ asset(\App\ProductImage::NO_IMAGE) }}" alt=""/>
-                                                                    @endif
-                                                                </a>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <h2>{{ App\Helpers\Currency::currency($product->price) }}</h2>
-
-                                                        <p><a href="{{ url('product/' . $product->slug) }}">{{ $recommended->name }}</a></p>
-
-                                                        <button type="button" data-product="{{ $recommended->id }}" class="btn btn-fefault add-to-cart @if ($recommended->availability != 'available') disabled @else btn-list-add-cart @endif">
-                                                            <i class="fa fa-shopping-cart"></i>
-                                                            {{ trans('lang.Add to cart') }}
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        @include('pages.partials.single_product', ['product' => $recommended])
 
                                     @endforeach
                                 </div>
@@ -240,20 +211,6 @@
                 $.addToCart(id, name, qty, price, slug, image, sku);
             });
 
-            //add to cart on recommended list
-            $(".btn-list-add-cart").on("click", function() {
-
-                var id = $(this).attr('data-product');
-                var name = $("#detail-name-" + id).val();
-                var price = $("#detail-price-" + id).val();
-                var slug = $("#detail-slug-" + id).val();
-                var image = $("#detail-image-" + id).val();
-                var sku = $("#detail-sku-" + id).val();
-                var qty = 1;
-
-                $.addToCart(id, name, qty, price, slug, image, sku);
-
-            });
         })
     </script>
 @stop
