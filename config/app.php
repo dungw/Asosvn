@@ -124,7 +124,6 @@ return [
 	'language'			=> array('vi', 'en'),
 	'currency'			=> array('USD', 'VND'),
 	'currency_default' 	=> 'USD',
-
 	'currency_rate_USD_to_USD'	=> 1,
 	//Currency rate USD -> VND
 	'currency_rate_USD_to_VND'	=> 22000,
@@ -143,8 +142,7 @@ return [
 		 * Laravel Framework Service Providers...
 		 */
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
-		//'Illuminate\Auth\AuthServiceProvider',
-		'Ollieread\Multiauth\MultiauthServiceProvider',
+		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Bus\BusServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
 		'Illuminate\Foundation\Providers\ConsoleSupportServiceProvider',
@@ -160,8 +158,7 @@ return [
 		'Illuminate\Pipeline\PipelineServiceProvider',
 		'Illuminate\Queue\QueueServiceProvider',
 		'Illuminate\Redis\RedisServiceProvider',
-		//'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
-		'Ollieread\Multiauth\Passwords\PasswordResetServiceProvider',
+		'Illuminate\Auth\Passwords\PasswordResetServiceProvider',
 		'Illuminate\Session\SessionServiceProvider',
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',

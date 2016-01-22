@@ -11,7 +11,7 @@ class BrandRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return Auth::admin()->check() ? true : false;
+		return Auth::user()->check() ? true : false;
 	}
 
 	/**

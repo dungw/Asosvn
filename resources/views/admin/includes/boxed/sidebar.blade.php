@@ -6,7 +6,7 @@
                      alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ ucfirst(Auth::admin()->getUser()->name) }}</p>
+                <p>{{ ucfirst(Auth::user()->getUser()->name) }}</p>
                 <a href="{{ url('bower_components/AdminLTE/pages/examples') }}/#"><i
                             class="fa fa-circle text-success"></i> Super Administrator</a>
             </div>

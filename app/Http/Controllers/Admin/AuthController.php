@@ -21,7 +21,7 @@ class AuthController extends Controller
 
 	public function __construct(Registrar $registrar)
 	{
-		$this->auth = Auth::admin();
+		$this->auth = Auth::user();
 		$this->registrar = $registrar;
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}

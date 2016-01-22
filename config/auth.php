@@ -1,26 +1,15 @@
 <?php
-
 return [
 
-	/*'driver' => 'eloquent',
-	'model' => 'App\User',
-	'table' => 'users',*/
+	'driver' => 'eloquent',
 
-	'multi'    => [
-		'admin'  => [
-			'driver' => 'eloquent',
-			'model'  => 'App\Admin',
-		],
-		'client' => [
-			'driver' => 'database',
-			'table'  => 'clients',
-			'email'  => 'client.emails.password',
-		]
-	],
+	'model' => 'App\User',
+
+	'table' => 'users',
 
 	'password' => [
-		'email'  => 'emails.password',
-		'table'  => 'password_resets',
+		'email' => 'emails.password',
+		'table' => 'password_resets',
 		'expire' => 60,
 	],
 

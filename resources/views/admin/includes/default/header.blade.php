@@ -116,7 +116,7 @@
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
 
-                    @if (Auth::admin()->guest())
+                    @if (Auth::guest())
                         <span style="color: #ff0000">Hello guest!</span>
                     @else
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

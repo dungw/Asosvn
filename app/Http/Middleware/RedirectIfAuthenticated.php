@@ -1,12 +1,10 @@
 <?php namespace App\Http\Middleware;
 
-use Auth;
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
 
-class RedirectIfAuthenticated
-{
+class RedirectIfAuthenticated {
 
 	/**
 	 * The Guard implementation.
@@ -18,29 +16,29 @@ class RedirectIfAuthenticated
 	/**
 	 * Create a new filter instance.
 	 *
+	 * @param  Guard  $auth
+	 * @return void
 	 */
-	public function __construct()
+	public function __construct(Guard $auth)
 	{
-
+		$this->auth = $auth;
 	}
 
 	/**
 	 * Handle an incoming request.
 	 *
-	 * @param  \Illuminate\Http\Request $request
-	 * @param  \Closure $next
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  \Closure  $next
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next)
 	{
-		if (Auth::admin()->check())
+		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('admin/product'));
-		} else if (Auth::client()->check(0))
-		{
-			return new RedirectResponse(url('home'));
+			return new RedirectResponse(url('/home'));
 		}
 
 		return $next($request);
 	}
+
 }
