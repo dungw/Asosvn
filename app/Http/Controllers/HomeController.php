@@ -1,36 +1,20 @@
 <?php namespace App\Http\Controllers;
 
-class HomeController extends Controller {
+use App\Product;
 
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders your application's "dashboard" for users that
-	| are authenticated. Of course, you are free to change or remove the
-	| controller as you wish. It is just here to get your app started!
-	|
-	*/
+class HomeController extends Controller
+{
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
 	public function __construct()
 	{
 
 	}
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-		return view('pages.home');
+		$data['latestProducts'] = Product::latest()->limit(6)->get();
+
+		return view('pages.home', $data);
 	}
 
 }

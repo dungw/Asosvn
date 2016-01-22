@@ -1,5 +1,5 @@
 <div class="breadcrumbs">
-    <ol class="breadcrumb">
+    <ol class="breadcrumb no-padding">
         @forelse ($items as $item)
 
             @if ($item['active'] == 0)
@@ -17,3 +17,4 @@
         @endforelse
     </ol>
 </div>
+<div class="clearfix"></div>

@@ -240,14 +240,18 @@ a#scrollUp i {
     color: #fdb45e;
 }
 
+.search_box {
+    height: 100%;
+    padding: 4px 0 3px 0;
+}
 .search_box input {
-    background: #F0F0E9;
+    background: white;
     border: medium none;
     color: #B2B2B2;
     font-family: 'roboto';
     font-size: 12px;
     font-weight: 300;
-    height: 35px;
+    height: 29px;
     outline: medium none;
     padding-left: 10px;
     width: 155px;
