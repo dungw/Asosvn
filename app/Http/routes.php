@@ -8,6 +8,10 @@ Route::get('account', 'AccountController@index');
 Route::get('account/logout', 'AccountController@logout');
 Route::get('account/dashboard', 'AccountController@dashboard');
 
+//Facebook Login
+Route::get('facebook/auth', 'FacebookController@auth');
+Route::get('facebook/login', 'FacebookController@login');
+
 //Product
 Route::get('product/{slug}', 'ProductController@details');
 Route::get('c/{category_slug}', 'ProductController@category');

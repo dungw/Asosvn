@@ -85,6 +85,7 @@ return [
 	'Hello'                                       => 'Hello',
 	'Recommended items'                           => 'Recommended items',
 	'Contact to get price'                        => 'Contact',
+	'Login With Facebook'						  => 'Login With Facebook',
 
 
 ];

@@ -34,4 +34,10 @@ return [
 		'secret' => '',
 	],
 
+	'facebook' => [
+		'client_id' => '1540297046283675',
+		'client_secret' => env('FB_SECRET'),
+		'redirect' => 'http://salezone.vn/facebook/login',
+	]
+
 ];

@@ -85,5 +85,6 @@ return [
 	'Hello'                                       => 'Xin chào',
 	'Recommended items'                           => 'Tham khảo thêm',
 	'Contact to get price'                        => 'Liên hệ',
+	'Login With Facebook'						  => 'Đăng Nhập Bằng Facebook',
 
 ];

@@ -177,6 +177,7 @@ return [
 		'App\Providers\ViewComposerServiceProvider',
 		'App\Providers\HelperServiceProvider',
 		'Gloudemans\Shoppingcart\ShoppingcartServiceProvider',
+		Laravel\Socialite\SocialiteServiceProvider::class,
 	],
 
 	/*
@@ -228,6 +229,7 @@ return [
 		'Html'      => 'Illuminate\Html\HtmlFacade',
 		'Image'     => 'Intervention\Image\Facades\Image',
 		'Cart'      => 'Gloudemans\Shoppingcart\Facades\Cart',
+		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 	],
 
 ];

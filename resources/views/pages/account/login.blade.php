@@ -34,6 +34,7 @@
                             <a class="btn btn-link no-padding forgot-link" href="{{ url('/password/email') }}">{{ trans('lang.Forgot Your Password?') }}</a>
                         </form>
                     </div>
+                    <a href="{{ url('facebook/auth') }}">{{ trans('lang.Login With Facebook') }}</a>
                 </div>
                 <div class="col-sm-1">
                     <h2 class="or">{{ trans('lang.OR') }}</h2>
