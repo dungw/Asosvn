@@ -22,7 +22,7 @@
                 <div class="col-sm-4 col-sm-offset-1">
                     <div class="login-form">
                         <h2>{{ trans('lang.Login to your account') }}</h2>
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/account/login') }}">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required>
                             <input type="password" class="form-control" name="password" placeholder="{{ trans('lang.Password') }}" required>

@@ -5,6 +5,7 @@ Route::post('api/product/store', 'Admin\ProductController@store');
 
 //Customer Account
 Route::get('account', 'AccountController@index');
+Route::post('account/login', 'AccountController@login');
 Route::get('account/logout', 'AccountController@logout');
 Route::get('account/dashboard', 'AccountController@dashboard');
 

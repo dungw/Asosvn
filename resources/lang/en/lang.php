@@ -86,6 +86,7 @@ return [
 	'Contact to get price'                        => 'Contact',
 	'Login With Facebook'						  => 'Login With Facebook',
 	'Login With Google'							  => 'Login With Google',
+	'The email has already been taken.'			  => 'The email has already been taken.',
 
 
 ];

@@ -86,5 +86,6 @@ return [
 	'Contact to get price'                        => 'Liên hệ',
 	'Login With Facebook'						  => 'Đăng nhập bằng tài khoản Facebook',
 	'Login With Google'							  => 'Đăng nhập bằng tài khoản Google',
+	'The email has already been taken.'			  => 'Email này đã được đăng ký.',
 
 ];
