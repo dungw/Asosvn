@@ -451,3 +451,7 @@ a#scrollUp {
     color: rgba(204, 204, 204, 1);
     content: "\276D\00a0";
 }
+.dropdown-menu .divider {
+    display: block;
+    margin: 5px 0;
+}

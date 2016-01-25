@@ -2,79 +2,47 @@
 
 use Auth;
 use App\Http\Controllers\Controller;
-use App\Services\AdminRegistrar as Registrar;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Http\Request;
+use App\User;
 
 class AuthController extends Controller
 {
-	//redirect path after logout
-	protected $redirectAfterLogout = 'admin/auth/login';
 
-	//redirect path after login successfully
-	protected $redirectPath = 'admin/product';
-
-	//login path
-	protected $loginPath = 'admin/auth/login';
-
-	use AuthenticatesAndRegistersUsers;
-
-	public function __construct(Registrar $registrar)
-	{
-		$this->auth = Auth::user();
-		$this->registrar = $registrar;
-		$this->middleware('guest', ['except' => 'getLogout']);
-	}
-
-	public function getRegister()
-	{
-		return view('admin.pages.register');
-	}
-
-	public function postRegister(Request $request)
-	{
-		$validator = $this->registrar->validator($request->all());
-
-		if ($validator->fails())
-		{
-			$this->throwValidationException(
-				$request, $validator
-			);
-		}
-
-		$this->auth->login($this->registrar->create($request->all()));
-
-		return redirect($this->redirectPath());
-	}
-
-	public function getLogin()
+	public function index()
 	{
 		return view('admin.pages.login');
 	}
 
-	public function postLogin(Request $request)
+	public function login(Request $request)
 	{
 		$this->validate($request, [
-			'name' => 'required', 'password' => 'required',
+			'email' => 'required|email', 'password' => 'required'
 		]);
 
-		$credentials = $request->only('name', 'password');
+		$user = User::where('email', $request->get('email'))->first();
 
-		if ($this->auth->attempt($credentials, $request->has('remember')))
-		{
-			return redirect()->intended($this->redirectPath());
+		if ($user->id && $user->is_admin && password_verify($request->get('password'), $user->password)) {
+			Auth::login($user);
+			return redirect('/admin');
 		}
 
-		return redirect($this->loginPath())
-			->withInput($request->only('name', 'remember'))
+		return redirect('/admin/auth')
+			->withInput($request->only('email', 'remember'))
 			->withErrors([
 				'name' => $this->getFailedLoginMessage(),
 			]);
 	}
 
+	public function logout()
+	{
+		Auth::logout();
+
+		return redirect('/admin/auth');
+	}
+
 	protected function getFailedLoginMessage()
 	{
-		return 'Username or password is wrong.';
+		return 'Username or password is wrong!';
 	}
 
 }

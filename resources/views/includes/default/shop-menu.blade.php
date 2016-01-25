@@ -19,7 +19,14 @@
         @if (Auth::guest())
             <li><a href="{{ url('account') }}"><i class="fa fa-user"></i> {{ trans('lang.Account') }}</a></li>
         @else
-            <li><a href="{{ url('account/logout') }}"><i class="fa fa-user"></i> {{ trans('lang.Logout') }}</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('lang.Account') }} <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url('account/dashboard') }}"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{{ url('account/logout') }}"><i class="fa fa-power-off"></i> {{ trans('lang.Logout') }}</a></li>
+                </ul>
+            </li>
         @endif
     </ul>
 </div>

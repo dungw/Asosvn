@@ -94,15 +94,15 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('bower_components/AdminLTE/dist/img/owner.jpg') }}" class="user-image" alt="{{ ucfirst(Auth::user()->getUser()->name) }}">
-                        <span class="hidden-xs">{{ ucfirst(Auth::user()->getUser()->name) }}</span>
+                        <img src="{{ asset('bower_components/AdminLTE/dist/img/owner.jpg') }}" class="user-image" alt="{{ ucfirst(Auth::user()->name) }}">
+                        <span class="hidden-xs">{{ ucfirst(Auth::user()->name) }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="{{ asset('bower_components/AdminLTE/dist/img/owner.jpg') }}" class="img-circle" alt="{{ ucfirst(Auth::user()->getUser()->name) }} Avatar">
+                            <img src="{{ asset('bower_components/AdminLTE/dist/img/owner.jpg') }}" class="img-circle" alt="{{ ucfirst(Auth::user()->name) }} Avatar">
                             <p>
-                                {{ ucfirst(Auth::user()->getUser()->name) }} - Administrator
+                                {{ ucfirst(Auth::user()->name) }} - Administrator
                                 <small>Member since Dec. 2015</small>
                             </p>
                         </li>

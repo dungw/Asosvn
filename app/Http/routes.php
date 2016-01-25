@@ -3,15 +3,10 @@
 //APIs
 Route::post('api/product/store', 'Admin\ProductController@store');
 
-//User routes
-Route::resource('user', 'UserController');
-Route::post('user/login', 'UserController@login');
-Route::get('user/logged-in', 'UserController@loggedIn');
-Route::get('user/logout', 'UserController@logout');
-
 //Customer Account
 Route::get('account', 'AccountController@index');
 Route::get('account/logout', 'AccountController@logout');
+Route::get('account/dashboard', 'AccountController@dashboard');
 
 //Product
 Route::get('product/{slug}', 'ProductController@details');
@@ -44,13 +39,17 @@ Route::controllers([
 	'blog'      => 'BlogController',
 ]);
 
-//Backend routes
-Route::get('admin', 'Admin\IndexController@index');
+//Auth
 Route::controllers([
 	'auth'          => 'Auth\AuthController',
 	'password'      => 'Auth\PasswordController',
-	'admin/auth'    => 'Admin\AuthController',
 ]);
+
+//Backend routes
+Route::get('admin', 'Admin\IndexController@index');
+Route::get('admin/auth', 'Admin\AuthController@index');
+Route::post('admin/auth/login', 'Admin\AuthController@login');
+Route::get('admin/auth/logout', 'Admin\AuthController@logout');
 
 Route::resource('admin/product', 'Admin\ProductController');
 Route::resource('admin/category', 'Admin\CategoryController');
