@@ -12,6 +12,10 @@ Route::get('account/dashboard', 'AccountController@dashboard');
 Route::get('facebook/auth', 'FacebookController@auth');
 Route::get('facebook/login', 'FacebookController@login');
 
+//Google Login
+Route::get('google/auth', 'GoogleController@auth');
+Route::get('google/login', 'GoogleController@login');
+
 //Product
 Route::get('product/{slug}', 'ProductController@details');
 Route::get('c/{category_slug}', 'ProductController@category');

@@ -35,6 +35,8 @@
                         </form>
                     </div>
                     <a href="{{ url('facebook/auth') }}">{{ trans('lang.Login With Facebook') }}</a>
+                    <br/>
+                    <a href="{{ url('google/auth') }}">{{ trans('lang.Login With Google') }}</a>
                 </div>
                 <div class="col-sm-1">
                     <h2 class="or">{{ trans('lang.OR') }}</h2>

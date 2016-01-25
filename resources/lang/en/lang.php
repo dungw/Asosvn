@@ -81,11 +81,11 @@ return [
 	'These credentials do not match our records.' => 'These credentials do not match our records.',
 	'The email must be a valid email address.'    => 'The email must be a valid email address.',
 	'The password field is required.'             => 'The password field is required.',
-	'Logout'                                      => 'Logout',
 	'Hello'                                       => 'Hello',
 	'Recommended items'                           => 'Recommended items',
 	'Contact to get price'                        => 'Contact',
 	'Login With Facebook'						  => 'Login With Facebook',
+	'Login With Google'							  => 'Login With Google',
 
 
 ];

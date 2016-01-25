@@ -5,7 +5,7 @@ use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Laravel\Socialite\Facades\Socialite;
 
-class FacebookController extends Controller {
+class GoogleController extends Controller {
 
 	protected $auth;
 
@@ -16,12 +16,12 @@ class FacebookController extends Controller {
 
 	public function auth()
 	{
-		return Socialite::driver('facebook')->redirect();
+		return Socialite::driver('google')->redirect();
 	}
 
 	public function login()
 	{
-		$fb_user = Socialite::driver('facebook')->user();
+		$fb_user = Socialite::driver('google')->user();
 
 		$user = User::where('email', $fb_user->getEmail())->first();
 		if (!$user) {

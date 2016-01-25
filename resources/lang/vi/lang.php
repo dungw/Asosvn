@@ -81,10 +81,10 @@ return [
 	'These credentials do not match our records.' => 'Thông tin đăng nhập không đúng.',
 	'The email must be a valid email address.'    => 'Địa chỉ Email định dạng không đúng.',
 	'The password field is required.'             => 'Mật khẩu là trường bắt buộc.',
-	'Logout'                                      => 'Đăng xuất',
 	'Hello'                                       => 'Xin chào',
 	'Recommended items'                           => 'Tham khảo thêm',
 	'Contact to get price'                        => 'Liên hệ',
-	'Login With Facebook'						  => 'Đăng Nhập Bằng Facebook',
+	'Login With Facebook'						  => 'Đăng nhập bằng tài khoản Facebook',
+	'Login With Google'							  => 'Đăng nhập bằng tài khoản Google',
 
 ];

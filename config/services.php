@@ -38,6 +38,12 @@ return [
 		'client_id' => '1540297046283675',
 		'client_secret' => env('FB_SECRET'),
 		'redirect' => 'http://salezone.vn/facebook/login',
+	],
+
+	'google' => [
+		'client_id' => '956512791132-4dcftfe6e34df8b3dvat5rktgt4esin9.apps.googleusercontent.com',
+		'client_secret' => env('GG_SECRET'),
+		'redirect' => 'http://salezone.vn/google/login',
 	]
 
 ];
