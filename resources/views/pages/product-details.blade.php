@@ -5,11 +5,10 @@
 @stop
 
 @section('head')
-    <link href="{{ asset('css/jquery.fancybox.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
 @stop
 
 @section('facebook')
-    {{--Include the JavaScript SDK--}}
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -24,7 +23,6 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-    {{-- End Include the JavaScript SDK--}}
 @stop
 
 @section('content')
@@ -48,11 +46,21 @@
                         <div class="col-sm-5">
 
                             <div class="image-wrapper row vertical-align">
-                                <div class="col-sm-12 no-padding">
+                                <div class="col-sm-12">
                                     <img id="zoom_03" class="main-image"
                                          src="{{ asset(\App\Helpers\ImageManager::getThumb($mainImage, 'product', 'medium') ) }}"
                                          data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $mainImage) . $mainImage ) }}"/>
                                 </div>
+                            </div>
+                            <div id="gallery_01" class="carousel slide">
+                                @foreach( $product->images()->lists('image') as $image)
+                                    <a href="#" class="thumb"
+                                       data-image="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product', 'medium')) }}"
+                                       data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $image) . $image) }}">
+                                        <img style="max-width: 85px; max-height: 85px;"
+                                             src="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product')) }}">
+                                    </a>
+                                @endforeach
                             </div>
 
                         </div>
@@ -97,16 +105,7 @@
                         </div>
 
                         <div class="col-sm-12">
-                            <div id="gallery_01" class="carousel slide">
-                                @foreach( $product->images()->lists('image') as $image)
-                                    <a href="#" class="thumb"
-                                       data-image="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product', 'medium')) }}"
-                                       data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $image) . $image) }}">
-                                        <img style="max-width: 85px; max-height: 85px;"
-                                             src="{{ asset(\App\Helpers\ImageManager::getThumb($image, 'product')) }}">
-                                    </a>
-                                @endforeach
-                            </div>
+
                         </div>
 
                     </div>

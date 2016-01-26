@@ -57,6 +57,9 @@
 </div>
 
 @section('front-footer-content')
+
+    @parent
+
     <script type="text/javascript">
         $(document).ready(function ($) {
 
