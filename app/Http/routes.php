@@ -43,8 +43,11 @@ Route::get('language/{lang}', 'LanguageController@changeTo');
 Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
+//Checkout
+Route::get('checkout', 'CheckoutController@index');
+Route::post('checkout/create', 'CheckoutController@create');
+
 Route::controllers([
-	'checkout'  => 'CheckoutController',
 	'blog'      => 'BlogController',
 ]);
 

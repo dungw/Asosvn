@@ -6,5 +6,5 @@
         <li>{{ trans('lang.Total') }} <span>{!! App\Helpers\Currency::currency($total) !!}</span></li>
     </ul>
     <a class="btn btn-default update" href="#">{{ trans('lang.Continue shopping') }}</a>
-    <a class="btn btn-default check_out" href="#">{{ trans('lang.Check Out') }}</a>
+    <a class="btn btn-default check_out" href="{{ url('checkout') }}">{{ trans('lang.Check Out') }}</a>
 </div>
