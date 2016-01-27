@@ -12,12 +12,13 @@
             {!! Form::open(['method' => 'post', 'url' => 'checkout/create', 'class' => 'form-inline']) !!}
                 <div class="form-group col-sm-6">
                     <label for="accountName">{{ trans('lang.Name') }}</label>
-                    <input type="text" name="name" class="form-control no-radius input-gray" id="accountName" value="{{ Auth::user()->name }}" disabled @if (!Auth::user()->password) disabled @endif>
+                    <input type="text" name="name" class="form-control no-radius input-gray" id="accountName" value="{{ Auth::user()->name }}" disabled @if (!Auth::user()->password) data-socialite="1" @endif>
                     {{--if user login with facebook or goole account will have no password, name is auto update when user change facebook or google name--}}
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="accountEmail">{{ trans('lang.Email') }}</label>
-                    <input type="email" name="email" class="form-control no-radius input-gray" id="accountEmail" value="{{ Auth::user()->email }}" disabled>
+                    <input type="email" name="email" class="form-control no-radius input-gray" id="accountEmail" value="{{ Auth::user()->email }}" disabled @if (!Auth::user()->password) data-socialite="1" @endif>
+                    {{--if user login with facebook or goole account will have no password, canot update email--}}
                 </div>
                 <div class="col-sm-12" style="padding-top: 15px"></div>
                 <div class="form-group col-sm-6">
@@ -50,10 +51,24 @@
             });
 
             $(".update-account").on("click", function() {
-                $(".account-dashboard input").removeAttr('disabled');
+                $("#accountPhone").removeAttr('disabled');
+                if ($("#accountName").data("socialite") != 1) {
+                    $("#accountName").removeAttr('disabled');
+                    $("#accountName").focus();
+                } else {
+                    $("#accountPhone").focus();
+                }
+                if ($("#accountEmail").data("socialite") != 1) {
+                    $("#accountEmail").removeAttr('disabled');
+                }
+
                 $(".update-account").fadeOut(1);
                 $(".cancel-update-account").fadeIn();
                 $(".save-update-account").fadeIn();
+            });
+
+            $(".cancel-update-account").on("click", function() {
+
             });
         });
     </script>
