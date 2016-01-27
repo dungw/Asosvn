@@ -80,7 +80,7 @@
                                 <p>{{ trans('lang.SKU') }}: {{ $product->sku }}</p>
 
 								<span>
-									{{--<span>{!! App\Helpers\Currency::currency($product->price) !!}</span>--}}
+									<span>{!! App\Helpers\Currency::currency($product->price) !!}</span>
                                 </span>
 
                                 <br>
