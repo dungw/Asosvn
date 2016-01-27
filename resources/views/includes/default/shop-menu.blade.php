@@ -2,7 +2,8 @@
 <div class="shop-menu pull-right" id="shop-menu">
     <ul class="nav navbar-nav">
         <li>
-            <a href="{{ url('cart') }}"><i class="fa fa-shopping-cart"></i>{{ trans('lang.Cart') }}
+            <a href="{{ url('cart') }}" class="@if (Request::url() == url('cart')) active @endif">
+                <i class="fa fa-shopping-cart"></i>{{ trans('lang.Cart') }}
                 @if ($cartQty > 0)
                     <div class="cart-qty">
                         <div class="@if ($cartQty > 99) circle-plus @else circle @endif">
@@ -14,13 +15,27 @@
                 @endif
             </a>
         </li>
-        <li class="link-checkout"><a href="{{ url('checkout') }}"><i class="fa fa-crosshairs"></i> {{ trans('lang.Checkout') }}</a></li>
-        <li><a href="#"><i class="fa fa-star"></i> {{ trans('lang.Wishlist') }}</a></li>
+        <li class="link-checkout">
+            <a href="{{ url('checkout') }}" class="@if (Request::url() == url('checkout')) active @endif">
+                <i class="fa fa-crosshairs"></i> {{ trans('lang.Checkout') }}
+            </a>
+        </li>
+        <li>
+            <a href="#" class="@if (Request::url() == url('wishlist')) active @endif">
+                <i class="fa fa-star"></i> {{ trans('lang.Wishlist') }}
+            </a>
+        </li>
         @if (Auth::guest())
-            <li><a href="{{ url('account') }}"><i class="fa fa-user"></i> {{ trans('lang.Account') }}</a></li>
+            <li>
+                <a href="{{ url('account') }}" class="@if (Request::url() == url('account')) active @endif">
+                    <i class="fa fa-user"></i> {{ trans('lang.Account') }}
+                </a>
+            </li>
         @else
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('lang.Account') }} <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle @if (Request::url() == url('account/dashboard')) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    {{ trans('lang.Account') }} <span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ url('account/dashboard') }}"><i class="fa fa-user"></i> {{ Auth::user()->name }}</a></li>
                     <li role="separator" class="divider"></li>
