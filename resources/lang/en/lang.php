@@ -101,5 +101,10 @@ return [
 	'Payment Information'						  => 'Payment Information',
 	'Checkout Success'							  => 'Checkout Success',
 	'Can not create new order.'					  => 'Can not create new order.',
+	'General Information'						  => 'General Information',
+	'Order'										  => 'Order',
+	'Cancel'									  => 'Cancel',
+	'Save'										  => 'Save',
+
 
 ];

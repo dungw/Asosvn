@@ -464,3 +464,33 @@ a#scrollUp {
 .btn-place-order:hover {
     background: #14759e !important;
 }
+.account-dashboard {
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+.account-dashboard form button {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.account-dashboard form button:hover {
+    background: #14759e !important;
+}
+.list-group-item a {
+    color: #696763;
+}
+.list-group-item a:hover {
+    color: #28ABE3;
+}
+a.active {
+    color: #6c9edf !important;
+}
+.no-radius {
+    border-radius: 0 !important;
+}
+.input-gray {
+    background: #F0F0E9;
+    color: #696763;
+}
+.cancel-update-account, .save-update-account {
+    display: none;
+}

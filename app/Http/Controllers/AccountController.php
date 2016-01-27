@@ -22,6 +22,10 @@ class AccountController extends Controller {
 
 	public function index()
 	{
+		if (Auth::user()) {
+			return redirect('account/dashboard');
+		}
+
 		return view('pages.account.login');
 	}
 
@@ -55,6 +59,11 @@ class AccountController extends Controller {
 	public function dashboard()
 	{
 		return view('pages.account.dashboard');
+	}
+
+	public function order()
+	{
+		return view('pages.account.order');
 	}
 
 }

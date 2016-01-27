@@ -33,7 +33,7 @@
             </li>
         @else
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle @if (Request::url() == url('account/dashboard')) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                <a href="#" class="dropdown-toggle @if (Request::url() == url('account/dashboard') || Request::url() == url('account/order')) active @endif" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                     {{ trans('lang.Account') }} <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
