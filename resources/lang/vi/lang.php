@@ -100,5 +100,6 @@ return [
 	'Order Information'						  	  => 'Thông Tin Đơn Hàng',
 	'Payment Information'						  => 'Thông Tin Thanh Toán',
 	'Checkout Success'							  => 'Thanh toán thành công',
+	'Can not create new order.'					  => 'Không thể tạo đơn hàng mới.',
 
 ];
