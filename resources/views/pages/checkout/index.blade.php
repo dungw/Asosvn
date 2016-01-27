@@ -5,14 +5,14 @@
 @stop
 
 @section('content')
-    <section id="cart_items">
+    <section class="checkout-page">
         <div class="container">
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li class="active">Check out</li>
                 </ol>
-            </div><!--/breadcrums-->
+            </div>
 
             <div class="shopper-informations">
                 <div class="row">
@@ -29,35 +29,35 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="shopper-info">
-                            <p>Shopper Information</p>
+                            <p>{{ trans('lang.Shopper Information') }}</p>
                             {!! Form::open(['method' => 'post', 'url' => 'checkout/create']) !!}
-                                <input type="text" name="name" placeholder="Name" required maxlength="100">
-                                <input type="email" name="email" placeholder="Email" required maxlength="100">
-                                <input type="text" name="phone" placeholder="Phone" class="phone-number" required maxlength="15">
-                                <input type="text" name="address" placeholder="Address" required>
-                                <textarea name="note" placeholder="Notes about your order, Special Notes for Delivery" rows="3"></textarea>
-                                <button type="submit" title="Place Order" class="btn btn-primary" @if (\Gloudemans\Shoppingcart\Facades\Cart::count() == 0) disabled @endif>
-                                    Place Order
+                                <input type="text" name="name" placeholder="{{ trans('lang.Name') }}" required maxlength="100">
+                                <input type="email" name="email" placeholder="{{ trans('lang.Email') }}" required maxlength="100">
+                                <input type="text" name="phone" placeholder="{{ trans('lang.Phone') }}" class="phone-number" required maxlength="15">
+                                <input type="text" name="address" placeholder="{{ trans('lang.Address') }}" required>
+                                <textarea name="note" placeholder="{{ trans('lang.Notes about your order') }}..." rows="3"></textarea>
+                                <button type="submit" title="{{ trans('lang.Place Order') }}" class="btn btn-primary btn-place-order" @if (\Gloudemans\Shoppingcart\Facades\Cart::count() == 0) disabled @endif>
+                                    {{ trans('lang.Place Order') }}
                                 </button>
                             {!! Form::close() !!}
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <div class="shopper-info">
-                            <p>Order Information</p>
+                            <p>{{ trans('lang.Order Information') }}</p>
                         </div>
                         @if (\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)
                             <table class="table table-condensed total-result">
                                 <tr>
-                                    <td>Cart Sub Total</td>
+                                    <td>{{ trans('lang.Cart Sub Total') }}</td>
                                     <td>{!! App\Helpers\Currency::currency(\Gloudemans\Shoppingcart\Facades\Cart::total()) !!}</td>
                                 </tr>
                                 <tr class="shipping-cost">
-                                    <td>Shipping Cost</td>
-                                    <td>Free</td>
+                                    <td>{{ trans('lang.Shipping Cost') }}</td>
+                                    <td>{{ trans('lang.Free') }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Total</td>
+                                    <td>{{ trans('lang.Total') }}</td>
                                     <td><span>{!! App\Helpers\Currency::currency(\Gloudemans\Shoppingcart\Facades\Cart::total()) !!}</span></td>
                                 </tr>
                             </table>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="shopper-info">
-                            <p>Payment Information</p>
+                            <p>{{ trans('lang.Payment Information') }}</p>
                         </div>
                         <div class="order-message">
                             Dat coc truoc 20%, huong dan thong tin thanh toan

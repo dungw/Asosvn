@@ -87,5 +87,17 @@ return [
 	'Login With Facebook'						  => 'Đăng nhập bằng tài khoản Facebook',
 	'Login With Google'							  => 'Đăng nhập bằng tài khoản Google',
 	'The email has already been taken.'			  => 'Email này đã được đăng ký.',
+	'The name field is required.'				  => 'Hãy điền đầy đủ thông tin về họ tên.',
+	'The email field is required.'				  => 'Hãy điền đầy đủ thông tin về email.',
+	'The phone field is required.'				  => 'Hãy điền đầy đủ thông tin về số điện thoại.',
+	'The address field is required.'			  => 'Hãy điền đầy đủ thông tin về địa chỉ.',
+	'Shopper Information'						  => 'Thông Tin Người Mua',
+	'Notes about your order'					  => 'Ghi chú về đơn hàng',
+	'Address'						  			  => 'Địa chỉ',
+	'Phone'						  				  => 'Số điện thoại',
+	'Email'										  => 'Email',
+	'Place Order'						  		  => 'Đặt Hàng',
+	'Order Information'						  	  => 'Thông Tin Đơn Hàng',
+	'Payment Information'						  => 'Thông Tin Thanh Toán',
 
 ];

@@ -455,3 +455,9 @@ a#scrollUp {
     display: block;
     margin: 5px 0;
 }
+.checkout-page {
+    padding-bottom: 150px;
+}
+.btn-place-order:hover {
+    background: #14759e !important;
+}

@@ -87,6 +87,17 @@ return [
 	'Login With Facebook'						  => 'Login With Facebook',
 	'Login With Google'							  => 'Login With Google',
 	'The email has already been taken.'			  => 'The email has already been taken.',
-
+	'The name field is required.'				  => 'The name field is required.',
+	'The email field is required.'				  => 'The email field is required.',
+	'The phone field is required.'				  => 'The phone field is required.',
+	'The address field is required.'			  => 'The name address is required.',
+	'Shopper Information'						  => 'Shopper Information',
+	'Notes about your order'					  => 'Notes about your order',
+	'Address'						  			  => 'Address',
+	'Phone'						  				  => 'Phone',
+	'Email'										  => 'Email',
+	'Place Order'						  		  => 'Place Order',
+	'Order Information'						  	  => 'Order Information',
+	'Payment Information'						  => 'Payment Information',
 
 ];
