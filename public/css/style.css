@@ -458,6 +458,9 @@ a#scrollUp {
 .checkout-page {
     padding-bottom: 150px;
 }
+.checkout-success {
+    padding-bottom: 50px !important;
+}
 .btn-place-order:hover {
     background: #14759e !important;
 }
