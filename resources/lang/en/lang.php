@@ -99,5 +99,6 @@ return [
 	'Place Order'						  		  => 'Place Order',
 	'Order Information'						  	  => 'Order Information',
 	'Payment Information'						  => 'Payment Information',
+	'Checkout Success'							  => 'Checkout Success',
 
 ];

@@ -99,5 +99,6 @@ return [
 	'Place Order'						  		  => 'Đặt Hàng',
 	'Order Information'						  	  => 'Thông Tin Đơn Hàng',
 	'Payment Information'						  => 'Thông Tin Thanh Toán',
+	'Checkout Success'							  => 'Thanh toán thành công',
 
 ];
