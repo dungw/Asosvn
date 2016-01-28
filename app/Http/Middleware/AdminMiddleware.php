@@ -20,7 +20,7 @@ class AdminMiddleware {
 			return $next($request);
 		}
 
-		return response("You don't have permission to access this page!", 401);
+		return redirect('admin/auth');
 	}
 
 }

@@ -59,16 +59,28 @@ class AccountController extends Controller {
 
 	public function dashboard()
 	{
+		if (Auth::guest()) {
+			return redirect('account');
+		}
+
 		return view('pages.account.dashboard');
 	}
 
 	public function order()
 	{
+		if (Auth::guest()) {
+			return redirect('account');
+		}
+
 		return view('pages.account.order');
 	}
 
 	public function update(Request $request)
 	{
+		if (Auth::guest()) {
+			return redirect('account');
+		}
+
 		$this->validate($request, [
 			'email' => 'required|email', 'name' => 'required',
 		]);
