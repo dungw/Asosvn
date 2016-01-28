@@ -19,7 +19,9 @@
                         </div>
                     @endif
                 </div>
+
                 <div class="col-sm-4 col-sm-offset-1">
+
                     <div class="login-form">
                         <h2>{{ trans('lang.Login to your account') }}</h2>
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/account/login') }}">
@@ -34,10 +36,20 @@
                             <a class="btn btn-link no-padding forgot-link" href="{{ url('/password/email') }}">{{ trans('lang.Forgot Your Password?') }}</a>
                         </form>
                     </div>
-                    <a href="{{ url('facebook/auth') }}">{{ trans('lang.Login With Facebook') }}</a>
-                    <br/>
-                    <a href="{{ url('google/auth') }}">{{ trans('lang.Login With Google') }}</a>
+
+                    <br><br>
+                    <div class="btn-group social-login-btn fb-login">
+                        <a class="btn-label btn btn-primary disabled"><i class="fa fa-facebook" style="width:16px; height:20px"></i></a>
+                        <a class="content btn btn-primary" href="{{ url('facebook/auth') }}">{{ trans('lang.Login With Facebook') }}</a>
+                    </div>
+
+                    <div class="btn-group social-login-btn gg-login">
+                        <a class="btn-label btn btn-danger disabled"><i class="fa fa-google-plus" style="width:16px; height:20px"></i></a>
+                        <a class="content btn btn-danger" href="{{ url('google/auth') }}">{{ trans('lang.Login With Google') }}</a>
+                    </div>
+
                 </div>
+
                 <div class="col-sm-1">
                     <h2 class="or">{{ trans('lang.OR') }}</h2>
                 </div>

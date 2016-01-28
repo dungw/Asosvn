@@ -157,7 +157,29 @@
 }
 
 .or {
-    background: #28ABE3 !important;
+    background: #d3d3d3 !important;
+}
+.social-login-btn {
+    margin-bottom: 20px;
+}
+.social-login-btn .btn-label, .social-login-btn .content {
+    height: 34px;
+    line-height: 21px;
+}
+.social-login-btn .btn {
+    border-radius: 4px !important;
+}
+.social-login-btn .content {
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+.fb-login:hover .content {
+    background-color: #2294c1 !important;
+    border-color: #1b7596 !important;
+}
+.social-login-btn .btn-label {
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
 /*.breadcrumbs .breadcrumb li a {
@@ -377,6 +399,8 @@ a#scrollUp {
 
 .forgot-link {
     padding: 10px 0;
+    font-size: 13px;
+    margin-top: 5px;
 }
 
 .signup-form form button, .login-form form button {
@@ -426,9 +450,10 @@ a#scrollUp {
 /** Breadcrumb */
 .breadcrumb {
     background: rgba(245, 245, 245, 0);
-    border: 0px solid rgba(245, 245, 245, 1);
+    border: 0 solid rgba(245, 245, 245, 1);
     border-radius: 4px;
     display: block;
+    margin-top: 10px;
 }
 
 .breadcrumb li {
@@ -458,9 +483,22 @@ a#scrollUp {
 .checkout-page {
     padding-bottom: 150px;
 }
-.checkout-success {
-    padding-bottom: 50px !important;
+.checkout-success-page {
+    padding: 50px 0;
 }
+.checkout-success-page .title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+.checkout-success-page .title::after {
+    border: none !important;
+}
+.checkout-success-page .signature {
+    margin: 40px 0;
+    text-align: right;
+    color: #d3d3d3;
+}
+
 .btn-place-order:hover {
     background: #14759e !important;
 }

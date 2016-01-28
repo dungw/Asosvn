@@ -21,7 +21,7 @@
                     @foreach ($orders as $order)
                         <tr>
                             <td>#{{ $order->id }}</td>
-                            {{--<td>{!! App\Helpers\Currency::currency($order->total_amount) !!}</td>--}}
+                            <td>{!! App\Helpers\Currency::currency($order->total_amount) !!}</td>
                             <td>
                                 @if (App::getLocale() == 'vi')
                                     {{ date('d-m-Y', strtotime($order->created_at)) }}
