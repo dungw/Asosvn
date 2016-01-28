@@ -21,12 +21,12 @@
 
             <div class="shopper-info">
             {!! Form::open(['method' => 'post', 'url' => 'account/update']) !!}
-                <input type="text" name="name" id="accountName" value="{{ Auth::user()->name }}" data-name="{{ Auth::user()->name }}" disabled @if (!Auth::user()->password) data-socialite="1" @endif>
+                <input type="text" name="name" id="accountName" value="{{ Auth::user()->name }}" data-name="{{ Auth::user()->name }}" disabled @if (!Auth::user()->password) data-socialite="1" @endif placeholder="{{ trans('lang.Name') }}">
                 {{--if user login with facebook or goole account will have no password, name is auto update when user change facebook or google name--}}
-                <input type="email" name="email" id="accountEmail" value="{{ Auth::user()->email }}" data-email="{{ Auth::user()->email }}" disabled @if (!Auth::user()->password) data-socialite="1" @endif>
+                <input type="email" name="email" id="accountEmail" value="{{ Auth::user()->email }}" data-email="{{ Auth::user()->email }}" disabled @if (!Auth::user()->password) data-socialite="1" @endif placeholder="{{ trans('lang.Email') }}">
                 {{--if user login with facebook or goole account will have no password, canot update email--}}
-                <input type="text" name="phone" id="accountPhone" value="{{ Auth::user()->phone }}" data-phone="{{ Auth::user()->phone }}" disabled>
-                <textarea name="address" id="accountAddress" rows="3">{{ Auth::user()->address }}</textarea>
+                <input type="text" name="phone" id="accountPhone" value="{{ Auth::user()->phone }}" data-phone="{{ Auth::user()->phone }}" disabled placeholder="{{ trans('lang.Phone') }}">
+                <textarea name="address" id="accountAddress" rows="3" placeholder="{{ trans('lang.Address') }}">{{ Auth::user()->address }}</textarea>
 
                 <button type="button" class="btn btn-primary update-account">{{ trans('lang.Update') }}</button>
                 <button type="submit" class="btn btn-primary save-update-account">{{ trans('lang.Save') }}</button>

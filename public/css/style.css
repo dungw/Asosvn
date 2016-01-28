@@ -547,8 +547,7 @@ a.active {
     background: #fff;
     border: 1px solid #f5f5f5;
     color: #222;
-    min-height: 460px;
-    padding: 45px 46px;
+    min-height: 460px;   
 }
 .account-order .btn {
     margin-top: 0 !important;

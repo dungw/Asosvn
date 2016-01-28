@@ -115,5 +115,6 @@ return [
 	'Details Order'							 	  => 'Details order',
 	'You have no order!'						  => 'You have no order!',
 	'Status'									  => 'Status',
+	'Image'										  => 'Image',	
 
 ];

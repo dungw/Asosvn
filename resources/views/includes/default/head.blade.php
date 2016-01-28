@@ -16,7 +16,7 @@
 <title>@yield('title') | Sale-Zone</title>
 <link rel="icon" href="{{ url('images/icon/favicon.png') }}" type="image/gif" sizes="32x32">
 
-<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/bootstrap-3.3.6/bootstrap.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 <link href="{{ asset('css/prettyPhoto.css') }}" rel="stylesheet">
 <link href="{{ asset('css/price-range.css') }}" rel="stylesheet">
