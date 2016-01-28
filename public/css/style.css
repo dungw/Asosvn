@@ -426,9 +426,10 @@ a#scrollUp {
 /** Breadcrumb */
 .breadcrumb {
     background: rgba(245, 245, 245, 0);
-    border: 0px solid rgba(245, 245, 245, 1);
+    border: 0 solid rgba(245, 245, 245, 1);
     border-radius: 4px;
     display: block;
+    margin-top: 10px;
 }
 
 .breadcrumb li {
@@ -458,9 +459,22 @@ a#scrollUp {
 .checkout-page {
     padding-bottom: 150px;
 }
-.checkout-success {
-    padding-bottom: 50px !important;
+.checkout-success-page {
+    padding: 50px 0;
 }
+.checkout-success-page .title {
+    margin-bottom: 50px;
+    text-align: center;
+}
+.checkout-success-page .title::after {
+    border: none !important;
+}
+.checkout-success-page .signature {
+    margin: 40px 0;
+    text-align: right;
+    color: #d3d3d3;
+}
+
 .btn-place-order:hover {
     background: #14759e !important;
 }
