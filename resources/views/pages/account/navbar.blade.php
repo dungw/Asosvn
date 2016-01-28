@@ -1,11 +1,12 @@
-<div class="col-sm-3">
-    <ul class="list-group">
-        <li class="list-group-item no-radius">
+<div class="col-sm-3" id="account-sidebar">
+    <h4>{{ trans('lang.Manage Account') }}</h4>
+    <ul class="nav nav-list">
+        <li>
             <a href="{{ url('account/dashboard') }}" class="@if (Request::url() == url('account/dashboard')) active @endif">
                 {{ trans('lang.General Information') }}
             </a>
         </li>
-        <li class="list-group-item no-radius">
+        <li>
             <a href="{{ url('account/order') }}" class="@if (Request::url() == url('account/order')) active @endif">
                 {{ trans('lang.Order') }}
             </a>

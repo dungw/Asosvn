@@ -36,6 +36,9 @@ Route::post('cart/qty-up/{rowId}', 'CartController@qtyUp');
 Route::post('cart/qty-down/{rowId}', 'CartController@qtyDown');
 Route::delete('cart/remove/{rowId}', 'CartController@remove');
 
+//Order
+Route::resource('order', 'OrderController');
+
 //Currency
 Route::get('currency/{currency}', 'CurrencyController@changeTo');
 

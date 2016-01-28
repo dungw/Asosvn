@@ -5,6 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Order;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -31,5 +33,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var array
 	 */
 	protected $hidden = ['password', 'remember_token'];
+
+	/**
+	 * get orders of customer login
+	 * @return mixed
+	 */
+	public function orders()
+	{
+		return Order::where('user_id', Auth::id())->get();
+	}
 
 }

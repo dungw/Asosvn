@@ -105,5 +105,14 @@ return [
 	'Order'										  => 'Đơn Hàng',
 	'Cancel'									  => 'Huỷ',
 	'Save'										  => 'Lưu',
+	'Manager Order'								  => 'Quản lý đơn hàng',
+	'Manage Account'							  => 'Quản lý tài khoản',
+	'Order Code'							  	  => 'Mã đơn hàng',
+	'Total Amount'							  	  => 'Tổng giá đơn hàng',
+	'Order At'							  	      => 'Ngày đặt',
+	'Details'							 		  => 'Chi tiết',
+	'Show'							 			  => 'Xem',
+	'Details Order'							 	  => 'Chi tiết đơn hàng',
+	'You have no order!'						  => 'Bạn chưa có đơn hàng nào!',
 
 ];

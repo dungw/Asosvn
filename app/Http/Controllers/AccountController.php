@@ -72,7 +72,10 @@ class AccountController extends Controller {
 			return redirect('account');
 		}
 
-		return view('pages.account.order');
+		$user = User::find(Auth::id());
+		$orders = $user->orders();
+
+		return view('pages.account.order', compact('orders'));
 	}
 
 	public function update(Request $request)

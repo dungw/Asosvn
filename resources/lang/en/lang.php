@@ -105,6 +105,14 @@ return [
 	'Order'										  => 'Order',
 	'Cancel'									  => 'Cancel',
 	'Save'										  => 'Save',
-
+	'Manager Order'								  => 'Manager Order',
+	'Manage Account'							  => 'Manage Account',
+	'Order Code'							  	  => 'Order Code',
+	'Total Amount'							  	  => 'Total Amount',
+	'Order At'							  	      => 'Order At',
+	'Details'							 		  => 'Details',
+	'Show'							 			  => 'Show',
+	'Details Order'							 	  => 'Details order',
+	'You have no order!'						  => 'You have no order!',
 
 ];
