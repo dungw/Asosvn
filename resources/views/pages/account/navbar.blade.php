@@ -1,5 +1,5 @@
-<div class="col-sm-3" id="account-sidebar">
-    <h4>{{ trans('lang.Manage Account') }}</h4>
+<div class="col-sm-3 shopper-info" id="account-sidebar">
+    <p>{{ trans('lang.Manage Account') }}</p>
     <ul class="nav nav-list">
         <li>
             <a href="{{ url('account/dashboard') }}" class="@if (Request::url() == url('account/dashboard')) active @endif">
