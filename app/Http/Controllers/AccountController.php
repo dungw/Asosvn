@@ -84,9 +84,11 @@ class AccountController extends Controller {
 			return redirect('account');
 		}
 
-		$this->validate($request, [
-			'email' => 'required|email', 'name' => 'required',
-		]);
+		if (Auth::user()->password) {
+			$this->validate($request, [
+				'email' => 'required|email', 'name' => 'required',
+			]);
+		}
 
 		$data = array(
 			'phone'   => trim($request->get('phone')),
