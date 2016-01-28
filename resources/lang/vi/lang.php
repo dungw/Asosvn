@@ -114,5 +114,6 @@ return [
 	'Show'							 			  => 'Xem',
 	'Details Order'							 	  => 'Chi tiết đơn hàng',
 	'You have no order!'						  => 'Bạn chưa có đơn hàng nào!',
+	'Status'									  => 'Trạng thái',
 
 ];

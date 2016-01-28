@@ -2,6 +2,18 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+//normal order
+define('ORDER_NORMAL', 1);
+//custom order
+define('ORDER_CUSTOM', 2);
+//status
+define('ORDER_PENDING', 'pending');
+define('ORDER_DEPOSIT', 'deposit');
+define('ORDER_SHIPPING', 'shipping');
+define('ORDER_COMPLETE', 'complete');
+
+
+
 class Order extends Model {
 
     protected $table = 'orders';

@@ -15,6 +15,7 @@
                     <th>{{ trans('lang.Order Code') }}</th>
                     <th>{{ trans('lang.Total Amount') }}</th>
                     <th>{{ trans('lang.Order At') }}</th>
+                    <th>{{ trans('lang.Status') }}</th>
                     <th>{{ trans('lang.Details') }}</th>
                 </thead>
                 <tbody>
@@ -28,8 +29,8 @@
                                 @else
                                     {{ date('m-d-Y', strtotime($order->created_at)) }}
                                 @endif
-
                             </td>
+                            <td>{{ $order->status }}</td>
                             <td>
                                 <button type="button" class="btn btn-primary" onclick="$.showOrderDetail('{{ $order->id }}')">
                                     {{ trans('lang.Show') }}
