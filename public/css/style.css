@@ -157,7 +157,29 @@
 }
 
 .or {
-    background: #28ABE3 !important;
+    background: #d3d3d3 !important;
+}
+.social-login-btn {
+    margin-bottom: 20px;
+}
+.social-login-btn .btn-label, .social-login-btn .content {
+    height: 34px;
+    line-height: 21px;
+}
+.social-login-btn .btn {
+    border-radius: 4px !important;
+}
+.social-login-btn .content {
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+.fb-login:hover .content {
+    background-color: #2294c1 !important;
+    border-color: #1b7596 !important;
+}
+.social-login-btn .btn-label {
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
 /*.breadcrumbs .breadcrumb li a {
@@ -377,6 +399,8 @@ a#scrollUp {
 
 .forgot-link {
     padding: 10px 0;
+    font-size: 13px;
+    margin-top: 5px;
 }
 
 .signup-form form button, .login-form form button {

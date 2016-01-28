@@ -69,7 +69,7 @@ return [
 	'There were some problems with your input'    => 'Có vấn đề với dữ liệu bạn vừa nhập',
 	'Password'                                    => 'Mật khẩu',
 	'Keep me signed in'                           => 'Lưu đăng nhập',
-	'Forgot Your Password?'                       => 'Bạn Quên Mật Khẩu?',
+	'Forgot Your Password?'                       => 'Quên mật khẩu?',
 	'OR'                                          => 'Hoặc',
 	'New User Signup!'                            => 'Đăng Ký Tài Khoản Mới!',
 	'Email Address'                               => 'Email',
