@@ -13,7 +13,6 @@ class CheckoutController extends BaseController
 
 	public function index()
 	{
-		return view('pages.checkout.success')->with('order_id', 1);
 		return view('pages.checkout.index');
 	}
 
