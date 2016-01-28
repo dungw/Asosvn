@@ -31,10 +31,10 @@
                         <div class="shopper-info">
                             <p>{{ trans('lang.Shopper Information') }}</p>
                             {!! Form::open(['method' => 'post', 'url' => 'checkout/create']) !!}
-                                <input type="text" name="name" placeholder="{{ trans('lang.Name') }}" required maxlength="100" value="{{ Auth::user()->name }}">
-                                <input type="email" name="email" placeholder="{{ trans('lang.Email') }}" required maxlength="100" value="{{ Auth::user()->email }}">
-                                <input type="text" name="phone" placeholder="{{ trans('lang.Phone') }}" class="phone-number" required maxlength="15" value="{{ Auth::user()->phone }}">
-                                <input type="text" name="address" placeholder="{{ trans('lang.Address') }}" required value="{{ Auth::user()->address }}">
+                                <input type="text" name="name" placeholder="{{ trans('lang.Name') }}" required maxlength="100" @if (Auth::check()) value="{{ Auth::user()->name }}" @endif>
+                                <input type="email" name="email" placeholder="{{ trans('lang.Email') }}" required maxlength="100" @if (Auth::check()) value="{{ Auth::user()->email }}" @endif>
+                                <input type="text" name="phone" placeholder="{{ trans('lang.Phone') }}" class="phone-number" required maxlength="15" @if (Auth::check()) value="{{ Auth::user()->phone }}" @endif>
+                                <input type="text" name="address" placeholder="{{ trans('lang.Address') }}" required @if (Auth::check()) value="{{ Auth::user()->address }}" @endif>
                                 <textarea name="note" placeholder="{{ trans('lang.Notes about your order') }}..." rows="3"></textarea>
                                 <button type="submit" title="{{ trans('lang.Place Order') }}" class="btn btn-primary btn-place-order" @if (\Gloudemans\Shoppingcart\Facades\Cart::count() == 0) disabled @endif>
                                     {{ trans('lang.Place Order') }}
