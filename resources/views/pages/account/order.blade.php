@@ -30,7 +30,7 @@
                                     {{ date('m-d-Y', strtotime($order->created_at)) }}
                                 @endif
                             </td>
-                            <td>{{ $order->status }}</td>
+                            <td>{{ trans('lang.' . $order->status) }}</td>
                             <td>
                                 <button type="button" class="btn btn-primary" onclick="$.showOrderDetail('{{ $order->id }}')">
                                     {{ trans('lang.Show') }}

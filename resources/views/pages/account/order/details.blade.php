@@ -10,6 +10,7 @@
                 <table class="table">
                     <thead>
                         <th class="text-center">{{ trans('lang.SKU') }}</th>
+                        <th class="text-center">{{ trans('lang.Product name') }}</th>
                         <th class="text-center">{{ trans('lang.Image') }}</th>
                         <th class="text-center">{{ trans('lang.Quantity') }}</th>
                         <th class="text-center">{{ trans('lang.Price') }}</th>
@@ -19,6 +20,7 @@
                             <?php $product = \App\Product::find($item->product_id) ?>
                             <tr>
                                 <td class="text-center">{{ $product->sku  }}</td>
+                                <td class="text-center">{{ $product->name  }}</td>
                                 <td class="text-center">
                                     <a href="{{ url('product/' . $product->slug) }}" title="{{ $product->name }}">
                                         <img src="{{ asset(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'small') ) }}" alt="{{ $product->name }}"/>
@@ -32,6 +34,9 @@
                 </table>
             </div>
             <div class="modal-footer">
+                <span class="detail-total">
+                    <strong>{{ trans('lang.Total') }}: {!! App\Helpers\Currency::currency($order->total_amount) !!}</strong>
+                </span>
                 <button type="button" class="btn btn-default close-modal-order" data-dismiss="modal">{{ trans('lang.Close') }}</button>
             </div>
         </div>

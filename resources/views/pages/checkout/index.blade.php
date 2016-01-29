@@ -31,16 +31,24 @@
                         <div class="shopper-info">
                             <p>{{ trans('lang.Shopper Information') }}</p>
                             {!! Form::open(['method' => 'post', 'url' => 'checkout/create']) !!}
-                                <input type="text" name="name" placeholder="{{ trans('lang.Name') }}" required maxlength="100" @if (Auth::check()) value="{{ Auth::user()->name }}" @endif>
-                                <input type="email" name="email" placeholder="{{ trans('lang.Email') }}" required maxlength="100" @if (Auth::check()) value="{{ Auth::user()->email }}" @endif>
-                                <input type="text" name="phone" placeholder="{{ trans('lang.Phone') }}" class="phone-number" required maxlength="15" @if (Auth::check()) value="{{ Auth::user()->phone }}" @endif>
-                                <input type="text" name="address" placeholder="{{ trans('lang.Address') }}" required @if (Auth::check()) value="{{ Auth::user()->address }}" @endif>
-                                <textarea name="note" placeholder="{{ trans('lang.Notes about your order') }}..." rows="3"></textarea>
-                                <button type="submit" title="{{ trans('lang.Place Order') }}" class="btn btn-primary btn-place-order" onclick="$.placeOrder()"
-                                    @if (\Gloudemans\Shoppingcart\Facades\Cart::count() == 0 && Request::url() == url('checkout')) disabled @endif
-                                    @if (Request::url() == url('checkout/custom')) data-checkoutcustom="true" @endif>
-                                    {{ trans('lang.Place Order') }}
-                                </button>
+                                <input type="text" name="name" id="normal-name" placeholder="{{ trans('lang.Name') }}" 
+                                    required maxlength="100" @if (Auth::check()) value="{{ Auth::user()->name }}" @endif>
+                                <input type="email" name="email" id="normal-email" placeholder="{{ trans('lang.Email') }}" 
+                                    required maxlength="100" @if (Auth::check()) value="{{ Auth::user()->email }}" @endif>
+                                <input type="text" name="phone" id="normal-phone" placeholder="{{ trans('lang.Phone') }}" 
+                                    class="phone-number" required maxlength="15" @if (Auth::check()) value="{{ Auth::user()->phone }}" @endif>
+                                <input type="text" name="address" id="normal-address" placeholder="{{ trans('lang.Address') }}" 
+                                    required @if (Auth::check()) value="{{ Auth::user()->address }}" @endif>
+                                <textarea name="note" id="normal-note" placeholder="{{ trans('lang.Notes about your order') }}..." rows="3"></textarea>
+                                @if (Request::url() == url('checkout/custom')) 
+                                    <button type="button" title="{{ trans('lang.Place Order') }}" class="btn btn-primary btn-place-order">
+                                        {{ trans('lang.Place Order') }}
+                                    </button>
+                                @else    
+                                    <button type="submit" title="{{ trans('lang.Place Order') }}" class="btn btn-primary btn-place-order" @if (\Gloudemans\Shoppingcart\Facades\Cart::count() == 0) disabled @endif>
+                                        {{ trans('lang.Place Order') }}
+                                    </button>
+                                @endif                                
                             {!! Form::close() !!}
                         </div>
                     </div>
@@ -50,13 +58,14 @@
                         </div>
                         @if (Request::url() == url('checkout/custom'))
                             <div class="shopper-info">
-                                {!! Form::open(['method' => 'post', 'url' => 'checkout/create']) !!}
-                                    <input type="text" name="url" placeholder="URL"/>
-                                    <input type="text" name="name" class="hidden">
-                                    <input type="email" name="email" class="hidden">
-                                    <input type="text" name="phone" class="hidden">
-                                    <input type="text" name="address" class="hidden">
-                                    <textarea name="note" class="hidden"></textarea>
+                                {!! Form::open(['method' => 'post', 'url' => 'checkout/create', 'class' => 'dropzone', 'enctype' => 'multipart/form-data', 'files' => true, 'id' => 'my-dropzone']) !!}
+                                    <input type="text" name="url" placeholder="URL({{ trans('lang.Link you want to show product') }})"/>
+                                    <input type="text" name="name" id="custom-name" class="hidden" @if (Auth::check()) value="{{ Auth::user()->name }}" @endif>
+                                    <input type="email" name="email" id="custom-email" class="hidden" @if (Auth::check()) value="{{ Auth::user()->email }}" @endif>
+                                    <input type="text" name="phone" id="custom-phone" class="hidden" @if (Auth::check()) value="{{ Auth::user()->phone }}" @endif>
+                                    <input type="text" name="address" id="custom-address" class="hidden" @if (Auth::check()) value="{{ Auth::user()->address }}" @endif>
+                                    <textarea name="note" id="custom-note" class="hidden"></textarea>
+                                    <p class="text-center"><small>{{ trans('lang.OR') }}</p>
                                 {!! Form::close() !!}
                             </div>
                         @else
@@ -105,15 +114,40 @@
                     e.preventDefault();
                 }
             });
-
-            //todo: set value when on change event form 1 to hidden input form custom. using drop-zone
-
-            $.placeOrder = function() {
-                if ($(".btn-place-order").data('checkoutcustom')) {
-                    //prevent submit form
-                    //submit form 2
-                }
-            };
         });
     </script>
+    @if (Request::url() == url('checkout/custom'))
+        <script src="{{ asset('js/vendor/dropzone.js') }}"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#normal-name").change(function() {
+                    $("#custom-name").val($("#normal-name").val());
+                });
+                $("#normal-email").change(function() {
+                    $("#custom-email").val($("#normal-email").val());
+                });
+                $("#normal-phone").change(function() {
+                    $("#custom-phone").val($("#normal-phone").val());
+                });
+                $("#normal-address").change(function() {
+                    $("#custom-address").val($("#normal-address").val());
+                });
+                $("#normal-note").change(function() {
+                    $("#custom-note").val($("#normal-note").val());
+                });
+
+                Dropzone.options.myDropzone = {
+                    paramName: "file",
+                    maxFilesize: 10,
+                    maxFiles: 10,
+                    acceptedFiles: "image/*",
+                    autoProcessQueue: false,
+                    uploadMultiple: true,
+                    addRemoveLinks: true,
+                    dictRemoveFile: '{{ trans('lang.Remove')}}',
+                    dictDefaultMessage: '{{ trans('lang.Drop files here or click to upload.')}}'
+                };
+            });
+        </script>
+    @endif   
 @stop

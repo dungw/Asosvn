@@ -35,6 +35,12 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        $(document).ready(function() {
+            localStorage.setItem("add-cart-success", "{{ trans('lang.Product was add to cart successfully!')}}");
+            localStorage.setItem("add-cart-error", "{{ trans('lang.Cannot add product to cart!')}}");
+            localStorage.setItem("update-cart-success", "{{ trans('lang.Cart was update successfully!')}}");     
+            localStorage.setItem("remove-cart-success", "{{ trans('lang.Product was remove successfully!')}}");
+        });
     </script>
 
     @yield('front-footer-content')

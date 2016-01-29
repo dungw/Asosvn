@@ -561,3 +561,9 @@ a.active {
 .account-order .btn:hover {
     background: #14759e !important;
 }
+.detail-total {
+    padding-right: 60px;
+}
+.dropzone {
+    border: 1px dashed #0087F7 !important;
+}

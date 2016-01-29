@@ -24,6 +24,8 @@ return [
 	'unclear'                                     => 'unclear',
 	'Product was add to cart successfully!'       => 'Product was add to cart successfully!',
 	'Cannot add product to cart!'                 => 'Cannot add product to cart!',
+	'Cart was update successfully!'				  => 'Cart was update successfully!',	
+	'Product was remove successfully!'			  => 'Product was remove successfully!',	
 	'Home page'                                   => 'Home page',
 	'Shopping Cart'                               => 'Shopping Cart',
 	'Item'                                        => 'Item',
@@ -35,6 +37,7 @@ return [
 	'Update'                                      => 'Update',
 	'Check Out'                                   => 'Check Out',
 	'Remove Item'                                 => 'Remove Item',
+	'Remove'									  => 'Remove',
 	'Click'                                       => 'Click',
 	'here'                                        => 'here',
 	'Your cart is empty!'                         => 'Your cart is empty!',
@@ -117,5 +120,14 @@ return [
 	'Status'									  => 'Status',
 	'Image'										  => 'Image',
 	'Close'										  => 'Close',
-
+	'Product name'								  => 'Product name',	
+	'pending'									  => 'pending',
+	'deposit'									  => 'deposit',
+	'processing'								  => 'processing',
+	'shipping'									  => 'shipping',
+	'complete'									  => 'complete',
+	'cancel'									  => 'cancel',
+	'Link you want to show product'				  => 'Link you want to show product',
+	'Drop files here or click to upload.'		  => 'Drop files here or click to upload.',
+	
 ];

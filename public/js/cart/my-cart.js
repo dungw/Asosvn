@@ -17,12 +17,12 @@ $(document).ready(function($)
 
         $.post('/cart/add', data, function(data) {
             if (data == 'success') {
-                $.growl.notice({ message: "Product was add to cart successfully!" });
+                $.growl.notice({ message: localStorage.getItem("add-cart-success") });
                 $.updateMenu();
             }
 
             if (data == 'error') {
-                $.growl.error({ message: "Cannot add product to cart!" });
+                $.growl.error({ message: localStorage.getItem("add-cart-error") });
             }
         });
     };
@@ -32,7 +32,7 @@ $(document).ready(function($)
             url: 'cart/remove/' + rowId,
             type: 'DELETE',
             success: function(data) {
-                $.growl.notice({ message: "Product was remove successfully!" });
+                $.growl.notice({ message: localStorage.getItem("remove-cart-success") });
                 $.updateMenu();
                 $.updateCartTotal();
                 $("#cart-item-" + data['rowId']).fadeOut(300, function(){
@@ -64,6 +64,7 @@ $(document).ready(function($)
             $("#cart-item-" + rowId).find(".item_total_price").html(data.totalPrice);
             $.updateMenu();
             $.updateCartTotal();
+            $.growl.notice({ message: localStorage.getItem("update-cart-success") });
         });
     };
 
@@ -75,10 +76,11 @@ $(document).ready(function($)
                         $.checkEmptyCart();
                     });
                 });
-                $.growl.notice({ message: "Product was remove successfully!" });
+                $.growl.notice({ message: localStorage.getItem("remove-cart-success") });
             } else {
                 $("#cart-item-" + rowId).find(".cart_quantity_input").val(data.qty);
                 $("#cart-item-" + rowId).find(".item_total_price").html(data.totalPrice);
+                $.growl.notice({ message: localStorage.getItem("update-cart-success") });
             }
             $.updateMenu();
             $.updateCartTotal();
@@ -98,6 +100,7 @@ $(document).ready(function($)
                 $("#cart-item-" + rowId).find(".item_total_price").html(data.totalPrice);
                 $.updateMenu();
                 $.updateCartTotal();
+                $.growl.notice({ message: localStorage.getItem("update-cart-success") });
             }
         });
     };
