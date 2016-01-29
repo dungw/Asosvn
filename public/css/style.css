@@ -177,6 +177,12 @@
     background-color: #2294c1 !important;
     border-color: #1b7596 !important;
 }
+.fb-login .btn-label {
+    background-color: #6fb1e8 !important;
+}
+.fb-login .content {
+    background-color: #468CC8 !important;
+}
 .social-login-btn .btn-label {
     border-bottom-right-radius: 0 !important;
     border-top-right-radius: 0 !important;

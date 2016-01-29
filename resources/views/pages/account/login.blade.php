@@ -39,8 +39,8 @@
 
                     <br><br>
                     <div class="btn-group social-login-btn fb-login">
-                        <a class="btn-label btn btn-primary disabled"><i class="fa fa-facebook" style="width:16px; height:20px"></i></a>
-                        <a class="content btn btn-primary" href="{{ url('facebook/auth') }}">{{ trans('lang.Login With Facebook') }}</a>
+                        <a class="btn-label btn disabled"><i class="fa fa-facebook" style="width:16px; height:20px"></i></a>
+                        <a class="content btn" href="{{ url('facebook/auth') }}">{{ trans('lang.Login With Facebook') }}</a>
                     </div>
 
                     <div class="btn-group social-login-btn gg-login">
