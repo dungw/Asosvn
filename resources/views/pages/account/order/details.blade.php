@@ -9,23 +9,30 @@
             <div class="modal-body">
                 <table class="table">
                     <thead>
-                        <th>{{ trans('lang.SKU') }}</th>
-                        <th>{{ trans('lang.Image') }}</th>
-                        <th>{{ trans('lang.Quantity') }}</th>
-                        <th>{{ trans('lang.Price') }}</th>
+                        <th class="text-center">{{ trans('lang.SKU') }}</th>
+                        <th class="text-center">{{ trans('lang.Image') }}</th>
+                        <th class="text-center">{{ trans('lang.Quantity') }}</th>
+                        <th class="text-center">{{ trans('lang.Price') }}</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
+                        @foreach ($items as $item)
+                            <?php $product = \App\Product::find($item->product_id) ?>
+                            <tr>
+                                <td class="text-center">{{ $product->sku  }}</td>
+                                <td class="text-center">
+                                    <a href="{{ url('product/' . $product->slug) }}" title="{{ $product->name }}">
+                                        <img src="{{ asset(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'small') ) }}" alt="{{ $product->name }}"/>
+                                    </a>
+                                </td>
+                                <td class="text-center">{{ $item->quantity }}</td>
+                                <td class="text-center">{!! App\Helpers\Currency::currency($item->price) !!}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default close-modal-order" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default close-modal-order" data-dismiss="modal">{{ trans('lang.Close') }}</button>
             </div>
         </div>
     </div>

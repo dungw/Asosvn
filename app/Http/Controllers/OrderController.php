@@ -47,9 +47,8 @@ class OrderController extends Controller {
 	public function show($id)
 	{
 		$order = Order::find($id);
-		$items = $order->orderItems();
+		$items = $order->items()->get();
 
-		//todo: get product information and pass through view
 		return view('pages.account.order.details', compact('order', 'items'));
 	}
 

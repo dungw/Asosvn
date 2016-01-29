@@ -23,7 +23,7 @@ class Order extends Model {
 
     protected $hidden = [];
 
-    public function orderItems()
+    public function items()
     {
         return $this->hasMany('App\OrderItem');
     }

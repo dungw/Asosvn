@@ -32,7 +32,11 @@ class CheckoutController extends BaseController
 			if (Auth::user()) {
 				$order->user_id = Auth::id();
 			}
+
 			$order->total_amount = Cart::total() + $shippingFee;
+			$order->type = ORDER_NORMAL;
+			$order->status = ORDER_PENDING;
+
 			$order->save();
 
 			$cart = Cart::content();
@@ -47,6 +51,8 @@ class CheckoutController extends BaseController
 			Cart::destroy();
 
 			return view('pages.checkout.success')->with('order_id', $order->id);
+		} else {
+			//todo: Custom order without cart item
 		}
 
 		return redirect('checkout')

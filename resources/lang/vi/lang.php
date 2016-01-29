@@ -116,5 +116,6 @@ return [
 	'You have no order!'						  => 'Bạn chưa có đơn hàng nào!',
 	'Status'									  => 'Trạng thái',
 	'Image'										  => 'Ảnh',
+	'Close'										  => 'Đóng',
 
 ];
