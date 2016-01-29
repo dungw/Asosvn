@@ -36,7 +36,9 @@
                                 <input type="text" name="phone" placeholder="{{ trans('lang.Phone') }}" class="phone-number" required maxlength="15" @if (Auth::check()) value="{{ Auth::user()->phone }}" @endif>
                                 <input type="text" name="address" placeholder="{{ trans('lang.Address') }}" required @if (Auth::check()) value="{{ Auth::user()->address }}" @endif>
                                 <textarea name="note" placeholder="{{ trans('lang.Notes about your order') }}..." rows="3"></textarea>
-                                <button type="submit" title="{{ trans('lang.Place Order') }}" class="btn btn-primary btn-place-order" @if (\Gloudemans\Shoppingcart\Facades\Cart::count() == 0) disabled @endif>
+                                <button type="submit" title="{{ trans('lang.Place Order') }}" class="btn btn-primary btn-place-order" onclick="$.placeOrder()"
+                                    @if (\Gloudemans\Shoppingcart\Facades\Cart::count() == 0 && Request::url() == url('checkout')) disabled @endif
+                                    @if (Request::url() == url('checkout/custom')) data-checkoutcustom="true" @endif>
                                     {{ trans('lang.Place Order') }}
                                 </button>
                             {!! Form::close() !!}
@@ -46,24 +48,37 @@
                         <div class="shopper-info">
                             <p>{{ trans('lang.Order Information') }}</p>
                         </div>
-                        @if (\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)
-                            <table class="table table-condensed total-result">
-                                <tr>
-                                    <td>{{ trans('lang.Cart Sub Total') }}</td>
-                                    <td>{!! App\Helpers\Currency::currency(\Gloudemans\Shoppingcart\Facades\Cart::total()) !!}</td>
-                                </tr>
-                                <tr class="shipping-cost">
-                                    <td>{{ trans('lang.Shipping Cost') }}</td>
-                                    <td>{{ trans('lang.Free') }}</td>
-                                </tr>
-                                <tr>
-                                    <td>{{ trans('lang.Total') }}</td>
-                                    <td><span>{!! App\Helpers\Currency::currency(\Gloudemans\Shoppingcart\Facades\Cart::total()) !!}</span></td>
-                                </tr>
-                            </table>
+                        @if (Request::url() == url('checkout/custom'))
+                            <div class="shopper-info">
+                                {!! Form::open(['method' => 'post', 'url' => 'checkout/create']) !!}
+                                    <input type="text" name="url" placeholder="URL"/>
+                                    <input type="text" name="name" class="hidden">
+                                    <input type="email" name="email" class="hidden">
+                                    <input type="text" name="phone" class="hidden">
+                                    <input type="text" name="address" class="hidden">
+                                    <textarea name="note" class="hidden"></textarea>
+                                {!! Form::close() !!}
+                            </div>
                         @else
-                            <p>{{ trans('lang.Your cart is empty!') }}</p>
-                            <p>{{ trans('lang.Click') }} <a href="{{ url('/') }}">{{ trans('lang.here') }}</a> {{ trans('lang.to continue shopping') }}.</p>
+                            @if (\Gloudemans\Shoppingcart\Facades\Cart::count() > 0)
+                                <table class="table table-condensed total-result">
+                                    <tr>
+                                        <td>{{ trans('lang.Cart Sub Total') }}</td>
+                                        <td>{!! App\Helpers\Currency::currency(\Gloudemans\Shoppingcart\Facades\Cart::total()) !!}</td>
+                                    </tr>
+                                    <tr class="shipping-cost">
+                                        <td>{{ trans('lang.Shipping Cost') }}</td>
+                                        <td>{{ trans('lang.Free') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ trans('lang.Total') }}</td>
+                                        <td><span>{!! App\Helpers\Currency::currency(\Gloudemans\Shoppingcart\Facades\Cart::total()) !!}</span></td>
+                                    </tr>
+                                </table>
+                            @else
+                                <p>{{ trans('lang.Your cart is empty!') }}</p>
+                                <p>{{ trans('lang.Click') }} <a href="{{ url('/') }}">{{ trans('lang.here') }}</a> {{ trans('lang.to continue shopping') }}.</p>
+                            @endif
                         @endif
                     </div>
                     <div class="col-sm-4">
@@ -90,6 +105,15 @@
                     e.preventDefault();
                 }
             });
+
+            //todo: set value when on change event form 1 to hidden input form custom. using drop-zone
+
+            $.placeOrder = function() {
+                if ($(".btn-place-order").data('checkoutcustom')) {
+                    //prevent submit form
+                    //submit form 2
+                }
+            };
         });
     </script>
 @stop

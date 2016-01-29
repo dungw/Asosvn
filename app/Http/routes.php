@@ -50,8 +50,10 @@ Route::get('home', 'HomeController@index');
 
 //Checkout
 Route::get('checkout', 'CheckoutController@index');
+Route::get('checkout/custom', 'CheckoutController@index');
 Route::post('checkout/create', 'CheckoutController@create');
 
+//Blog, CMS page
 Route::controllers([
 	'blog'      => 'BlogController',
 ]);
