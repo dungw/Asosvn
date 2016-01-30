@@ -30,7 +30,7 @@
                     <div class="col-sm-4">
                         <div class="shopper-info">
                             <p>{{ trans('lang.Shopper Information') }}</p>
-                            {!! Form::open(['method' => 'post', 'url' => 'checkout/create']) !!}
+                            {!! Form::open(['method' => 'post', 'url' => 'checkout/create', 'class' => 'normal-checkout']) !!}
                                 <input type="text" name="name" id="normal-name" placeholder="{{ trans('lang.Name') }}" 
                                     required maxlength="100" @if (Auth::check()) value="{{ Auth::user()->name }}" @endif>
                                 <input type="email" name="email" id="normal-email" placeholder="{{ trans('lang.Email') }}" 
@@ -59,7 +59,7 @@
                         @if (Request::url() == url('checkout/custom'))
                             <div class="shopper-info">
                                 {!! Form::open(['method' => 'post', 'url' => 'checkout/create', 'class' => 'dropzone', 'enctype' => 'multipart/form-data', 'files' => true, 'id' => 'my-dropzone']) !!}
-                                    <input type="text" name="url" placeholder="URL({{ trans('lang.Link you want to show product') }})"/>
+                                    <input type="text" name="url" id="custom-url" placeholder="URL({{ trans('lang.Link you want to show product') }})"/>
                                     <input type="text" name="name" id="custom-name" class="hidden" @if (Auth::check()) value="{{ Auth::user()->name }}" @endif>
                                     <input type="email" name="email" id="custom-email" class="hidden" @if (Auth::check()) value="{{ Auth::user()->email }}" @endif>
                                     <input type="text" name="phone" id="custom-phone" class="hidden" @if (Auth::check()) value="{{ Auth::user()->phone }}" @endif>
@@ -105,6 +105,7 @@
 @stop
 
 @section('front-footer-content')
+    <script src="{{ asset('js/checkout/validate.js') }}"></script>
     <script type="text/javascript">
         $( document).ready(function() {
             $(".phone-number").on("keydown", function(e) {
@@ -145,9 +146,37 @@
                     uploadMultiple: true,
                     addRemoveLinks: true,
                     dictRemoveFile: '{{ trans('lang.Remove')}}',
-                    dictDefaultMessage: '{{ trans('lang.Drop files here or click to upload.')}}'
+                    dictDefaultMessage: '{{ trans('lang.Drop files here or click to upload.')}}',
+                    
+                    init: function() {
+                        var myDropzone = this;
+                        //place order
+                        $(".btn-place-order").on('click', function(e) {
+                            if ($.validateCheckoutForm()) {
+                                if ($("#custom-url").val().trim() == '' && myDropzone.getQueuedFiles().length == 0) {
+                                    $("#custom-url").focus();
+                                } else {
+                                    if (myDropzone.getQueuedFiles().length == 0) {
+                                        //todo: add empty file to #my-dropzone
+                                    }
+                                    myDropzone.processQueue();
+                                }
+                            };
+                        });
+                    }
                 };
             });
         </script>
+    @else
+        <script type="text/javascript">
+            $(function() {
+                //place order
+                $(".btn-place-order").on('click', function() {
+                    if ($.validateCheckoutForm()) {
+                        $(".normal-checkout").submit();
+                    };
+                });
+            });
+        </script>    
     @endif   
 @stop

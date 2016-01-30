@@ -72,11 +72,11 @@
         </div>
     </div>
 </div>
-<!--
+
 <div class="header-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-sm-9">
+            <div class="col-sm-12">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -102,14 +102,12 @@
                                 <li><a href="blog-single.html">Blog Single</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact-us.html">{{ trans('lang.Contact') }}</a></li>
+                        <li><a href="{{ url('checkout/custom') }}">{{ trans('lang.Custom Order') }}</a></li>
+                        <li><a href="{{ url('vip') }}">VIP</a></li>
+                        <li><a href="{{ url('cms/contact') }}">{{ trans('lang.Contact') }}</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-sm-3">
-
             </div>
         </div>
     </div>
 </div>
--->

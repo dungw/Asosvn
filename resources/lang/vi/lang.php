@@ -129,5 +129,6 @@ return [
 	'cancel'									  => 'hủy',
 	'Link you want to show product'				  => 'Đường dẫn trang web sản phẩm bạn muốn',
 	'Drop files here or click to upload.'		  => 'Kéo thả ảnh hoặc nhấn chuột để chọn ảnh.',
+	'Custom Order'								  => 'Đặt mẫu riêng',	
 
 ];

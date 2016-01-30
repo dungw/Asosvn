@@ -129,5 +129,6 @@ return [
 	'cancel'									  => 'cancel',
 	'Link you want to show product'				  => 'Link you want to show product',
 	'Drop files here or click to upload.'		  => 'Drop files here or click to upload.',
+	'Custom Order'								  => 'Custom Order',	
 	
 ];
