@@ -29,9 +29,12 @@ class CheckoutController extends BaseController
 		//todo: calculate shipping fee and fix this
 		$shippingFee = $request->get('shipping_fee') ? $request->get('shipping_fee') : 0;
 
-		if ($request->get('url') || $request->get('file')) {
+		if ($request->get('url') || $request->hasFile('file')) {
 			$order = Order::create($request->all());
 
+			if (Auth::user()) {
+				$order->user_id = Auth::id();
+			}
 			$order->type = ORDER_CUSTOM;
 			$order->status = ORDER_PENDING;
 			$order->save();
