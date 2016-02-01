@@ -3,7 +3,7 @@
 return [
 
 	'Add to cart'                                 => 'Thêm vào giỏ',
-	'Description'                                 => 'Mô tả',
+	'Description'                                 => 'Miêu tả sản phẩm',
 	'Availability'                                => 'Tình trạng',
 	'Quantity'                                    => 'Số lượng',
 	'Condition'                                   => '',

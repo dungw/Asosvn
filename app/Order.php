@@ -34,4 +34,9 @@ class Order extends Model {
         return $this->belongsTo('App\User');
     }
 
+	public function customs()
+	{
+		return $this->hasOne('App\OrderCustom');
+	}
+
 }

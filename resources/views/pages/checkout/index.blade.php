@@ -157,11 +157,16 @@
                                     $("#custom-url").focus();
                                 } else {
                                     if (myDropzone.getQueuedFiles().length == 0) {
-                                        //todo: add empty file to #my-dropzone
+                                        //fixme: change submit to add empty file for using processQueue
+                                        $("#my-dropzone").submit();
+                                    } else {
+                                        myDropzone.processQueue();
                                     }
-                                    myDropzone.processQueue();
                                 }
                             };
+                        });
+                        myDropzone.on('success', function (files, response) {
+
                         });
                     }
                 };
