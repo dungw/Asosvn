@@ -31,16 +31,25 @@ class CheckoutController extends BaseController
 
 		if ($request->get('url') || $request->get('file')) {
 			$order = Order::create($request->all());
+
+			$order->type = ORDER_CUSTOM;
+			$order->status = ORDER_PENDING;
+			$order->save();
+
 			$orderCustom = OrderCustom::create([
 				'order_id'	=> $order->id,
 				'url'		=> $request->get('url') ? $request->get('url') : '',
 			]);
+
 			if ($request->get('file')) {
 				OrderCustomImage::create([
 					'order_custom_id'	=> $orderCustom->id,
 					'image'				=> '' //todo: save image custom
 				]);
 			}
+
+			return view('pages.checkout.success')->with('order_id', $order->id);
+
 		} elseif (Cart::count()) {
 			$order = Order::create($request->all());
 
