@@ -65,7 +65,7 @@
                                     <input type="text" name="phone" id="custom-phone" class="hidden" @if (Auth::check()) value="{{ Auth::user()->phone }}" @endif>
                                     <input type="text" name="address" id="custom-address" class="hidden" @if (Auth::check()) value="{{ Auth::user()->address }}" @endif>
                                     <textarea name="note" id="custom-note" class="hidden"></textarea>
-                                    <p class="text-center"><small>{{ trans('lang.OR') }}</p>
+                                    <p class="text-center"><small>{{ trans('lang.OR') }}</small></p>
                                 {!! Form::close() !!}
                             </div>
                         @else

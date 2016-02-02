@@ -22,9 +22,11 @@
                                 <td class="text-center">{{ $product->sku  }}</td>
                                 <td class="text-center">{{ $product->name  }}</td>
                                 <td class="text-center">
-                                    <a href="{{ url('product/' . $product->slug) }}" title="{{ $product->name }}">
-                                        <img src="{{ asset(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'small') ) }}" alt="{{ $product->name }}"/>
-                                    </a>
+                                    @if (file_exists(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'small')))
+                                        <a href="{{ url('product/' . $product->slug) }}" title="{{ $product->name }}">
+                                            <img src="{{ asset(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'small') ) }}" alt="{{ $product->name }}"/>
+                                        </a>
+                                    @endif
                                 </td>
                                 <td class="text-center">{{ $item->quantity }}</td>
                                 <td class="text-center">{!! App\Helpers\Currency::currency($item->price) !!}</td>
