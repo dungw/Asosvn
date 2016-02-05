@@ -160,6 +160,13 @@
 .fb-login .content {
     background-color: #468CC8 !important;
 }
+.fb-login .btn {
+    color: white;
+}
+.fb-login .btn-label i, .gg-login .btn-label i {
+    width:16px;
+    height:20px
+}
 .social-login-btn .btn-label {
     border-bottom-right-radius: 0 !important;
     border-top-right-radius: 0 !important;
@@ -544,3 +551,5 @@ a.active {
 .dropzone {
     border: 1px dashed #0087F7 !important;
 }
+
+

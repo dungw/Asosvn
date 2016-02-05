@@ -21,18 +21,18 @@ class GoogleController extends Controller {
 
 	public function login()
 	{
-		$fb_user = Socialite::driver('google')->user();
+		$gg_user = Socialite::driver('google')->user();
 
-		$user = User::where('email', $fb_user->getEmail())->first();
+		$user = User::where('email', $gg_user->getEmail())->first();
 		if (!$user) {
 			$info = array(
-				'email'  => $fb_user->getEmail(),
-				'name'   => $fb_user->getName(),
+				'email'  => $gg_user->getEmail(),
+				'name'   => $gg_user->getName(),
 			);
 			$user = User::create($info);
 		} else {
-			if ($user->name != $fb_user->getName()) {
-				$user->name = $fb_user->getName();
+			if ($user->name != $gg_user->getName()) {
+				$user->name = $gg_user->getName();
 				$user->save();
 			}
 		}

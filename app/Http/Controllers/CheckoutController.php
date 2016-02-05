@@ -5,8 +5,11 @@ use Auth;
 
 use App\Order;
 use App\OrderItem;
+use App\OrderCustom;
+use App\OrderCustomImage;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use URL;
 
 class CheckoutController extends BaseController
 {
@@ -26,7 +29,31 @@ class CheckoutController extends BaseController
 		//todo: calculate shipping fee and fix this
 		$shippingFee = $request->get('shipping_fee') ? $request->get('shipping_fee') : 0;
 
-		if (Cart::count()) {
+		if ($request->get('url') || $request->hasFile('file')) {
+			$order = Order::create($request->all());
+
+			if (Auth::user()) {
+				$order->user_id = Auth::id();
+			}
+			$order->type = ORDER_CUSTOM;
+			$order->status = ORDER_PENDING;
+			$order->save();
+
+			$orderCustom = OrderCustom::create([
+				'order_id'	=> $order->id,
+				'url'		=> $request->get('url') ? $request->get('url') : '',
+			]);
+
+			if ($request->get('file')) {
+				OrderCustomImage::create([
+					'order_custom_id'	=> $orderCustom->id,
+					'image'				=> '' //todo: save image custom
+				]);
+			}
+
+			return view('pages.checkout.success')->with('order_id', $order->id);
+
+		} elseif (Cart::count()) {
 			$order = Order::create($request->all());
 
 			if (Auth::user()) {
@@ -42,20 +69,18 @@ class CheckoutController extends BaseController
 			$cart = Cart::content();
 			foreach ($cart as $item) {
 				OrderItem::create(array(
-						'order_id'	 => $order->id,
-						'product_id' => $item->id,
-						'quantity'	 => $item->qty,
-						'price'  	 => $item->price
-					));
+					'order_id'	 => $order->id,
+					'product_id' => $item->id,
+					'quantity'	 => $item->qty,
+					'price'  	 => $item->price
+				));
 			}
 			Cart::destroy();
 
 			return view('pages.checkout.success')->with('order_id', $order->id);
-		} else {
-			//todo: Custom order without cart item
 		}
 
-		return redirect('checkout')
+		return redirect(URL::previous())
 			->withInput()
 			->withErrors([
 				'message' => 'Can not create new order.',

@@ -12,6 +12,8 @@ class ImageManager
 	const BRAND_IMAGE_PATH = 'uploads/brands/';
 	const BRAND_THUMB_SIZE = '80x50';
 
+
+
 	public static function upload($file, $type, $thumbnail = true)
 	{
 		//extension

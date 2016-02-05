@@ -12,7 +12,7 @@ define('ORDER_DEPOSIT', 'deposit');
 define('ORDER_PROCESSING', 'processing');
 define('ORDER_SHIPPING', 'shipping');
 define('ORDER_COMPLETE', 'complete');
-define('ORDER_CANCEL', 'cancel');
+define('ORDER_CANCEL', 'canceled');
 
 
 
@@ -33,5 +33,10 @@ class Order extends Model {
     {
         return $this->belongsTo('App\User');
     }
+
+	public function customs()
+	{
+		return $this->hasOne('App\OrderCustom');
+	}
 
 }
