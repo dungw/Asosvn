@@ -104,7 +104,7 @@
                         </li>
                         <li><a href="{{ url('checkout/custom') }}">{{ trans('lang.Custom Order') }}</a></li>
                         <li><a href="{{ url('vip') }}">VIP</a></li>
-                        <li><a href="{{ url('cms/contact') }}">{{ trans('lang.Contact') }}</a></li>
+                        <li><a href="{{ url('contact') }}">{{ trans('lang.Contact') }}</a></li>
                     </ul>
                 </div>
             </div>

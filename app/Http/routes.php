@@ -53,11 +53,6 @@ Route::get('checkout', 'CheckoutController@index');
 Route::get('checkout/custom', 'CheckoutController@index');
 Route::post('checkout/create', 'CheckoutController@create');
 
-//Blog, CMS page
-Route::controllers([
-	'blog'      => 'BlogController',
-]);
-
 //Auth
 Route::controllers([
 	'auth'          => 'Auth\AuthController',
@@ -79,7 +74,11 @@ Route::post('admin/product/generate-slug', 'Admin\ProductController@generateSlug
 Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSlug');
 Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
 
+//Blog, CMS page
+Route::controllers([
+	'blog'      => 'BlogController',
+]);
 
-
+Route::get('contact', 'CmsController@contact');
 
 

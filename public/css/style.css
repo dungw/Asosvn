@@ -34,144 +34,121 @@
 .cart, .searchform button {
     background: #28ABE3 !important;
 }
-
 .product-information span span, .left-sidebar h2, .brands_products h2, h2.title, .productinfo h2 {
     color: #28ABE3 !important;
 }
-
 .recommended-item-control i {
     background: none repeat scroll 0 0 #28ABE3 !important;
 }
-
 .mainmenu ul li a:hover, .mainmenu ul li a.active, .shop-menu ul li a.active {
     color: #6c9edf !important;
 }
-
 .nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
     background-color: #28ABE3 !important;
 }
-
 .carousel-indicators li.active {
     background: #28ABE3 !important;
 }
-
 .item h1 span {
     color: #28ABE3 !important;
 }
-
 .item button:hover {
     background: #28ABE3 !important;
 }
-
 .get {
     background: #28ABE3 !important;
 }
-
 .control-carousel:hover {
     color: #28ABE3 !important;
 }
-
 .left-sidebar h2, .brands_products h2 {
     color: #28ABE3 !important;
 }
-
 .tooltip-inner {
     background-color: #28ABE3 !important;
 }
-
 .tooltip.top .tooltip-arrow {
     border-top-color: #28ABE3 !important;
 }
-
 .product-overlay {
     background: #28ABE3 !important;
 }
-
 .product-overlay .add-to-cart {
     color: #28ABE3 !important;
 }
-
 .product-overlay .add-to-cart:hover {
     color: #28ABE3 !important;
 }
-
 .add-to-cart:hover {
     background: #28ABE3 !important;
     border: 0 none;
     border-radius: 0;
     color: #FFFFFF;
 }
-
 .choose ul li a:hover {
     color: #28ABE3 !important;
 }
-
 .category-tab ul.nav-tabs {
     /*border-bottom: 1px solid #28ABE3 !important;*/
     border-bottom: 1px solid lightslategray !important;
 }
-
 .category-tab ul li a:hover {
     background: #28ABE3 !important;
     color: #fff;
 }
-
 .pagination .active a, .pagination .active span, .pagination .active a:hover, .pagination .active span:hover, .pagination .active a:focus, .pagination .active span:focus {
     background-color: #28ABE3 !important;
     border-color: #28ABE3 !important;
 }
-
 .pagination li a:hover {
     background: #28ABE3 !important;
     color: #fff;
 }
-
 .view-product h3 {
     background: #28ABE3 !important;
 }
-
 .item-control i {
     background: #28ABE3 !important;
 }
-
 #reviews ul li a i {
     color: #28ABE3 !important;
     padding-right: 8px;
 }
-
 #reviews ul li a:hover {
     background: #fff;
     color: #28ABE3 !important;
 }
-
 #reviews button {
     background: #28ABE3 !important;
 }
-
 .content-404 h2 a {
     background: #28ABE3 !important;
 }
-
 .login-form form button, .signup-form form button {
     background: #28ABE3 !important;
 }
-
 .or {
     background: #d3d3d3 !important;
 }
 .social-login-btn {
     margin-bottom: 20px;
 }
+.social-login-btn a {
+    border-radius: 0 !important;
+}
 .social-login-btn .btn-label, .social-login-btn .content {
     height: 34px;
     line-height: 21px;
 }
-.social-login-btn .btn {
-    border-radius: 4px !important;
-}
 .social-login-btn .content {
     border-bottom-left-radius: 0 !important;
     border-top-left-radius: 0 !important;
+}
+.fb-login a {
+    color: #ffffff;
+}
+.fb-login a:hover {
+    color: #ffffff;
 }
 .fb-login:hover .content {
     background-color: #2294c1 !important;
