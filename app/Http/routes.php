@@ -3,6 +3,8 @@
 //APIs
 Route::post('api/product/store', 'Admin\ProductController@store');
 
+//---------------------------- FRONT-END ROUTE -------------------------------
+
 //Customer Account
 Route::get('account', 'AccountController@index');
 Route::post('account/login', 'AccountController@login');
@@ -59,26 +61,32 @@ Route::controllers([
 	'password'      => 'Auth\PasswordController',
 ]);
 
-//Backend routes
-Route::get('admin', 'Admin\IndexController@index');
-Route::get('admin/auth', 'Admin\AuthController@index');
-Route::post('admin/auth/login', 'Admin\AuthController@login');
-Route::get('admin/auth/logout', 'Admin\AuthController@logout');
-
-Route::resource('admin/product', 'Admin\ProductController');
-Route::resource('admin/category', 'Admin\CategoryController');
-Route::resource('admin/brand', 'Admin\BrandController');
-
-Route::put('admin/product/{product}/delete-image/{image}', 'Admin\ProductController@deleteImage');
-Route::post('admin/product/generate-slug', 'Admin\ProductController@generateSlug');
-Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSlug');
-Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
-
 //Blog, CMS page
 Route::controllers([
 	'blog'      => 'BlogController',
 ]);
 
 Route::get('contact', 'CmsController@contact');
+
+//---------------------------- BACK-END ROUTE -------------------------------
+
+//Auth
+Route::get('admin', 'Admin\IndexController@index');
+Route::get('admin/auth', 'Admin\AuthController@index');
+Route::post('admin/auth/login', 'Admin\AuthController@login');
+Route::get('admin/auth/logout', 'Admin\AuthController@logout');
+
+//Resource
+Route::resource('admin/product', 'Admin\ProductController');
+Route::resource('admin/category', 'Admin\CategoryController');
+Route::resource('admin/brand', 'Admin\BrandController');
+Route::resource('admin/order', 'Admin\OrderController');
+
+//Other route
+Route::put('admin/product/{product}/delete-image/{image}', 'Admin\ProductController@deleteImage');
+Route::post('admin/product/generate-slug', 'Admin\ProductController@generateSlug');
+Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSlug');
+Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
+
 
 

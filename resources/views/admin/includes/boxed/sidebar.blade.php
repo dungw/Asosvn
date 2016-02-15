@@ -25,6 +25,17 @@
             <li class="header">MAIN NAVIGATION</li>
 
             <li class="treeview">
+                <a href="{{ url('admin/order') }}">
+                    <i class="fa fa-diamond"></i> <span>Order</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('admin/order') }}"><i class="fa fa-caret-right"></i> Listing</a></li>
+                    <li><a href="{{ url('admin/order/create') }}"><i class="fa fa-caret-right"></i> Add new</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
                 <a href="{{ url('admin/brand') }}">
                     <i class="fa fa-gg"></i> <span>Brand</span> <i
                             class="fa fa-angle-left pull-right"></i>
@@ -55,6 +66,27 @@
                     <li><a href="{{ url('admin/product') }}"><i class="fa fa-caret-right"></i> Listing</a></li>
                     <li><a href="{{ url('admin/product/create') }}"><i class="fa fa-caret-right"></i> Add new</a></li>
                 </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="{{ url('admin/cms') }}">
+                    <i class="fa fa-newspaper-o"></i> <span>Blog</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href="{{ url('admin/contact') }}">
+                    <i class="fa fa-comments"></i> <span>Contact</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+            </li>
+
+            <li class="treeview">
+                <a href="{{ url('admin/user') }}">
+                    <i class="fa fa-users"></i> <span>Users</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
             </li>
 
         </ul>
