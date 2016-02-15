@@ -10,6 +10,7 @@ use App\OrderCustomImage;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use URL;
+use App\Helpers\ImageManager;
 
 class CheckoutController extends BaseController
 {
@@ -30,6 +31,7 @@ class CheckoutController extends BaseController
 		$shippingFee = $request->get('shipping_fee') ? $request->get('shipping_fee') : 0;
 
 		if ($request->get('url') || $request->hasFile('file')) {
+			//Custom Order
 			$order = Order::create($request->all());
 
 			if (Auth::user()) {
@@ -44,16 +46,25 @@ class CheckoutController extends BaseController
 				'url'		=> $request->get('url') ? $request->get('url') : '',
 			]);
 
-			if ($request->get('file')) {
-				OrderCustomImage::create([
-					'order_custom_id'	=> $orderCustom->id,
-					'image'				=> '' //todo: save image custom
-				]);
+			if ($request->hasFile('file')) {
+				$images = $request->file('file');
+				foreach ($images as $image) {
+					//upload images
+					$fileName = ImageManager::upload($image, 'order');
+
+					//insert to database
+					OrderCustomImage::create([
+						'order_custom_id'	=> $orderCustom->id,
+						'image'				=> $fileName,
+					]);
+				}
+
 			}
 
 			return view('pages.checkout.success')->with('order_id', $order->id);
 
 		} elseif (Cart::count()) {
+			//Normal Order
 			$order = Order::create($request->all());
 
 			if (Auth::user()) {

@@ -11,6 +11,7 @@ class ImageManager
 	const PRODUCT_MEDIUM_SIZE = '340x450';
 	const BRAND_IMAGE_PATH = 'uploads/brands/';
 	const BRAND_THUMB_SIZE = '80x50';
+	const ORDER_IMAGE_PATH = 'uploads/orders/';
 
 
 
@@ -90,18 +91,16 @@ class ImageManager
 
 	public static function getContainerFolder($type, $filename = '')
 	{
-		if ($type === 'product' && !$filename)
-		{
+		if ($type === 'product' && !$filename) {
 			return null;
 		}
 
-		if ($type === 'product')
-		{
+		if ($type === 'product') {
 			return self::PRODUCT_IMAGE_PATH . $filename[0] . '/' . $filename[1] . '/' . $filename[2] . '/';
-
-		} elseif ($type === 'brand')
-		{
+		} elseif ($type === 'brand') {
 			return self::BRAND_IMAGE_PATH;
+		} elseif ($type === 'order') {
+			return self::ORDER_IMAGE_PATH . $filename[0] . '/' . $filename[1] . '/' . $filename[2] . '/';
 		}
 
 		return null;

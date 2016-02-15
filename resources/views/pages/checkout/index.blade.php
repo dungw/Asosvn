@@ -139,7 +139,6 @@
 
                 Dropzone.options.myDropzone = {
                     paramName: "file",
-                    maxFilesize: 10,
                     maxFiles: 10,
                     acceptedFiles: "image/*",
                     autoProcessQueue: false,
@@ -157,7 +156,6 @@
                                     $("#custom-url").focus();
                                 } else {
                                     if (myDropzone.getQueuedFiles().length == 0) {
-                                        //fixme: change submit to add empty file for using processQueue
                                         $("#my-dropzone").submit();
                                     } else {
                                         myDropzone.processQueue();
@@ -166,7 +164,7 @@
                             };
                         });
                         myDropzone.on('success', function (files, response) {
-
+                            document.write(response);
                         });
                     }
                 };
