@@ -91,7 +91,7 @@
                                             @endif
                                         </td>
                                         <td class="text-center">{{ $item->quantity }}</td>
-                                        {{--<td class="text-center">{!! App\Helpers\Currency::currency($item->price) !!}</td>--}}
+                                        <td class="text-center">{!! App\Helpers\Currency::currency($item->price) !!}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -154,7 +154,7 @@
 
                 <div class="modal-footer">
                     <span class="detail-total">
-                        {{--<strong>{{ trans('lang.Total') }}: {!! App\Helpers\Currency::currency($order->total_amount) !!}</strong>--}}
+                        <strong>{{ trans('lang.Total') }}: {!! App\Helpers\Currency::currency($order->total_amount) !!}</strong>
                     </span>
                     <button type="submit" class="btn btn-primary center-block editable hidden">Save Changes</button>
                     <button type="button" class="btn btn-default close-modal-order view-only" data-dismiss="modal">{{ trans('lang.Close') }}</button>
