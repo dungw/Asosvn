@@ -3,7 +3,6 @@
 use App\Http\Requests;
 
 use App\Order;
-use Illuminate\Http\Request;
 
 class OrderController extends AdminController {
 
@@ -47,7 +46,10 @@ class OrderController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		$order = Order::find($id);
+		$items = $order->items()->get();
+
+		return view('admin.pages.order.details', compact('order', 'items'));
 	}
 
 	/**

@@ -76,7 +76,7 @@
                         <td>{{ $order->total_amount }}</td>
                         <td>{{ $order->status }}</td>
                         <td>
-                            <button class="btn btn-warning">Details</button>
+                            <button class="btn btn-warning" onclick="$.showOrderDetail('{{ $order->id }}')">Details</button>
                             {!! App\Helpers\MyHtml::btnEdit('admin/order/' . $order->id . '/edit/') !!}
                         </td>
                     </tr>
@@ -85,6 +85,8 @@
             </table>
         </div>
     </div>
+
+    <div id="modal-order-detail"></div>
 @stop
 
 @section('footer-content')
@@ -101,6 +103,14 @@
                 "autoWidth": false,
                 "order": []
             });
+
+            var url = '{{ Config::get('app.url')}}';
+            $.showOrderDetail = function(orderId) {
+                $.get(url+ 'admin/order/' + orderId, function(data) {
+                    $("#modal-order-detail").html(data);
+                    $(".order-details").modal('show');
+                });
+            };
         });
     </script>
 

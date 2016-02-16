@@ -20,7 +20,11 @@
                             <?php $product = \App\Product::find($item->product_id) ?>
                             <tr>
                                 <td class="text-center">{{ $product->sku  }}</td>
-                                <td class="text-center">{{ $product->name  }}</td>
+                                <td class="text-center">
+                                    <a href="{{ url('product/' . $product->slug) }}" title="{{ $product->name }}">
+                                        {{ $product->name  }}
+                                    </a>
+                                </td>
                                 <td class="text-center">
                                     @if (file_exists(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'small')))
                                         <a href="{{ url('product/' . $product->slug) }}" title="{{ $product->name }}">
