@@ -3,6 +3,8 @@
 use App\Http\Requests;
 
 use App\Order;
+use Illuminate\Http\Request;
+use URL;
 
 class OrderController extends AdminController {
 
@@ -64,14 +66,15 @@ class OrderController extends AdminController {
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
+	 * @param Request $request
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
-	public function update($id)
+	public function update(Request $request, $id)
 	{
-		//
+		Order::findOrFail($id)->update($request->all());
+
+		return redirect(URL::previous());
 	}
 
 	/**

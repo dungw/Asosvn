@@ -64,7 +64,7 @@
                         <th>Phone</th>
                         <th>Total Amount</th>
                         <th>Status</th>
-                        <th width="15%">Actions</th>
+                        <th width="10%">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,7 +77,6 @@
                         <td>{{ $order->status }}</td>
                         <td>
                             <button class="btn btn-warning" onclick="$.showOrderDetail('{{ $order->id }}')">Details</button>
-                            {!! App\Helpers\MyHtml::btnEdit('admin/order/' . $order->id . '/edit/') !!}
                         </td>
                     </tr>
                 @endforeach
