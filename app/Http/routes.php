@@ -87,6 +87,6 @@ Route::put('admin/product/{product}/delete-image/{image}', 'Admin\ProductControl
 Route::post('admin/product/generate-slug', 'Admin\ProductController@generateSlug');
 Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSlug');
 Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
-
+Route::get('admin/order/status/{status?}', 'Admin\OrderController@filter');
 
 

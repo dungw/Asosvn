@@ -88,4 +88,22 @@ class OrderController extends AdminController {
 		//
 	}
 
+	/**
+	 * Filter orders by status
+	 * @param string $status
+	 * @return \Illuminate\View\View
+	 */
+	public function filter($status = 'all')
+	{
+		if ($status == 'all') {
+			$data['orders'] = Order::all();
+		} else {
+			$data['orders'] = Order::where('status', $status)->get();
+		}
+
+		$data['status'] = $status;
+
+		return view('admin.pages.order.list', $data);
+	}
+
 }

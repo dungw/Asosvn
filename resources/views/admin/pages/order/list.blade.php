@@ -25,36 +25,26 @@
             <div class="pull-left">
                 <div class="dropdown inline">
                     <button class="btn btn-default dropdown-toggle" type="button" id="filterStatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        All Status
+                        <span> {{ $status or 'All' }}</span>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="filterStatus">
-                        <li><a href="#">Pending</a></li>
+                        <li><a href="{{ url('admin/order') }}">All</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Deposit</a></li>
+                        <li><a href="{{ url('admin/order/status/pending') }}">Pending</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Processing</a></li>
+                        <li><a href="{{ url('admin/order/status/deposit') }}">Deposit</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Shipping</a></li>
+                        <li><a href="{{ url('admin/order/status/processing') }}">Processing</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Complete</a></li>
+                        <li><a href="{{ url('admin/order/status/shipping') }}">Shipping</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Canceled</a></li>
-                    </ul>
-                </div>
-                <div class="dropdown inline">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="filterType" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        All Type
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="filterType">
-                        <li><a href="#">Normal</a></li>
+                        <li><a href="{{ url('admin/order/status/complete') }}">Complete</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">Custom</a></li>
+                        <li><a href="{{ url('admin/order/status/canceled') }}">Canceled</a></li>
                     </ul>
                 </div>
             </div>
-
 
             <table id="data-table" class="table table-bordered table-striped">
                 <thead>
