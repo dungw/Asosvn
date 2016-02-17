@@ -7,7 +7,7 @@
 @section('breadcrumb')
     <section class="content-header">
         <h1>
-            Product
+            Order
             <small>listing</small>
         </h1>
         <ol class="breadcrumb">
