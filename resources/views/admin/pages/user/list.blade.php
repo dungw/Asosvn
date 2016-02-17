@@ -41,7 +41,7 @@
 		<table id="data-table" class="table table-bordered table-striped">
 			<thead>
                 <tr>
-                    <th>Id</th>
+                    <th>#</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>

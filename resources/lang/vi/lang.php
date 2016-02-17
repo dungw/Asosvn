@@ -94,6 +94,7 @@ return [
 	'The email field is required.'				  => 'Hãy điền đầy đủ thông tin về email.',
 	'The phone field is required.'				  => 'Hãy điền đầy đủ thông tin về số điện thoại.',
 	'The address field is required.'			  => 'Hãy điền đầy đủ thông tin về địa chỉ.',
+	'The content field is required.'			  => 'Hãy điền đầy đủ thông tin về nội dung.',
 	'Shopper Information'						  => 'Thông Tin Người Mua',
 	'Notes about your order'					  => 'Ghi chú về đơn hàng',
 	'Address'						  			  => 'Địa chỉ',
@@ -130,6 +131,10 @@ return [
 	'canceled'									  => 'Đã hủy',
 	'Link you want to show product'				  => 'Đường dẫn trang web sản phẩm bạn muốn',
 	'Drop files here or click to upload.'		  => 'Kéo thả ảnh hoặc nhấn chuột để chọn ảnh.',
-	'Custom Order'								  => 'Đặt mẫu riêng',	
+	'Custom Order'								  => 'Đặt mẫu riêng',
+	'Submit'									  => 'Gửi',
+	'Content'									  => 'Nội dung',
+	'Your comment'								  => 'Nội dung ý kiến, đóng góp của bạn',
+	'Can not send your comment!'				  => 'Không gửi được nội dung!',
 
 ];

@@ -94,6 +94,7 @@ return [
 	'The email field is required.'				  => 'The email field is required.',
 	'The phone field is required.'				  => 'The phone field is required.',
 	'The address field is required.'			  => 'The name address is required.',
+	'The content field is required.'			  => 'The content field is required.',
 	'Shopper Information'						  => 'Shopper Information',
 	'Notes about your order'					  => 'Notes about your order',
 	'Address'						  			  => 'Address',
@@ -130,6 +131,10 @@ return [
 	'canceled'									  => 'canceled',
 	'Link you want to show product'				  => 'Link you want to show product',
 	'Drop files here or click to upload.'		  => 'Drop files here or click to upload.',
-	'Custom Order'								  => 'Custom Order',	
-	
+	'Custom Order'								  => 'Custom Order',
+	'Submit'									  => 'Submit',
+	'Content'									  => 'Content',
+	'Your comment'								  => 'Your comment',
+	'Can not send your comment!'				  => 'Can not send your comment!',
+
 ];

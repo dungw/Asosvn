@@ -67,6 +67,7 @@ Route::controllers([
 ]);
 
 Route::get('contact', 'CmsController@contact');
+Route::post('contact/create', 'CmsController@create');
 
 //---------------------------- BACK-END ROUTE -------------------------------
 
@@ -89,4 +90,5 @@ Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSl
 Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
 Route::get('admin/order/status/{status?}', 'Admin\OrderController@filter');
 Route::get('admin/user/{type?}', 'Admin\UserController@index');
+Route::get('admin/contact', 'Admin\CmsController@contact');
 
