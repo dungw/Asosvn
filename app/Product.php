@@ -1,5 +1,6 @@
 <?php namespace App;
 
+use App\Helpers\SerializedAttribute;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Input;

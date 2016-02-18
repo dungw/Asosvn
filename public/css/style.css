@@ -431,6 +431,8 @@ a#scrollUp {
 .product-details .image-wrapper {
     height: 450px;
     width: 340px;
+    border: 1px solid #F7F7F0;
+
 }
 
 .no-padding {

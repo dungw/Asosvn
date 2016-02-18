@@ -5,6 +5,7 @@ use App\Category;
 use App\Distributor;
 use App\Helpers\ImageManager;
 use App\Helpers\MyHtml;
+use App\Helpers\SerializedAttribute;
 use App\Http\Requests;
 use App\Http\Requests\ProductRequest;
 use App\Product;

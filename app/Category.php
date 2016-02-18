@@ -20,6 +20,11 @@ class Category extends Model {
 		return $this->hasMany('App\Product');
 	}
 
+	public function attributes()
+	{
+		return $this->hasMany('App\Attributes');
+	}
+
 	public function scopeActive($query)
 	{
 		return $query->whereActive(self::STATUS_ACTIVE);
