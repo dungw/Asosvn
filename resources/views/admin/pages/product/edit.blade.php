@@ -34,7 +34,7 @@
                     <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Images') }}</a></li>
                     <li><a href="#tab_3" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
                     <li class="pull-right">
-                        {!! App\Helpers\MyHtml::submit(trans('lang.Submit'), ['class' => 'btn btn-primary']) !!}
+                        {!! App\Helpers\MyHtml::submit(trans('lang.submit_update'), ['class' => 'btn btn-primary']) !!}
                     </li>
 
                 </ul>

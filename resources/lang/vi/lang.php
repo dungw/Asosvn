@@ -142,6 +142,12 @@ return [
 	'Extra Attributes'                            => 'Thông số',
 	'Images'                                      => 'Ảnh',
 	'Edit'                                        => 'Sửa',
-	'Submit'                                      => 'Cập nhật',
+	'submit_update'                               => 'Cập nhật',
+	'submit_insert'                               => 'Thêm mới',
+	'remove'                                      => 'Xóa',
+	'add'                                         => 'Thêm',
+
+	/*********** MESSAGES **********/
+	'Remove Attribute'                            => 'Bạn đã xóa thông số!',
 
 ];

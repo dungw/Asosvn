@@ -28,7 +28,8 @@
                 <ul class="nav nav-tabs">
 
                     <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.General Infos') }}</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Image') }}</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
                     <li class="pull-right"><a href="{{ url('admin/product/' . $product->id . '/edit/') }}" class="font14"><i class="fa fa-edit"></i> {{ trans('lang.Edit') }}</a></li>
 
                 </ul>
@@ -54,6 +55,10 @@
 
                     <div class="tab-pane" id="tab_2">
                         {!! App\Helpers\MyHtml::productImageSlider($product->id, $product->images()->get()) !!}
+                    </div>
+
+                    <div class="tab-pane" id="tab_3">
+
                     </div>
 
                 </div>

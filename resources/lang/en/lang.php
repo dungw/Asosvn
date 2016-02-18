@@ -142,6 +142,12 @@ return [
 	'Extra Attributes'                            => 'Extra Attributes',
 	'Images'                                      => 'Images',
 	'Edit'                                        => 'Edit',
-	'Submit'                                      => 'Submit',
+	'submit_update'                               => 'Submit',
+	'submit_insert'                               => 'Submit',
+	'remove'                                      => 'Remove',
+	'add'                                         => 'Add',
+
+	/*********** MESSAGES **********/
+	'Remove Attribute'                            => 'You removed attribute successful!',
 
 ];

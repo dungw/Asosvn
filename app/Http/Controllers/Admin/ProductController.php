@@ -101,6 +101,9 @@ class ProductController extends AdminController
 	{
 		$product = Product::findOrFail($id);
 
+		//update extra attributes
+		$product->extra_attributes = SerializedAttribute::toJson($request->get('attribute'));
+
 		$product->update($request->all());
 
 		$this->syncDistributor($product, $request->get('distributors'));
