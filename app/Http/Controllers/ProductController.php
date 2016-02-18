@@ -3,6 +3,7 @@
 use App\Brand;
 use App\Category;
 use App\Helpers\ImageManager;
+use App\Helpers\SerializedAttribute;
 use App\Http\Requests;
 use App\Product;
 use App\ProductImage;
@@ -69,6 +70,9 @@ class ProductController extends BaseController
 
 		//get recommended products
 		$data['recommendedProducts'] = Product::filterWithCategory($product->category_id)->where('id', '!=', $product->id)->limit(6)->get();
+
+		//extra attributes
+		$data['extraAttributes'] = SerializedAttribute::parseWithName($product->extra_attributes);
 
 		return view('pages.product-details', $data);
 	}

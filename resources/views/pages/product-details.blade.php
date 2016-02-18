@@ -43,7 +43,7 @@
                 <div class="col-sm-9 padding-right">
                     <div class="product-details">
 
-                        <div class="col-sm-5">
+                        <div class="col-md-12">
 
                             <div class="image-wrapper row vertical-align">
                                 <div class="col-sm-12">
@@ -52,6 +52,7 @@
                                          data-zoom-image="{{ asset(\App\Helpers\ImageManager::getContainerFolder('product', $mainImage) . $mainImage ) }}"/>
                                 </div>
                             </div>
+
                             <div id="gallery_01" class="carousel slide">
                                 @foreach( $product->images()->lists('image') as $image)
                                     <a href="#" class="thumb"
@@ -121,7 +122,18 @@
                         </div>
                         <div class="tab-content">
                             <div class="tab-pane active" id="description">
+
                                 {!! $product->description !!}
+
+                                <table>
+                                    @foreach($extraAttributes as $attribute)
+                                        <tr>
+                                            <td>{{ $attribute['name'] }}</td>
+                                            <td>{{ $attribute['value'] }}</td>
+                                        </tr>
+                                    @endforeach
+                                </table>
+
                             </div>
 
                             <div class="tab-pane fade" id="facebook-comment">
