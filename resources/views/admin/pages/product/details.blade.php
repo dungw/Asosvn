@@ -27,9 +27,9 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
 
-                    <li class="active"><a href="#tab_1" data-toggle="tab">General Infos</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">Images</a></li>
-                    <li class="pull-right"><a href="{{ url('admin/product/' . $product->id . '/edit/') }}" class="font14"><i class="fa fa-edit"></i> Edit</a></li>
+                    <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.General Infos') }}</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
+                    <li class="pull-right"><a href="{{ url('admin/product/' . $product->id . '/edit/') }}" class="font14"><i class="fa fa-edit"></i> {{ trans('lang.Edit') }}</a></li>
 
                 </ul>
 

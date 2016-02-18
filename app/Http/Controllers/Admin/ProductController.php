@@ -45,6 +45,9 @@ class ProductController extends AdminController
 			$data['conditions'] = array_add($data['conditions'], $key, $value);
 		}
 
+		//get all attributes of category
+		$data['attributes'] = [];
+
 		return view('admin.pages.product.create', $data);
 	}
 
@@ -88,6 +91,8 @@ class ProductController extends AdminController
 		{
 			$data['conditions'] = array_add($data['conditions'], $key, $value);
 		}
+
+		$data['attributes'] = SerializedAttribute::parseWithName($data['product']->extra_attributes);
 
 		return view('admin.pages.product.edit', $data);
 	}

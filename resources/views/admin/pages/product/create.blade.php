@@ -19,7 +19,38 @@
 
         <div class="box-body">
 
-            @include('admin.pages.product._form', ['options' => ['url' => 'admin/product', 'files' => true]])
+            <!-- Form Open -->
+            {!! Form::open(array_merge(['url' => 'admin/product', 'files' => true], ['class' => 'form-horizontal'])) !!}
+
+            <div class="nav-tabs-custom">
+
+                <ul class="nav nav-tabs">
+
+                    <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.General Infos') }}</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
+
+                </ul>
+
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tab_1">
+
+                        @include('admin.pages.product._form')
+
+                    </div>
+
+                    <div class="tab-pane" id="tab_2">
+
+                        @include('admin.pages.product._attribute', ['attributes' => $attributes])
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Form Close -->
+            {!! Form::close() !!}
 
         </div>
 

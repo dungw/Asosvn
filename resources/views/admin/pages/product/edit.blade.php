@@ -24,15 +24,17 @@
 
         <div class="box-body">
 
+            <!-- Form Open -->
+            {!! Form::open(array_merge(['url' => 'admin/product/' . $product->id, 'method' => 'PUT', 'files' => true], ['class' => 'form-horizontal'])) !!}
+
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
 
-                    <li class="active"><a href="#tab_1" data-toggle="tab">General Infos</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">Images</a></li>
+                    <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.General Infos') }}</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Images') }}</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
                     <li class="pull-right">
-                        <a href="{{ url('admin/product/' . $product->id . '/edit/') }}" class="font14">
-                            <i class="fa fa-edit"></i> Edit
-                        </a>
+                        {!! App\Helpers\MyHtml::submit(trans('lang.Submit'), ['class' => 'btn btn-primary']) !!}
                     </li>
 
                 </ul>
@@ -41,7 +43,7 @@
 
                     <div class="tab-pane active" id="tab_1">
 
-                        @include('admin.pages.product._form', ['product' => $product, 'options' => ['url' => 'admin/product/' . $product->id, 'method' => 'PUT', 'files' => true]])
+                        @include('admin.pages.product._form', ['product' => $product])
 
                     </div>
 
@@ -51,8 +53,17 @@
 
                     </div>
 
+                    <div class="tab-pane" id="tab_3">
+
+                        @include('admin.pages.product._attribute', ['attributes' => $attributes])
+
+                    </div>
+
                 </div>
             </div>
+
+            <!-- Form Close -->
+            {!! Form::close() !!}
 
         </div>
 
