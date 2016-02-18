@@ -12,6 +12,7 @@ class ImageManager
 	const BRAND_IMAGE_PATH = 'uploads/brands/';
 	const BRAND_THUMB_SIZE = '80x50';
 	const ORDER_IMAGE_PATH = 'uploads/orders/';
+	const BLOG_IMAGE_PATH = 'uploads/blog/';
 
 
 
@@ -101,6 +102,8 @@ class ImageManager
 			return self::BRAND_IMAGE_PATH;
 		} elseif ($type === 'order') {
 			return self::ORDER_IMAGE_PATH . $filename[0] . '/' . $filename[1] . '/' . $filename[2] . '/';
+		} elseif ($type === 'blog') {
+			return self::BLOG_IMAGE_PATH . $filename[0] . '/' . $filename[1] . '/' . $filename[2] . '/';
 		}
 
 		return null;

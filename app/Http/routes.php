@@ -62,10 +62,8 @@ Route::controllers([
 ]);
 
 //Blog, CMS page
-Route::controllers([
-	'blog'      => 'BlogController',
-]);
-
+Route::get('blog', 'BlogController@index');
+Route::get('blog/{slug}', 'BlogController@detail');
 Route::get('contact', 'CmsController@contact');
 Route::post('contact/create', 'CmsController@create');
 
@@ -82,6 +80,7 @@ Route::resource('admin/product', 'Admin\ProductController');
 Route::resource('admin/category', 'Admin\CategoryController');
 Route::resource('admin/brand', 'Admin\BrandController');
 Route::resource('admin/order', 'Admin\OrderController');
+Route::resource('admin/blog', 'Admin\BlogController');
 
 //Other route
 Route::put('admin/product/{product}/delete-image/{image}', 'Admin\ProductController@deleteImage');
@@ -91,4 +90,7 @@ Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
 Route::get('admin/order/status/{status?}', 'Admin\OrderController@filter');
 Route::get('admin/user/{type?}', 'Admin\UserController@index');
 Route::get('admin/contact', 'Admin\CmsController@contact');
+Route::post('admin/blog/generate-slug', 'Admin\BlogController@generateSlug');
+
+
 

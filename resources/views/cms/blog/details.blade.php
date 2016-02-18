@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('title')
-    {{ trans('lang.Contact') }}
+    {{ $blog->title }}
 @stop
 
 @section('content')
@@ -11,9 +11,11 @@
                 <div class="col-sm-3">
                     @include('includes.default.left-sidebar')
                 </div>
+
                 <div class="col-sm-9">
-                    <h4 class="text-center">Thank you for your comment!</h4>
-                    <p class="text-center">We have receipt your comment and response to you soon.</p>
+                    <div class="row">
+                        details
+                    </div>
                 </div>
             </div>
         </div>
