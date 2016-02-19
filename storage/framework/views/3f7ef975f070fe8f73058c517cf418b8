@@ -32,7 +32,7 @@
                                     </a>
                                 </h4>
                                 <p><?php echo e($blog->subtitle); ?></p>
-                                <p class="blog-date"><?php echo e(gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at))); ?></p>
+                                <p class="blog-date"><?php echo e(\App\Helpers\DateTime::gmDate($blog->created_at)); ?></p>
                             </div>
                         </div>
                     <?php endforeach; ?>

@@ -33,7 +33,7 @@
                                     </a>
                                 </h4>
                                 <p>{{ $blog->subtitle }}</p>
-                                <p class="blog-date">{{ gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at)) }}</p>
+                                <p class="blog-date">{{ \App\Helpers\DateTime::gmDate($blog->created_at) }}</p>
                             </div>
                         </div>
                     @endforeach

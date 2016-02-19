@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="blog-details">
 
-                            <p class="blog-date">{{ gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at)) }}</p>
+                            <p class="blog-date">{{ \App\Helpers\DateTime::gmDate($blog->created_at) }}</p>
 
                             <p class="blog-title">{{ ucfirst($blog->title) }}</p>
 
@@ -63,7 +63,7 @@
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <p class="blog-date">{{ gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at)) }}</p>
+                                        <p class="blog-date">{{ \App\Helpers\DateTime::gmDate($blog->created_at) }}</p>
                                         <h4 class="media-heading blog-title">
                                             <a href="{{ url('blog/' . $blog->slug) }}">
                                                 {{ $blog->title }}

@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="blog-details">
 
-                            <p class="blog-date"><?php echo e(gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at))); ?></p>
+                            <p class="blog-date"><?php echo e(\App\Helpers\DateTime::gmDate($blog->created_at)); ?></p>
 
                             <p class="blog-title"><?php echo e(ucfirst($blog->title)); ?></p>
 
@@ -63,7 +63,7 @@
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <p class="blog-date"><?php echo e(gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at))); ?></p>
+                                        <p class="blog-date"><?php echo e(\App\Helpers\DateTime::gmDate($blog->created_at)); ?></p>
                                         <h4 class="media-heading blog-title">
                                             <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
                                                 <?php echo e($blog->title); ?>
