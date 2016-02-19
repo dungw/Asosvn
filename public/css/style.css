@@ -34,139 +34,180 @@
 .cart, .searchform button {
     background: #28ABE3 !important;
 }
+
 .product-information span span, .left-sidebar h2, .brands_products h2, h2.title, .productinfo h2 {
     color: #28ABE3 !important;
 }
+
 .recommended-item-control i {
     background: none repeat scroll 0 0 #28ABE3 !important;
 }
+
 .mainmenu ul li a:hover, .mainmenu ul li a.active, .shop-menu ul li a.active {
     color: #6c9edf !important;
 }
+
 .nav-tabs li.active a, .nav-tabs li.active a:hover, .nav-tabs li.active a:focus {
     background-color: #28ABE3 !important;
 }
+
 .carousel-indicators li.active {
     background: #28ABE3 !important;
 }
+
 .item h1 span {
     color: #28ABE3 !important;
 }
+
 .item button:hover {
     background: #28ABE3 !important;
 }
+
 .get {
     background: #28ABE3 !important;
 }
+
 .control-carousel:hover {
     color: #28ABE3 !important;
 }
+
 .left-sidebar h2, .brands_products h2 {
     color: #28ABE3 !important;
 }
+
 .tooltip-inner {
     background-color: #28ABE3 !important;
 }
+
 .tooltip.top .tooltip-arrow {
     border-top-color: #28ABE3 !important;
 }
+
 .product-overlay {
     background: #28ABE3 !important;
 }
+
 .product-overlay .add-to-cart {
     color: #28ABE3 !important;
 }
+
 .product-overlay .add-to-cart:hover {
     color: #28ABE3 !important;
 }
+
 .add-to-cart:hover {
     background: #28ABE3 !important;
     border: 0 none;
     border-radius: 0;
     color: #FFFFFF;
 }
+
 .choose ul li a:hover {
     color: #28ABE3 !important;
 }
+
 .category-tab ul.nav-tabs {
     /*border-bottom: 1px solid #28ABE3 !important;*/
     border-bottom: 1px solid lightslategray !important;
 }
+
 .category-tab ul li a:hover {
     background: #28ABE3 !important;
     color: #fff;
 }
+
 .pagination .active a, .pagination .active span, .pagination .active a:hover, .pagination .active span:hover, .pagination .active a:focus, .pagination .active span:focus {
     background-color: #28ABE3 !important;
     border-color: #28ABE3 !important;
 }
+
 .pagination li a:hover {
     background: #28ABE3 !important;
     color: #fff;
 }
+
 .view-product h3 {
     background: #28ABE3 !important;
 }
+
 .item-control i {
     background: #28ABE3 !important;
 }
+
 #reviews ul li a i {
     color: #28ABE3 !important;
     padding-right: 8px;
 }
+
 #reviews ul li a:hover {
     background: #fff;
     color: #28ABE3 !important;
 }
+
 #reviews button {
     background: #28ABE3 !important;
 }
+
 .content-404 h2 a {
     background: #28ABE3 !important;
 }
+
 .login-form form button, .signup-form form button {
     background: #28ABE3 !important;
 }
+
 .or {
     background: #d3d3d3 !important;
 }
+
 .social-login-btn {
     margin-bottom: 20px;
 }
+
 .social-login-btn a {
     border-radius: 0 !important;
 }
+
 .social-login-btn .btn-label, .social-login-btn .content {
     height: 34px;
     line-height: 21px;
 }
+
 .social-login-btn .content {
     border-bottom-left-radius: 0 !important;
     border-top-left-radius: 0 !important;
 }
+
 .fb-login a {
     color: #ffffff;
 }
+
 .fb-login a:hover {
     color: #ffffff;
 }
+
 .fb-login:hover .content {
     background-color: #2294c1 !important;
     border-color: #1b7596 !important;
 }
+
 .fb-login .btn-label {
     background-color: #6fb1e8 !important;
 }
+
 .fb-login .content {
     background-color: #468CC8 !important;
 }
+
 .fb-login .btn {
     color: white;
 }
+
 .fb-login .btn-label i, .gg-login .btn-label i {
-    width:16px;
-    height:20px
+    width: 16px;
+    height: 20px
 }
+
 .social-login-btn .btn-label {
     border-bottom-right-radius: 0 !important;
     border-top-right-radius: 0 !important;
@@ -468,23 +509,29 @@ a#scrollUp {
     color: rgba(204, 204, 204, 1);
     content: "\276D\00a0";
 }
+
 .dropdown-menu .divider {
     display: block;
     margin: 5px 0;
 }
+
 .checkout-page {
     padding-bottom: 150px;
 }
+
 .checkout-success-page {
     padding: 50px 0;
 }
+
 .checkout-success-page .title {
     margin-bottom: 50px;
     text-align: center;
 }
+
 .checkout-success-page .title::after {
     border: none !important;
 }
+
 .checkout-success-page .signature {
     margin: 40px 0;
     text-align: right;
@@ -494,36 +541,46 @@ a#scrollUp {
 .btn-place-order:hover {
     background: #14759e !important;
 }
+
 .account-dashboard {
     padding-top: 50px;
     padding-bottom: 150px;
 }
+
 .account-dashboard form button {
     margin-top: 15px;
     margin-left: 15px;
 }
+
 .account-dashboard form button:hover {
     background: #14759e !important;
 }
+
 .list-group-item a {
     color: #696763;
 }
+
 .list-group-item a:hover {
     color: #28ABE3;
 }
+
 a.active {
     color: #6c9edf !important;
 }
+
 .no-radius {
     border-radius: 0 !important;
 }
+
 .input-gray {
     background: #F0F0E9;
     color: #696763;
 }
+
 .cancel-update-account, .save-update-account {
     display: none;
 }
+
 #account-sidebar li a {
     padding: 6px 15px 6px 0;
     background: #FFFFFF;
@@ -532,50 +589,61 @@ a.active {
     font-size: 14px;
     font-weight: 400;
 }
+
 #account-sidebar li a:hover {
     color: #28ABE3;
 }
+
 .account-content {
     background: #fff;
     border: 1px solid #f5f5f5;
     color: #222;
-    min-height: 460px;   
+    min-height: 460px;
 }
+
 .account-order .btn {
     margin-top: 0 !important;
 }
+
 .account-order .btn:hover {
     background: #14759e !important;
 }
+
 .detail-total {
     padding-right: 60px;
 }
+
 .dropzone {
     border: 1px dashed #0087F7 !important;
 }
+
 .more-blog {
     padding: 0 20px 20px 0;
 }
+
 .blog-details {
     padding-left: 20px;
 }
-.blog-title{
+
+.blog-title {
     font-family: "Times New Roman";
     font-size: 26px;
     line-height: 32px;
     color: #FE980F;
     font-weight: bold;
 }
-.blog-details .panel{
-    background-color: #f8f8f8;
-    border-radius: 0;
-}
-.blog-details .blog-subtitle{
+
+.blog-details .blog-subtitle {
     font-family: "Times New Roman";
     font-size: 16px;
     line-height: 22px;
     font-weight: bold;
     color: #333;
+}
+
+.blog-details .blog-date {
+    color: lightslategray;
+    font-size: 13px;
 }
 
 
