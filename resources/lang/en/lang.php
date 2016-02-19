@@ -139,16 +139,17 @@ return [
 	'Show more'							  		  => 'Show more',
 
 	/*********** BACKEND ***********/
-	'General Infos'                               => 'General Infos',
-	'Extra Attributes'                            => 'Extra Attributes',
-	'Images'                                      => 'Images',
+	'general_infos'                               => 'General Infos',
+	'extra_attributes'                            => 'Extra Attributes',
+	'images'                                      => 'Images',
 	'Edit'                                        => 'Edit',
 	'submit_update'                               => 'Submit',
 	'submit_insert'                               => 'Submit',
 	'remove'                                      => 'Remove',
 	'add'                                         => 'Add',
+	'administrator'                               => 'Administration',
 
 	/*********** MESSAGES **********/
-	'Remove Attribute'                            => 'You removed attribute successful!',
+	'remove_attribute'                            => 'You removed attribute successful!',
 
 ];
