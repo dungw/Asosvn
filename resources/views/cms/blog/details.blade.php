@@ -4,6 +4,22 @@
     {{ $blog->title }}
 @stop
 
+@section('head')
+    <script >
+        var lang = '{{ Config::get('app.lang.' . App::getLocale()) }}';
+            if (lang == '' || lang == 'vi_VN') {
+                lang = 'vi_VN';
+            } else {
+                lang = 'en-US';
+            }
+        window.___gcfg = {
+            lang: lang,
+            parsetags: 'onload'
+        };
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+@stop
+
 @section('facebook')
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
@@ -40,9 +56,12 @@
                             <p class="blog-subtitle">{{ ucfirst($blog->subtitle) }}</p>
                             {!! $blog->content !!}
 
-                            <div class="fb-share-button" data-href="{{ url(Request::url()) }}" data-layout="button_count"></div>
-                            <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
-
+                            <div class="cocial-share-container">
+                                <div class="g-plusone gg-plus" data-href="{{ url(Request::url()) }}" data-annotation="bubble" ></div>
+                                <div class="fb-share-button" data-href="{{ url(Request::url()) }}" data-layout="button_count"></div>
+                                <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>                                 
+                            </div>
+                            
                         </div>
                     </div>
 

@@ -646,4 +646,16 @@ a.active {
     font-size: 13px;
 }
 
+.cocial-share-container {
+    display: block;
+    float: left;
+}
 
+.cocial-share-container .fb-share-button {
+    float: left;
+    margin-right: 15px;
+}
+.cocial-share-container .gg-plus, .cocial-share-container .fb-like {
+    float: left;
+    margin-right: 30px;
+}
