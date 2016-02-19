@@ -136,22 +136,23 @@ return [
 	'Content'                                     => 'Nội dung',
 	'Your comment'                                => 'Nội dung ý kiến, đóng góp của bạn',
 	'Can not send your comment!'                  => 'Không gửi được nội dung!',
-	'Show more'							  		  => 'Hiển thị thêm',
+	'Show more'                                   => 'Hiển thị thêm',
 
 	/************ abc_def ****************/
 	'order_post'								  => 'Bài viết cũ hơn',
 
 	/*********** BACKEND ***********/
-	'General Infos'                               => 'Thông tin cơ bản',
-	'Extra Attributes'                            => 'Thông số',
-	'Images'                                      => 'Ảnh',
+	'general_infos'                               => 'Thông tin cơ bản',
+	'extra_attributes'                            => 'Thông số',
+	'images'                                      => 'Ảnh',
 	'Edit'                                        => 'Sửa',
 	'submit_update'                               => 'Cập nhật',
 	'submit_insert'                               => 'Thêm mới',
 	'remove'                                      => 'Xóa',
 	'add'                                         => 'Thêm',
+	'administrator'                               => 'Hệ quản trị',
 
 	/*********** MESSAGES **********/
-	'Remove Attribute'                            => 'Bạn đã xóa thông số!',
+	'remove_attribute'                            => 'Bạn đã xóa thông số!',
 
 ];

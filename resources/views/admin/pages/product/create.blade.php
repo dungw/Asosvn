@@ -26,8 +26,11 @@
 
                 <ul class="nav nav-tabs">
 
-                    <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.General Infos') }}</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
+                    <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.general_infos') }}</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.extra_attributes') }}</a></li>
+                    <li class="pull-right">
+                        {!! App\Helpers\MyHtml::submit(trans('lang.submit_insert'), ['class' => 'btn btn-primary']) !!}
+                    </li>
 
                 </ul>
 

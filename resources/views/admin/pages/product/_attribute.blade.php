@@ -1,5 +1,5 @@
+{{--<a href="javascript:void(0)" class="btn btn-xs btn-default font14 add-attribute"><i class="fa fa-plus"></i> {{ trans('lang.add') }}</a>--}}
 
-<a href="javascript:void(0)" class="btn btn-xs btn-default font14"><i class="fa fa-plus"></i> {{ trans('lang.add') }}</a>
 @foreach($attributes as $attr)
 
     <div class="form-group">
@@ -23,7 +23,7 @@
     <script type="text/javascript">
         $('.remove-attribute').click(function () {
             $(this).parent().parent().remove();
-            $.growl.notice({ message: "{{ trans('lang.Remove Attribute') }}" });
+            $.growl.notice({ message: "{{ trans('lang.remove_attribute') }}" });
         });
     </script>
 

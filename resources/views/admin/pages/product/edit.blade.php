@@ -30,9 +30,9 @@
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
 
-                    <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.General Infos') }}</a></li>
-                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.Images') }}</a></li>
-                    <li><a href="#tab_3" data-toggle="tab">{{ trans('lang.Extra Attributes') }}</a></li>
+                    <li class="active"><a href="#tab_1" data-toggle="tab">{{ trans('lang.general_infos') }}</a></li>
+                    <li><a href="#tab_2" data-toggle="tab">{{ trans('lang.images') }}</a></li>
+                    <li><a href="#tab_3" data-toggle="tab">{{ trans('lang.extra_attributes') }}</a></li>
                     <li class="pull-right">
                         {!! App\Helpers\MyHtml::submit(trans('lang.submit_update'), ['class' => 'btn btn-primary']) !!}
                     </li>
