@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller {
 
+	const NUMBER_SHOW_IN_INDEX = 9;
+
 	public function index()
 	{
 		$data['blogs'] = DB::table('blogs')
-			->take(10)
+			->take(self::NUMBER_SHOW_IN_INDEX)
 			->orderBy('created_at', 'desc')
 			->get();
 
@@ -28,6 +30,13 @@ class BlogController extends Controller {
 		}
 
 		return view('cms.blog.details', $data);
+	}
+
+	public function showAll()
+	{
+		$data['blogs'] = Blog::all();
+
+		return view('cms.blog.list', $data);
 	}
 
 }

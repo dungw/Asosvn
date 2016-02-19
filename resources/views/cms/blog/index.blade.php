@@ -14,13 +14,13 @@
 
                 <div class="col-sm-9">
                     <div class="row">
-                        @foreach($blogs as $blog)
-                        <div class="col-sm-6 col-md-6">
+                    @foreach($blogs as $blog)
+                        <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
                                 <a href="{{ url('blog/' . $blog->slug) }}">
                                     @if (file_exists(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image))
                                         <img src="{{ asset(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image) }}"
-                                            alt="{{ $blog->title }}">
+                                            width="242px" height="200px" alt="{{ $blog->title }}">
                                     @else
                                         <img src="{{ asset(\App\ProductImage::NO_IMAGE) }}" alt=""/>
                                     @endif
@@ -33,8 +33,12 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
+                    @endforeach
                     </div>
+                </div>
+
+                <div class="pull-right more-blog">
+                    <a href="{{ url('blog/list') }}">{{ trans('lang.Show more') }}...</a>
                 </div>
             </div>
         </div>

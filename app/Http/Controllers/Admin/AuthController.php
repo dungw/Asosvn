@@ -21,10 +21,12 @@ class AuthController extends Controller
 
 		$user = User::where('email', $request->get('email'))->first();
 
-		if ($user->id && $user->is_admin && password_verify($request->get('password'), $user->password)) {
-			Auth::login($user);
-			return redirect('/admin');
-		}
+		if ($user) {
+			if ($user->id && $user->is_admin && password_verify($request->get('password'), $user->password)) {
+					Auth::login($user);
+					return redirect('/admin');
+				}
+		}		
 
 		return redirect('/admin/auth')
 			->withInput($request->only('email', 'remember'))

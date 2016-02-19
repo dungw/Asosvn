@@ -553,5 +553,7 @@ a.active {
 .dropzone {
     border: 1px dashed #0087F7 !important;
 }
-
+.more-blog {
+    padding: 0 20px 20px 0;
+}
 

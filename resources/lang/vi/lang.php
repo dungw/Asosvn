@@ -136,6 +136,7 @@ return [
 	'Content'                                     => 'Nội dung',
 	'Your comment'                                => 'Nội dung ý kiến, đóng góp của bạn',
 	'Can not send your comment!'                  => 'Không gửi được nội dung!',
+	'Show more'							  		  => 'Hiển thị thêm',
 
 	/*********** BACKEND ***********/
 	'General Infos'                               => 'Thông tin cơ bản',

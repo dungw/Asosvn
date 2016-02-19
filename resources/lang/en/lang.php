@@ -136,6 +136,7 @@ return [
 	'Content'                                     => 'Content',
 	'Your comment'                                => 'Your comment',
 	'Can not send your comment!'                  => 'Can not send your comment!',
+	'Show more'							  		  => 'Show more',
 
 	/*********** BACKEND ***********/
 	'General Infos'                               => 'General Infos',
