@@ -138,6 +138,9 @@ return [
 	'Can not send your comment!'                  => 'Không gửi được nội dung!',
 	'Show more'							  		  => 'Hiển thị thêm',
 
+	/************ abc_def ****************/
+	'order_post'								  => 'Bài viết cũ hơn',
+
 	/*********** BACKEND ***********/
 	'General Infos'                               => 'Thông tin cơ bản',
 	'Extra Attributes'                            => 'Thông số',

@@ -1,0 +1,55 @@
+<?php $__env->startSection('title'); ?>
+    <?php echo e(trans('lang.Contact')); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <?php echo $__env->make('includes.default.left-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="col-sm-12">
+                        <?php if(count($errors) > 0): ?>
+                            <div class="alert alert-danger center-block">
+                                <ul>
+                                    <?php foreach($errors->all() as $error): ?>
+                                        <li class="text-center"><?php echo e(trans('lang.' . $error)); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php echo Form::open(['method' => 'post', 'url' => 'contact/create']); ?>
+
+                    <div class="form-group">
+                        <label for="name"><?php echo e(trans('lang.Name')); ?></label>
+                        <input type="text" name="name" class="form-control" id="name" <?php if(Auth::user()): ?>
+                               value="<?php echo e(Auth::user()->name); ?>" <?php endif; ?> placeholder="<?php echo e(trans('lang.Name')); ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><?php echo e(trans('lang.Email')); ?></label>
+                        <input type="email" name="email" class="form-control" id="email" <?php if(Auth::user()): ?>
+                               value="<?php echo e(Auth::user()->email); ?>" <?php endif; ?> placeholder="<?php echo e(trans('lang.Email')); ?>"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content"><?php echo e(trans('lang.Content')); ?></label>
+                        <textarea name="content" class="form-control" id="content" rows="6"
+                                  placeholder="<?php echo e(trans('lang.Your comment')); ?>..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary center-block"><?php echo e(trans('lang.Submit')); ?></button>
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </div>
+        </div>
+    </section>
+	
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

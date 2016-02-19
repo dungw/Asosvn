@@ -138,6 +138,9 @@ return [
 	'Can not send your comment!'                  => 'Can not send your comment!',
 	'Show more'							  		  => 'Show more',
 
+	/************ abc_def ****************/
+	'order_post'								  => 'Older post',
+
 	/*********** BACKEND ***********/
 	'General Infos'                               => 'General Infos',
 	'Extra Attributes'                            => 'Extra Attributes',

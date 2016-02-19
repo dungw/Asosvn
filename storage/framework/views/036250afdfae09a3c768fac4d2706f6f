@@ -45,8 +45,40 @@
 
                         </div>
                     </div>
+
+                    <?php if(count($older_blogs)): ?>
+                        <h3><?php echo e(trans('lang.order_post')); ?></h3>
+                        <div class="row">
+                            <?php foreach($older_blogs as $blog): ?>
+                                <div class="media older-post">
+                                    <div class="media-left">
+                                        <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
+                                            <?php if(file_exists(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image)): ?>
+                                                <img src="<?php echo e(asset(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image)); ?>"
+                                                     width="64px" height="64px" alt="<?php echo e($blog->title); ?>" class="media-object">
+                                            <?php else: ?>
+                                                <img src="<?php echo e(asset(\App\ProductImage::NO_IMAGE)); ?>" width="64px" height="64px"
+                                                     alt="" class="media-object"/>
+                                            <?php endif; ?>
+                                        </a>
+                                    </div>
+                                    <div class="media-body">
+                                        <p class="blog-date"><?php echo e(gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at))); ?></p>
+                                        <h4 class="media-heading blog-title">
+                                            <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
+                                                <?php echo e($blog->title); ?>
+
+                                            </a>
+                                        </h4>
+                                        <p><?php echo e($blog->subtitle); ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
+
         </div>
     </section>
 

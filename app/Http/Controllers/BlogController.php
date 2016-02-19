@@ -6,15 +6,14 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Config;
 
 class BlogController extends Controller {
-
-	const NUMBER_SHOW_IN_INDEX = 9;
 
 	public function index()
 	{
 		$data['blogs'] = DB::table('blogs')
-			->take(self::NUMBER_SHOW_IN_INDEX)
+			->take(Config::get('app.number_blog_show_in_index'))
 			->orderBy('created_at', 'desc')
 			->get();
 
@@ -29,12 +28,20 @@ class BlogController extends Controller {
 			abort(404);
 		}
 
+		$data['older_blogs'] = Blog::where('created_at', '<', $data['blog']['created_at'])
+			->take(Config::get('app.number_blog_older_in_detail'))
+			->orderBy('created_at', 'desc')
+			->get();
+		;
+
 		return view('cms.blog.details', $data);
 	}
 
 	public function showAll()
 	{
-		$data['blogs'] = Blog::all();
+		$data['blogs'] = DB::table('blogs')
+			->orderBy('created_at', 'desc')
+			->get();;
 
 		return view('cms.blog.list', $data);
 	}

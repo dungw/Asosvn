@@ -130,6 +130,9 @@ return [
 	// currency rate default to other, example:
 	//'currency_rate_USD_to_XXX'	=> some value
 
+	'number_blog_show_in_index' => 9,
+	'number_blog_older_in_detail' => 3,
+
 	/*
 	|--------------------------------------------------------------------------
 	| End custom config

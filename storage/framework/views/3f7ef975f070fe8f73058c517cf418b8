@@ -1,0 +1,46 @@
+<?php $__env->startSection('title'); ?>
+    Blog
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <?php echo $__env->make('includes.default.left-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
+
+                <div class="col-sm-9">
+                    <?php foreach($blogs as $blog): ?>
+                        <div class="media">
+                            <div class="media-left">
+                                <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
+                                    <?php if(file_exists(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image)): ?>
+                                        <img src="<?php echo e(asset(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image)); ?>"
+                                             width="242px" height="200px" alt="<?php echo e($blog->title); ?>" class="media-object">
+                                    <?php else: ?>
+                                        <img src="<?php echo e(asset(\App\ProductImage::NO_IMAGE)); ?>" width="242px" height="200px"
+                                             alt="" class="media-object"/>
+                                    <?php endif; ?>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading blog-title">
+                                    <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
+                                        <?php echo e($blog->title); ?>
+
+                                    </a>
+                                </h4>
+                                <p><?php echo e($blog->subtitle); ?></p>
+                                <p class="blog-date"><?php echo e(gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at))); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

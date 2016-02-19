@@ -621,15 +621,15 @@ a.active {
     padding: 0 20px 20px 0;
 }
 
-.blog-details {
+.blog-details, .older-post{
     padding-left: 20px;
 }
 
-.blog-title {
+.blog-title, .blog-title a{
     font-family: "Times New Roman";
     font-size: 26px;
     line-height: 32px;
-    color: #FE980F;
+    color: #FE980F !important;
     font-weight: bold;
 }
 
@@ -641,7 +641,7 @@ a.active {
     color: #333;
 }
 
-.blog-details .blog-date {
+.blog-details .blog-date, .media-body .blog-date {
     color: lightslategray;
     font-size: 13px;
 }
