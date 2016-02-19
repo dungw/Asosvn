@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Attribute;
 use App\Category;
 use App\Http\Requests;
 use App\Http\Requests\CategoryRequest;
@@ -63,7 +64,8 @@ class CategoryController extends AdminController
 
 		$category->update($request->all());
 
-		//
+		//insert attributes
+		Attribute::query()->insert($request->get('attribute'));
 
 		Session::flash('success', 'Updated category successful!');
 
