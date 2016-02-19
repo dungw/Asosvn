@@ -37,6 +37,9 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="pull-right">
+                        {!! $blogs->render() !!}
+                    </div>                    
                 </div>
             </div>
         </div>

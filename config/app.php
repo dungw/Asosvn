@@ -132,6 +132,7 @@ return [
 
 	'number_blog_show_in_index' => 9,
 	'number_blog_older_in_detail' => 3,
+	'number_blog_paginate_in_list' => 10,
 
 	/*
 	|--------------------------------------------------------------------------

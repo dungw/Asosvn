@@ -39,11 +39,11 @@ class BlogController extends Controller {
 
 	public function showAll()
 	{
-		$data['blogs'] = DB::table('blogs')
+		$blogs = DB::table('blogs')
 			->orderBy('created_at', 'desc')
-			->get();;
+			->paginate(Config::get('app.number_blog_paginate_in_list'));
 
-		return view('cms.blog.list', $data);
+		return view('cms.blog.list', compact('blogs'));
 	}
 
 }
