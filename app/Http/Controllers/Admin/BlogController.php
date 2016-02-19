@@ -107,7 +107,7 @@ class BlogController extends AdminController {
 			$blog->update(['image' => $fileName]);
 		}
 
-		Session::flash('success', 'Created a blog successful!');
+		Session::flash('success', 'Update a blog successful!');
 
 		return redirect('admin/blog');
 	}

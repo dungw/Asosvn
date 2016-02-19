@@ -47,7 +47,7 @@
                     </div>
 
                     @if (count($older_blogs))
-                        <h3>{{ trans('lang.order_post') }}</h3>
+                        <h4>{{ trans('lang.order_post') }}</h4>
                         <div class="row">
                             @foreach($older_blogs as $blog)
                                 <div class="media older-post">
@@ -64,15 +64,15 @@
                                     </div>
                                     <div class="media-body">
                                         <p class="blog-date">{{ \App\Helpers\DateTime::gmDate($blog->created_at) }}</p>
-                                        <h4 class="media-heading blog-title">
-                                            <a href="{{ url('blog/' . $blog->slug) }}">
-                                                {{ $blog->title }}
-                                            </a>
-                                        </h4>
-                                        <p>{{ $blog->subtitle }}</p>
+                                        <a href="{{ url('blog/' . $blog->slug) }}">
+                                            {{ $blog->title }}
+                                        </a>
                                     </div>
                                 </div>
                             @endforeach
+                            <div class="pull-right more-blog">
+                                <a href="{{ url('blog/list') }}">{{ trans('lang.Show more') }}...</a>
+                            </div>
                         </div>
                     @endif
                 </div>
