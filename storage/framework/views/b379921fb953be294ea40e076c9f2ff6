@@ -1,0 +1,131 @@
+
+<div class="left-sidebar">
+    <h2>Categories</h2>
+
+    <div class="panel-group category-products" id="accordian">
+
+        <?php $__empty_1 = true; foreach($categories as $category): $__empty_1 = false; ?>
+            <?php if($category->parent_id == 0): ?>
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <?php if($category->children()->count() > 0): ?>
+                                <a class="parents" data-children="c<?php echo e($category->id); ?>" data-toggle="collapse" data-parent="#accordian" href="#c<?php echo e($category->id); ?>">
+                                    <span class="badge pull-right"><i
+                                                class="fa <?php echo e((isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'fa-minus' : 'fa-plus'); ?>"></i></span>
+                                    <?php echo e($category->name); ?>
+
+                                </a>
+                            <?php else: ?>
+
+                                <?php if(isset($curCategory) && ($curCategory->id == $category->id)): ?>
+                                    <a href="<?php echo e(App\Helpers\MyHtml::action_without_category($category)); ?>" class="active-category"><?php echo e($category->name); ?><i class="fa fa-times pull-right remove-selection"></i></a>
+                                <?php else: ?>
+                                    <a href="<?php echo e(App\Helpers\MyHtml::action_to_category($category)); ?>" class="<?php echo e((isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : ''); ?>"><?php echo e($category->name); ?></a>
+                                <?php endif; ?>
+
+                            <?php endif; ?>
+                        </h4>
+                    </div>
+
+                    <?php if($category->children()->count() > 0): ?>
+                        <div id="c<?php echo e($category->id); ?>"
+                             class="panel-collapse <?php echo e((isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'in' : 'collapse'); ?>">
+                            <div class="panel-body">
+                                <ul>
+                                    <?php foreach($category->children()->orderBy('name')->get() as $child): ?>
+                                        <li>
+
+                                            <?php if(isset($curCategory) && ($curCategory->id == $child->id)): ?>
+                                                <a href="<?php echo e(App\Helpers\MyHtml::action_without_category($child)); ?>" class="active-category"><?php echo e($child->name); ?><i class="fa fa-times pull-right child-remove-selection"></i></a>
+                                            <?php else: ?>
+                                                <a href="<?php echo e(App\Helpers\MyHtml::action_to_category($child)); ?>"><?php echo e($child->name); ?></a>
+                                            <?php endif; ?>
+                                            
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                </div>
+
+            <?php endif; ?>
+        <?php endforeach; if ($__empty_1): ?>
+
+        <?php endif; ?>
+    </div>
+
+    <?php if($brands->count() > 0): ?>
+        <div class="brands_products">
+
+            <h2>Brands</h2>
+
+            <div class="brands-name">
+                <ul class="nav nav-pills nav-stacked">
+
+                    <?php foreach($brands as $brand): ?>
+                        <?php if($brand->products()->count() > 0): ?>
+                            <li>
+                                <?php if(isset($curBrand) && ($brand->id == $curBrand->id)): ?>
+                                    <a class="active-brand"
+                                       href="<?php echo e(App\Helpers\MyHtml::action_without_brand($brand)); ?>"><?php echo e($brand->name); ?>&nbsp;<i class="fa fa-times pull-right font12"></i></a>
+                                <?php else: ?>
+                                    <a class=""
+                                       href="<?php echo e(App\Helpers\MyHtml::action_to_brand($brand)); ?>"><?php echo e($brand->name); ?>&nbsp;<span class="pull-right font12">(<?php echo e($brand->products()->count()); ?>)</span></a>
+                                <?php endif; ?>
+                            </li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+
+                </ul>
+            </div>
+
+        </div>
+    <?php endif; ?>
+
+    <!--
+    <?php if(Route::getCurrentRoute()->getUri() === 'b/{brand_slug}' or Route::getCurrentRoute()->getUri() === 'c/{category_slug}'): ?>
+    <div class="price-range">
+        <h2>Price Range</h2>
+        <div class="well text-center">
+            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="0" data-slider-step="5"
+                   data-slider-value="[0,0]" id="price-range"><br/>
+            <b class="pull-left">$ 0</b> <b class="pull-right">$ 0</b>
+        </div>
+    </div>
+    <?php endif; ?>
+    -->
+
+    <div class="shipping text-center">
+        <img src="<?php echo e(asset('images/home/shipping.jpg')); ?>" alt=""/>
+    </div>
+
+</div>
+
+<?php $__env->startSection('footer-content'); ?>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.parents').click(function () {
+                if ($('#' + $(this).attr('data-children')).hasClass('collapse')) {
+                    $(this).find('i').attr('class', 'fa fa-minus');
+                } else {
+                    $(this).find('i').attr('class', 'fa fa-plus');
+                }
+            });
+
+            $('#price-range').change(function() {
+                var action_without_pricerange = '<?php echo e(App\Helpers\MyHtml::action_without_pricerange()); ?>';
+                console.log(action_without_pricerange);
+            });
+
+        });
+    </script>
+
+<?php $__env->stopSection(); ?>
+

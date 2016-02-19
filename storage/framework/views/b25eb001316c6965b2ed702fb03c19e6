@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="<?php echo e(Config::get('app.locale')); ?>">
+
+<head>
+    <?php echo $__env->make('includes.default.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo $__env->yieldContent('head'); ?>
+</head>
+
+<body>
+    <?php echo $__env->yieldContent('facebook'); ?>
+
+    <header>
+        <?php echo $__env->make('includes.default.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    </header>
+
+    <?php echo $__env->yieldContent('intermediate'); ?>
+
+    <?php echo $__env->yieldContent('content'); ?>
+
+    <?php echo $__env->make('includes.default.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <script src="<?php echo e(asset('js/jquery.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/bootstrap-3.3.6/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery.scrollUp.min.js')); ?>"></script>
+    <!--<script src="<?php echo e(asset('js/price-range.js')); ?>"></script>-->
+    <script src="<?php echo e(asset('js/jquery.prettyPhoto.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery.growl.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/main.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/cart/my-cart.js')); ?>"></script>
+
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            localStorage.setItem("add-cart-success", "<?php echo e(trans('lang.Product was add to cart successfully!')); ?>");
+            localStorage.setItem("add-cart-error", "<?php echo e(trans('lang.Cannot add product to cart!')); ?>");
+            localStorage.setItem("update-cart-success", "<?php echo e(trans('lang.Cart was update successfully!')); ?>");     
+            localStorage.setItem("remove-cart-success", "<?php echo e(trans('lang.Product was remove successfully!')); ?>");
+        });
+    </script>
+
+    <?php echo $__env->yieldContent('front-footer-content'); ?>
+</body>
+</html>

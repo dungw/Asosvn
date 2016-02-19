@@ -1,0 +1,47 @@
+<?php $__env->startSection('title'); ?>
+    Blog
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <?php echo $__env->make('includes.default.left-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="row">
+                    <?php foreach($blogs as $blog): ?>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
+                                    <?php if(file_exists(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image)): ?>
+                                        <img src="<?php echo e(asset(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image)); ?>"
+                                            width="242px" height="200px" alt="<?php echo e($blog->title); ?>">
+                                    <?php else: ?>
+                                        <img src="<?php echo e(asset(\App\ProductImage::NO_IMAGE)); ?>" width="242px" height="200px" alt=""/>
+                                    <?php endif; ?>
+                                </a>
+                                <div class="caption">
+                                    <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
+                                        <h4><?php echo e(ucfirst($blog->title)); ?></h4>
+                                    </a>
+                                    <p><?php echo e(ucfirst($blog->subtitle)); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <div class="pull-right more-blog">
+                    <a href="<?php echo e(url('blog/list')); ?>"><?php echo e(trans('lang.Show more')); ?>...</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

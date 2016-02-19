@@ -1,0 +1,51 @@
+
+<div class="shop-menu pull-right" id="shop-menu">
+    <ul class="nav navbar-nav">
+        <li>
+            <a href="<?php echo e(url('cart')); ?>" class="<?php if(Request::url() == url('cart')): ?> active <?php endif; ?>">
+                <i class="fa fa-shopping-cart"></i><?php echo e(trans('lang.Cart')); ?>
+
+                <?php if($cartQty > 0): ?>
+                    <div class="cart-qty">
+                        <div class="<?php if($cartQty > 99): ?> circle-plus <?php else: ?> circle <?php endif; ?>">
+                            <span><?php echo e($cartQty); ?></span>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <div class="cart-empty"></div>
+                <?php endif; ?>
+            </a>
+        </li>
+        <li class="link-checkout">
+            <a href="<?php echo e(url('checkout')); ?>" class="<?php if(Request::url() == url('checkout')): ?> active <?php endif; ?>">
+                <i class="fa fa-crosshairs"></i> <?php echo e(trans('lang.Checkout')); ?>
+
+            </a>
+        </li>
+        <li>
+            <a href="#" class="<?php if(Request::url() == url('wishlist')): ?> active <?php endif; ?>">
+                <i class="fa fa-star"></i> <?php echo e(trans('lang.Wishlist')); ?>
+
+            </a>
+        </li>
+        <?php if(Auth::guest()): ?>
+            <li>
+                <a href="<?php echo e(url('account')); ?>" class="<?php if(Request::url() == url('account')): ?> active <?php endif; ?>">
+                    <i class="fa fa-user"></i> <?php echo e(trans('lang.Account')); ?>
+
+                </a>
+            </li>
+        <?php else: ?>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle <?php if(Request::url() == url('account/dashboard') || Request::url() == url('account/order')): ?> active <?php endif; ?>" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <?php echo e(trans('lang.Account')); ?> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="<?php echo e(url('account/dashboard')); ?>"><i class="fa fa-user"></i> <?php echo e(Auth::user()->name); ?></a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="<?php echo e(url('account/logout')); ?>"><i class="fa fa-power-off"></i> <?php echo e(trans('lang.Logout')); ?></a></li>
+                </ul>
+            </li>
+        <?php endif; ?>
+    </ul>
+</div>

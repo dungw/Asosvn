@@ -18,7 +18,9 @@ class BlogController extends AdminController {
 	 */
 	public function index()
 	{
-		//
+		$data['blogs'] = \DB::table('blogs')->orderBy('created_at', 'desc')->get();
+
+		return view('admin.pages.cms.blog.list', $data);
 	}
 
 	/**
@@ -79,18 +81,35 @@ class BlogController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$data['blog'] = Blog::find($id);
+
+		return view('admin.pages.cms.blog.edit', $data);
 	}
 
 	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
+	 * Update blog
+	 * @param $id
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
-	public function update($id)
+	public function update($id, Request $request)
 	{
-		//
+		$blog = Blog::findOrFail($id);
+
+		$blog->update($request->all());
+
+		if ($request->hasFile('image')) {
+			$image = $request->file('image');
+			//upload images
+			$fileName = ImageManager::upload($image, 'blog');
+
+			//insert to database
+			$blog->update(['image' => $fileName]);
+		}
+
+		Session::flash('success', 'Created a blog successful!');
+
+		return redirect('admin/blog');
 	}
 
 	/**

@@ -1,0 +1,34 @@
+<?php $__env->startSection('breadcrumb'); ?>
+    <section class="content-header">
+        <h1>
+            Blog
+            <small>create blog</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="<?php echo e(url('admin')); ?>"><i class="glyphicon glyphicon-home"></i> Home</a></li>
+            <li><a href="<?php echo e(url('admin/blog')); ?>">Blogs</a></li>
+            <li class="active"><a href="#">Create blog</a></li>
+        </ol>
+    </section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="box">
+
+        <div class="box-body">
+
+            <?php echo Form::open(array_merge(['url' => 'admin/blog/create', 'method' => 'POST', 'files' => true], ['class' => 'form-horizontal'])); ?>
+
+
+                <?php echo $__env->make('admin.pages.cms.blog._form', ['options' => ['url' => 'admin/blog', 'files' => true]], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+            <?php echo Form::close(); ?>
+
+
+        </div>
+
+    </div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('admin.layouts.boxed', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

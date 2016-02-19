@@ -22,7 +22,7 @@
                                         <img src="{{ asset(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image) }}"
                                             width="242px" height="200px" alt="{{ $blog->title }}">
                                     @else
-                                        <img src="{{ asset(\App\ProductImage::NO_IMAGE) }}" alt=""/>
+                                        <img src="{{ asset(\App\ProductImage::NO_IMAGE) }}" width="242px" height="200px" alt=""/>
                                     @endif
                                 </a>
                                 <div class="caption">

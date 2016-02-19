@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="salezone.vn, salezone, <?php echo e(trans('lang.Leather')); ?>, <?php echo e(trans('lang.Leather bag')); ?>, <?php echo e(trans('lang.Leather wallet')); ?>, <?php echo e(trans('lang.Leather belt')); ?>, <?php echo e(trans('lang.Handmade')); ?>, <?php echo e(trans('lang.Real leather')); ?>">
+<meta name="description" content="salezone.vn, salezone, <?php echo e(trans('lang.Leather')); ?>, <?php echo e(trans('lang.Leather bag')); ?>, <?php echo e(trans('lang.Leather wallet')); ?>, <?php echo e(trans('lang.Leather belt')); ?>, <?php echo e(trans('lang.Handmade')); ?>">
+<meta name="author" content="">
+<meta property="og:title" content=""/>
+<meta property="og:description" content=""/>
+<meta property="og:type" content="website" />
+<meta name="copyright" content="salezone.vn" />
+<meta name="author" content="salezone.vn" />
+<meta name="abstract" content="" />
+<meta name="GENERATOR" content="SaleZone"/>
+
+<meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
+
+<title><?php echo $__env->yieldContent('title'); ?> | Sale-Zone</title>
+<link rel="icon" href="<?php echo e(url('images/icon/favicon.png')); ?>" type="image/gif" sizes="32x32">
+
+<link href="<?php echo e(asset('css/bootstrap-3.3.6/bootstrap.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/font-awesome.min.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/prettyPhoto.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/price-range.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/animate.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/main.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/responsive.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/frontend-customize.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/frontend-customize-responsive.css')); ?>" rel="stylesheet">
+<link href="<?php echo e(asset('css/jquery.growl.css')); ?>" rel="stylesheet">
+<?php if(Request::url() == url('checkout/custom')): ?>
+<link href="<?php echo e(asset('css/vendor/dropzone.css')); ?>" rel="stylesheet">
+<?php endif; ?>
+<link href="<?php echo e(asset('css/style.css')); ?>" rel="stylesheet">
+
+<!--[if lt IE 9]>
+<script src="<?php echo e(asset('js/html5shiv.js')); ?>"></script>
+<script src="<?php echo e(asset('js/respond.min.js')); ?>"></script>
+<![endif]-->
+
+<link rel="shortcut icon" href="<?php echo e(asset('images/ico/favicon.ico')); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo e(asset('images/ico/apple-touch-icon-144-precomposed.png')); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo e(asset('images/ico/apple-touch-icon-114-precomposed.png')); ?>">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo e(asset('images/ico/apple-touch-icon-72-precomposed.png')); ?>">
+<link rel="apple-touch-icon-precomposed" href="<?php echo e(asset('images/ico/apple-touch-icon-57-precomposed.png')); ?>">

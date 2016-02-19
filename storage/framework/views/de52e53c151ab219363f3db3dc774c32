@@ -1,0 +1,83 @@
+
+<input type="hidden" value="<?php echo e($product->id); ?>" id="detail-id-<?php echo e($product->id); ?>"/>
+<input type="hidden" value="<?php echo e($product->name); ?>" id="detail-name-<?php echo e($product->id); ?>"/>
+<input type="hidden" value="<?php echo e($product->price); ?>" id="detail-price-<?php echo e($product->id); ?>"/>
+<input type="hidden" value="<?php echo e($product->mainImage()->image); ?>" id="detail-image-<?php echo e($product->id); ?>"/>
+<input type="hidden" value="<?php echo e($product->sku); ?>" id="detail-sku-<?php echo e($product->id); ?>"/>
+<input type="hidden" value="<?php echo e($product->slug); ?>" id="detail-slug-<?php echo e($product->id); ?>"/>
+
+<div class="col-sm-4">
+    <div class="product-image-wrapper">
+        <div class="single-products">
+            <div class="productinfo text-center">
+
+                <div class="image-wrapper row vertical-align">
+
+                    <div class="col-sm-12 ">
+                        <a href="<?php echo e(url('product/' . $product->slug)); ?>">
+                            <?php if(file_exists(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'medium'))): ?>
+                                <img src="<?php echo e(asset(\App\Helpers\ImageManager::getThumb($product->mainImage()->image, 'product', 'medium'))); ?>" alt=""/>
+                            <?php else: ?>
+                                <img src="<?php echo e(asset(\App\ProductImage::NO_IMAGE)); ?>" alt=""/>
+                            <?php endif; ?>
+                        </a>
+                    </div>
+
+                </div>
+
+                <h2><?php echo e(App\Helpers\Currency::currency($product->price)); ?></h2>
+
+                <p><a href="<?php echo e(url('product/' . $product->slug)); ?>"><?php echo e($product->name); ?></a></p>
+
+                <button type="button" data-product="<?php echo e($product->id); ?>" class="btn btn-fefault add-to-cart <?php if($product->availability != 'available'): ?> disabled <?php else: ?> btn-list-add-cart <?php endif; ?>">
+                    <i class="fa fa-shopping-cart"></i>
+                    <?php echo e(trans('lang.Add to cart')); ?>
+
+                </button>
+
+            </div>
+            <!--
+            <div class="product-overlay">
+                <div class="overlay-content">
+                    <h2>$56</h2>
+                    <p>Easy Polo Black Edition</p>
+                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                </div>
+            </div>
+            -->
+        </div>
+        <!--
+        <div class="choose">
+            <ul class="nav nav-pills nav-justified">
+                <li><a href=""><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li>
+            </ul>
+        </div>
+        -->
+    </div>
+</div>
+
+<?php $__env->startSection('front-footer-content'); ?>
+
+    @parent
+
+    <script type="text/javascript">
+        $(document).ready(function ($) {
+
+            $(".btn-list-add-cart").on("click", function() {
+
+                var id = $(this).attr('data-product');
+                var name = $("#detail-name-" + id).val();
+                var price = $("#detail-price-" + id).val();
+                var slug = $("#detail-slug-" + id).val();
+                var image = $("#detail-image-" + id).val();
+                var sku = $("#detail-sku-" + id).val();
+                var qty = 1;
+
+                $.addToCart(id, name, qty, price, slug, image, sku);
+
+            });
+        })
+    </script>
+<?php $__env->stopSection(); ?>
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <?php echo $__env->make('admin.includes.boxed.head', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+    <?php echo $__env->yieldContent('head'); ?>
+</head>
+
+<body class="hold-transition skin-blue layout-boxed sidebar-collapse sidebar-mini">
+
+    <div class="wrapper">
+
+        <?php echo $__env->make('admin.includes.boxed.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <?php echo $__env->make('admin.includes.boxed.sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="content-wrapper">
+
+            <?php echo $__env->yieldContent('breadcrumb'); ?>
+
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <?php echo $__env->yieldContent('content'); ?>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <?php echo $__env->make('admin.includes.boxed.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <?php echo $__env->make('admin.includes.boxed.control-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/jQuery/jQuery-2.1.4.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/bootstrap/js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/slimScroll/jquery.slimscroll.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/plugins/fastclick/fastclick.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/dist/js/app.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('bower_components/AdminLTE/dist/js/demo.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/jquery.growl.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/select2.min.js')); ?>"></script>
+
+    <?php echo $__env->yieldContent('footer-content'); ?>
+
+</body>
+</html>

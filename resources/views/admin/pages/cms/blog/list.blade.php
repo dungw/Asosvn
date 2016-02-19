@@ -25,27 +25,33 @@
             <table id="data-table" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Category</th>
-                    <th>Condition</th>
-                    <th>Price</th>
-                    <th width="15%">Actions</th>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Subtitle</th>
+                    <th width="10%">Preview</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($products as $product)
+                @foreach ($blogs as $blog)
                     <tr>
-                        <td>{{ $product->id }}</td>
+                        <td>{{ $blog->id }}</td>
                         <td>
-                            <a href="{{ url('admin/product/' . $product->id) }}">{{ $product->name }}</a>
+                            <a href="{{ url('admin/blog/' . $blog->id . '/edit') }}">{{ $blog->title }}</a>
                         </td>
-                        <td>{{ $product->category->name }}</td>
-                        <td>{{ $product->condition() }}</td>
-                        <td>{{ $product->price }}</td>
+                        <td width="250px">
+                            <a href="{{ url('admin/blog/' . $blog->id . '/edit') }}">
+                                @if (file_exists(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image))
+                                    <img src="{{ asset(\App\Helpers\ImageManager::getContainerFolder('blog', $blog->image) . '/' . $blog->image) }}"
+                                         width="242px" height="200px" alt="{{ $blog->title }}">
+                                @else
+                                    <img src="{{ asset(\App\ProductImage::NO_IMAGE) }}" width="242px" height="200px" alt=""/>
+                                @endif
+                            </a>
+                        </td>
+                        <td>{{ $blog->subtitle }}</td>
                         <td>
-                            {!! App\Helpers\MyHtml::btnEdit('admin/product/' . $product->id . '/edit/') !!}
-                            {!! App\Helpers\MyHtml::btnRemove('admin/product/' . $product->id) !!}
+                            <a href="{{ url('blog/' . $blog->slug) }}" target="_blank">View</a>
                         </td>
                     </tr>
                 @endforeach

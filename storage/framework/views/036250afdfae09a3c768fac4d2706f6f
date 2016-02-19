@@ -1,0 +1,55 @@
+<?php $__env->startSection('title'); ?>
+    <?php echo e($blog->title); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('facebook'); ?>
+    <div id="fb-root"></div>
+    <script>(function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            var lang = '<?php echo e(Config::get('app.lang.' . App::getLocale())); ?>';
+            if (lang == '') {
+                lang = 'vi_Vn';
+            }
+            js.src = "//connect.facebook.net/" + lang + "/sdk.js#xfbml=1&version=v2.5&appId=1540297046283675";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <?php echo $__env->make('includes.default.left-sidebar', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="row">
+                        <div class="blog-details">
+
+                            <p class="blog-date"><?php echo e(gmdate('l, d/m/Y | h:i A', strtotime($blog->created_at))); ?></p>
+
+                            <p class="blog-title"><?php echo e(ucfirst($blog->title)); ?></p>
+
+                            <p class="blog-subtitle"><?php echo e(ucfirst($blog->subtitle)); ?></p>
+                            <?php echo $blog->content; ?>
+
+
+                            <div class="fb-share-button" data-href="<?php echo e(url(Request::url())); ?>" data-layout="button_count"></div>
+                            <div class="fb-like" data-href="<?php echo e(url(Request::url())); ?>" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

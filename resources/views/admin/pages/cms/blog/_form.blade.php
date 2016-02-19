@@ -2,9 +2,6 @@
     <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
 @stop
 
-<div class="box-body">
-    {!! Form::open(array_merge($options, ['class' => 'form-horizontal'])) !!}
-
     @if ($errors->any())
         <div class="alert alert-danger alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -49,9 +46,6 @@
     <div class="form-group">
         {!! App\Helpers\MyHtml::submit('Submit', ['class' => 'btn btn-primary']) !!}
     </div>
-
-    {!! Form::close() !!}
-</div>
 
 @section('footer-content')
 

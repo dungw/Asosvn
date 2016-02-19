@@ -3,8 +3,8 @@
 @section('breadcrumb')
     <section class="content-header">
         <h1>
-            Product
-            <small>create product</small>
+            Blog
+            <small>create blog</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="{{ url('admin') }}"><i class="glyphicon glyphicon-home"></i> Home</a></li>
@@ -19,7 +19,11 @@
 
         <div class="box-body">
 
-            @include('admin.pages.cms.blog._form', ['options' => ['url' => 'admin/blog', 'files' => true]])
+            {!! Form::open(array_merge(['url' => 'admin/blog/create', 'method' => 'POST', 'files' => true], ['class' => 'form-horizontal'])) !!}
+
+                @include('admin.pages.cms.blog._form', ['options' => ['url' => 'admin/blog', 'files' => true]])
+
+            {!! Form::close() !!}
 
         </div>
 

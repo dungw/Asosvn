@@ -1,0 +1,111 @@
+<div class="header_top"><!--header_top-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="contactinfo">
+                    <ul class="nav nav-pills">
+                        <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
+                        <li><a href="mailto:salezone.vn@gmail.com"><i class="fa fa-envelope"></i> salezone.vn@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+                <div class="social-icons pull-right">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+                <div class="search_box pull-right">
+                    <input type="text" placeholder="Search"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="header-middle">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="logo pull-left">
+                    <a href="<?php echo e(url('/')); ?>"><img src="<?php echo e(asset('images/home/logo.png')); ?>" alt="<?php echo e(trans('lang.Home')); ?>"/></a>
+                </div>
+                <div class="btn-group select-currency">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                            <?php if(Session::has('currency')): ?>
+                                <?php if(Session::get('currency') == 'VND'): ?>
+                                    VNĐ
+                                <?php else: ?>
+                                    <?php echo e(Session::get('currency')); ?>
+
+                                <?php endif; ?>
+                            <?php else: ?>
+                                <?php echo e(Config::get('app.currency_default')); ?>
+
+                            <?php endif; ?>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo e(url('currency/VND')); ?>">VNĐ</a></li>
+                            <li><a href="<?php echo e(url('currency/USD')); ?>">USD</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="btn-group select-language">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                            <?php echo e(trans('lang.' . App::getLocale())); ?>
+
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="<?php echo e(url('language/vi')); ?>"><?php echo e(trans('lang.vi')); ?></a></li>
+                            <li><a href="<?php echo e(url('language/en')); ?>"><?php echo e(trans('lang.en')); ?></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <?php echo $__env->make('includes.default.shop-menu', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="mainmenu pull-left">
+                    <ul class="nav navbar-nav collapse navbar-collapse">
+                        <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                            <ul role="menu" class="sub-menu">
+                                <li><a href="shop.html">Products</a></li>
+                                <li><a href="product-details.html">Product Details</a></li>
+                                <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="cart.html">Cart</a></li>
+                                <li><a href="login.html">Login</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="<?php echo e(url('blog')); ?>">Blog</a></li>
+                        <li><a href="<?php echo e(url('checkout/custom')); ?>"><?php echo e(trans('lang.Custom Order')); ?></a></li>
+                        <li><a href="<?php echo e(url('vip')); ?>">VIP</a></li>
+                        <li><a href="<?php echo e(url('contact')); ?>"><?php echo e(trans('lang.Contact')); ?></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
