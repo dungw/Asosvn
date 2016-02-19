@@ -32,21 +32,15 @@
                 <div class="col-sm-9">
                     <div class="row">
                         <div class="blog-details">
+
                             <p class="blog-title">{{ ucfirst($blog->title) }}</p>
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="fb-share-button" data-href="{{ url(Request::url()) }}" data-layout="button_count"></div>
-                                    <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
-                                </div>
-                            </div>
+
                             <p class="blog-subtitle">{{ ucfirst($blog->subtitle) }}</p>
                             {!! $blog->content !!}
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="fb-share-button" data-href="{{ url(Request::url()) }}" data-layout="button_count"></div>
-                                    <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
-                                </div>
-                            </div>
+
+                            <div class="fb-share-button" data-href="{{ url(Request::url()) }}" data-layout="button_count"></div>
+                            <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
+
                         </div>
                     </div>
                 </div>
