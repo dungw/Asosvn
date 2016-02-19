@@ -62,9 +62,10 @@ Route::controllers([
 ]);
 
 //Blog, CMS page
+Route::get('blog/list', 'BlogController@showAll');
 Route::get('blog', 'BlogController@index');
 Route::get('blog/{slug}', 'BlogController@detail');
-Route::get('blog/list', 'BlogController@showAll');
+
 //Contact
 Route::get('contact', 'CmsController@contact');
 Route::post('contact/create', 'CmsController@create');
