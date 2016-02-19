@@ -10,7 +10,8 @@ class Attribute extends Model
 	protected $fillable = [
 		'category_id',
 		'key',
-		'name'
+		'name',
+		'unit'
 	];
 
 	public $timestamps = false;

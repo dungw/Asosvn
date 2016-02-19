@@ -63,6 +63,8 @@ class CategoryController extends AdminController
 
 		$category->update($request->all());
 
+		//
+
 		Session::flash('success', 'Updated category successful!');
 
 		return redirect('admin/category');
