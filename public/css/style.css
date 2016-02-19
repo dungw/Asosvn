@@ -556,4 +556,26 @@ a.active {
 .more-blog {
     padding: 0 20px 20px 0;
 }
+.blog-details {
+    padding-left: 20px;
+}
+.blog-title{
+    font-family: "Times New Roman";
+    font-size: 26px;
+    line-height: 32px;
+    color: #FE980F;
+    font-weight: bold;
+}
+.blog-details .panel{
+    background-color: #f8f8f8;
+    border-radius: 0;
+}
+.blog-details .blog-subtitle{
+    font-family: "Times New Roman";
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
 

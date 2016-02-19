@@ -101,7 +101,8 @@
                                 <p><b>{{ trans('lang.Brand') }}:</b> {{ $product->brand->name or trans('lang.unclear')}}
                                 </p>
 
-                                <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
+                                <div class="fb-share-button" data-href="{{ url(Request::url()) }}" data-layout="button_count"></div>
+                                <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
                             </div>
                         </div>
 

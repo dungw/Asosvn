@@ -27,9 +27,9 @@
                                 </a>
                                 <div class="caption">
                                     <a href="{{ url('blog/' . $blog->slug) }}">
-                                        <h4>{{ $blog->title }}</h4>
+                                        <h4>{{ ucfirst($blog->title) }}</h4>
                                     </a>
-                                    {!! $blog->content !!}
+                                    <p>{{ ucfirst($blog->subtitle) }}</p>
                                 </div>
                             </div>
                         </div>

@@ -30,12 +30,18 @@
     </div>
 
     <div class="form-group">
+        {!! App\Helpers\MyHtml::label('subtitle', 'Subtitle') !!}
+        {!! App\Helpers\MyHtml::textarea('subtitle', old('subtitle') ? old('subtitle') : (isset($blog) ? $blog->subtitle : null), ['class' =>
+        'form-control', 'rows' => '3']) !!}
+    </div>
+
+    <div class="form-group">
         {!! App\Helpers\MyHtml::label('image', 'Thumbnail Image') !!}
         {!! App\Helpers\MyHtml::file('image', ['class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! App\Helpers\MyHtml::label('content', 'Content') !!}
+        {!! App\Helpers\MyHtml::label('content', 'Content', true) !!}
         {!! App\Helpers\MyHtml::textarea('content', old('content') ? old('content') : (isset($blog) ?
         $blog->content : null), ['class' => 'blog-content form-control']) !!}
     </div>
