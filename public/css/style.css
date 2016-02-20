@@ -1,3 +1,6 @@
+input, textarea {
+    border-radius: 0 !important;
+}
 .error-message {
     color: #28ABE3;
 }
