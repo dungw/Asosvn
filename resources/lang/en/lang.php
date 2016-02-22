@@ -154,6 +154,10 @@ return [
 
 	/*********** MESSAGES **********/
 	'remove_attribute'                            => 'You removed attribute successful!',
-	'your_order_code'							  => 'Your order code',								
+	'your_order_code'							  => 'Your order code',
+	'no_order_match'							  => 'No order match',									
+	'tracking_your_order_here'					  => 'Tracking your order here',
+	'please_enter_your_email_address_below'	  	  => 'Please enter your email address below',	
+	'you_will_receive_status_about_your_order'	  => 'You will receive status about your order',		
 
 ];

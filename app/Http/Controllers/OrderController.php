@@ -47,9 +47,13 @@ class OrderController extends Controller {
 	public function show($id)
 	{
 		$order = Order::find($id);
-		$items = $order->items()->get();
-
-		return view('pages.account.order.details', compact('order', 'items'));
+		if ($order) {
+			$items = $order->items()->get();
+			
+			return view('pages.account.order.details', compact('order', 'items'));	
+		}
+		
+		return abort(404);
 	}
 
 	/**
@@ -90,15 +94,14 @@ class OrderController extends Controller {
 		return view('pages.order-status.index');
 	}
 
-	public function getStatus()
+	public function getStatus(Request $request)
 	{
-		$this->validate($request, ['order_code' => 'required']);
+		$this->validate($request, ['email' => 'required|email']);
 
-		$order = Order::find($$request->get('order_code'));
-		if ($order->id) {
-			return view('pages.order-status.details');
-		}
+		$data['orders'] = Order::where('email', $request->get('email'))->get();
+		$data['old_email'] = $request->get('email');
 		
+		return view('pages.order-status.details', $data);
 	}
 
 }

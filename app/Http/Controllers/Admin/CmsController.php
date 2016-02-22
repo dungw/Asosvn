@@ -15,4 +15,23 @@ class CmsController extends AdminController {
 		return view('admin.pages.cms.contact', $data);
 	}
 
+	public function faq()
+	{
+		return view('admin.pages.cms.faq');
+	}
+
+	public function terms()
+	{
+		return view('admin.pages.cms.terms');	
+	}
+
+	public function policy()
+	{
+		return view('admin.pages.cms.policy');			
+	}
+
+	public function refund()
+	{
+		return view('admin.pages.cms.refund');	
+	}
 }

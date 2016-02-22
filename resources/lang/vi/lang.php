@@ -154,6 +154,10 @@ return [
 
 	/*********** MESSAGES **********/
 	'remove_attribute'                            => 'Bạn đã xóa thông số!',
-	'your_order_code'							  => 'Mã đơn hàng của bạn',		
+	'your_order_code'							  => 'Mã đơn hàng của bạn',	
+	'no_order_match'							  => 'Không có đơn hàng tương ứng',
+	'tracking_your_order_here'					  => 'Xem trạng thái đơn hàng của bạn',
+	'please_enter_your_email_address_below'	  	  => 'Hãy điền địa chỉ email bên dưới',	
+	'you_will_receive_status_about_your_order'	  => 'Bạn sẽ nhận được thông tin về trạng thái đơn hàng',		
 
 ];

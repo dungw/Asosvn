@@ -71,10 +71,16 @@ Route::controllers([
 	'password'      => 'Auth\PasswordController',
 ]);
 
-//Blog, CMS page
+//Blog
 Route::get('blog/list', 'BlogController@showAll');
 Route::get('blog', 'BlogController@index');
 Route::get('blog/{slug}', 'BlogController@detail');
+
+//CMS page
+Route::get('faq', 'CmsController@faq');
+Route::get('terms', 'CmsController@terms');
+Route::get('policy', 'CmsController@policy');
+Route::get('refund', 'CmsController@refund');
 
 //Contact
 Route::get('contact', 'CmsController@contact');

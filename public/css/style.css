@@ -664,16 +664,12 @@ a.active {
 }
 .order-status button {
     margin-top: 0 !important;
-    float: left;
 }
-.order-status input {
-    float: left;
+.tracking-order {
+    margin-bottom: 50px
 }
-.order-status div {
-    width: 100%;
-    float: left;
-    display: inline-block;
-    overflow: hidden;
+.tracking-order-result {
+    padding-top: 50px;
 }
 
 
