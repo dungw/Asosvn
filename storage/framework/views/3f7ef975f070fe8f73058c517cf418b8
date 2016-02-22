@@ -36,6 +36,10 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+                    <div class="pull-right">
+                        <?php echo $blogs->render(); ?>
+
+                    </div>                    
                 </div>
             </div>
         </div>

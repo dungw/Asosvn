@@ -1,5 +1,12 @@
 <?php
 
+//--- ROUTE TEST ---
+
+Route::get('mail-test', 'MailController@index');
+Route::get('mail-send', 'MailController@send');
+
+//-- End test --
+
 //APIs
 Route::post('api/product/store', 'Admin\ProductController@store');
 
