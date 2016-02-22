@@ -3,6 +3,22 @@
 
 <?php $__env->stopSection(); ?>
 
+<?php $__env->startSection('head'); ?>
+    <script >
+        var lang = '<?php echo e(Config::get('app.lang.' . App::getLocale())); ?>';
+            if (lang == '' || lang == 'vi_VN') {
+                lang = 'vi_VN';
+            } else {
+                lang = 'en-US';
+            }
+        window.___gcfg = {
+            lang: lang,
+            parsetags: 'onload'
+        };
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+<?php $__env->stopSection(); ?>
+
 <?php $__env->startSection('facebook'); ?>
     <div id="fb-root"></div>
     <script>(function (d, s, id) {
@@ -40,14 +56,18 @@
                             <?php echo $blog->content; ?>
 
 
-                            <div class="fb-share-button" data-href="<?php echo e(url(Request::url())); ?>" data-layout="button_count"></div>
-                            <div class="fb-like" data-href="<?php echo e(url(Request::url())); ?>" data-layout="standard" data-action="like" data-show-faces="false" data-share="false"></div>
-
+                            <div class="cocial-share-container">
+                                <div class="g-plusone gg-plus" data-href="<?php echo e(url(Request::url())); ?>" data-annotation="bubble" ></div>
+                                <div class="fb-send" data-href="<?php echo e(url(Request::url())); ?>"></div>
+                                <div class="fb-share-button" data-href="<?php echo e(url(Request::url())); ?>" data-layout="button_count"></div>
+                                <div class="fb-like" data-href="<?php echo e(url(Request::url())); ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>                                 
+                            </div>
+                            
                         </div>
                     </div>
 
                     <?php if(count($older_blogs)): ?>
-                        <h3><?php echo e(trans('lang.order_post')); ?></h3>
+                        <h4><?php echo e(trans('lang.order_post')); ?></h4>
                         <div class="row">
                             <?php foreach($older_blogs as $blog): ?>
                                 <div class="media older-post">
@@ -64,16 +84,16 @@
                                     </div>
                                     <div class="media-body">
                                         <p class="blog-date"><?php echo e(\App\Helpers\DateTime::gmDate($blog->created_at)); ?></p>
-                                        <h4 class="media-heading blog-title">
-                                            <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
-                                                <?php echo e($blog->title); ?>
+                                        <a href="<?php echo e(url('blog/' . $blog->slug)); ?>">
+                                            <?php echo e($blog->title); ?>
 
-                                            </a>
-                                        </h4>
-                                        <p><?php echo e($blog->subtitle); ?></p>
+                                        </a>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
+                            <div class="pull-right more-blog">
+                                <a href="<?php echo e(url('blog/list')); ?>"><?php echo e(trans('lang.Show more')); ?>...</a>
+                            </div>
                         </div>
                     <?php endif; ?>
                 </div>

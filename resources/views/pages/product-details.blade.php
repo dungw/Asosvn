@@ -116,6 +116,7 @@
 
                                 <div class="cocial-share-container">
                                     <div class="g-plusone gg-plus" data-href="{{ url(Request::url()) }}" data-annotation="bubble" ></div>
+                                    <div class="fb-send" data-href="{{ url(Request::url()) }}"></div>
                                     <div class="fb-share-button" data-href="{{ url(Request::url()) }}" data-layout="button_count"></div>
                                     <div class="fb-like" data-href="{{ url(Request::url()) }}" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>                                 
                                 </div>
