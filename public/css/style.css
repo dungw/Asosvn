@@ -662,3 +662,21 @@ a.active {
     float: left;
     margin-right: 30px;
 }
+.order-status button {
+    margin-top: 0 !important;
+    float: left;
+}
+.order-status input {
+    float: left;
+}
+.order-status div {
+    width: 100%;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+}
+
+
+
+
+

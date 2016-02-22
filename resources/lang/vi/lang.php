@@ -154,5 +154,6 @@ return [
 
 	/*********** MESSAGES **********/
 	'remove_attribute'                            => 'Bạn đã xóa thông số!',
+	'your_order_code'							  => 'Mã đơn hàng của bạn',		
 
 ];

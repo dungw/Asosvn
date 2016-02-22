@@ -86,8 +86,8 @@
                     <div class="single-widget">
                         <h2>{{ trans('lang.Service') }}</h2>
                         <ul class="nav nav-pills nav-stacked">
-                            <li><a href="#">{{ trans('lang.Contact') }}</a></li>
-                            <li><a href="#">{{ trans('lang.Order Status') }}</a></li>
+                            <li><a href="{{ url('contact') }}">{{ trans('lang.Contact') }}</a></li>
+                            <li><a href="{{ url('order/status') }}">{{ trans('lang.Order Status') }}</a></li>
                             <li><a href="#">{{ trans('lang.FAQ’s') }}</a></li>
                         </ul>
                     </div>

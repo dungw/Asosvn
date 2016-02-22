@@ -85,4 +85,20 @@ class OrderController extends Controller {
 		//
 	}
 
+	public function status()
+	{
+		return view('pages.order-status.index');
+	}
+
+	public function getStatus()
+	{
+		$this->validate($request, ['order_code' => 'required']);
+
+		$order = Order::find($$request->get('order_code'));
+		if ($order->id) {
+			return view('pages.order-status.details');
+		}
+		
+	}
+
 }

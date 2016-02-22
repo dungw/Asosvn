@@ -154,5 +154,6 @@ return [
 
 	/*********** MESSAGES **********/
 	'remove_attribute'                            => 'You removed attribute successful!',
+	'your_order_code'							  => 'Your order code',								
 
 ];
