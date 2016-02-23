@@ -38,8 +38,45 @@ input, textarea {
     background: #28ABE3 !important;
 }
 
-.product-information span span, .left-sidebar h2, .brands_products h2, h2.title, .productinfo h2 {
+.product-information span span, h2.title, .productinfo h2 {
     color: #28ABE3 !important;
+}
+
+.left-sidebar .panel-heading {
+    padding: 0 !important;
+}
+
+.panel-body ul li a {
+    text-transform: none;
+}
+
+.left-sidebar a, .panel-body ul li a {
+    color: #696763 !important;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 0 0 8px;
+    text-decoration: none;
+    color: #888888 !important;
+    border-bottom: 1px dotted #eee;
+    display: block;
+}
+
+.left-sidebar a:hover {
+    color: #6c9edf !important;
+}
+
+.left-sidebar h2, .brands_products h2 {
+    text-transform: none;
+    color: #1a1a1a !important;
+    font-size: 18px;
+    font-weight: 500 !important;
+    text-align: left !important;
+    margin: 0 0 15px !important;
+}
+
+.brands-name, .category-products {
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
 }
 
 .recommended-item-control i {
@@ -71,10 +108,6 @@ input, textarea {
 }
 
 .control-carousel:hover {
-    color: #28ABE3 !important;
-}
-
-.left-sidebar h2, .brands_products h2 {
     color: #28ABE3 !important;
 }
 
@@ -671,8 +704,3 @@ a.active {
 .tracking-order-result {
     padding-top: 50px;
 }
-
-
-
-
-

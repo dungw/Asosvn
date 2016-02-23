@@ -13,16 +13,16 @@
 }
 
 .active-category, .active-brand, .remove-selection, .child-remove-selection {
-    color: #FE980F !important;
+    /*color: #FE980F !important;*/
 }
 
-.remove-selection, .child-remove-selection {
+.remove-selection, .child-remove-selection, .arrow-selection {
     padding: 0px 7px;
     font-size: 12px !important;
 }
 
 .child-remove-selection {
-    padding: 0px 12px;
+    padding: 0px 17px;
 }
 
 .active-brand i {
@@ -30,7 +30,7 @@
 }
 
 .brand-selection {
-    padding: 0px 27px !important;
+    padding: 0px 7px !important;
 }
 
 .fa-times {

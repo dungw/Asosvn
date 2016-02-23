@@ -72,7 +72,7 @@ class ProductController extends BaseController
 		$data['recommendedProducts'] = Product::filterWithCategory($product->category_id)->where('id', '!=', $product->id)->limit(6)->get();
 
 		//extra attributes
-		$data['extraAttributes'] = SerializedAttribute::parseWithName($product->extra_attributes);
+		$data['extraAttributes'] = SerializedAttribute::parseWithName($product->category_id, $product->extra_attributes);
 
 		return view('pages.product-details', $data);
 	}

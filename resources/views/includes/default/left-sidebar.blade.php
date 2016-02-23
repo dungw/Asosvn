@@ -10,23 +10,20 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            @if ($category->children()->count() > 0)
-                                <a class="parents" data-children="c{{ $category->id }}" data-toggle="collapse" data-parent="#accordian" href="#c{{ $category->id }}">
-                                    <span class="badge pull-right"><i
-                                                class="fa {{ (isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'fa-minus' : 'fa-plus' }}"></i></span>
-                                    {{ $category->name }}
-                                </a>
+                        @if ($category->children()->count() > 0)
+                            <a class="parents" data-children="c{{ $category->id }}" data-toggle="collapse" data-parent="#accordian" href="#c{{ $category->id }}">
+                                <i class="pull-right fa {{ (isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'fa-angle-left' : 'fa-angle-right' }} arrow-selection"></i>
+                                {{ ucfirst($category->name) }}
+                            </a>
+                        @else
+
+                            @if (isset($curCategory) && ($curCategory->id == $category->id))
+                                <a href="{{ App\Helpers\MyHtml::action_without_category($category) }}" class="active-category">{{ ucfirst($category->name) }}<i class="fa fa-times pull-right remove-selection"></i></a>
                             @else
-
-                                @if (isset($curCategory) && ($curCategory->id == $category->id))
-                                    <a href="{{ App\Helpers\MyHtml::action_without_category($category) }}" class="active-category">{{ $category->name }}<i class="fa fa-times pull-right remove-selection"></i></a>
-                                @else
-                                    <a href="{{ App\Helpers\MyHtml::action_to_category($category) }}" class="{{ (isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : '' }}">{{ $category->name }}</a>
-                                @endif
-
+                                <a href="{{ App\Helpers\MyHtml::action_to_category($category) }}" class="{{ (isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : '' }}">{{ ucfirst($category->name) }}</a>
                             @endif
-                        </h4>
+
+                        @endif                        
                     </div>
 
                     @if ($category->children()->count() > 0)
@@ -38,9 +35,9 @@
                                         <li>
 
                                             @if (isset($curCategory) && ($curCategory->id == $child->id))
-                                                <a href="{{ App\Helpers\MyHtml::action_without_category($child) }}" class="active-category">{{ $child->name }}<i class="fa fa-times pull-right child-remove-selection"></i></a>
+                                                <a href="{{ App\Helpers\MyHtml::action_without_category($child) }}" class="active-category">{{ ucfirst($child->name) }}<i class="fa fa-times pull-right child-remove-selection"></i></a>
                                             @else
-                                                <a href="{{ App\Helpers\MyHtml::action_to_category($child) }}">{{ $child->name }}</a>
+                                                <a href="{{ App\Helpers\MyHtml::action_to_category($child) }}">{{ ucfirst($child->name) }}</a>
                                             @endif
                                             
                                         </li>
@@ -71,10 +68,10 @@
                             <li>
                                 @if (isset($curBrand) && ($brand->id == $curBrand->id))
                                     <a class="active-brand"
-                                       href="{{ App\Helpers\MyHtml::action_without_brand($brand) }}">{{ $brand->name }}&nbsp;<i class="fa fa-times pull-right font12"></i></a>
+                                       href="{{ App\Helpers\MyHtml::action_without_brand($brand) }}">{{ ucfirst($brand->name) }}&nbsp;<i class="fa fa-times pull-right font12"></i></a>
                                 @else
                                     <a class=""
-                                       href="{{ App\Helpers\MyHtml::action_to_brand($brand) }}">{{ $brand->name }}&nbsp;<span class="pull-right font12">({{ $brand->products()->count() }})</span></a>
+                                       href="{{ App\Helpers\MyHtml::action_to_brand($brand) }}">{{ ucfirst($brand->name) }}&nbsp;<span class="pull-right font12">({{ $brand->products()->count() }})</span></a>
                                 @endif
                             </li>
                         @endif
