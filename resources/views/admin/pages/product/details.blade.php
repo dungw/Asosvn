@@ -58,7 +58,10 @@
                     </div>
 
                     <div class="tab-pane" id="tab_3">
-
+                        @forelse($attributes as $attr)
+                            {!! App\Helpers\MyHtml::showAttribute($attr['name'], $attr['value'], $attr['unit']) !!}
+                        @empty
+                        @endforelse
                     </div>
 
                 </div>

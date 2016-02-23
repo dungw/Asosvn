@@ -28,6 +28,7 @@ class VerifyCsrfToken extends BaseVerifier
 			'api/product/store',
 			'admin/product/generate-slug',
 			'admin/category/generate-slug',
+			'admin/category/get-attribute',
 			'admin/brand/generate-slug',
 		];
 

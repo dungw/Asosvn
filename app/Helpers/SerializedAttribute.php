@@ -27,14 +27,14 @@ class SerializedAttribute
 		return $attributes;
 	}
 
-	public static function parseWithName($jsonString)
+	public static function parseWithName($categoryId, $jsonString)
 	{
 		$data = [];
 
 		$keyData = self::parseWithKey($jsonString, true);
 
 		//get name from database by key
-		$baseAttrs = Attribute::findByKeys(array_keys($keyData));
+		$baseAttrs = Attribute::findByKeys($categoryId, array_keys($keyData));
 
 		if (!empty($baseAttrs))
 		{
@@ -45,6 +45,7 @@ class SerializedAttribute
 					$data[$index]['key'] = $attr->key;
 					$data[$index]['name'] = $attr->name;
 					$data[$index]['value'] = $keyData[$attr->key];
+					$data[$index]['unit'] = $attr->unit;
 				}
 			}
 		}

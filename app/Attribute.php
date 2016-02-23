@@ -21,17 +21,18 @@ class Attribute extends Model
 		return $this->belongsTo('App\Category');
 	}
 
-	public static function findByKeys($keys)
+	public static function findByKeys($id, $keys)
 	{
+		$query = self::query()->where('category_id', $id);
 		if (is_array($keys))
 		{
 
-			return self::query()->whereIn('key', $keys)->get();
+			return $query->whereIn('key', $keys)->get();
 
 		} elseif (is_string($keys))
 		{
 
-			return self::query()->where('key', $keys)->first();
+			return $query->where('key', $keys)->first();
 		}
 	}
 

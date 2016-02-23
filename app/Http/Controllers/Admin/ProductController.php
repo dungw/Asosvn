@@ -12,7 +12,6 @@ use App\Product;
 use App\ProductImage;
 use File;
 use Input;
-use Intervention\Image\Facades\Image;
 use Session;
 
 class ProductController extends AdminController
@@ -28,12 +27,14 @@ class ProductController extends AdminController
 	public function create()
 	{
 		$data = [
-			'categories'     => Category::active()->lists('name', 'id'),
+			'categories'     => [null => '- Choose category -'],
 			'brands'         => Brand::lists('name', 'id'),
 			'availabilities' => [],
 			'distributors'   => Distributor::lists('name', 'id'),
 			'conditions'     => [null => 'Normal']
 		];
+
+		$data['categories'] = array_merge($data['categories'], Category::active()->lists('name', 'id'));
 
 		foreach (Product::availabilities() as $key => $value)
 		{
@@ -53,7 +54,12 @@ class ProductController extends AdminController
 
 	public function store(ProductRequest $request)
 	{
-		$product = Product::create($request->all());
+		$data = $request->all();
+
+		//update extra attributes
+		$data['extra_attributes'] = SerializedAttribute::toJson($data['attribute']);
+
+		$product = Product::create($data);
 
 		$this->syncDistributor($product, $request->get('distributors'));
 
@@ -67,6 +73,8 @@ class ProductController extends AdminController
 	public function show($id)
 	{
 		$data['product'] = Product::findOrFail($id);
+
+		$data['attributes'] = SerializedAttribute::parseWithName($data['product']->category_id, $data['product']->extra_attributes);
 
 		return view('admin.pages.product.details', $data);
 	}
@@ -92,7 +100,7 @@ class ProductController extends AdminController
 			$data['conditions'] = array_add($data['conditions'], $key, $value);
 		}
 
-		$data['attributes'] = SerializedAttribute::parseWithName($data['product']->extra_attributes);
+		$data['attributes'] = SerializedAttribute::parseWithName($data['product']->category_id, $data['product']->extra_attributes);
 
 		return view('admin.pages.product.edit', $data);
 	}

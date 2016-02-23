@@ -22,7 +22,7 @@ class Category extends Model {
 
 	public function attributes()
 	{
-		return $this->hasMany('App\Attributes');
+		return $this->hasMany('App\Attribute');
 	}
 
 	public function scopeActive($query)
