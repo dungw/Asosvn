@@ -99,11 +99,13 @@ Route::resource('admin/blog', 'Admin\BlogController');
 Route::put('admin/product/{product}/delete-image/{image}', 'Admin\ProductController@deleteImage');
 Route::post('admin/product/generate-slug', 'Admin\ProductController@generateSlug');
 Route::post('admin/category/generate-slug', 'Admin\CategoryController@generateSlug');
+Route::post('admin/category/get-attribute', 'Admin\CategoryController@getAttribute');
 Route::post('admin/brand/generate-slug', 'Admin\BrandController@generateSlug');
 Route::get('admin/order/status/{status?}', 'Admin\OrderController@filter');
 Route::get('admin/user/{type?}', 'Admin\UserController@index');
 Route::get('admin/contact', 'Admin\CmsController@contact');
 Route::post('admin/blog/generate-slug', 'Admin\BlogController@generateSlug');
+
 
 
 

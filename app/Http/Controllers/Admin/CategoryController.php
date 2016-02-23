@@ -31,7 +31,9 @@ class CategoryController extends AdminController
 
 	public function store(CategoryRequest $request)
 	{
-		Category::create($request->all());
+		$category = Category::create($request->all());
+
+		$this->syncAttributes($category->id, $request->get('attribute'));
 
 		Session::flash('success', 'Created a category successful!');
 
@@ -55,6 +57,9 @@ class CategoryController extends AdminController
 		//remove its children
 		$data['categories'] = array_except($data['categories'], $data['category']->children()->lists('id'));
 
+		//get attributes of this record
+		$data['attributes'] = $data['category']->attributes()->get();
+
 		return view('admin.pages.category.edit', $data);
 	}
 
@@ -65,7 +70,7 @@ class CategoryController extends AdminController
 		$category->update($request->all());
 
 		//insert attributes
-		Attribute::query()->insert($request->get('attribute'));
+		$this->syncAttributes($id, $request->get('attribute'));
 
 		Session::flash('success', 'Updated category successful!');
 
@@ -99,6 +104,51 @@ class CategoryController extends AdminController
 		}
 
 		print $slug;
+	}
+
+	public function getAttribute()
+	{
+		$id = Input::get('id');
+		$category = Category::findOrFail($id);
+
+		if ($category)
+		{
+			$attributes = $category->attributes()->get();
+
+			return json_encode($attributes);
+		}
+
+		return null;
+	}
+
+	private function syncAttributes($id, $attrData)
+	{
+		//delete old attributes if exist
+		Attribute::query()->where('category_id', $id)->delete();
+
+		//add new attributes
+		if (!empty($attrData))
+		{
+			//array keys
+			$added = [];
+
+			foreach ($attrData as $key => $row)
+			{
+				if (!in_array($row['key'], $added))
+				{
+					//add category id
+					$attrData[$key]['category_id'] = $id;
+
+					$added[] = $row['key'];
+				} else
+				{
+					unset($attrData[$key]);
+				}
+			}
+
+		}
+
+		Attribute::query()->insert($attrData);
 	}
 
 }

@@ -19,6 +19,7 @@ class Product extends Model
 		'condition',
 		'quantity',
 		'slug',
+		'extra_attributes',
 	];
 
 	public function category()

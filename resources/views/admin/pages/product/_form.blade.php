@@ -104,24 +104,66 @@
             type="text/javascript"></script>
     <script type="text/javascript">
 
-        $('.product-des').wysihtml5();
-        $('#distributor-selection').select2({
-            placeholder: 'Select a distributor'
-        });
-
-        $('input[name="name"]').blur(function () {
-
-            $.ajax({
-                url: '/admin/product/generate-slug',
-                method: 'POST',
-                data: {
-                    name: $(this).val()
-                },
-                success: function (data) {
-                    $('input[name="slug"]').val(data);
-                }
+        $(document).ready(function() {
+            $('.product-des').wysihtml5();
+            $('#distributor-selection').select2({
+                placeholder: 'Select a distributor'
             });
 
+            $('input[name="name"]').blur(function () {
+
+                $.ajax({
+                    url: '/admin/product/generate-slug',
+                    method: 'POST',
+                    data: {
+                        name: $(this).val()
+                    },
+                    success: function (data) {
+                        $('input[name="slug"]').val(data);
+                    }
+                });
+
+            });
+
+            //get attribute when default
+            var category = $('select[name="category_id"]');
+            /*if (category.val() > 0) {
+                getAttribute(category.val());
+            }*/
+
+            //get attribute when change value of category selector
+            category.change(function () {
+                getAttribute($(this).val());
+            });
+
+            function getAttribute(id) {
+                $.ajax({
+                    url: '/admin/category/get-attribute',
+                    method: 'POST',
+                    data: {
+                        id: id
+                    },
+                    success: function (json) {
+
+                        var data = $.parseJSON(json);
+                        var container = $('.attribute-container');
+
+                        //clear old attribute list
+                        container.html('');
+
+                        //append attribute
+                        for (var i = 0; i < data.length; i++) {
+                            var attributeModel = $('.attribute-model').clone();
+
+                            container.append(attributeModel);
+                            container.find('.attribute-model').attr('class', '');
+                            container.find('.attribute-item-label').removeClass('attribute-item-label').attr('for', data[i]['key']).text(data[i]['name']);
+                            container.find('.attribute-item-value').removeClass('attribute-item-value').attr('name', 'attribute[' + data[i]['key'] + ']');
+                        }
+
+                    }
+                });
+            }
         });
 
     </script>

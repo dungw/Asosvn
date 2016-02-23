@@ -19,7 +19,7 @@
         <div class="box-body">
 
             <!-- Form Open -->
-            {!! Form::open(array_merge($options, ['class' => 'form-horizontal'])) !!}
+            {!! Form::open(array_merge(['url' => 'admin/category'], ['class' => 'form-horizontal'])) !!}
 
             <div class="nav-tabs-custom">
 
@@ -36,11 +36,11 @@
                 <div class="tab-content">
 
                     <div class="tab-pane active" id="tab_1">
-                        @include('admin.pages.category._form', ['options' => ['url' => 'admin/category']])
+                        @include('admin.pages.category._form')
                     </div>
 
                     <div class="tab-pane" id="tab_2">
-                        @include('admin.pages.category._attribute', ['attributes' => $attributes])
+                        @include('admin.pages.category._attribute', ['attributes' => []])
                     </div>
 
                 </div>

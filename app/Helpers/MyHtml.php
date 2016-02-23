@@ -136,8 +136,22 @@ class MyHtml extends Html
 	public static function show($title, $value, $class = '')
 	{
 		$html = '<div class="form-group border-b ' . $class . '">';
+		$html .= '<div class="row">';
 		$html .= '<div class="col-sm-2 talign-r"><label>' . $title . '</label></div>';
 		$html .= '<div class="col-sm-7"><span>' . $value . '</span></div>';
+		$html .= '</div>';
+		$html .= '</div>';
+
+		return $html;
+	}
+
+	public static function showAttribute($title, $value, $unit, $class = '')
+	{
+		$html = '<div class="form-group border-b ' . $class . '">';
+		$html .= '<div class="row">';
+		$html .= '<div class="col-sm-2 talign-r"><label>' . $title . '</label></div>';
+		$html .= '<div class="col-sm-7"><span>' . $value . ($unit ? " ({$unit})" : null) . '</span></div>';
+		$html .= '</div>';
 		$html .= '</div>';
 
 		return $html;
