@@ -104,6 +104,10 @@ input, textarea {
     display: block;
 }
 
+.panel-body ul li a {
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
 .left-sidebar a:hover {
     color: #6c9edf !important;
 }
