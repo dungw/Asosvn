@@ -8,6 +8,7 @@ return [
 	'Quantity'                                    => 'Quantity',
 	'Condition'                                   => 'Condition',
 	'Brand'                                       => 'Brand',
+	'Brands'                                      => 'Brands',
 	'available'                                   => 'available',
 	'out_of_stock'                                => 'Out of stock',
 	'Home'                                        => 'Home',

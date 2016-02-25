@@ -1,3 +1,40 @@
+/*-- Copy from frontend-customize.css --*/
+.font12 {
+    font-size: 12px !important;
+}
+
+.carousel-inner .item img {
+    max-width: 84px;
+    max-height: 84px;
+}
+
+.productinfo img:first-child {
+    max-width: 255px;
+    max-height: 237px;
+}
+
+.active-category, .active-brand, .remove-selection, .child-remove-selection {
+    /*color: #FE980F !important;*/
+}
+
+.remove-selection, .child-remove-selection, .arrow-selection, .child-remove-selection {
+    padding: 5px 10px 0 0;
+    font-size: 12px !important;
+}
+
+.active-brand i {
+    padding-right: 10px;
+}
+
+.brand-selection {
+    padding: 0px 7px !important;
+}
+
+.fa-times {
+     padding-top: 2px !important;
+}
+/*end copy frontend-customize.css*/
+
 input, textarea {
     border-radius: 0 !important;
 }
@@ -46,19 +83,24 @@ input, textarea {
     padding: 0 !important;
 }
 
-.panel-body ul li a {
+.panel-body ul li a, .brands-name .nav-stacked li a {
     text-transform: none;
 }
 
-.left-sidebar a, .panel-body ul li a {
+.category-products, .brands-name {
+    border: none; 
+    padding: 0;
+}
+
+.left-sidebar a, .panel-body ul li a, .brands-name .nav-stacked li a {
     color: #696763 !important;
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 300;
-    padding: 0 0 8px;
+    padding: 5px 0 10px 10px;
     text-decoration: none;
     color: #888888 !important;
-    border-bottom: 1px dotted #eee;
+    border-bottom: 1px solid #eaeaea;
     display: block;
 }
 
@@ -75,8 +117,8 @@ input, textarea {
     margin: 0 0 15px !important;
 }
 
-.brands-name, .category-products {
-    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+.left-sidebar h2:after, h2.title:after {
+    border: none !important;
 }
 
 .recommended-item-control i {

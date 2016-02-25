@@ -8,6 +8,7 @@ return [
 	'Quantity'                                    => 'Số lượng',
 	'Condition'                                   => '',
 	'Brand'                                       => 'Thương hiệu',
+	'Brands'                                      => 'Thương hiệu',
 	'available'                                   => 'Còn hàng',
 	'out_of_stock'                                => 'Hết hàng',
 	'Home'                                        => 'Trang chủ',

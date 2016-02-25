@@ -1,6 +1,6 @@
 
 <div class="left-sidebar">
-    <h2>Categories</h2>
+    <h2><?php echo e(trans('lang.Categories')); ?></h2>
 
     <div class="panel-group category-products" id="accordian">
 
@@ -10,24 +10,21 @@
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <?php if($category->children()->count() > 0): ?>
-                                <a class="parents" data-children="c<?php echo e($category->id); ?>" data-toggle="collapse" data-parent="#accordian" href="#c<?php echo e($category->id); ?>">
-                                    <span class="badge pull-right"><i
-                                                class="fa <?php echo e((isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'fa-minus' : 'fa-plus'); ?>"></i></span>
-                                    <?php echo e($category->name); ?>
+                        <?php if($category->children()->count() > 0): ?>
+                            <a class="parents" data-children="c<?php echo e($category->id); ?>" data-toggle="collapse" data-parent="#accordian" href="#c<?php echo e($category->id); ?>">
+                                <i class="pull-right fa <?php echo e((isset($curCategory) && in_array($curCategory->id, $category->children->lists('id'))) ? 'fa-angle-left' : 'fa-angle-right'); ?> arrow-selection"></i>
+                                <?php echo e(ucfirst($category->name)); ?>
 
-                                </a>
+                            </a>
+                        <?php else: ?>
+
+                            <?php if(isset($curCategory) && ($curCategory->id == $category->id)): ?>
+                                <a href="<?php echo e(App\Helpers\MyHtml::action_without_category($category)); ?>" class="active-category"><?php echo e(ucfirst($category->name)); ?><i class="fa fa-times pull-right remove-selection"></i></a>
                             <?php else: ?>
-
-                                <?php if(isset($curCategory) && ($curCategory->id == $category->id)): ?>
-                                    <a href="<?php echo e(App\Helpers\MyHtml::action_without_category($category)); ?>" class="active-category"><?php echo e($category->name); ?><i class="fa fa-times pull-right remove-selection"></i></a>
-                                <?php else: ?>
-                                    <a href="<?php echo e(App\Helpers\MyHtml::action_to_category($category)); ?>" class="<?php echo e((isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : ''); ?>"><?php echo e($category->name); ?></a>
-                                <?php endif; ?>
-
+                                <a href="<?php echo e(App\Helpers\MyHtml::action_to_category($category)); ?>" class="<?php echo e((isset($curCategory) && ($curCategory->id == $category->id)) ? 'active-category' : ''); ?>"><?php echo e(ucfirst($category->name)); ?></a>
                             <?php endif; ?>
-                        </h4>
+
+                        <?php endif; ?>                        
                     </div>
 
                     <?php if($category->children()->count() > 0): ?>
@@ -39,9 +36,9 @@
                                         <li>
 
                                             <?php if(isset($curCategory) && ($curCategory->id == $child->id)): ?>
-                                                <a href="<?php echo e(App\Helpers\MyHtml::action_without_category($child)); ?>" class="active-category"><?php echo e($child->name); ?><i class="fa fa-times pull-right child-remove-selection"></i></a>
+                                                <a href="<?php echo e(App\Helpers\MyHtml::action_without_category($child)); ?>" class="active-category"><?php echo e(ucfirst($child->name)); ?><i class="fa fa-times pull-right child-remove-selection"></i></a>
                                             <?php else: ?>
-                                                <a href="<?php echo e(App\Helpers\MyHtml::action_to_category($child)); ?>"><?php echo e($child->name); ?></a>
+                                                <a href="<?php echo e(App\Helpers\MyHtml::action_to_category($child)); ?>"><?php echo e(ucfirst($child->name)); ?></a>
                                             <?php endif; ?>
                                             
                                         </li>
@@ -62,7 +59,7 @@
     <?php if($brands->count() > 0): ?>
         <div class="brands_products">
 
-            <h2>Brands</h2>
+            <h2><?php echo e(trans('lang.Brands')); ?></h2>
 
             <div class="brands-name">
                 <ul class="nav nav-pills nav-stacked">
@@ -72,10 +69,10 @@
                             <li>
                                 <?php if(isset($curBrand) && ($brand->id == $curBrand->id)): ?>
                                     <a class="active-brand"
-                                       href="<?php echo e(App\Helpers\MyHtml::action_without_brand($brand)); ?>"><?php echo e($brand->name); ?>&nbsp;<i class="fa fa-times pull-right font12"></i></a>
+                                       href="<?php echo e(App\Helpers\MyHtml::action_without_brand($brand)); ?>"><?php echo e(ucfirst($brand->name)); ?>&nbsp;<i class="fa fa-times pull-right font12"></i></a>
                                 <?php else: ?>
                                     <a class=""
-                                       href="<?php echo e(App\Helpers\MyHtml::action_to_brand($brand)); ?>"><?php echo e($brand->name); ?>&nbsp;<span class="pull-right font12">(<?php echo e($brand->products()->count()); ?>)</span></a>
+                                       href="<?php echo e(App\Helpers\MyHtml::action_to_brand($brand)); ?>"><?php echo e(ucfirst($brand->name)); ?>&nbsp;<span class="pull-right font12">(<?php echo e($brand->products()->count()); ?>)</span></a>
                                 <?php endif; ?>
                             </li>
                         <?php endif; ?>

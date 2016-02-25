@@ -1,6 +1,6 @@
 
 <div class="left-sidebar">
-    <h2>Categories</h2>
+    <h2>{{ trans('lang.Categories') }}</h2>
 
     <div class="panel-group category-products" id="accordian">
 
@@ -58,7 +58,7 @@
     @if ($brands->count() > 0)
         <div class="brands_products">
 
-            <h2>Brands</h2>
+            <h2>{{ trans('lang.Brands') }}</h2>
 
             <div class="brands-name">
                 <ul class="nav nav-pills nav-stacked">
