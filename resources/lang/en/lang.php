@@ -160,5 +160,6 @@ return [
 	'tracking_your_order_here'					  => 'Tracking your order here',
 	'please_enter_your_email_address_below'	  	  => 'Please enter your email address below',	
 	'you_will_receive_status_about_your_order'	  => 'You will receive status about your order',		
+	'thank_you_for_your_order'					  => 'THANK YOU FOR YOUR ORDER!'
 
 ];

@@ -1,0 +1,1 @@
+Thank you, your order is # {{ $orderId }}

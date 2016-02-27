@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use URL;
 use App\Helpers\ImageManager;
+use App\Events\OrderWasPlaced;
 
 class CheckoutController extends BaseController
 {
@@ -40,6 +41,9 @@ class CheckoutController extends BaseController
 			$order->type = ORDER_CUSTOM;
 			$order->status = ORDER_PENDING;
 			$order->save();
+
+			//fire order created event
+			event(new OrderWasPlaced($order));
 
 			$orderCustom = OrderCustom::create([
 				'order_id'	=> $order->id,
@@ -76,6 +80,9 @@ class CheckoutController extends BaseController
 			$order->status = ORDER_PENDING;
 
 			$order->save();
+
+			//fire order created event
+			event(new OrderWasPlaced($order));
 
 			$cart = Cart::content();
 			foreach ($cart as $item) {

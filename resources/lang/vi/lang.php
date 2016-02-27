@@ -160,5 +160,6 @@ return [
 	'tracking_your_order_here'					  => 'Xem trạng thái đơn hàng của bạn',
 	'please_enter_your_email_address_below'	  	  => 'Hãy điền địa chỉ email bên dưới',	
 	'you_will_receive_status_about_your_order'	  => 'Bạn sẽ nhận được thông tin về trạng thái đơn hàng',		
+	'thank_you_for_your_order'					  => 'CẢM ƠN BẠN ĐÃ ĐẶT HÀNG!',
 
 ];
